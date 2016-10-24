@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+
+    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+    <link rel="stylesheet" href="styles/material.min.css"/>
+    <link rel="stylesheet" href="styles/style.css"/>
+
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script defer src="scripts/material.min.js"></script>
+    <script defer src="scripts/updateCosmetics.js"></script>
+
+    <title>Overwatch</title>
+</head>
+<body>
+<div class="container main">
+    {% block body %}{% endblock %}
+</div>
+{% include "footer.twig" %}
+
+</body>
+</html>

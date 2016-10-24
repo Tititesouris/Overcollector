@@ -1,0 +1,19 @@
+#cosmetics-table {
+    width: 100%;
+}
+
+.cosmetic.cosmetic-rarity-common {
+    color: #9d9d9d;
+}
+
+.cosmetic.cosmetic-rarity-rare {
+    color: #0070dd;
+}
+
+.cosmetic.cosmetic-rarity-epic {
+    color: #a335ee;
+}
+
+.cosmetic.cosmetic-rarity-legendary {
+    color: #ff8000;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Overwatch",
+  "description": "Overwatch Collectors Tool",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Quentin Brault",
+      "email": "quentin@frenchcomputerguy.com"
+    }
+  ],
+  "require": {
+    "twig/twig": "~1.0",
+    "twig/extensions": "~1.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "public/src/"
+    }
+  }
+}
