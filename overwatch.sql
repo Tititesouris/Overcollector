@@ -565,6 +565,7 @@ VALUES
   -- Sprays
   (NULL, 6, NULL, NULL, 'Logo', '2016-05-24'), -- Default All Heroes Sprays
   (NULL, 6, NULL, NULL, 'You Are Not Prepared', '2016-07-19'),
+  (NULL, 6, NULL, NULL, 'Día De Los Muertos', '2016-11-01'),
   (1, 6, 1, NULL, '...Punch', '2016-05-24'), -- Normal All Heroes Sprays
   (1, 6, 1, NULL, 'Catcher', '2016-05-24'),
   (1, 6, 1, NULL, 'Caution', '2016-05-24'),
