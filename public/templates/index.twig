@@ -1,7 +1,9 @@
+{% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet">
+            <button id="update-cosmetics">UPDATE</button>
             <ul class="demo-list-icon mdl-list">
                 <li class="mdl-list__item">
                     <span class="mdl-list__item-primary-content">
@@ -23,46 +25,31 @@
                 </li>
             </ul>
         </div>
-        <div class="mdl-cell mdl-cell--10-col mdl-cell--10-col-tablet">
+        <div class="mdl-cell mdl-cell--10-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                <caption><button id="update-cosmetics">UPDATE</button></caption>
-                {% for character in SESSION.characters %}
+                {% for character, types in SESSION.cosmetics %}
                     <tbody>
                     <tr>
                         <td colspan="9"
-                            class="mdl-typography--headline mdl-data-table__cell--non-numeric">{{ character.name }}</td>
+                            class="mdl-typography--headline mdl-data-table__cell--non-numeric">
+                            {{ character > 0 ? SESSION.characters[character].name : "All Heroes" }}
+                        </td>
                     </tr>
-                    {% for cosmetic in SESSION.cosmetics %}
-                        {% if cosmetic.character == character %}
+                    {% for type, cosmetics in types %}
+                        {% for cosmetic in cosmetics %}
                             {% if loop.index0 % 3 == 0 %}
-                                <tr name="{{ loop.index0 }}">
+                                <tr>
                             {% endif %}
-                            {% include 'cosmetic.twig' %}
-                            {% if loop.index0 % 3 == 2 %}
+                            <td>
+                                {{ cosmeticMacro.cosmetic(cosmetic, false) }}
+                            </td>
+                            {% if loop.index0 % 3 == 2 or loop.index == loop.length %}
                                 </tr>
                             {% endif %}
-                        {% endif %}
+                        {% endfor %}
                     {% endfor %}
                     </tbody>
                 {% endfor %}
-                <tbody>
-                <tr>
-                    <td colspan="9"
-                        class="mdl-typography--headline mdl-data-table__cell--non-numeric">All Heroes
-                    </td>
-                </tr>
-                {% for cosmetic in SESSION.cosmetics %}
-                    {% if cosmetic.character is null %}
-                        {% if loop.index0 % 3 == 0 %}
-                            <tr>
-                        {% endif %}
-                        {% include 'cosmetic.twig' %}
-                        {% if loop.index0 % 3 == 2 %}
-                            </tr>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-                </tbody>
             </table>
         </div>
     </div>

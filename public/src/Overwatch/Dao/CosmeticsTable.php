@@ -58,6 +58,32 @@ class CosmeticsTable
         return [];
     }
 
+    public function getAllCosmeticsOrderByCharactersAndType()
+    {
+        $cosmetics = [];
+        /*foreach (CharactersTable::getInstance()->getAllCharacters() as $character) {
+            foreach (TypesTable::getInstance()->getAllTypes() as $type) {
+                $response = pg_execute($this->handler, "fetchAllCosmeticsByCharacterAndType", array());
+                if ($response !== false) {
+                    while (($row = pg_fetch_assoc($response)) !== false) {
+                        $cosmetics[$character][$type][] = $this->parseCosmetic($row);
+                    }
+                }
+            }
+        }*/
+        $response = pg_execute($this->handler, "fetchAllCosmetics", array());
+        if ($response !== false) {
+            $cosmetics = [];
+            while (($row = pg_fetch_assoc($response)) !== false) {
+                $cosmetic = $this->parseCosmetic($row);
+                $cosmetics
+                [$cosmetic->getCharacter() != null ? $cosmetic->getCharacter()->getId() : 0]
+                [$cosmetic->getType()->getId()][] = $cosmetic;
+            }
+        }
+        return $cosmetics;
+    }
+
     public function getCosmeticsByUserId($userId)
     {
         $response = pg_execute($this->handler, "fetchCosmeticsIdByUserId", array($userId));

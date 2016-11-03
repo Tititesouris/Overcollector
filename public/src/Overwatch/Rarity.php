@@ -2,8 +2,9 @@
 
 namespace Overwatch;
 
+use JsonSerializable;
 
-class Rarity
+class Rarity implements JsonSerializable
 {
 
     private static $rarities = array();
@@ -53,4 +54,19 @@ class Rarity
         return $this->basePrice;
     }
 
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
+    {
+        return [
+            "id" => $this->id,
+            "name" => $this->name,
+            "base_price" => $this->basePrice
+        ];
+    }
 }

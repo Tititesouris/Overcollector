@@ -1,7 +1,7 @@
 $(function () {
     'use strict';
 
-    $("#cosmetics-table").find("#update-cosmetics").click(function () {
+    $("#update-cosmetics").click(function () {
         var cosmetics = [];
         $("#cosmetics-table").find(".cosmetic-checkbox input[type='checkbox']:checked").each(function () {
             cosmetics.push($(this).data("cosmetic-id"));

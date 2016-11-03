@@ -12,7 +12,7 @@ class CharactersTable
 
     private $handler;
 
-    private $fetchAllCharacters = "SELECT id, name FROM characters;";
+    private $fetchAllCharacters = "SELECT id, name FROM characters ORDER BY name;";
 
     private $fetchCharacterById = "SELECT id, name FROM characters WHERE id = $1;";
 
@@ -59,6 +59,20 @@ class CharactersTable
             return $this->parseCharacter($row);
         }
         return null;
+    }
+
+    public function getAllCharactersOrderById()
+    {
+        $response = pg_execute($this->handler, "fetchAllCharacters", array());
+        if ($response !== false) {
+            $characters = [];
+            while (($row = pg_fetch_assoc($response)) !== false) {
+                $character = $this->parseCharacter($row);
+                $characters[$character->getId()] = $character;
+            }
+            return $characters;
+        }
+        return [];
     }
 
 }

@@ -1,19 +1,23 @@
-#cosmetics-table {
-    width: 100%;
-}
-
-.cosmetic.cosmetic-rarity-common {
+.cosmetic.cosmetic-rarity-common .cosmetic--name {
     color: #9d9d9d;
 }
 
-.cosmetic.cosmetic-rarity-rare {
+.cosmetic.cosmetic-rarity-rare .cosmetic--name {
     color: #0070dd;
 }
 
-.cosmetic.cosmetic-rarity-epic {
+.cosmetic.cosmetic-rarity-epic .cosmetic--name {
     color: #a335ee;
 }
 
-.cosmetic.cosmetic-rarity-legendary {
+.cosmetic.cosmetic-rarity-legendary .cosmetic--name {
     color: #ff8000;
+}
+
+.cosmetic .cosmetic--checkbox {
+    float: left;
+}
+
+.cosmetic .cosmetic--name {
+    float: left;
 }

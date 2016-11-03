@@ -11,7 +11,7 @@ class TypesTable
 
     private $handler;
 
-    private $fetchAllTypes = "SELECT id, name FROM types;";
+    private $fetchAllTypes = "SELECT id, name FROM types ORDER BY id;";
 
     private $fetchTypeById = "SELECT id, name FROM types WHERE id = $1;";
 
@@ -38,7 +38,21 @@ class TypesTable
         );
     }
 
-    public function getTypeById($id) {
+    public function getAllTypes()
+    {
+        $response = pg_execute($this->handler, "fetchAllTypes", array());
+        if ($response !== false) {
+            $types = [];
+            while (($row = pg_fetch_assoc($response)) !== false) {
+                $types[] = $this->parseType($row);
+            }
+            return $types;
+        }
+        return [];
+    }
+
+    public function getTypeById($id)
+    {
         $response = pg_execute($this->handler, "fetchTypeById", array($id));
         if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
             return $this->parseType($row);
