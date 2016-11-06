@@ -52,11 +52,12 @@ VALUES
   (2, 'Achievements', 'Unlockable by completing achievements.'),
   (3, 'Origins Edition', 'Unlockable by buying the Origins Edition of Overwatch.'),
   (4, 'Preorder', 'Unlockable by preodering Overwatch.'),
-  (5, 'Competitive', 'Unlockable through the competitive system.'),
+  (5, 'Competitive', 'Unlockable by spending competitive points.'),
   (6, 'Summer Games', 'Unlockable by opening Summer Games Loot Boxes.'),
   (7, 'Halloween',
    'Unlockable by opening Halloween Loot Boxes or by spending 3 times the normal amount of credits during the Halloween event.'),
-  (8, 'BlizzCon', 'Unlockable by purchasing a BlizzCon ticket.');
+  (8, 'BlizzCon', 'Unlockable by purchasing a BlizzCon ticket.'),
+  (9, 'Blizzard', 'Unlockable by playing other Blizzard games.');
 
 
 CREATE TABLE types (
@@ -479,6 +480,7 @@ VALUES
   (1, 2, 4, 15, 'Stunt Rider: 76', '2016-05-24'),
   (3, 2, 4, 15, 'Strike-Commander Morrison', '2016-05-24'), -- Origins Edition Soldier: 76 Skins
   (7, 2, 3, 15, 'Immortal', '2016-10-11'), -- Halloween Soldier: 76 Skins
+  (1, 2, 2, 23, '???????SOMBRERO???', '2016-11-15'), -- Normal Sombra Skins TODO date
   (1, 2, 2, 16, 'Cardamom', '2016-05-24'), -- Normal Symmetra Skins
   (1, 2, 2, 16, 'Hyacinth', '2016-05-24'),
   (1, 2, 2, 16, 'Saffron', '2016-05-24'),
