@@ -1,3 +1,14 @@
+#cosmetics-table .cosmetics-table--character td {
+    font-size: 2rem;
+    text-align: center;
+    background: url('img/mercy.png') no-repeat right; background-size: contain
+}
+
+#cosmetics-table .cosmetics-table--type td {
+    font-size: 1.5rem;
+    text-align: left;
+}
+
 .cosmetic.cosmetic-rarity-common .cosmetic--name {
     color: #9d9d9d;
 }
@@ -20,4 +31,11 @@
 
 .cosmetic .cosmetic--name {
     float: left;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.cosmetic .cosmetic--category img {
+    width: 20px;
+    height: 20px;
 }

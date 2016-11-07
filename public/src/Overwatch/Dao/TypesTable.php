@@ -51,6 +51,20 @@ class TypesTable
         return [];
     }
 
+    public function getAllTypesOrderById()
+    {
+        $response = pg_execute($this->handler, "fetchAllTypes", array());
+        if ($response !== false) {
+            $types = [];
+            while (($row = pg_fetch_assoc($response)) !== false) {
+                $type = $this->parseType($row);
+                $types[$type->getId()] = $type;
+            }
+            return $types;
+        }
+        return [];
+    }
+
     public function getTypeById($id)
     {
         $response = pg_execute($this->handler, "fetchTypeById", array($id));

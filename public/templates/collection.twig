@@ -13,8 +13,9 @@
                         </label>
                     </span>
                 </li>
-                <li class="mdl-list__item mdl-button--disabled" >
-                    <span class="mdl-list__item-primary-content" style="background: url('img/Ana.png') no-repeat left; background-blend-mode: color; background-size: contain;">
+                <li class="mdl-list__item mdl-button--disabled">
+                    <span class="mdl-list__item-primary-content"
+                          style="background: url('img/Ana.png') no-repeat left; background-blend-mode: color; background-size: contain;">
                         Ana
                     </span>
                     <span class="mdl-list__item-secondary-action">
@@ -29,19 +30,21 @@
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 {% for character, types in SESSION.cosmetics %}
                     <tbody>
-                    <tr>
-                        <td colspan="9"
-                            class="mdl-typography--headline mdl-data-table__cell--non-numeric"  style="background: url('img/mercy.png') no-repeat right; background-size: contain;">
+                    <tr class="cosmetics-table--character">
+                        <td colspan="9" class="mdl-typography--headline mdl-data-table__cell--non-numeric">
                             {{ character > 0 ? SESSION.characters[character].name : "All Heroes" }}
                         </td>
                     </tr>
                     {% for type, cosmetics in types %}
+                        <tr class="cosmetics-table--type">
+                            <td colspan="9">{{ SESSION.types[type].name }}s</td>
+                        </tr>
                         {% for cosmetic in cosmetics %}
                             {% if loop.index0 % 3 == 0 %}
                                 <tr>
                             {% endif %}
                             <td>
-                                {{ cosmeticMacro.cosmetic(cosmetic, false) }}
+                                {{ cosmeticMacro.cosmetic(cosmetic, SESSION.user.hasCosmetic(cosmetic.id)) }}
                             </td>
                             {% if loop.index0 % 3 == 2 or loop.index == loop.length %}
                                 </tr>

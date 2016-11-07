@@ -17,6 +17,10 @@
 <body>
 <div class="container main">
     {% block body %}{% endblock %}
+    <div id="page-toast" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
 </div>
 {% include "footer.twig" %}
 

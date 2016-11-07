@@ -1,4 +1,4 @@
 <?php
 require_once("required.php");
 
-echo $twig->render("index.twig");
+echo $twig->render("collection.twig");
