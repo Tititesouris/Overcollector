@@ -1,6 +1,6 @@
 {% for i in 0..100 %}
     {% set ratio = i / 100 %}
-    <div style="background-color: {{ ratio|colorgradient("rgb") }}">
-        {{ i }}: {{ ratio|colorgradient("rgb") }}
+    <div style="background-color: {{ ratio|colorgradient("rgba") }}">
+        {{ i }}: {{ ratio|colorgradient("rgba") }}
     </div>
 {% endfor %}

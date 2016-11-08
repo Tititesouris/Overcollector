@@ -61,7 +61,7 @@
                     {% endfor %}
                     <tbody class="cosmetics-table--body-{{ character > 0 ? SESSION.characters[character].id : 0 }}">
                     {% set ratio = totalOwned / totalCosmetics %}
-                    <tr class="cosmetics-table--character" style="background-color: {{ ratio|colorgradient("rgb") }};">
+                    <tr class="cosmetics-table--character" style="background-color: {{ ratio|colorgradient("rgba") }};">
                         <td colspan="{{ itemsPerRow - 1 }}"
                             class="mdl-typography--headline mdl-data-table__cell--non-numeric">
                             {{ character > 0 ? SESSION.characters[character].name : "All Heroes" }}
@@ -73,7 +73,7 @@
                     </tr>
                     {% for type, cosmetics in types %}
                         {% set ratio = (ownedCosmetics[type] is defined ? ownedCosmetics[type]|length : 0) / SESSION.cosmetics[character][type]|length %}
-                        <tr class="cosmetics-table--type" style="background-color: {{ ratio|colorgradient("rgb") }};">
+                        <tr class="cosmetics-table--type" style="background-color: {{ ratio|colorgradient("rgba") }};">
                             <td colspan="{{ itemsPerRow - 1 }}">{{ SESSION.types[type].name }}s</td>
                             <td>
                                 {{ (ratio * 100)|round(2, 'floor') }}%

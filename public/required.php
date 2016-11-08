@@ -57,10 +57,11 @@ $twig->addFilter(new Twig_SimpleFilter("colorgradient", function ($ratio, $forma
     $gradient = array(
         floor(min(255, 510 - $ratio * 450)),
         floor(min(255, $ratio * 510)),
-        floor($ratio * 60)
+        0,
+        0.25
     );
-    if ($format === "rgb")
-        return "rgb(" . $gradient[0] . ", " . $gradient[1] . ", " . $gradient[2] . ")";
+    if ($format === "rgba")
+        return "rgba(" . $gradient[0] . ", " . $gradient[1] . ", " . $gradient[2] . ", " . $gradient[3] . ")";
     return $gradient;
 }));
 $twig->addGlobal("SESSION", $_SESSION);

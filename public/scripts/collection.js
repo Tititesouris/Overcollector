@@ -17,8 +17,11 @@ $(function () {
             },
             function (data) {
                 document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
-                    message: data != null ? "Collection updated" : "Error: Update failed"
+                    message: data != null ? "Collection updated!" : "Error: Update failed"
                 });
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
             }
         );
     });
