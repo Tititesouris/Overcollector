@@ -33,6 +33,19 @@ class User implements JsonSerializable
         return $this->username;
     }
 
+    public function getCosmetics($characterId)
+    {
+        $cosmetics = [];
+        foreach ($this->cosmetics as $cosmetic) {
+            if (($cosmetic->getCharacter() === null && $characterId === 0) ||
+                ($cosmetic->getCharacter() !== null && $cosmetic->getCharacter()->getId() === $characterId)
+            ) {
+                $cosmetics[] = $cosmetic;
+            }
+        }
+        return $cosmetics;
+    }
+
     public function setCosmetics($cosmetics)
     {
         $this->cosmetics = $cosmetics;

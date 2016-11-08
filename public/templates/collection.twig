@@ -2,10 +2,16 @@
 {% extends "page.twig" %}
 {% block body %}
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet">
-            <button id="update-cosmetics">UPDATE</button>
-            <ul class="demo-list-icon mdl-list">
-                <li class="mdl-list__item">
+        <div id="cosmetics-menu" class="mdl-cell mdl-cell--3-col">
+            <ul class="demo-list-icon mdl-list mdl-shadow--2dp">
+                <li class="cosmetics-menu--update mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            Save
+                        </button>
+                    </span>
+                </li>
+                <li class="cosmetics-menu--heroes-toggle mdl-list__item">
                     <span class="mdl-list__item-primary-content">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-heroes">
                             <input type="checkbox" id="switch-all-heroes" class="mdl-switch__input" checked>
@@ -13,31 +19,58 @@
                         </label>
                     </span>
                 </li>
-                <li class="mdl-list__item mdl-button--disabled">
-                    <span class="mdl-list__item-primary-content"
-                          style="background: url('img/Ana.png') no-repeat left; background-blend-mode: color; background-size: contain;">
-                        Ana
-                    </span>
+                <hr/>
+                {% for character in SESSION.characters %}
+                    <li class="cosmetics-menu--item mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                            <img src="img/Ana.png" width="45px"/>{{ character.name }}
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                   for="character-checkbox[{{ character.id }}]">
+                                <input type="checkbox" id="character-checkbox[{{ character.id }}]"
+                                       class="mdl-checkbox__input" data-hero-id="{{ character.id }}" checked/>
+                            </label>
+                        </span>
+                    </li>
+                {% endfor %}
+                <li class="cosmetics-menu--item mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                            <img src="img/Ana.png" width="45px"/>All Heroes
+                        </span>
                     <span class="mdl-list__item-secondary-action">
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">
-                            <input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" checked/>
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="character-checkbox[0]">
+                            <input type="checkbox" id="character-checkbox[0]" class="mdl-checkbox__input"
+                                   data-hero-id="0" checked/>
                         </label>
                     </span>
                 </li>
             </ul>
         </div>
-        <div class="mdl-cell mdl-cell--10-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+        <div class="mdl-cell mdl-cell--9-col-desktop">
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 {% for character, types in SESSION.cosmetics %}
-                    <tbody>
+                    {% set ownedCosmetics = SESSION.user.getCosmetics(character) %}
+                    <tbody class="cosmetics-table--body-{{ character > 0 ? SESSION.characters[character].id : 0 }}">
                     <tr class="cosmetics-table--character">
-                        <td colspan="9" class="mdl-typography--headline mdl-data-table__cell--non-numeric">
+                        <td colspan="2" class="mdl-typography--headline mdl-data-table__cell--non-numeric">
                             {{ character > 0 ? SESSION.characters[character].name : "All Heroes" }}
+                        </td>
+                        <td>
+                            {#% set totalOwned, totalCosmetics = 0, 0 %}
+                            {% for owned, type in ownedCosmetics %}
+                                {% set totalOwned = totalOwned + owned[type]|length %}
+                            {% endfor %}
+                            {% for cosmetic, type in SESSION.cosmetics[character] %}
+                                {% set totalCosmetics = totalCosmetics + cosmetic[type]|length %}
+                            {% endfor %}
+                            {{ ownedCosmetics }} / {{ totalCosmetics }#}
                         </td>
                     </tr>
                     {% for type, cosmetics in types %}
                         <tr class="cosmetics-table--type">
-                            <td colspan="9">{{ SESSION.types[type].name }}s</td>
+                            <td colspan="2">{{ SESSION.types[type].name }}s</td>
+                            <td>{#{ ownedCosmetics[type]|length }#} / {{ SESSION.cosmetics[character][type]|length }}</td>
                         </tr>
                         {% for cosmetic in cosmetics %}
                             {% if loop.index0 % 3 == 0 %}

@@ -1,7 +1,31 @@
+#cosmetics-menu .cosmetics-menu--update {
+}
+
+#cosmetics-menu hr {
+    margin: 0;
+}
+
+#cosmetics-menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+#cosmetics-menu .cosmetics-menu--item {
+    font-size: 1.2rem;
+    padding: 0 0.1rem;
+}
+
+#cosmetics-menu .cosmetics-menu--item img {
+    padding-right: 0.5rem;
+}
+
+#cosmetics-table {
+    width: 100%;
+}
+
 #cosmetics-table .cosmetics-table--character td {
     font-size: 2rem;
     text-align: center;
-    background: url('img/mercy.png') no-repeat right; background-size: contain
 }
 
 #cosmetics-table .cosmetics-table--type td {
