@@ -53,4 +53,14 @@ $twig->addFilter(new Twig_SimpleFilter("breverynword", function ($string, $n) {
 }, array(
     "is_safe" => array("html")
 )));
+$twig->addFilter(new Twig_SimpleFilter("colorgradient", function ($ratio, $format) {
+    $gradient = array(
+        floor(min(255, 510 - $ratio * 450)),
+        floor(min(255, $ratio * 510)),
+        floor($ratio * 60)
+    );
+    if ($format === "rgb")
+        return "rgb(" . $gradient[0] . ", " . $gradient[1] . ", " . $gradient[2] . ")";
+    return $gradient;
+}));
 $twig->addGlobal("SESSION", $_SESSION);

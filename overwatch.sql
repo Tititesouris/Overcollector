@@ -54,8 +54,8 @@ VALUES
   (4, 'Preorder', 'Unlockable by preodering Overwatch.'),
   (5, 'Competitive', 'Unlockable by spending competitive points.'),
   (6, 'Summer Games', 'Unlockable by opening Summer Games Loot Boxes.'),
-  (7, 'Halloween',
-   'Unlockable by opening Halloween Loot Boxes or by spending 3 times the normal amount of credits during the Halloween event.'),
+  (7, 'Halloween Terror',
+   'Unlockable by opening Halloween Loot Boxes or by spending 3 times the normal amount of credits during the Halloween Terror event.'),
   (8, 'BlizzCon', 'Unlockable by purchasing a BlizzCon ticket.'),
   (9, 'Blizzard', 'Unlockable by playing other Blizzard games.');
 
@@ -200,7 +200,7 @@ VALUES
   (6, 1, 1, NULL, 'Switzerland', '2016-08-02'),
   (6, 1, 1, NULL, 'United Kingdom', '2016-08-02'),
   (6, 1, 1, NULL, 'United States Of America', '2016-08-02'),
-  (7, 1, 1, NULL, '...Never Die', '2016-10-11'), -- Halloween All Heroes Player Icons
+  (7, 1, 1, NULL, '...Never Die', '2016-10-11'), -- Halloween Terror All Heroes Player Icons
   (7, 1, 1, NULL, 'Bewitching', '2016-10-11'),
   (7, 1, 1, NULL, 'Calavera', '2016-10-11'),
   (7, 1, 1, NULL, 'Candle', '2016-10-11'),
@@ -238,7 +238,7 @@ VALUES
   (1, 1, 1, 6, 'Have A Nice Day!', '2016-05-24'),
   (1, 1, 1, 6, 'Junkrat', '2016-05-24'),
   (6, 1, 1, 6, 'Tennis', '2016-08-02'), -- Summer Games Junkrat Player Icons
-  (7, 1, 1, 6, 'The Doctor', '2016-10-11'), -- Halloween Junkrat Player Icons
+  (7, 1, 1, 6, 'The Doctor', '2016-10-11'), -- Halloween Terror Junkrat Player Icons
   (1, 1, 1, 7, 'Frog', '2016-05-24'), -- Normal Lúcio Player Icons
   (1, 1, 1, 7, 'Kambô', '2016-05-24'),
   (1, 1, 1, 7, 'Lúcio', '2016-05-24'),
@@ -255,7 +255,7 @@ VALUES
   (1, 1, 1, 10, 'Mercy', '2016-05-24'),
   (1, 1, 1, 10, 'Valkyrie', '2016-05-24'),
   (6, 1, 1, 10, 'Badminton', '2016-08-02'), -- Summer Games Mercy Player Icons
-  (7, 1, 1, 10, 'The Witch', '2016-10-11'), -- Halloween Mercy Player Icons
+  (7, 1, 1, 10, 'The Witch', '2016-10-11'), -- Halloween Terror Mercy Player Icons
   (1, 1, 1, 11, 'Pharah', '2016-05-24'), -- Normal Pharah Player Icons
   (1, 1, 1, 11, 'Raptora', '2016-05-24'),
   (1, 1, 1, 11, 'Wadjet', '2016-05-24'),
@@ -264,7 +264,7 @@ VALUES
   (1, 1, 1, 12, 'Reaper', '2016-05-24'),
   (1, 1, 1, 12, 'Soul Globe', '2016-05-24'),
   (6, 1, 1, 12, 'BMX', '2016-08-02'), -- Summer Games Reaper Player Icons
-  (7, 1, 1, 12, 'The Reaper', '2016-10-11'), -- Halloween Reaper Player Icons
+  (7, 1, 1, 12, 'The Reaper', '2016-10-11'), -- Halloween Terror Reaper Player Icons
   (1, 1, 1, 13, 'Lionhardt', '2016-05-24'), -- Normal Reinhardt Player Icons
   (1, 1, 1, 13, 'Reinhardt', '2016-05-24'),
   (1, 1, 1, 13, 'Scar', '2016-05-24'),
@@ -273,7 +273,7 @@ VALUES
   (1, 1, 1, 14, 'Piggy', '2016-05-24'),
   (1, 1, 1, 14, 'Roadhog', '2016-05-24'),
   (6, 1, 1, 14, 'Diving', '2016-08-02'), -- Summer Games Roadhog Player Icons
-  (7, 1, 1, 14, 'The Monster', '2016-10-11'), -- Halloween Roadhog Player Icons
+  (7, 1, 1, 14, 'The Monster', '2016-10-11'), -- Halloween Terror Roadhog Player Icons
   (1, 1, 1, 15, '76', '2016-05-24'), -- Normal Soldier: 76 Player Icons
   (1, 1, 1, 15, 'Soldier: 76', '2016-05-24'),
   (1, 1, 1, 15, 'Strike-Commander', '2016-05-24'),
@@ -317,7 +317,7 @@ VALUES
   (1, 2, 4, 1, 'Wasteland', '2016-07-19'),
   (1, 2, 4, 1, 'Captain Amari', '2016-07-19'),
   (1, 2, 4, 1, 'Horus', '2016-07-19'),
-  (7, 2, 3, 1, 'Ghoul', '2016-10-11'), -- Halloween Ana Skins
+  (7, 2, 3, 1, 'Ghoul', '2016-10-11'), -- Halloween Terror Ana Skins
   (1, 2, 2, 2, 'Dawn', '2016-05-24'), -- Normal Bastion Skins
   (1, 2, 2, 2, 'Meadow', '2016-05-24'),
   (1, 2, 2, 2, 'Sky', '2016-05-24'),
@@ -329,7 +329,7 @@ VALUES
   (1, 2, 4, 2, 'Steambot', '2016-05-24'),
   (1, 2, 4, 2, 'Woodbot', '2016-05-24'),
   (3, 2, 4, 2, 'Overgrown', '2016-05-24'), -- Origins Edition Bastion Skins
-  (7, 2, 3, 2, 'Tombstone', '2016-10-11'), -- Halloween Bastion Skins
+  (7, 2, 3, 2, 'Tombstone', '2016-10-11'), -- Halloween Terror Bastion Skins
   (8, 2, 3, 2, 'BlizzCon 2016', '2016-10-11'), -- BlizzCon Bastion Skins TODO Try to find exact release date
   (1, 2, 2, 3, 'Blueberry', '2016-05-24'), -- Normal D.Va Skins
   (1, 2, 2, 3, 'Lemon-Lime', '2016-05-24'),
@@ -374,7 +374,7 @@ VALUES
   (1, 2, 4, 6, 'Hayseed', '2016-05-24'),
   (1, 2, 4, 6, 'Jester', '2016-05-24'),
   (1, 2, 4, 6, 'Scarecrow', '2016-05-24'),
-  (7, 2, 4, 6, 'Dr. Junkenstein', '2016-10-11'), -- Halloween Junkrat Skins
+  (7, 2, 4, 6, 'Dr. Junkenstein', '2016-10-11'), -- Halloween Terror Junkrat Skins
   (1, 2, 2, 7, 'Azul', '2016-05-24'), -- Normal Lúcio Skins
   (1, 2, 2, 7, 'Laranja', '2016-05-24'),
   (1, 2, 2, 7, 'Roxo', '2016-05-24'),
@@ -419,7 +419,7 @@ VALUES
   (1, 2, 4, 10, 'Sigrún', '2016-05-24'),
   (1, 2, 4, 10, 'Valkyrie', '2016-05-24'),
   (6, 2, 3, 10, 'Eidgenossin', '2016-08-02'), -- Summer Games Mercy Skins
-  (7, 2, 4, 10, 'Witch', '2016-10-11'), -- Halloween Mercy Skins
+  (7, 2, 4, 10, 'Witch', '2016-10-11'), -- Halloween Terror Mercy Skins
   (1, 2, 2, 11, 'Amethyst', '2016-05-24'), -- Normal Pharah Skins
   (1, 2, 2, 11, 'Copper', '2016-05-24'),
   (1, 2, 2, 11, 'Emerald', '2016-05-24'),
@@ -431,7 +431,7 @@ VALUES
   (1, 2, 4, 11, 'Raptorion', '2016-05-24'),
   (1, 2, 4, 11, 'Thunderbird', '2016-05-24'),
   (3, 2, 4, 11, 'Security Chief', '2016-05-24'), -- Origins Edition Pharah Skins
-  (6, 2, 3, 11, 'Possessed', '2016-10-11'), -- Halloween Pharah Skins
+  (6, 2, 3, 11, 'Possessed', '2016-10-11'), -- Halloween Terror Pharah Skins
   (1, 2, 2, 12, 'Blood', '2016-05-24'), -- Normal Reaper Skins
   (1, 2, 2, 12, 'Midnight', '2016-05-24'),
   (1, 2, 2, 12, 'Moss', '2016-05-24'),
@@ -443,7 +443,7 @@ VALUES
   (1, 2, 4, 12, 'Nevermore', '2016-05-24'),
   (1, 2, 4, 12, 'Plague Doctor', '2016-05-24'),
   (3, 2, 4, 12, 'Blackwatch Reyes', '2016-05-24'), -- Origins Edition Reaper Skins
-  (7, 2, 4, 12, 'Pumpkin', '2016-10-11'), -- Halloween Reaper Skins
+  (7, 2, 4, 12, 'Pumpkin', '2016-10-11'), -- Halloween Terror Reaper Skins
   (1, 2, 2, 13, 'Brass', '2016-05-24'), -- Normal Reinhardt Skins
   (1, 2, 2, 13, 'Cobalt', '2016-05-24'),
   (1, 2, 2, 13, 'Copper', '2016-05-24'),
@@ -456,7 +456,7 @@ VALUES
   (1, 2, 4, 13, 'Griefhardt', '2016-08-23'),
   (1, 2, 4, 13, 'Lionhardt', '2016-05-24'),
   (1, 2, 4, 13, 'Stonehardt', '2016-05-24'),
-  (7, 2, 3, 13, 'Coldhardt', '2016-10-11'), -- Halloween Reinhardt Skins
+  (7, 2, 3, 13, 'Coldhardt', '2016-10-11'), -- Halloween Terror Reinhardt Skins
   (1, 2, 2, 14, 'Kiwi', '2016-05-24'), -- Normal Roadhog Skins
   (1, 2, 2, 14, 'Mud', '2016-05-24'),
   (1, 2, 2, 14, 'Sand', '2016-05-24'),
@@ -467,7 +467,7 @@ VALUES
   (1, 2, 4, 14, 'Mako', '2016-05-24'),
   (1, 2, 4, 14, 'Sharkbait', '2016-05-24'),
   (1, 2, 4, 14, 'Toa', '2016-05-24'),
-  (7, 2, 4, 14, 'Junkenstein''s Monster', '2016-10-11'), -- Halloween Roadhog Skins
+  (7, 2, 4, 14, 'Junkenstein''s Monster', '2016-10-11'), -- Halloween Terror Roadhog Skins
   (1, 2, 2, 15, 'Jet', '2016-05-24'), -- Normal Soldier: 76 Skins
   (1, 2, 2, 15, 'Olive', '2016-05-24'),
   (1, 2, 2, 15, 'Russet', '2016-05-24'),
@@ -479,7 +479,7 @@ VALUES
   (1, 2, 4, 15, 'Night Ops: 76', '2016-05-24'),
   (1, 2, 4, 15, 'Stunt Rider: 76', '2016-05-24'),
   (3, 2, 4, 15, 'Strike-Commander Morrison', '2016-05-24'), -- Origins Edition Soldier: 76 Skins
-  (7, 2, 3, 15, 'Immortal', '2016-10-11'), -- Halloween Soldier: 76 Skins
+  (7, 2, 3, 15, 'Immortal', '2016-10-11'), -- Halloween Terror Soldier: 76 Skins
   (1, 2, 2, 23, '???????SOMBRERO???', '2016-11-15'), -- Normal Sombra Skins TODO date
   (1, 2, 2, 16, 'Cardamom', '2016-05-24'), -- Normal Symmetra Skins
   (1, 2, 2, 16, 'Hyacinth', '2016-05-24'),
@@ -491,7 +491,7 @@ VALUES
   (1, 2, 4, 16, 'Devi', '2016-05-24'),
   (1, 2, 4, 16, 'Goddess', '2016-05-24'),
   (1, 2, 4, 16, 'Vishkar', '2016-05-24'),
-  (7, 2, 3, 16, 'Vampire', '2016-10-11'), -- Halloween Symmetra Skins
+  (7, 2, 3, 16, 'Vampire', '2016-10-11'), -- Halloween Terror Symmetra Skins
   (1, 2, 2, 17, 'Blå', '2016-05-24'), -- Normal Torbjörn Skins
   (1, 2, 2, 17, 'Citron', '2016-05-24'),
   (1, 2, 2, 17, 'Grön', '2016-05-24'),
@@ -560,14 +560,14 @@ VALUES
   (1, 2, 4, 22, 'Ifrit', '2016-05-24'),
   (1, 2, 4, 22, 'Ra', '2016-05-24'),
   (1, 2, 4, 22, 'Sunyatta', '2016-05-24'),
-  (7, 2, 3, 22, 'Skullyatta', '2016-10-11'), -- Halloween Zenyatta Skins
+  (7, 2, 3, 22, 'Skullyatta', '2016-10-11'), -- Halloween Terror Zenyatta Skins
   -- Emotes TODO dates for sitting 08-23
   (1, 3, 3, 1, 'Disapproving', '2016-07-19'), -- Normal Ana Emotes
   (1, 3, 3, 1, 'Not Impressed', '2016-07-19'),
   (1, 3, 3, 1, 'Protector', '2016-07-19'),
   (1, 3, 3, 1, 'Take A Knee', '2016-07-19'),
   (1, 3, 3, 1, 'Tea Time', '2016-07-19'),
-  (7, 3, 3, 1, 'Candy', '2016-10-11'), -- Halloween Ana Emotes
+  (7, 3, 3, 1, 'Candy', '2016-10-11'), -- Halloween Terror Ana Emotes
   (1, 3, 3, 2, 'Alert! Alert!', '2016-05-24'), -- Normal Bastion Emotes
   (1, 3, 3, 2, 'Chortle', '2016-05-24'),
   (1, 3, 3, 2, 'Dizzy', '2016-05-24'),
@@ -631,7 +631,7 @@ VALUES
   (1, 3, 3, 13, 'Taunt', '2016-05-24'),
   (1, 3, 3, 13, 'Uproarious', '2016-05-24'),
   (1, 3, 3, 13, 'Warrior''s Salute', '2016-05-24'),
-  (7, 3, 3, 13, 'Pumpkin Smash', '2016-10-11'), -- Halloween Reinhardt Emotes
+  (7, 3, 3, 13, 'Pumpkin Smash', '2016-10-11'), -- Halloween Terror Reinhardt Emotes
   (1, 3, 3, 14, 'Belly Laugh', '2016-05-24'), -- Normal Roadhog Emotes
   (1, 3, 3, 14, 'Boo!', '2016-05-24'),
   (1, 3, 3, 14, 'Can Crusher', '2016-05-24'),
@@ -667,7 +667,7 @@ VALUES
   (1, 3, 3, 20, 'Peanut Butter?', '2016-05-24'),
   (1, 3, 3, 20, 'Roar', '2016-05-24'),
   (1, 3, 3, 20, 'Sitting Around', '2016-05-24'),
-  (7, 3, 3, 20, 'Shadow Puppets', '2016-05-24'), -- Halloween Winston Emotes
+  (7, 3, 3, 20, 'Shadow Puppets', '2016-05-24'), -- Halloween Terror Winston Emotes
   (1, 3, 3, 21, 'Bring It On', '2016-05-24'), -- Normal Zarya Emotes
   (1, 3, 3, 21, 'Comedy Gold', '2016-05-24'),
   (1, 3, 3, 21, 'Crush You', '2016-05-24'),
@@ -682,102 +682,101 @@ VALUES
   (1, 4, 2, 1, 'Mission Complete', '2016-07-19'), -- Normal Ana Victory Poses
   (1, 4, 2, 1, 'Protector', '2016-07-19'),
   (1, 4, 2, 1, 'Seated', '2016-07-19'),
-  (7, 4, 2, 1, 'R.I.P.', '2016-10-11'), -- Halloween Ana Victory Poses
+  (7, 4, 2, 1, 'R.I.P.', '2016-10-11'), -- Halloween Terror Ana Victory Poses
   (1, 4, 2, 2, 'Birdwatching', '2016-05-24'), -- Normal Bastion Victory Poses
   (1, 4, 2, 2, 'Pop Up', '2016-05-24'),
   (1, 4, 2, 2, 'Tank', '2016-05-24'),
-  (7, 4, 2, 2, 'R.I.P.', '2016-10-11'), -- Halloween Bastion Victory Poses
+  (7, 4, 2, 2, 'R.I.P.', '2016-10-11'), -- Halloween Terror Bastion Victory Poses
   (1, 4, 2, 3, 'I Heart You', '2016-05-24'), -- Normal D.Va Victory Poses
   (1, 4, 2, 3, 'Peace', '2016-05-24'),
   (1, 4, 2, 3, 'Sitting', '2016-05-24'),
-  (7, 4, 2, 3, 'R.I.P.', '2016-10-11'), -- Halloween D.Va Victory Poses
+  (7, 4, 2, 3, 'R.I.P.', '2016-10-11'), -- Halloween Terror D.Va Victory Poses
   (1, 4, 2, 4, 'Kneeling', '2016-05-24'), -- Normal Genji Victory Poses
   (1, 4, 2, 4, 'Shuriken', '2016-05-24'),
   (1, 4, 2, 4, 'Sword Stance', '2016-05-24'),
-  (7, 4, 2, 4, 'R.I.P.', '2016-10-11'), -- Halloween Genji Victory Poses
+  (7, 4, 2, 4, 'R.I.P.', '2016-10-11'), -- Halloween Terror Genji Victory Poses
   (1, 4, 2, 5, 'Confident', '2016-05-24'), -- Normal Hanzo Victory Poses
   (1, 4, 2, 5, 'Kneeling', '2016-05-24'),
   (1, 4, 2, 5, 'Over The Shoulder', '2016-05-24'),
   (1, 4, 2, 5, 'Candy', '2016-05-24'),
-  (7, 4, 2, 5, 'R.I.P.', '2016-10-11'), -- Halloween Hanzo Victory Poses
+  (7, 4, 2, 5, 'R.I.P.', '2016-10-11'), -- Halloween Terror Hanzo Victory Poses
   (1, 4, 2, 6, 'It''ll Freeze That Way', '2016-05-24'), -- Normal Junkrat Victory Poses
   (1, 4, 2, 6, 'Kneeling', '2016-05-24'),
   (1, 4, 2, 6, 'Nyah Nyah', '2016-05-24'),
-  (7, 4, 2, 6, 'R.I.P.', '2016-10-11'), -- Halloween Junkrat Victory Poses
+  (7, 4, 2, 6, 'R.I.P.', '2016-10-11'), -- Halloween Terror Junkrat Victory Poses
   (1, 4, 2, 7, 'Confident', '2016-05-24'), -- Normal Lúcio Victory Poses
   (1, 4, 2, 7, 'Grooving', '2016-05-24'),
   (1, 4, 2, 7, 'Ready For Action', '2016-05-24'),
-  (7, 4, 2, 7, 'R.I.P.', '2016-10-11'), -- Halloween Lúcio Victory Poses
+  (7, 4, 2, 7, 'R.I.P.', '2016-10-11'), -- Halloween Terror Lúcio Victory Poses
   (1, 4, 2, 8, 'Contemplative', '2016-05-24'), -- Normal McCree Victory Poses
   (1, 4, 2, 8, 'Over The Shoulder', '2016-05-24'),
   (1, 4, 2, 8, 'Take It Easy', '2016-05-24'),
-  (7, 4, 2, 8, 'R.I.P.', '2016-10-11'), -- Halloween McCree Victory Poses
-
+  (7, 4, 2, 8, 'R.I.P.', '2016-10-11'), -- Halloween Terror McCree Victory Poses
   (1, 4, 2, 9, 'Casual', '2016-05-24'), -- Normal Mei Victory Poses
   (1, 4, 2, 9, 'Hands On Hips', '2016-05-24'),
   (1, 4, 2, 9, 'Kneeling', '2016-05-24'),
   (6, 4, 2, 9, 'Medal', '2016-08-02'), -- Summer Games Mei Victory Poses
-  (7, 4, 2, 9, 'R.I.P.', '2016-10-11'), -- Halloween Mei Victory Poses
+  (7, 4, 2, 9, 'R.I.P.', '2016-10-11'), -- Halloween Terror Mei Victory Poses
   (1, 4, 2, 10, 'Angelic', '2016-05-24'), -- Normal Mercy Victory Poses
   (1, 4, 2, 10, 'Carefree', '2016-05-24'),
   (1, 4, 2, 10, 'Ready For Battle', '2016-05-24'),
-  (7, 4, 2, 10, 'R.I.P.', '2016-10-11'), -- Halloween Mercy Victory Poses
+  (7, 4, 2, 10, 'R.I.P.', '2016-10-11'), -- Halloween Terror Mercy Victory Poses
   (1, 4, 2, 11, 'Guardian', '2016-05-24'), -- Normal Pharah Victory Poses
   (1, 4, 2, 11, 'Jump Jet', '2016-05-24'),
   (1, 4, 2, 11, 'Kneeling', '2016-05-24'),
   (6, 4, 2, 11, 'Medal', '2016-08-02'), -- Summer Games Pharah Victory Poses
-  (7, 4, 2, 11, 'R.I.P.', '2016-10-11'), -- Halloween Pharah Victory Poses
+  (7, 4, 2, 11, 'R.I.P.', '2016-10-11'), -- Halloween Terror Pharah Victory Poses
   (1, 4, 2, 12, 'Casual', '2016-05-24'), -- Normal Reaper Victory Poses
   (1, 4, 2, 12, 'Enigmatic', '2016-05-24'),
   (1, 4, 2, 12, 'Menacing', '2016-05-24'),
   (1, 4, 2, 12, 'Medal', '2016-05-24'), -- Summer Games Reaper Victory Poses
-  (7, 4, 2, 12, 'R.I.P.', '2016-10-11'), -- Halloween Reaper Victory Poses
+  (7, 4, 2, 12, 'R.I.P.', '2016-10-11'), -- Halloween Terror Reaper Victory Poses
   (1, 4, 2, 13, 'Confident', '2016-05-24'), -- Normal Reinhardt Victory Poses
   (1, 4, 2, 13, 'Flex', '2016-05-24'),
   (1, 4, 2, 13, 'Legendary', '2016-05-24'),
-  (7, 4, 2, 13, 'R.I.P.', '2016-10-11'), -- Halloween Reinhardt Victory Poses
+  (7, 4, 2, 13, 'R.I.P.', '2016-10-11'), -- Halloween Terror Reinhardt Victory Poses
   (1, 4, 2, 14, 'Pointing To The Sky', '2016-05-24'), -- Normal Roadhog Victory Poses
   (1, 4, 2, 14, 'Thumbs Up', '2016-05-24'),
   (1, 4, 2, 14, 'Tuckered Out', '2016-05-24'),
   (6, 4, 2, 14, 'Medal', '2016-08-02'), -- Summer Games Roadhog Victory Poses
-  (7, 4, 2, 14, 'R.I.P.', '2016-10-11'), -- Halloween Roadhog Victory Poses
+  (7, 4, 2, 14, 'R.I.P.', '2016-10-11'), -- Halloween Terror Roadhog Victory Poses
   (1, 4, 2, 15, 'Fist Pump', '2016-05-24'), -- Normal Soldier: 76 Victory Poses
   (1, 4, 2, 15, 'Locked And Loaded', '2016-05-24'),
   (1, 4, 2, 15, 'Soldier', '2016-05-24'),
   (6, 4, 2, 15, 'Golf Swing', '2016-08-02'), -- Summer Games Soldier: 76 Victory Poses
-  (7, 4, 2, 15, 'R.I.P.', '2016-10-11'), -- Halloween Soldier: 76 Victory Poses
+  (7, 4, 2, 15, 'R.I.P.', '2016-10-11'), -- Halloween Terror Soldier: 76 Victory Poses
   (1, 4, 2, 16, 'Balance', '2016-05-24'), -- Normal Symmetra Victory Poses
   (1, 4, 2, 16, 'Creation', '2016-05-24'),
   (1, 4, 2, 16, 'Dance', '2016-05-24'),
-  (7, 4, 2, 16, 'R.I.P.', '2016-10-11'), -- Halloween Symmetra Victory Poses
+  (7, 4, 2, 16, 'R.I.P.', '2016-10-11'), -- Halloween Terror Symmetra Victory Poses
   (1, 4, 2, 17, 'Hammer', '2016-05-24'), -- Normal Torbjörn Victory Poses
   (1, 4, 2, 17, 'Sitting Pretty', '2016-05-24'),
   (1, 4, 2, 17, 'Take Five', '2016-05-24'),
   (6, 4, 2, 17, 'Medal', '2016-08-02'), -- Summer Games Torbjörn Victory Poses
-  (7, 4, 2, 17, 'R.I.P.', '2016-10-11'), -- Halloween Torbjörn Victory Poses
+  (7, 4, 2, 17, 'R.I.P.', '2016-10-11'), -- Halloween Terror Torbjörn Victory Poses
   (1, 4, 2, 18, 'Over The Shoulder', '2016-05-24'), -- Normal Tracer Victory Poses
   (1, 4, 2, 18, 'Salute', '2016-05-24'),
   (1, 4, 2, 18, 'Sitting', '2016-05-24'),
-  (7, 4, 2, 18, 'R.I.P.', '2016-10-11'), -- Halloween Tracer Victory Poses
+  (7, 4, 2, 18, 'R.I.P.', '2016-10-11'), -- Halloween Terror Tracer Victory Poses
   (1, 4, 2, 19, 'Activating Visor', '2016-05-24'), -- Normal Widowmaker Victory Poses
   (1, 4, 2, 19, 'Gaze', '2016-05-24'),
   (1, 4, 2, 19, 'Over The Shoulder', '2016-05-24'),
   (6, 4, 2, 19, 'Medal', '2016-08-02'), -- Summer Games Widowmaker Victory Poses
-  (7, 4, 2, 19, 'R.I.P.', '2016-10-11'), -- Halloween Widowmaker Victory Poses
+  (7, 4, 2, 19, 'R.I.P.', '2016-10-11'), -- Halloween Terror Widowmaker Victory Poses
   (1, 4, 2, 20, 'Beast', '2016-05-24'), -- Normal Winston Victory Poses
   (1, 4, 2, 20, 'Glasses', '2016-05-24'),
   (1, 4, 2, 20, 'The Thinker', '2016-05-24'),
   (6, 4, 2, 20, 'Medal', '2016-08-02'), -- Summer Games Winston Victory Poses
-  (7, 4, 2, 20, 'R.I.P.', '2016-10-11'), -- Halloween Winston Victory Poses
+  (7, 4, 2, 20, 'R.I.P.', '2016-10-11'), -- Halloween Terror Winston Victory Poses
   (1, 4, 2, 21, 'Casual', '2016-05-24'), -- Normal Zarya Victory Poses
   (1, 4, 2, 21, 'Check Out This Gun', '2016-05-24'),
   (1, 4, 2, 21, 'Flexing', '2016-05-24'),
-  (7, 4, 2, 21, 'R.I.P.', '2016-10-11'), -- Halloween Zarya Victory Poses
+  (7, 4, 2, 21, 'R.I.P.', '2016-10-11'), -- Halloween Terror Zarya Victory Poses
   (1, 4, 2, 22, 'Balance', '2016-05-24'), -- Normal Zenyatta Victory Poses
   (1, 4, 2, 22, 'Harmony', '2016-05-24'),
   (1, 4, 2, 22, 'Peace', '2016-05-24'),
   (6, 4, 2, 22, 'Medals', '2016-08-02'), -- Summer Games Zenyatta Victory Poses
-  (7, 4, 2, 22, 'R.I.P.', '2016-10-11'), -- Halloween Zenyatta Victory Poses
+  (7, 4, 2, 22, 'R.I.P.', '2016-10-11'), -- Halloween Terror Zenyatta Victory Poses
   -- Voice Lines
   -- Sprays
   (NULL, 6, NULL, NULL, 'Logo', '2016-05-24'), -- Default All Heroes Sprays
@@ -835,7 +834,7 @@ VALUES
   (5, 6, 1, NULL, 'Season 1 Hero', '2016-06-28'),
   (5, 6, 1, NULL, 'Season 2 Competitor', '2016-07-02'),
   (5, 6, 1, NULL, 'Season 2 Hero', '2016-07-02'),
-  (7, 6, 1, NULL, '...Never Die', '2016-10-11'), -- Halloween All Heroes Sprays
+  (7, 6, 1, NULL, '...Never Die', '2016-10-11'), -- Halloween Terror All Heroes Sprays
   (7, 6, 1, NULL, 'Bats', '2016-10-11'),
   (7, 6, 1, NULL, 'Boo!', '2016-10-11'),
   (7, 6, 1, NULL, 'Boop!', '2016-10-11'),
@@ -864,7 +863,7 @@ VALUES
   (1, 7, 3, 4, 'Shuriken', '2016-05-24'), -- Normal Genji Highlight Intros
   (1, 7, 3, 4, 'Unsheathing The Sword', '2016-05-24'),
   (1, 7, 3, 4, 'Warrior''s Salute', '2016-05-24'),
-  (7, 7, 3, 4, 'Pumpkin Carving', '2016-10-11'), -- Halloween Genji Highlight Intros
+  (7, 7, 3, 4, 'Pumpkin Carving', '2016-10-11'), -- Halloween Terror Genji Highlight Intros
   (1, 7, 3, 5, 'Backflip', '2016-05-24'), -- Normal Hanzo Highlight Intros
   (1, 7, 3, 5, 'My Aim Is True', '2016-05-24'),
   (1, 7, 3, 5, 'Superior', '2016-05-24'),
@@ -882,7 +881,7 @@ VALUES
   (1, 7, 3, 9, 'Frosty :)', '2016-05-24'), -- Normal Mei Highlight Intros
   (1, 7, 3, 9, 'Going Up!', '2016-05-24'),
   (1, 7, 3, 9, 'Skating Around', '2016-05-24'),
-  (7, 7, 3, 9, 'Ice Scream', '2016-10-11'), -- Halloween Mei Highlight Intros
+  (7, 7, 3, 9, 'Ice Scream', '2016-10-11'), -- Halloween Terror Mei Highlight Intros
   (1, 7, 3, 10, 'Battle Angel', '2016-05-24'), -- Normal Mercy Highlight Intros
   (1, 7, 3, 10, 'Guardian Angel', '2016-05-24'),
   (1, 7, 3, 10, 'Heroes Never Die', '2016-05-24'),
@@ -892,7 +891,7 @@ VALUES
   (1, 7, 3, 12, 'Death Blossom', '2016-05-24'), -- Normal Reaper Highlight Intros
   (1, 7, 3, 12, 'Executioner', '2016-05-24'), --TODO check spelling
   (1, 7, 3, 12, 'Shadow Step', '2016-05-24'),
-  (7, 7, 3, 12, 'Eternal Rest', '2016-10-11'), -- Halloween Reaper Highlight Intros
+  (7, 7, 3, 12, 'Eternal Rest', '2016-10-11'), -- Halloween Terror Reaper Highlight Intros
   (1, 7, 3, 13, 'Charge', '2016-05-24'), -- Normal Reinhardt Highlight Intros
   (1, 7, 3, 13, 'Hammer Down', '2016-05-24'),
   (1, 7, 3, 13, 'More Stretching Required', '2016-05-24'),
@@ -928,7 +927,6 @@ VALUES
 -- Weapons
 
 --TODO double check season 2 competitive start date
--- TODO rename to Halloween Terror in some cases?
 -- Double check defaults
 
 CREATE TABLE events (
@@ -948,7 +946,7 @@ VALUES
   ('Eichenwalde Patch', '2016-08-23', NULL),
   ('Competitive Season 2', '2016-07-02', '2016-11-24'),
   ('Halloween Terror 2016', '2016-10-11', '2016-11-01'),
-  ('Sombra Patch', '2016-05-24', NULL), -- TODO Cuando es Sombra?
+  ('Sombra Patch', '2016-11-15', NULL), -- TODO Cuando es Sombra?
   ('Competitive Season 3', '2016-12-01', NULL); -- TODO end
 
 
