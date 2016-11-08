@@ -40,7 +40,7 @@ class User implements JsonSerializable
             if (($cosmetic->getCharacter() === null && $characterId === 0) ||
                 ($cosmetic->getCharacter() !== null && $cosmetic->getCharacter()->getId() === $characterId)
             ) {
-                $cosmetics[] = $cosmetic;
+                $cosmetics[$cosmetic->getType()->getId()][] = $cosmetic;
             }
         }
         return $cosmetics;

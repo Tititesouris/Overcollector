@@ -1,6 +1,7 @@
 {% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
+    {% set itemsPerRow = 3 %}
     <div class="mdl-grid">
         <div id="cosmetics-menu" class="mdl-cell mdl-cell--3-col">
             <ul class="demo-list-icon mdl-list mdl-shadow--2dp">
@@ -51,35 +52,34 @@
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 {% for character, types in SESSION.cosmetics %}
                     {% set ownedCosmetics = SESSION.user.getCosmetics(character) %}
+                    {% set totalOwned, totalCosmetics = 0, 0 %}
+                    {% for owned in ownedCosmetics %}
+                        {% set totalOwned = totalOwned + owned|length %}
+                    {% endfor %}
+                    {% for cosmetics in SESSION.cosmetics[character] %}
+                        {% set totalCosmetics = totalCosmetics + cosmetics|length %}
+                    {% endfor %}
                     <tbody class="cosmetics-table--body-{{ character > 0 ? SESSION.characters[character].id : 0 }}">
                     <tr class="cosmetics-table--character">
-                        <td colspan="2" class="mdl-typography--headline mdl-data-table__cell--non-numeric">
+                        <td colspan="{{ itemsPerRow - 1 }}"
+                            class="mdl-typography--headline mdl-data-table__cell--non-numeric">
                             {{ character > 0 ? SESSION.characters[character].name : "All Heroes" }}
                         </td>
-                        <td>
-                            {#% set totalOwned, totalCosmetics = 0, 0 %}
-                            {% for owned, type in ownedCosmetics %}
-                                {% set totalOwned = totalOwned + owned[type]|length %}
-                            {% endfor %}
-                            {% for cosmetic, type in SESSION.cosmetics[character] %}
-                                {% set totalCosmetics = totalCosmetics + cosmetic[type]|length %}
-                            {% endfor %}
-                            {{ ownedCosmetics }} / {{ totalCosmetics }#}
-                        </td>
+                        <td>{{ totalOwned }} / {{ totalCosmetics }}</td>
                     </tr>
                     {% for type, cosmetics in types %}
                         <tr class="cosmetics-table--type">
-                            <td colspan="2">{{ SESSION.types[type].name }}s</td>
-                            <td>{#{ ownedCosmetics[type]|length }#} / {{ SESSION.cosmetics[character][type]|length }}</td>
+                            <td colspan="{{ itemsPerRow - 1 }}">{{ SESSION.types[type].name }}s</td>
+                            <td>{{ ownedCosmetics[type] is defined ? ownedCosmetics[type]|length : 0 }} / {{ SESSION.cosmetics[character][type]|length }}</td>
                         </tr>
                         {% for cosmetic in cosmetics %}
-                            {% if loop.index0 % 3 == 0 %}
+                            {% if loop.index0 % itemsPerRow == 0 %}
                                 <tr>
                             {% endif %}
                             <td>
                                 {{ cosmeticMacro.cosmetic(cosmetic, SESSION.user.hasCosmetic(cosmetic.id)) }}
                             </td>
-                            {% if loop.index0 % 3 == 2 or loop.index == loop.length %}
+                            {% if loop.index0 % itemsPerRow == (itemsPerRow - 1) or loop.index == loop.length %}
                                 </tr>
                             {% endif %}
                         {% endfor %}

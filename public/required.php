@@ -36,6 +36,7 @@ $twig = new Twig_Environment($loader, array(
     "debug" => DEBUG,
     "strict_variables" => DEBUG
 ));
+$twig->addExtension(new Twig_Extension_Debug());
 $twig->addFilter(new Twig_SimpleFilter("breverynword", function ($string, $n) {
     $words = 1;
     $result = "";
