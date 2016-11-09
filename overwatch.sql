@@ -895,18 +895,79 @@ VALUES
   (1, 5, 1, 6, 'Smile!', 1),
   (6, 5, 1, 6, 'I Give It A 10!', 4), -- Summer Games Junkrat Voice Lines
   (7, 5, 1, 6, 'Happy Halloween', 7), -- Halloween Terror Junkrat Voice Lines
-  (1, 5, 1, 7, 'Golden', 1), -- Normal Lúcio Voice Lines
-  (1, 5, 1, 7, 'Golden', 1),
-  (1, 5, 1, 8, 'Golden', 1), -- Normal McCree Voice Lines
-  (1, 5, 1, 8, 'Golden', 1),
-  (1, 5, 1, 9, 'Golden', 1), -- Normal Mei Voice Lines
-  (1, 5, 1, 9, 'Golden', 1),
-  (1, 5, 1, 10, 'Golden', 1), -- Normal Mercy Voice Lines
-  (1, 5, 1, 10, 'Golden', 1),
-  (1, 5, 1, 11, 'Golden', 1), -- Normal Pharah Voice Lines
-  (1, 5, 1, 11, 'Golden', 1),
-  (1, 5, 1, 12, 'Golden', 1), -- Normal Reaper Voice Lines
-  (1, 5, 1, 12, 'Golden', 1),
+  (1, 5, 1, 7, 'Can''t Stop, Won''t Stop', 1), -- Normal Lúcio Voice Lines
+  (1, 5, 1, 7, '', 1),
+  (1, 5, 1, 7, 'Hit Me!', 1),
+  (1, 5, 1, 7, 'I Could Do This All Day', 1),
+  (1, 5, 1, 7, 'I''m On Top Of The World', 1),
+  (1, 5, 1, 7, 'Jackpot!', 1),
+  (1, 5, 1, 7, 'Not Hearing That Noise', 1),
+  (1, 5, 1, 7, 'Oh, Yeah!', 1),
+  (1, 5, 1, 7, 'Tinnitus', 1),
+  (1, 5, 1, 7, 'Why Are You So Angry?', 1),
+  (1, 5, 1, 7, 'You Gotta Believe!', 1),
+  (6, 5, 1, 7, 'Be Champions', 4), -- Summer Games Lúcio Voice Lines
+  (7, 5, 1, 7, 'Killed It!', 7), -- Halloween Terror Lúcio Voice Lines
+  (1, 5, 1, 8, 'Ain''t I Killed You Before', 1), -- Normal McCree Voice Lines
+  (1, 5, 1, 8, 'Happens To The Best Of Us', 1),
+  (1, 5, 1, 8, 'I Tried Being Reasonable', 1),
+  (1, 5, 1, 8, 'I''m In The Quick...', 1),
+  (1, 5, 1, 8, 'I''m Your Huckleberry', 1),
+  (1, 5, 1, 8, 'I''ve Got A Bullet...', 1),
+  (1, 5, 1, 8, 'Reach For The Sky', 1),
+  (1, 5, 1, 8, 'Sure As Hell Ain''t Ugly', 1),
+  (1, 5, 1, 8, 'Wanted: Dead Or Alive', 1),
+  (1, 5, 1, 8, 'You Done?', 1),
+  (6, 5, 1, 8, 'I Don''t Much Like Losing', 4), -- Summer Games McCree Voice Lines
+  (7, 5, 1, 8, 'It''s Your Funeral', 7), -- Halloween Terror McCree Voice Lines
+  (1, 5, 1, 9, 'A-Mei-Zing!', 1), -- Normal Mei Voice Lines
+  (1, 5, 1, 9, 'Chill Out!', 1),
+  (1, 5, 1, 9, 'Fight For Our World', 1),
+  (1, 5, 1, 9, 'Learned Your Lesson', 1),
+  (1, 5, 1, 9, 'Okay!', 1),
+  (1, 5, 1, 9, 'Ouch, Are You Okay?', 1),
+  (1, 5, 1, 9, 'Sorry Sorry Sorry Sorry', 1),
+  (1, 5, 1, 9, 'That Was Great', 1),
+  (1, 5, 1, 9, 'Yay!', 1),
+  (1, 5, 1, 9, 'You Have To Let It Go', 1),
+  (6, 5, 1, 9, 'Overcome All Obstacles', 4), -- Summer Games Mei Voice Lines
+  (7, 5, 1, 9, 'Scary!', 7), -- Halloween Terror Mei Voice Lines
+  (1, 5, 1, 10, 'Consultation Fee', 1), -- Normal Mercy Voice Lines
+  (1, 5, 1, 10, 'Doctor''s Orders', 1),
+  (1, 5, 1, 10, 'How Barbaric', 1),
+  (1, 5, 1, 10, 'Miracle Worker', 1),
+  (1, 5, 1, 10, 'Need A Second Opinion?', 1),
+  (1, 5, 1, 10, 'On A Scale Of 1-10', 1),
+  (1, 5, 1, 10, 'Super!', 1),
+  (1, 5, 1, 10, 'Take Two', 1),
+  (1, 5, 1, 10, 'The Doctor Is In', 1),
+  (1, 5, 1, 10, 'The Doctor Will See You', 1),
+  (6, 5, 1, 10, 'Piece Of Cake', 4), -- Summer Games Mercy Voice Lines
+  (7, 5, 1, 10, 'Superstition', 7), -- Halloween Terror Mercy Voice Lines
+  (1, 5, 1, 11, 'Aerial Superiority Achieved', 1), -- Normal Pharah Voice Lines
+  (1, 5, 1, 11, 'Fly Like An Egyptian', 1),
+  (1, 5, 1, 11, 'Flying The Friendly Skies', 1),
+  (1, 5, 1, 11, 'Got You On My Radar', 1),
+  (1, 5, 1, 11, 'Leave This To A Professional', 1),
+  (1, 5, 1, 11, 'Not A Chance', 1),
+  (1, 5, 1, 11, 'Play Nice, Play Pharah', 1),
+  (1, 5, 1, 11, 'Rocket Jump?', 1),
+  (1, 5, 1, 11, 'Shot Down', 1),
+  (1, 5, 1, 11, 'Sorry, But I Need To Jet', 1),
+  (6, 5, 1, 11, 'We Are In This Together', 4), -- Summer Games Pharah Voice Lines
+  (7, 5, 1, 11, 'Dead Or Alive', 7), -- Halloween Terror Pharah Voice Lines
+  (1, 5, 1, 12, 'Dead Man Walking', 1), -- Normal Reaper Voice Lines
+  (1, 5, 1, 12, 'Give Me A Break', 1),
+  (1, 5, 1, 12, 'Haven''t I Killed You', 1),
+  (1, 5, 1, 12, 'I''m Back In Black', 1),
+  (1, 5, 1, 12, 'If It Lives, I Can Kill It', 1),
+  (1, 5, 1, 12, 'Next', 1),
+  (1, 5, 1, 12, 'Psychopath', 1),
+  (1, 5, 1, 12, 'Seen A Ghost?', 1),
+  (1, 5, 1, 12, 'Too Easy', 1),
+  (1, 5, 1, 12, 'Was That All?', 1),
+  (6, 5, 1, 12, 'It''s In The Refrigerator', 4), -- Summer Games Reaper Voice Lines
+  (7, 5, 1, 12, 'I Work The Graveyard Shift', 7), -- Halloween Terror Reaper Voice Lines
   (1, 5, 1, 13, 'Golden', 1), -- Normal Reinhardt Voice Lines
   (1, 5, 1, 13, 'Golden', 1),
   (1, 5, 1, 14, 'Golden', 1), -- Normal Roadhog Voice Lines
