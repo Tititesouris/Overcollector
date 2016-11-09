@@ -1,5 +1,5 @@
 DROP OWNED BY overwatch;
-DROP TABLE IF EXISTS characters, categories, types, rarities, cosmetics, users, user_cosmetics;
+DROP TABLE IF EXISTS characters, categories, types, rarities, events, cosmetics, users, user_cosmetics;
 DROP ROLE IF EXISTS overwatch;
 
 CREATE ROLE overwatch WITH LOGIN PASSWORD 'localpass';
@@ -96,6 +96,28 @@ VALUES
   (5, 'Weapon', 3000);
 
 
+CREATE TABLE events (
+  id    INTEGER,
+  name  TEXT NOT NULL,
+  start DATE NOT NULL,
+  "end" DATE,
+  CONSTRAINT pk_events PRIMARY KEY (id)
+);
+
+INSERT INTO events (id, name, start, "end")
+VALUES
+  (1, 'Overwatch Release', '2016-05-24', NULL),
+  (2, 'Competitive Season 1', '2016-06-28', '2016-08-18'),
+  (3, 'Ana Patch', '2016-07-19', NULL),
+  (4, 'Summer Games 2016', '2016-08-02', '2016-08-23'),
+  (5, 'Eichenwalde Patch', '2016-08-23', NULL),
+  (6, 'Competitive Season 2', '2016-07-02', '2016-11-24'),
+  (7, 'Halloween Terror 2016', '2016-10-11', '2016-11-01'),
+  (8, 'Día De Los Muertos 2016', '2016-11-01', NULL),
+  (9, 'Sombra Patch', '2016-11-15', NULL), -- TODO Cuando es Sombra?
+  (10, 'Competitive Season 3', '2016-12-01', NULL); -- TODO end
+
+
 CREATE TABLE cosmetics (
   id           SERIAL,
   category_id  INTEGER,
@@ -103,7 +125,7 @@ CREATE TABLE cosmetics (
   rarity_id    INTEGER,
   character_id INTEGER,
   name         TEXT    NOT NULL,
-  patch        DATE,
+  event        INTEGER,
   CONSTRAINT pk_cosmetics PRIMARY KEY (id),
   CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES categories (id)
   ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -112,842 +134,999 @@ CREATE TABLE cosmetics (
   CONSTRAINT fk_rarity FOREIGN KEY (rarity_id) REFERENCES rarities (id)
   ON UPDATE CASCADE ON DELETE RESTRICT,
   CONSTRAINT fk_character FOREIGN KEY (character_id) REFERENCES characters (id)
+  ON UPDATE CASCADE ON DELETE RESTRICT,
+  CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES events (id)
   ON UPDATE CASCADE ON DELETE RESTRICT
 );
 GRANT SELECT ON TABLE cosmetics TO overwatch;
 
-INSERT INTO cosmetics (category_id, type_id, rarity_id, character_id, name, patch)
+INSERT INTO cosmetics (category_id, type_id, rarity_id, character_id, name, event)
 VALUES
   -- Player Icons
-  (NULL, 1, NULL, NULL, 'Overwatch Dark', '2016-05-24'), -- Default All Heroes Player Icons
-  (NULL, 1, NULL, NULL, 'Overwatch Light', '2016-05-24'),
-  (NULL, 1, NULL, NULL, 'You Are Not Prepared', '2016-07-19'),
-  (1, 1, 1, NULL, '16-Bit Hero', '2016-05-24'), -- Normal All Heroes Player Icons
-  (1, 1, 1, NULL, 'Anubis', '2016-05-24'),
-  (1, 1, 1, NULL, 'Bao', '2016-05-24'),
-  (1, 1, 1, NULL, 'Barbarian', '2016-05-24'),
-  (1, 1, 1, NULL, 'Capsule', '2016-05-24'),
-  (1, 1, 1, NULL, 'Cheers', '2016-05-24'),
-  (1, 1, 1, NULL, 'Colossus', '2016-05-24'),
-  (1, 1, 1, NULL, 'Credit', '2016-05-24'),
-  (1, 1, 1, NULL, 'Crusader', '2016-05-24'),
-  (1, 1, 1, NULL, 'Dark Lady', '2016-05-24'),
-  (1, 1, 1, NULL, 'Demolition', '2016-05-24'),
-  (1, 1, 1, NULL, 'Demon Hunter', '2016-05-24'),
-  (1, 1, 1, NULL, 'Dominion', '2016-05-24'),
-  (1, 1, 1, NULL, 'Elephant', '2016-05-24'),
-  (1, 1, 1, NULL, 'For The Alliance', '2016-05-24'),
-  (1, 1, 1, NULL, 'For The Horde', '2016-05-24'),
-  (1, 1, 1, NULL, 'From Beyond The Moon', '2016-05-24'),
-  (1, 1, 1, NULL, 'Garrosh', '2016-05-24'),
-  (1, 1, 1, NULL, 'Happy Squid', '2016-05-24'),
-  (1, 1, 1, NULL, 'Hearthstone', '2016-05-24'),
-  (1, 1, 1, NULL, 'Hierarch', '2016-05-24'),
-  (1, 1, 1, NULL, 'Jaina', '2016-05-24'),
-  (1, 1, 1, NULL, 'Jim', '2016-05-24'),
-  (1, 1, 1, NULL, 'Kofi Aromo', '2016-05-24'),
-  (1, 1, 1, NULL, 'Lich King', '2016-05-24'),
-  (1, 1, 1, NULL, 'Loot Box', '2016-05-24'),
-  (1, 1, 1, NULL, 'Lord Of Candy', '2016-05-24'),
-  (1, 1, 1, NULL, 'Lord Of Terror', '2016-05-24'),
-  (1, 1, 1, NULL, 'Los Muertos', '2016-05-24'),
-  (1, 1, 1, NULL, 'Mama Pig''s', '2016-05-24'),
-  (1, 1, 1, NULL, 'Mariachi', '2016-05-24'),
-  (1, 1, 1, NULL, 'Mech', '2016-05-24'),
-  (1, 1, 1, NULL, 'Monk', '2016-05-24'),
-  (1, 1, 1, NULL, 'Nexus', '2016-05-24'),
-  (1, 1, 1, NULL, 'Pachimari', '2016-05-24'),
-  (1, 1, 1, NULL, 'Pharaoh', '2016-05-24'),
-  (1, 1, 1, NULL, 'Protoss', '2016-05-24'),
-  (1, 1, 1, NULL, 'Queen Of Blades', '2016-05-24'),
-  (1, 1, 1, NULL, 'Ramen', '2016-05-24'),
-  (1, 1, 1, NULL, 'Rhino', '2016-05-24'),
-  (1, 1, 1, NULL, 'Rikimaru', '2016-05-24'),
-  (1, 1, 1, NULL, 'Route 66', '2016-05-24'),
-  (1, 1, 1, NULL, 'Sakura', '2016-05-24'),
-  (1, 1, 1, NULL, 'Scooter', '2016-05-24'),
-  (1, 1, 1, NULL, 'Siege Mode', '2016-05-24'),
-  (1, 1, 1, NULL, 'Six-Gun Killer', '2016-05-24'),
-  (1, 1, 1, NULL, 'Svyatogor', '2016-05-24'),
-  (1, 1, 1, NULL, 'Terran', '2016-05-24'),
-  (1, 1, 1, NULL, 'Totem', '2016-05-24'),
-  (1, 1, 1, NULL, 'Training Bot', '2016-05-24'),
-  (1, 1, 1, NULL, 'Varian', '2016-05-24'),
-  (1, 1, 1, NULL, 'Vivi', '2016-05-24'),
-  (1, 1, 1, NULL, 'Witch Doctor', '2016-05-24'),
-  (1, 1, 1, NULL, 'Wizard', '2016-05-24'),
-  (1, 1, 1, NULL, 'Zerg', '2016-05-24'),
-  (5, 1, 1, NULL, 'Season 1 Competitor', '2016-06-28'), -- Competitive All Heroes Player Icons
-  (5, 1, 1, NULL, 'Season 1 Hero', '2016-06-28'),
-  (5, 1, 1, NULL, 'Season 2 Competitor', '2016-07-02'),
-  (5, 1, 1, NULL, 'Season 2 Hero', '2016-07-02'),
-  (5, 1, 1, NULL, 'Top 500', '2016-06-28'),
-  (6, 1, 1, NULL, 'Australia', '2016-08-02'), -- Summer Games All Heroes Player Icons
-  (6, 1, 1, NULL, 'Brazil', '2016-08-02'),
-  (6, 1, 1, NULL, 'China', '2016-08-02'),
-  (6, 1, 1, NULL, 'Egypt', '2016-08-02'),
-  (6, 1, 1, NULL, 'France', '2016-08-02'),
-  (6, 1, 1, NULL, 'Germany', '2016-08-02'),
-  (6, 1, 1, NULL, 'Greece', '2016-08-02'),
-  (6, 1, 1, NULL, 'Japan', '2016-08-02'),
-  (6, 1, 1, NULL, 'Mexico', '2016-08-02'),
-  (6, 1, 1, NULL, 'Nepal', '2016-08-02'),
-  (6, 1, 1, NULL, 'Numbani', '2016-08-02'),
-  (6, 1, 1, NULL, 'Russia', '2016-08-02'),
-  (6, 1, 1, NULL, 'South Korea', '2016-08-02'),
-  (6, 1, 1, NULL, 'Summer Games 2016', '2016-08-02'),
-  (6, 1, 1, NULL, 'Sweden', '2016-08-02'),
-  (6, 1, 1, NULL, 'Switzerland', '2016-08-02'),
-  (6, 1, 1, NULL, 'United Kingdom', '2016-08-02'),
-  (6, 1, 1, NULL, 'United States Of America', '2016-08-02'),
-  (7, 1, 1, NULL, '...Never Die', '2016-10-11'), -- Halloween Terror All Heroes Player Icons
-  (7, 1, 1, NULL, 'Bewitching', '2016-10-11'),
-  (7, 1, 1, NULL, 'Calavera', '2016-10-11'),
-  (7, 1, 1, NULL, 'Candle', '2016-10-11'),
-  (7, 1, 1, NULL, 'Eyeball', '2016-10-11'),
-  (7, 1, 1, NULL, 'Ghostymari', '2016-10-11'),
-  (7, 1, 1, NULL, 'Halloween Terror 2016', '2016-10-11'),
-  (7, 1, 1, NULL, 'Spider', '2016-10-11'),
-  (7, 1, 1, NULL, 'Superstition', '2016-10-11'),
-  (7, 1, 1, NULL, 'Tombstone', '2016-10-11'),
-  (7, 1, 1, NULL, 'Vampachimari', '2016-10-11'),
-  (7, 1, 1, NULL, 'Witch''s Brew', '2016-10-11'),
-  (7, 1, 1, NULL, 'Witch''s Hat', '2016-10-11'),
-  (7, 1, 1, NULL, 'Wolf', '2016-10-11'),
-  (1, 1, 1, 1, 'Ana', '2016-07-19'), -- Normal Ana Player Icons
-  (1, 1, 1, 1, 'Watcher', '2016-07-19'),
-  (1, 1, 1, 1, 'Wedjat', '2016-07-19'),
-  (6, 1, 1, 1, 'Shooting', '2016-08-02'), -- Summer Games Ana Player Icons
-  (1, 1, 1, 2, 'Bastion', '2016-05-24'), -- Normal Bastion Player Icons
-  (1, 1, 1, 2, 'Ganymede', '2016-05-24'),
-  (1, 1, 1, 2, 'Tank Crossing', '2016-05-24'),
-  (6, 1, 1, 2, 'Boxing', '2016-08-02'), -- Summer Games Bastion Player Icons
-  (1, 1, 1, 3, 'D.Va', '2016-05-24'), -- Normal D.Va Player Icons
-  (1, 1, 1, 3, 'Bunny', '2016-05-24'),
-  (1, 1, 1, 3, 'Charm', '2016-05-24'),
-  (6, 1, 1, 3, 'Cycling', '2016-08-02'), -- Summer Games D.Va Player Icons
-  (1, 1, 1, 4, 'Genji', '2016-05-24'), -- Normal Genji Player Icons
-  (1, 1, 1, 4, 'God Of War', '2016-05-24'),
-  (1, 1, 1, 4, 'Nin', '2016-05-24'),
-  (6, 1, 1, 4, 'Fencing', '2016-08-02'), -- Summer Games Genji Player Icons
-  (1, 1, 1, 5, 'Hanzo', '2016-05-24'), -- Normal Hanzo Player Icons
-  (1, 1, 1, 5, 'Shimada', '2016-05-24'),
-  (1, 1, 1, 5, 'Storm', '2016-05-24'),
-  (6, 1, 1, 5, 'Archery', '2016-08-02'), -- Summer Games Hanzo Player Icons
-  (1, 1, 1, 6, 'Ahhhh!', '2016-05-24'), -- Normal Junkrat Player Icons
-  (1, 1, 1, 6, 'Have A Nice Day!', '2016-05-24'),
-  (1, 1, 1, 6, 'Junkrat', '2016-05-24'),
-  (6, 1, 1, 6, 'Tennis', '2016-08-02'), -- Summer Games Junkrat Player Icons
-  (7, 1, 1, 6, 'The Doctor', '2016-10-11'), -- Halloween Terror Junkrat Player Icons
-  (1, 1, 1, 7, 'Frog', '2016-05-24'), -- Normal Lúcio Player Icons
-  (1, 1, 1, 7, 'Kambô', '2016-05-24'),
-  (1, 1, 1, 7, 'Lúcio', '2016-05-24'),
-  (6, 1, 1, 7, 'Football', '2016-08-02'), -- Summer Games Lúcio Player Icons
-  (1, 1, 1, 8, 'Badge', '2016-05-24'), -- Normal McCree Player Icons
-  (1, 1, 1, 8, 'Deadeye', '2016-05-24'),
-  (1, 1, 1, 8, 'McCree', '2016-05-24'),
-  (6, 1, 1, 8, 'Equestrian', '2016-08-02'), -- Summer Games McCree Player Icons
-  (1, 1, 1, 9, 'Hairpin', '2016-05-24'), -- Normal Mei Player Icons
-  (1, 1, 1, 9, 'Mei', '2016-05-24'),
-  (1, 1, 1, 9, 'Snowball', '2016-05-24'),
-  (6, 1, 1, 9, 'Table Tennis', '2016-08-02'), -- Summer Games Mei Player Icons
-  (1, 1, 1, 10, 'Guardian Angel', '2016-05-24'), -- Normal Mercy Player Icons
-  (1, 1, 1, 10, 'Mercy', '2016-05-24'),
-  (1, 1, 1, 10, 'Valkyrie', '2016-05-24'),
-  (6, 1, 1, 10, 'Badminton', '2016-08-02'), -- Summer Games Mercy Player Icons
-  (7, 1, 1, 10, 'The Witch', '2016-10-11'), -- Halloween Terror Mercy Player Icons
-  (1, 1, 1, 11, 'Pharah', '2016-05-24'), -- Normal Pharah Player Icons
-  (1, 1, 1, 11, 'Raptora', '2016-05-24'),
-  (1, 1, 1, 11, 'Wadjet', '2016-05-24'),
-  (6, 1, 1, 11, 'Basketball', '2016-08-02'), -- Summer Games Pharah Player Icons
-  (1, 1, 1, 12, 'Emblem', '2016-05-24'), -- Normal Reaper Player Icons
-  (1, 1, 1, 12, 'Reaper', '2016-05-24'),
-  (1, 1, 1, 12, 'Soul Globe', '2016-05-24'),
-  (6, 1, 1, 12, 'BMX', '2016-08-02'), -- Summer Games Reaper Player Icons
-  (7, 1, 1, 12, 'The Reaper', '2016-10-11'), -- Halloween Terror Reaper Player Icons
-  (1, 1, 1, 13, 'Lionhardt', '2016-05-24'), -- Normal Reinhardt Player Icons
-  (1, 1, 1, 13, 'Reinhardt', '2016-05-24'),
-  (1, 1, 1, 13, 'Scar', '2016-05-24'),
-  (6, 1, 1, 13, 'Wrestling', '2016-08-02'), -- Summer Games Reinhardt Player Icons
-  (1, 1, 1, 14, 'Hook', '2016-05-24'), -- Normal Roadhog Player Icons
-  (1, 1, 1, 14, 'Piggy', '2016-05-24'),
-  (1, 1, 1, 14, 'Roadhog', '2016-05-24'),
-  (6, 1, 1, 14, 'Diving', '2016-08-02'), -- Summer Games Roadhog Player Icons
-  (7, 1, 1, 14, 'The Monster', '2016-10-11'), -- Halloween Terror Roadhog Player Icons
-  (1, 1, 1, 15, '76', '2016-05-24'), -- Normal Soldier: 76 Player Icons
-  (1, 1, 1, 15, 'Soldier: 76', '2016-05-24'),
-  (1, 1, 1, 15, 'Strike-Commander', '2016-05-24'),
-  (6, 1, 1, 15, 'Golf', '2016-08-02'), -- Summer Games Soldier: 76 Player Icons
-  (1, 1, 1, 16, 'Sentry', '2016-05-24'), -- Normal Symmetra Player Icons
-  (1, 1, 1, 16, 'Symmetra', '2016-05-24'),
-  (1, 1, 1, 16, 'Vishkar', '2016-05-24'),
-  (6, 1, 1, 16, 'Rythmic Gymnastics', '2016-08-02'), -- Summer Games Symmetra Player Icons
-  (1, 1, 1, 17, 'Forge', '2016-05-24'), -- Normal Torbjörn Player Icons
-  (1, 1, 1, 17, 'Gears', '2016-05-24'),
-  (1, 1, 1, 17, 'Torbjörn', '2016-05-24'),
-  (6, 1, 1, 17, 'Water Polo', '2016-08-02'), -- Summer Games Torbjörn Player Icons
-  (1, 1, 1, 18, 'Patch', '2016-05-24'), -- Normal Tracer Player Icons
-  (1, 1, 1, 18, 'Pulse Bomb', '2016-05-24'),
-  (1, 1, 1, 18, 'Tracer', '2016-05-24'),
-  (6, 1, 1, 18, 'Track', '2016-08-02'), -- Summer Games Tracer Player Icons
-  (1, 1, 1, 19, 'Baiser', '2016-05-24'), -- Normal Widowmaker Player Icons
-  (1, 1, 1, 19, 'Grappling Hook', '2016-05-24'),
-  (1, 1, 1, 19, 'Widowmaker', '2016-05-24'),
-  (6, 1, 1, 19, 'Gymnastics', '2016-08-02'), -- Summer Games Widowmaker Player Icons
-  (1, 1, 1, 20, 'Lunar Ops', '2016-05-24'), -- Normal Winston Player Icons
-  (1, 1, 1, 20, 'Peanut Butter', '2016-05-24'),
-  (1, 1, 1, 20, 'Winston', '2016-05-24'),
-  (6, 1, 1, 20, 'Volleyball', '2016-08-02'), -- Summer Games Winston Player Icons
-  (1, 1, 1, 21, '512', '2016-05-24'), -- Normal Zarya Player Icons
-  (1, 1, 1, 21, 'Particle Barrier', '2016-05-24'),
-  (1, 1, 1, 21, 'Zarya', '2016-05-24'),
-  (6, 1, 1, 21, 'Weightlifting', '2016-08-02'), -- Summer Games Zarya Player Icons
-  (1, 1, 1, 22, 'Harmony', '2016-05-24'), -- Normal Zenyatta Player Icons
-  (1, 1, 1, 22, 'Meditation Barrier', '2016-05-24'),
-  (1, 1, 1, 22, 'Zenyatta', '2016-05-24'),
-  (6, 1, 1, 22, 'Taekwondo', '2016-08-02'), -- Summer Games Zenyatta Player Icons
+  (NULL, 1, NULL, NULL, 'Overwatch Dark', 1), -- Default All Heroes Player Icons
+  (NULL, 1, NULL, NULL, 'Overwatch Light', 1),
+  (NULL, 1, NULL, NULL, 'You Are Not Prepared', 3),
+  (1, 1, 1, NULL, '16-Bit Hero', 1), -- Normal All Heroes Player Icons
+  (1, 1, 1, NULL, 'Anubis', 1),
+  (1, 1, 1, NULL, 'Bao', 1),
+  (1, 1, 1, NULL, 'Barbarian', 1),
+  (1, 1, 1, NULL, 'Capsule', 1),
+  (1, 1, 1, NULL, 'Cheers', 1),
+  (1, 1, 1, NULL, 'Colossus', 1),
+  (1, 1, 1, NULL, 'Credit', 1),
+  (1, 1, 1, NULL, 'Crusader', 1),
+  (1, 1, 1, NULL, 'Dark Lady', 1),
+  (1, 1, 1, NULL, 'Demolition', 1),
+  (1, 1, 1, NULL, 'Demon Hunter', 1),
+  (1, 1, 1, NULL, 'Dominion', 1),
+  (1, 1, 1, NULL, 'Elephant', 1),
+  (1, 1, 1, NULL, 'For The Alliance', 1),
+  (1, 1, 1, NULL, 'For The Horde', 1),
+  (1, 1, 1, NULL, 'From Beyond The Moon', 1),
+  (1, 1, 1, NULL, 'Garrosh', 1),
+  (1, 1, 1, NULL, 'Happy Squid', 1),
+  (1, 1, 1, NULL, 'Hearthstone', 1),
+  (1, 1, 1, NULL, 'Hierarch', 1),
+  (1, 1, 1, NULL, 'Jaina', 1),
+  (1, 1, 1, NULL, 'Jim', 1),
+  (1, 1, 1, NULL, 'Kofi Aromo', 1),
+  (1, 1, 1, NULL, 'Lich King', 1),
+  (1, 1, 1, NULL, 'Loot Box', 1),
+  (1, 1, 1, NULL, 'Lord Of Candy', 1),
+  (1, 1, 1, NULL, 'Lord Of Terror', 1),
+  (1, 1, 1, NULL, 'Los Muertos', 1),
+  (1, 1, 1, NULL, 'Mama Pig''s', 1),
+  (1, 1, 1, NULL, 'Mariachi', 1),
+  (1, 1, 1, NULL, 'Mech', 1),
+  (1, 1, 1, NULL, 'Monk', 1),
+  (1, 1, 1, NULL, 'Nexus', 1),
+  (1, 1, 1, NULL, 'Pachimari', 1),
+  (1, 1, 1, NULL, 'Pharaoh', 1),
+  (1, 1, 1, NULL, 'Protoss', 1),
+  (1, 1, 1, NULL, 'Queen Of Blades', 1),
+  (1, 1, 1, NULL, 'Ramen', 1),
+  (1, 1, 1, NULL, 'Rhino', 1),
+  (1, 1, 1, NULL, 'Rikimaru', 1),
+  (1, 1, 1, NULL, 'Route 66', 1),
+  (1, 1, 1, NULL, 'Sakura', 1),
+  (1, 1, 1, NULL, 'Scooter', 1),
+  (1, 1, 1, NULL, 'Siege Mode', 1),
+  (1, 1, 1, NULL, 'Six-Gun Killer', 1),
+  (1, 1, 1, NULL, 'Svyatogor', 1),
+  (1, 1, 1, NULL, 'Terran', 1),
+  (1, 1, 1, NULL, 'Totem', 1),
+  (1, 1, 1, NULL, 'Training Bot', 1),
+  (1, 1, 1, NULL, 'Varian', 1),
+  (1, 1, 1, NULL, 'Vivi', 1),
+  (1, 1, 1, NULL, 'Witch Doctor', 1),
+  (1, 1, 1, NULL, 'Wizard', 1),
+  (1, 1, 1, NULL, 'Zerg', 1),
+  (5, 1, 1, NULL, 'Season 1 Competitor', 2), -- Competitive All Heroes Player Icons
+  (5, 1, 1, NULL, 'Season 1 Hero', 2),
+  (5, 1, 1, NULL, 'Season 2 Competitor', 6),
+  (5, 1, 1, NULL, 'Season 2 Hero', 6),
+  (5, 1, 1, NULL, 'Season 3 Competitor', 10),
+  (5, 1, 1, NULL, 'Season 3 Hero', 10),
+  (5, 1, 1, NULL, 'Top 500', 2),
+  (6, 1, 1, NULL, 'Australia', 4), -- Summer Games All Heroes Player Icons
+  (6, 1, 1, NULL, 'Brazil', 4),
+  (6, 1, 1, NULL, 'China', 4),
+  (6, 1, 1, NULL, 'Egypt', 4),
+  (6, 1, 1, NULL, 'France', 4),
+  (6, 1, 1, NULL, 'Germany', 4),
+  (6, 1, 1, NULL, 'Greece', 4),
+  (6, 1, 1, NULL, 'Japan', 4),
+  (6, 1, 1, NULL, 'Mexico', 4),
+  (6, 1, 1, NULL, 'Nepal', 4),
+  (6, 1, 1, NULL, 'Numbani', 4),
+  (6, 1, 1, NULL, 'Russia', 4),
+  (6, 1, 1, NULL, 'South Korea', 4),
+  (6, 1, 1, NULL, 'Summer Games 2016', 4),
+  (6, 1, 1, NULL, 'Sweden', 4),
+  (6, 1, 1, NULL, 'Switzerland', 4),
+  (6, 1, 1, NULL, 'United Kingdom', 4),
+  (6, 1, 1, NULL, 'United States Of America', 4),
+  (7, 1, 1, NULL, '...Never Die', 7), -- Halloween Terror All Heroes Player Icons
+  (7, 1, 1, NULL, 'Bewitching', 7),
+  (7, 1, 1, NULL, 'Calavera', 7),
+  (7, 1, 1, NULL, 'Candle', 7),
+  (7, 1, 1, NULL, 'Eyeball', 7),
+  (7, 1, 1, NULL, 'Ghostymari', 7),
+  (7, 1, 1, NULL, 'Halloween Terror 2016', 7),
+  (7, 1, 1, NULL, 'Spider', 7),
+  (7, 1, 1, NULL, 'Superstition', 7),
+  (7, 1, 1, NULL, 'Tombstone', 7),
+  (7, 1, 1, NULL, 'Vampachimari', 7),
+  (7, 1, 1, NULL, 'Witch''s Brew', 7),
+  (7, 1, 1, NULL, 'Witch''s Hat', 7),
+  (7, 1, 1, NULL, 'Wolf', 7),
+  (1, 1, 1, 1, 'Ana', 3), -- Normal Ana Player Icons
+  (1, 1, 1, 1, 'Watcher', 3),
+  (1, 1, 1, 1, 'Wedjat', 3),
+  (6, 1, 1, 1, 'Shooting', 4), -- Summer Games Ana Player Icons
+  (1, 1, 1, 2, 'Bastion', 1), -- Normal Bastion Player Icons
+  (1, 1, 1, 2, 'Ganymede', 1),
+  (1, 1, 1, 2, 'Tank Crossing', 1),
+  (6, 1, 1, 2, 'Boxing', 4), -- Summer Games Bastion Player Icons
+  (1, 1, 1, 3, 'D.Va', 1), -- Normal D.Va Player Icons
+  (1, 1, 1, 3, 'Bunny', 1),
+  (1, 1, 1, 3, 'Charm', 1),
+  (6, 1, 1, 3, 'Cycling', 4), -- Summer Games D.Va Player Icons
+  (1, 1, 1, 4, 'Genji', 1), -- Normal Genji Player Icons
+  (1, 1, 1, 4, 'God Of War', 1),
+  (1, 1, 1, 4, 'Nin', 1),
+  (6, 1, 1, 4, 'Fencing', 4), -- Summer Games Genji Player Icons
+  (8, 1, 1, 4, 'Oni', 9), -- Blizzard Genji Player Icons
+  (1, 1, 1, 5, 'Hanzo', 1), -- Normal Hanzo Player Icons
+  (1, 1, 1, 5, 'Shimada', 1),
+  (1, 1, 1, 5, 'Storm', 1),
+  (6, 1, 1, 5, 'Archery', 4), -- Summer Games Hanzo Player Icons
+  (1, 1, 1, 6, 'Ahhhh!', 1), -- Normal Junkrat Player Icons
+  (1, 1, 1, 6, 'Have A Nice Day!', 1),
+  (1, 1, 1, 6, 'Junkrat', 1),
+  (6, 1, 1, 6, 'Tennis', 4), -- Summer Games Junkrat Player Icons
+  (7, 1, 1, 6, 'The Doctor', 7), -- Halloween Terror Junkrat Player Icons
+  (1, 1, 1, 7, 'Frog', 1), -- Normal Lúcio Player Icons
+  (1, 1, 1, 7, 'Kambô', 1),
+  (1, 1, 1, 7, 'Lúcio', 1),
+  (6, 1, 1, 7, 'Football', 4), -- Summer Games Lúcio Player Icons
+  (1, 1, 1, 8, 'Badge', 1), -- Normal McCree Player Icons
+  (1, 1, 1, 8, 'Deadeye', 1),
+  (1, 1, 1, 8, 'McCree', 1),
+  (6, 1, 1, 8, 'Equestrian', 4), -- Summer Games McCree Player Icons
+  (1, 1, 1, 9, 'Hairpin', 1), -- Normal Mei Player Icons
+  (1, 1, 1, 9, 'Mei', 1),
+  (1, 1, 1, 9, 'Snowball', 1),
+  (6, 1, 1, 9, 'Table Tennis', 4), -- Summer Games Mei Player Icons
+  (1, 1, 1, 10, 'Guardian Angel', 1), -- Normal Mercy Player Icons
+  (1, 1, 1, 10, 'Mercy', 1),
+  (1, 1, 1, 10, 'Valkyrie', 1),
+  (6, 1, 1, 10, 'Badminton', 4), -- Summer Games Mercy Player Icons
+  (7, 1, 1, 10, 'The Witch', 7), -- Halloween Terror Mercy Player Icons
+  (1, 1, 1, 11, 'Pharah', 1), -- Normal Pharah Player Icons
+  (1, 1, 1, 11, 'Raptora', 1),
+  (1, 1, 1, 11, 'Wadjet', 1),
+  (6, 1, 1, 11, 'Basketball', 4), -- Summer Games Pharah Player Icons
+  (1, 1, 1, 12, 'Emblem', 1), -- Normal Reaper Player Icons
+  (1, 1, 1, 12, 'Reaper', 1),
+  (1, 1, 1, 12, 'Soul Globe', 1),
+  (6, 1, 1, 12, 'BMX', 4), -- Summer Games Reaper Player Icons
+  (7, 1, 1, 12, 'The Reaper', 7), -- Halloween Terror Reaper Player Icons
+  (1, 1, 1, 13, 'Lionhardt', 1), -- Normal Reinhardt Player Icons
+  (1, 1, 1, 13, 'Reinhardt', 1),
+  (1, 1, 1, 13, 'Scar', 1),
+  (6, 1, 1, 13, 'Wrestling', 4), -- Summer Games Reinhardt Player Icons
+  (1, 1, 1, 14, 'Hook', 1), -- Normal Roadhog Player Icons
+  (1, 1, 1, 14, 'Piggy', 1),
+  (1, 1, 1, 14, 'Roadhog', 1),
+  (6, 1, 1, 14, 'Diving', 4), -- Summer Games Roadhog Player Icons
+  (7, 1, 1, 14, 'The Monster', 7), -- Halloween Terror Roadhog Player Icons
+  (1, 1, 1, 15, '76', 1), -- Normal Soldier: 76 Player Icons
+  (1, 1, 1, 15, 'Soldier: 76', 1),
+  (1, 1, 1, 15, 'Strike-Commander', 1),
+  (6, 1, 1, 15, 'Golf', 4), -- Summer Games Soldier: 76 Player Icons
+  (1, 1, 1, 16, 'Sentry', 1), -- Normal Symmetra Player Icons
+  (1, 1, 1, 16, 'Symmetra', 1),
+  (1, 1, 1, 16, 'Vishkar', 1),
+  (6, 1, 1, 16, 'Rythmic Gymnastics', 4), -- Summer Games Symmetra Player Icons
+  (1, 1, 1, 17, 'Forge', 1), -- Normal Torbjörn Player Icons
+  (1, 1, 1, 17, 'Gears', 1),
+  (1, 1, 1, 17, 'Torbjörn', 1),
+  (6, 1, 1, 17, 'Water Polo', 4), -- Summer Games Torbjörn Player Icons
+  (1, 1, 1, 18, 'Patch', 1), -- Normal Tracer Player Icons
+  (1, 1, 1, 18, 'Pulse Bomb', 1),
+  (1, 1, 1, 18, 'Tracer', 1),
+  (6, 1, 1, 18, 'Track', 4), -- Summer Games Tracer Player Icons
+  (1, 1, 1, 19, 'Baiser', 1), -- Normal Widowmaker Player Icons
+  (1, 1, 1, 19, 'Grappling Hook', 1),
+  (1, 1, 1, 19, 'Widowmaker', 1),
+  (6, 1, 1, 19, 'Gymnastics', 4), -- Summer Games Widowmaker Player Icons
+  (1, 1, 1, 20, 'Lunar Ops', 1), -- Normal Winston Player Icons
+  (1, 1, 1, 20, 'Peanut Butter', 1),
+  (1, 1, 1, 20, 'Winston', 1),
+  (6, 1, 1, 20, 'Volleyball', 4), -- Summer Games Winston Player Icons
+  (1, 1, 1, 21, '512', 1), -- Normal Zarya Player Icons
+  (1, 1, 1, 21, 'Particle Barrier', 1),
+  (1, 1, 1, 21, 'Zarya', 1),
+  (6, 1, 1, 21, 'Weightlifting', 4), -- Summer Games Zarya Player Icons
+  (1, 1, 1, 22, 'Harmony', 1), -- Normal Zenyatta Player Icons
+  (1, 1, 1, 22, 'Meditation Barrier', 1),
+  (1, 1, 1, 22, 'Zenyatta', 1),
+  (6, 1, 1, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Player Icons
+  (1, 1, 1, 23, 'Hacker', 9), -- Normal Sombra Player Icons
+  (1, 1, 1, 23, 'Skull', 9),
+  (1, 1, 1, 23, 'Sombra', 9),
   -- Skins TODO defaults
-  (1, 2, 2, 1, 'Citrine', '2016-07-19'), -- Normal Ana Skins
-  (1, 2, 2, 1, 'Garnet', '2016-07-19'),
-  (1, 2, 2, 1, 'Peridot', '2016-07-19'),
-  (1, 2, 2, 1, 'Turquoise', '2016-07-19'),
-  (1, 2, 3, 1, 'Merciful', '2016-07-19'),
-  (1, 2, 3, 1, 'Shrike', '2016-07-19'),
-  (1, 2, 4, 1, 'Wadjet', '2016-07-19'),
-  (1, 2, 4, 1, 'Wasteland', '2016-07-19'),
-  (1, 2, 4, 1, 'Captain Amari', '2016-07-19'),
-  (1, 2, 4, 1, 'Horus', '2016-07-19'),
-  (7, 2, 3, 1, 'Ghoul', '2016-10-11'), -- Halloween Terror Ana Skins
-  (1, 2, 2, 2, 'Dawn', '2016-05-24'), -- Normal Bastion Skins
-  (1, 2, 2, 2, 'Meadow', '2016-05-24'),
-  (1, 2, 2, 2, 'Sky', '2016-05-24'),
-  (1, 2, 2, 2, 'Soot', '2016-05-24'),
-  (1, 2, 3, 2, 'Defense Matrix', '2016-05-24'),
-  (1, 2, 3, 2, 'Omnic Crisis', '2016-05-24'),
-  (1, 2, 4, 2, 'Antique', '2016-05-24'),
-  (1, 2, 4, 2, 'Gearbot', '2016-05-24'),
-  (1, 2, 4, 2, 'Steambot', '2016-05-24'),
-  (1, 2, 4, 2, 'Woodbot', '2016-05-24'),
-  (3, 2, 4, 2, 'Overgrown', '2016-05-24'), -- Origins Edition Bastion Skins
-  (7, 2, 3, 2, 'Tombstone', '2016-10-11'), -- Halloween Terror Bastion Skins
-  (8, 2, 3, 2, 'BlizzCon 2016', '2016-10-11'), -- BlizzCon Bastion Skins TODO Try to find exact release date
-  (1, 2, 2, 3, 'Blueberry', '2016-05-24'), -- Normal D.Va Skins
-  (1, 2, 2, 3, 'Lemon-Lime', '2016-05-24'),
-  (1, 2, 2, 3, 'Tangerine', '2016-05-24'),
-  (1, 2, 2, 3, 'Watermelon', '2016-05-24'),
-  (1, 2, 3, 3, 'Carbon Fiber', '2016-05-24'),
-  (1, 2, 3, 3, 'White Rabbit', '2016-05-24'),
-  (1, 2, 4, 3, 'B.Va', '2016-05-24'),
-  (1, 2, 4, 3, 'Junebug', '2016-05-24'),
-  (1, 2, 4, 3, 'Junker', '2016-05-24'),
-  (1, 2, 4, 3, 'Scavenger', '2016-05-24'),
-  (6, 2, 3, 3, 'Taegeukgi', '2016-08-02'), -- Summer Games D.Va Skins
-  (1, 2, 2, 4, 'Azurite', '2016-05-24'), -- Normal Genji Skins
-  (1, 2, 2, 4, 'Cinnabar', '2016-05-24'),
-  (1, 2, 2, 4, 'Malachite', '2016-05-24'),
-  (1, 2, 2, 4, 'Ochre', '2016-05-24'),
-  (1, 2, 3, 4, 'Carbon Fiber', '2016-05-24'), --TODO double check name
-  (1, 2, 3, 4, 'Chrome', '2016-05-24'),
-  (1, 2, 4, 4, 'Bedouin', '2016-05-24'),
-  (1, 2, 4, 4, 'Nomad', '2016-05-24'),
-  (1, 2, 4, 4, 'Sparrow', '2016-05-24'),
-  (1, 2, 4, 4, 'Young Genji', '2016-05-24'),
-  (6, 2, 3, 4, 'Nihon', '2016-08-02'), -- Summer Games Genji Skins
-  (1, 2, 2, 5, 'Azuki', '2016-05-24'), -- Normal Hanzo Skins
-  (1, 2, 2, 5, 'Kinoko', '2016-05-24'),
-  (1, 2, 2, 5, 'Midori', '2016-05-24'),
-  (1, 2, 2, 5, 'Sora', '2016-05-24'),
-  (1, 2, 3, 5, 'Cloud', '2016-05-24'),
-  (1, 2, 3, 5, 'Dragon', '2016-05-24'),
-  (1, 2, 4, 5, 'Lone Wolf', '2016-05-24'),
-  (1, 2, 4, 5, 'Okami', '2016-05-24'),
-  (1, 2, 4, 5, 'Young Hanzo', '2016-05-24'),
-  (1, 2, 4, 5, 'Young Master', '2016-05-24'),
-  (6, 2, 3, 5, 'Demon', '2016-08-02'), -- Summer Games Hanzo Skins
-  (1, 2, 2, 6, 'Bleached', '2016-05-24'), -- Normal Junkrat Skins
-  (1, 2, 2, 6, 'Drowned', '2016-05-24'),
-  (1, 2, 2, 6, 'Irradiated', '2016-05-24'),
-  (1, 2, 2, 6, 'Rusted', '2016-05-24'),
-  (1, 2, 3, 6, 'Jailbird', '2016-05-24'),
-  (1, 2, 3, 6, 'Toasted', '2016-05-24'),
-  (1, 2, 4, 6, 'Fool', '2016-05-24'),
-  (1, 2, 4, 6, 'Hayseed', '2016-05-24'),
-  (1, 2, 4, 6, 'Jester', '2016-05-24'),
-  (1, 2, 4, 6, 'Scarecrow', '2016-05-24'),
-  (7, 2, 4, 6, 'Dr. Junkenstein', '2016-10-11'), -- Halloween Terror Junkrat Skins
-  (1, 2, 2, 7, 'Azul', '2016-05-24'), -- Normal Lúcio Skins
-  (1, 2, 2, 7, 'Laranja', '2016-05-24'),
-  (1, 2, 2, 7, 'Roxo', '2016-05-24'),
-  (1, 2, 2, 7, 'Vermelho', '2016-05-24'),
-  (1, 2, 3, 7, 'Auditiva', '2016-05-24'),
-  (1, 2, 3, 7, 'Synaesthesia', '2016-05-24'),
-  (1, 2, 4, 7, 'Breakaway', '2016-05-24'),
-  (1, 2, 4, 7, 'Hippityhop', '2016-05-24'),
-  (1, 2, 4, 7, 'Ribbit', '2016-05-24'),
-  (1, 2, 4, 7, 'Slapshot', '2016-05-24'),
-  (6, 2, 4, 7, 'Seleção', '2016-08-02'), -- Summer Games Lúcio Skins
-  (6, 2, 4, 7, 'Striker', '2016-08-02'),
-  (1, 2, 2, 8, 'Ebony', '2016-05-24'), -- Normal McCree Skins
-  (1, 2, 2, 8, 'Lake', '2016-05-24'),
-  (1, 2, 2, 8, 'Sage', '2016-05-24'),
-  (1, 2, 2, 8, 'Wheat', '2016-05-24'),
-  (1, 2, 3, 8, 'On The Range', '2016-05-24'),
-  (1, 2, 3, 8, 'White Hat', '2016-05-24'),
-  (1, 2, 4, 8, 'Gambler', '2016-05-24'),
-  (1, 2, 4, 8, 'Mystery Man', '2016-05-24'),
-  (1, 2, 4, 8, 'Riverboat', '2016-05-24'),
-  (1, 2, 4, 8, 'Vigilante', '2016-05-24'),
-  (6, 2, 3, 8, 'American', '2016-08-02'), -- Summer Games McCree Skins
-  (1, 2, 2, 9, 'Chrysanthemum', '2016-05-24'), -- Normal Mei Skins
-  (1, 2, 2, 9, 'Heliotrope', '2016-05-24'),
-  (1, 2, 2, 9, 'Jade', '2016-05-24'),
-  (1, 2, 2, 9, 'Persimmon', '2016-05-24'),
-  (1, 2, 3, 9, 'Earthen', '2016-05-24'),
-  (1, 2, 3, 9, 'Snow Plum', '2016-05-24'),
-  (1, 2, 4, 9, 'Abominable', '2016-05-24'),
-  (1, 2, 4, 9, 'Firefighter', '2016-05-24'),
-  (1, 2, 4, 9, 'Rescue Mei', '2016-05-24'),
-  (1, 2, 4, 9, 'Yeti Hunter', '2016-05-24'),
-  (1, 2, 2, 10, 'Celestial', '2016-05-24'), -- Normal Mercy Skins
-  (1, 2, 2, 10, 'Mist', '2016-05-24'),
-  (1, 2, 2, 10, 'Orchid', '2016-05-24'),
-  (1, 2, 2, 10, 'Verdant', '2016-05-24'),
-  (1, 2, 3, 10, 'Amber', '2016-05-24'),
-  (1, 2, 3, 10, 'Cobalt', '2016-05-24'),
-  (1, 2, 4, 10, 'Devil', '2016-05-24'),
-  (1, 2, 4, 10, 'Imp', '2016-05-24'),
-  (1, 2, 4, 10, 'Sigrún', '2016-05-24'),
-  (1, 2, 4, 10, 'Valkyrie', '2016-05-24'),
-  (6, 2, 3, 10, 'Eidgenossin', '2016-08-02'), -- Summer Games Mercy Skins
-  (7, 2, 4, 10, 'Witch', '2016-10-11'), -- Halloween Terror Mercy Skins
-  (1, 2, 2, 11, 'Amethyst', '2016-05-24'), -- Normal Pharah Skins
-  (1, 2, 2, 11, 'Copper', '2016-05-24'),
-  (1, 2, 2, 11, 'Emerald', '2016-05-24'),
-  (1, 2, 2, 11, 'Titanium', '2016-05-24'),
-  (1, 2, 3, 11, 'Anubis', '2016-05-24'),
-  (1, 2, 3, 11, 'Jackal', '2016-05-24'),
-  (1, 2, 4, 11, 'Mechaqueen', '2016-05-24'),
-  (1, 2, 4, 11, 'Raindancer', '2016-05-24'),
-  (1, 2, 4, 11, 'Raptorion', '2016-05-24'),
-  (1, 2, 4, 11, 'Thunderbird', '2016-05-24'),
-  (3, 2, 4, 11, 'Security Chief', '2016-05-24'), -- Origins Edition Pharah Skins
-  (6, 2, 3, 11, 'Possessed', '2016-10-11'), -- Halloween Terror Pharah Skins
-  (1, 2, 2, 12, 'Blood', '2016-05-24'), -- Normal Reaper Skins
-  (1, 2, 2, 12, 'Midnight', '2016-05-24'),
-  (1, 2, 2, 12, 'Moss', '2016-05-24'),
-  (1, 2, 2, 12, 'Royal', '2016-05-24'),
-  (1, 2, 3, 12, 'Desert', '2016-05-24'),
-  (1, 2, 3, 12, 'Wight', '2016-05-24'),
-  (1, 2, 4, 12, 'El Blanco', '2016-05-24'),
-  (1, 2, 4, 12, 'Mariachi', '2016-05-24'),
-  (1, 2, 4, 12, 'Nevermore', '2016-05-24'),
-  (1, 2, 4, 12, 'Plague Doctor', '2016-05-24'),
-  (3, 2, 4, 12, 'Blackwatch Reyes', '2016-05-24'), -- Origins Edition Reaper Skins
-  (7, 2, 4, 12, 'Pumpkin', '2016-10-11'), -- Halloween Terror Reaper Skins
-  (1, 2, 2, 13, 'Brass', '2016-05-24'), -- Normal Reinhardt Skins
-  (1, 2, 2, 13, 'Cobalt', '2016-05-24'),
-  (1, 2, 2, 13, 'Copper', '2016-05-24'),
-  (1, 2, 2, 13, 'Viridian', '2016-05-24'),
-  (1, 2, 3, 13, 'Bundeswehr', '2016-05-24'),
-  (1, 2, 3, 13, 'Paragon', '2016-05-24'),
-  (1, 2, 4, 13, 'Balderich', '2016-08-23'),
-  (1, 2, 4, 13, 'Blackhardt', '2016-05-24'),
-  (1, 2, 4, 13, 'Bloodhardt', '2016-05-24'),
-  (1, 2, 4, 13, 'Griefhardt', '2016-08-23'),
-  (1, 2, 4, 13, 'Lionhardt', '2016-05-24'),
-  (1, 2, 4, 13, 'Stonehardt', '2016-05-24'),
-  (7, 2, 3, 13, 'Coldhardt', '2016-10-11'), -- Halloween Terror Reinhardt Skins
-  (1, 2, 2, 14, 'Kiwi', '2016-05-24'), -- Normal Roadhog Skins
-  (1, 2, 2, 14, 'Mud', '2016-05-24'),
-  (1, 2, 2, 14, 'Sand', '2016-05-24'),
-  (1, 2, 2, 14, 'Thistle', '2016-05-24'),
-  (1, 2, 3, 14, 'Pigpen', '2016-05-24'),
-  (1, 2, 3, 14, 'Stitched', '2016-05-24'),
-  (1, 2, 4, 14, 'Islander', '2016-05-24'),
-  (1, 2, 4, 14, 'Mako', '2016-05-24'),
-  (1, 2, 4, 14, 'Sharkbait', '2016-05-24'),
-  (1, 2, 4, 14, 'Toa', '2016-05-24'),
-  (7, 2, 4, 14, 'Junkenstein''s Monster', '2016-10-11'), -- Halloween Terror Roadhog Skins
-  (1, 2, 2, 15, 'Jet', '2016-05-24'), -- Normal Soldier: 76 Skins
-  (1, 2, 2, 15, 'Olive', '2016-05-24'),
-  (1, 2, 2, 15, 'Russet', '2016-05-24'),
-  (1, 2, 2, 15, 'Smoke', '2016-05-24'),
-  (1, 2, 3, 15, 'Bone', '2016-05-24'),
-  (1, 2, 3, 15, 'Golden', '2016-05-24'),
-  (1, 2, 4, 15, 'Commando: 76', '2016-05-24'),
-  (1, 2, 4, 15, 'Daredevil: 76', '2016-05-24'),
-  (1, 2, 4, 15, 'Night Ops: 76', '2016-05-24'),
-  (1, 2, 4, 15, 'Stunt Rider: 76', '2016-05-24'),
-  (3, 2, 4, 15, 'Strike-Commander Morrison', '2016-05-24'), -- Origins Edition Soldier: 76 Skins
-  (7, 2, 3, 15, 'Immortal', '2016-10-11'), -- Halloween Terror Soldier: 76 Skins
-  (1, 2, 2, 23, '???????SOMBRERO???', '2016-11-15'), -- Normal Sombra Skins TODO date
-  (1, 2, 2, 16, 'Cardamom', '2016-05-24'), -- Normal Symmetra Skins
-  (1, 2, 2, 16, 'Hyacinth', '2016-05-24'),
-  (1, 2, 2, 16, 'Saffron', '2016-05-24'),
-  (1, 2, 2, 16, 'Technomancer', '2016-05-24'),
-  (1, 2, 3, 16, 'Regal', '2016-05-24'),
-  (1, 2, 3, 16, 'Utopaea', '2016-05-24'),
-  (1, 2, 4, 16, 'Architech', '2016-05-24'),
-  (1, 2, 4, 16, 'Devi', '2016-05-24'),
-  (1, 2, 4, 16, 'Goddess', '2016-05-24'),
-  (1, 2, 4, 16, 'Vishkar', '2016-05-24'),
-  (7, 2, 3, 16, 'Vampire', '2016-10-11'), -- Halloween Terror Symmetra Skins
-  (1, 2, 2, 17, 'Blå', '2016-05-24'), -- Normal Torbjörn Skins
-  (1, 2, 2, 17, 'Citron', '2016-05-24'),
-  (1, 2, 2, 17, 'Grön', '2016-05-24'),
-  (1, 2, 2, 17, 'Plommon', '2016-05-24'),
-  (1, 2, 3, 17, 'Cathode', '2016-05-24'),
-  (1, 2, 3, 17, 'Woodclad', '2016-05-24'),
-  (1, 2, 4, 17, 'Barbarossa', '2016-05-24'),
-  (1, 2, 4, 17, 'Blackbeard', '2016-05-24'),
-  (1, 2, 4, 17, 'Chopper', '2016-05-24'),
-  (1, 2, 4, 17, 'Deadlock', '2016-05-24'),
-  (6, 2, 3, 17, 'Tre Kronor', '2016-08-02'), -- Summer Games Torbjörn Skins
-  (1, 2, 2, 18, 'Electric Purple', '2016-05-24'), -- Normal Tracer Skins
-  (1, 2, 2, 18, 'Hot Pink', '2016-05-24'),
-  (1, 2, 2, 18, 'Neon Green', '2016-05-24'),
-  (1, 2, 2, 18, 'Royal Blue', '2016-05-24'),
-  (1, 2, 3, 18, 'Posh', '2016-05-24'),
-  (1, 2, 3, 18, 'Sporty', '2016-05-24'),
-  (1, 2, 4, 18, 'Mach T', '2016-05-24'),
-  (1, 2, 4, 18, 'Punk', '2016-05-24'),
-  (1, 2, 4, 18, 'T. Racer', '2016-05-24'),
-  (1, 2, 4, 18, 'Ultraviolet', '2016-05-24'),
-  (3, 2, 4, 18, 'Slipstream', '2016-05-24'), -- Origins Edition Tracer Skins
-  (6, 2, 4, 18, 'Sprinter', '2016-08-02'), -- Summer Games Tracer Skins
-  (6, 2, 4, 18, 'Track And Field', '2016-08-02'),
-  (1, 2, 2, 19, 'Ciel', '2016-05-24'), -- Normal Widowmaker Skins
-  (1, 2, 2, 19, 'Nuit', '2016-05-24'),
-  (1, 2, 2, 19, 'Rose', '2016-05-24'),
-  (1, 2, 2, 19, 'Vert', '2016-05-24'),
-  (1, 2, 3, 19, 'Patina', '2016-05-24'),
-  (1, 2, 3, 19, 'Winter', '2016-05-24'),
-  (1, 2, 4, 19, 'Comptesse', '2016-05-24'),
-  (1, 2, 4, 19, 'Huntress', '2016-05-24'),
-  (1, 2, 4, 19, 'Odette', '2016-05-24'),
-  (1, 2, 4, 19, 'Odile', '2016-05-24'),
-  (4, 2, 4, 19, 'Noire', '2016-05-24'), -- Preorder Widowmaker Skins
-  (6, 2, 3, 19, 'Tricolore', '2016-08-02'), -- Summer Games Widowmaker Skins
-  (1, 2, 2, 20, 'Atmosphere', '2016-05-24'), -- Normal Winston Skins
-  (1, 2, 2, 20, 'Banana', '2016-05-24'),
-  (1, 2, 2, 20, 'Forest', '2016-05-24'),
-  (1, 2, 2, 20, 'Red Planet', '2016-05-24'),
-  (1, 2, 3, 20, 'Desert', '2016-05-24'),
-  (1, 2, 3, 20, 'Horizon', '2016-05-24'),
-  (1, 2, 4, 20, 'Explorer', '2016-05-24'),
-  (1, 2, 4, 20, 'Frogston', '2016-05-24'),
-  (1, 2, 4, 20, 'Safari', '2016-05-24'),
-  (1, 2, 4, 20, 'Undersea', '2016-05-24'),
-  (1, 2, 2, 21, 'Brick', '2016-05-24'), -- Normal Zarya Skins
-  (1, 2, 2, 21, 'Goldenrod', '2016-05-24'),
-  (1, 2, 2, 21, 'Taiga', '2016-05-24'),
-  (1, 2, 2, 21, 'Violet', '2016-05-24'),
-  (1, 2, 3, 21, 'Dawn', '2016-05-24'),
-  (1, 2, 3, 21, 'Midnight', '2016-05-24'),
-  (1, 2, 4, 21, 'Arctic', '2016-05-24'),
-  (1, 2, 4, 21, 'Cybergoth', '2016-05-24'),
-  (1, 2, 4, 21, 'Industrial', '2016-05-24'),
-  (1, 2, 4, 21, 'Siberian Front', '2016-05-24'),
-  (6, 2, 4, 21, 'Champion', '2016-08-02'), -- Summer Games Zarya Skins
-  (6, 2, 4, 21, 'Weightlifter', '2016-08-02'),
-  (1, 2, 2, 22, 'Air', '2016-05-24'), -- Normal Zenyatta Skins
-  (1, 2, 2, 22, 'Earth', '2016-05-24'),
-  (1, 2, 2, 22, 'Leaf', '2016-05-24'),
-  (1, 2, 2, 22, 'Water', '2016-05-24'),
-  (1, 2, 3, 22, 'Ascendant', '2016-05-24'),
-  (1, 2, 3, 22, 'Harmonious', '2016-05-24'),
-  (1, 2, 4, 22, 'Djinnyatta', '2016-05-24'),
-  (1, 2, 4, 22, 'Ifrit', '2016-05-24'),
-  (1, 2, 4, 22, 'Ra', '2016-05-24'),
-  (1, 2, 4, 22, 'Sunyatta', '2016-05-24'),
-  (7, 2, 3, 22, 'Skullyatta', '2016-10-11'), -- Halloween Terror Zenyatta Skins
+  (1, 2, 2, 1, 'Citrine', 3), -- Normal Ana Skins
+  (1, 2, 2, 1, 'Garnet', 3),
+  (1, 2, 2, 1, 'Peridot', 3),
+  (1, 2, 2, 1, 'Turquoise', 3),
+  (1, 2, 3, 1, 'Merciful', 3),
+  (1, 2, 3, 1, 'Shrike', 3),
+  (1, 2, 4, 1, 'Wadjet', 3),
+  (1, 2, 4, 1, 'Wasteland', 3),
+  (1, 2, 4, 1, 'Captain Amari', 3),
+  (1, 2, 4, 1, 'Horus', 3),
+  (7, 2, 3, 1, 'Ghoul', 7), -- Halloween Terror Ana Skins
+  (1, 2, 2, 2, 'Dawn', 1), -- Normal Bastion Skins
+  (1, 2, 2, 2, 'Meadow', 1),
+  (1, 2, 2, 2, 'Sky', 1),
+  (1, 2, 2, 2, 'Soot', 1),
+  (1, 2, 3, 2, 'Defense Matrix', 1),
+  (1, 2, 3, 2, 'Omnic Crisis', 1),
+  (1, 2, 4, 2, 'Antique', 1),
+  (1, 2, 4, 2, 'Gearbot', 1),
+  (1, 2, 4, 2, 'Steambot', 1),
+  (1, 2, 4, 2, 'Woodbot', 1),
+  (3, 2, 4, 2, 'Overgrown', 1), -- Origins Edition Bastion Skins
+  (7, 2, 3, 2, 'Tombstone', 7), -- Halloween Terror Bastion Skins
+  (8, 2, 3, 2, 'BlizzCon 2016', 7), -- BlizzCon Bastion Skins
+  (1, 2, 2, 3, 'Blueberry', 1), -- Normal D.Va Skins
+  (1, 2, 2, 3, 'Lemon-Lime', 1),
+  (1, 2, 2, 3, 'Tangerine', 1),
+  (1, 2, 2, 3, 'Watermelon', 1),
+  (1, 2, 3, 3, 'Carbon Fiber', 1),
+  (1, 2, 3, 3, 'White Rabbit', 1),
+  (1, 2, 4, 3, 'B.Va', 1),
+  (1, 2, 4, 3, 'Junebug', 1),
+  (1, 2, 4, 3, 'Junker', 1),
+  (1, 2, 4, 3, 'Scavenger', 1),
+  (6, 2, 3, 3, 'Taegeukgi', 4), -- Summer Games D.Va Skins
+  (1, 2, 2, 4, 'Azurite', 1), -- Normal Genji Skins
+  (1, 2, 2, 4, 'Cinnabar', 1),
+  (1, 2, 2, 4, 'Malachite', 1),
+  (1, 2, 2, 4, 'Ochre', 1),
+  (1, 2, 3, 4, 'Carbon Fiber', 1), --TODO double check name
+  (1, 2, 3, 4, 'Chrome', 1),
+  (1, 2, 4, 4, 'Bedouin', 1),
+  (1, 2, 4, 4, 'Nomad', 1),
+  (1, 2, 4, 4, 'Sparrow', 1),
+  (1, 2, 4, 4, 'Young Genji', 1),
+  (6, 2, 3, 4, 'Nihon', 4), -- Summer Games Genji Skins
+  (1, 2, 2, 5, 'Azuki', 1), -- Normal Hanzo Skins
+  (1, 2, 2, 5, 'Kinoko', 1),
+  (1, 2, 2, 5, 'Midori', 1),
+  (1, 2, 2, 5, 'Sora', 1),
+  (1, 2, 3, 5, 'Cloud', 1),
+  (1, 2, 3, 5, 'Dragon', 1),
+  (1, 2, 4, 5, 'Lone Wolf', 1),
+  (1, 2, 4, 5, 'Okami', 1),
+  (1, 2, 4, 5, 'Young Hanzo', 1),
+  (1, 2, 4, 5, 'Young Master', 1),
+  (6, 2, 3, 5, 'Demon', 4), -- Summer Games Hanzo Skins
+  (1, 2, 2, 6, 'Bleached', 1), -- Normal Junkrat Skins
+  (1, 2, 2, 6, 'Drowned', 1),
+  (1, 2, 2, 6, 'Irradiated', 1),
+  (1, 2, 2, 6, 'Rusted', 1),
+  (1, 2, 3, 6, 'Jailbird', 1),
+  (1, 2, 3, 6, 'Toasted', 1),
+  (1, 2, 4, 6, 'Fool', 1),
+  (1, 2, 4, 6, 'Hayseed', 1),
+  (1, 2, 4, 6, 'Jester', 1),
+  (1, 2, 4, 6, 'Scarecrow', 1),
+  (7, 2, 4, 6, 'Dr. Junkenstein', 7), -- Halloween Terror Junkrat Skins
+  (1, 2, 2, 7, 'Azul', 1), -- Normal Lúcio Skins
+  (1, 2, 2, 7, 'Laranja', 1),
+  (1, 2, 2, 7, 'Roxo', 1),
+  (1, 2, 2, 7, 'Vermelho', 1),
+  (1, 2, 3, 7, 'Auditiva', 1),
+  (1, 2, 3, 7, 'Synaesthesia', 1),
+  (1, 2, 4, 7, 'Breakaway', 1),
+  (1, 2, 4, 7, 'Hippityhop', 1),
+  (1, 2, 4, 7, 'Ribbit', 1),
+  (1, 2, 4, 7, 'Slapshot', 1),
+  (6, 2, 4, 7, 'Seleção', 4), -- Summer Games Lúcio Skins
+  (6, 2, 4, 7, 'Striker', 4),
+  (1, 2, 2, 8, 'Ebony', 1), -- Normal McCree Skins
+  (1, 2, 2, 8, 'Lake', 1),
+  (1, 2, 2, 8, 'Sage', 1),
+  (1, 2, 2, 8, 'Wheat', 1),
+  (1, 2, 3, 8, 'On The Range', 1),
+  (1, 2, 3, 8, 'White Hat', 1),
+  (1, 2, 4, 8, 'Gambler', 1),
+  (1, 2, 4, 8, 'Mystery Man', 1),
+  (1, 2, 4, 8, 'Riverboat', 1),
+  (1, 2, 4, 8, 'Vigilante', 1),
+  (6, 2, 3, 8, 'American', 4), -- Summer Games McCree Skins
+  (1, 2, 2, 9, 'Chrysanthemum', 1), -- Normal Mei Skins
+  (1, 2, 2, 9, 'Heliotrope', 1),
+  (1, 2, 2, 9, 'Jade', 1),
+  (1, 2, 2, 9, 'Persimmon', 1),
+  (1, 2, 3, 9, 'Earthen', 1),
+  (1, 2, 3, 9, 'Snow Plum', 1),
+  (1, 2, 4, 9, 'Abominable', 1),
+  (1, 2, 4, 9, 'Firefighter', 1),
+  (1, 2, 4, 9, 'Rescue Mei', 1),
+  (1, 2, 4, 9, 'Yeti Hunter', 1),
+  (1, 2, 2, 10, 'Celestial', 1), -- Normal Mercy Skins
+  (1, 2, 2, 10, 'Mist', 1),
+  (1, 2, 2, 10, 'Orchid', 1),
+  (1, 2, 2, 10, 'Verdant', 1),
+  (1, 2, 3, 10, 'Amber', 1),
+  (1, 2, 3, 10, 'Cobalt', 1),
+  (1, 2, 4, 10, 'Devil', 1),
+  (1, 2, 4, 10, 'Imp', 1),
+  (1, 2, 4, 10, 'Sigrún', 1),
+  (1, 2, 4, 10, 'Valkyrie', 1),
+  (6, 2, 3, 10, 'Eidgenossin', 4), -- Summer Games Mercy Skins
+  (7, 2, 4, 10, 'Witch', 7), -- Halloween Terror Mercy Skins
+  (1, 2, 2, 11, 'Amethyst', 1), -- Normal Pharah Skins
+  (1, 2, 2, 11, 'Copper', 1),
+  (1, 2, 2, 11, 'Emerald', 1),
+  (1, 2, 2, 11, 'Titanium', 1),
+  (1, 2, 3, 11, 'Anubis', 1),
+  (1, 2, 3, 11, 'Jackal', 1),
+  (1, 2, 4, 11, 'Mechaqueen', 1),
+  (1, 2, 4, 11, 'Raindancer', 1),
+  (1, 2, 4, 11, 'Raptorion', 1),
+  (1, 2, 4, 11, 'Thunderbird', 1),
+  (3, 2, 4, 11, 'Security Chief', 1), -- Origins Edition Pharah Skins
+  (6, 2, 3, 11, 'Possessed', 7), -- Halloween Terror Pharah Skins
+  (1, 2, 2, 12, 'Blood', 1), -- Normal Reaper Skins
+  (1, 2, 2, 12, 'Midnight', 1),
+  (1, 2, 2, 12, 'Moss', 1),
+  (1, 2, 2, 12, 'Royal', 1),
+  (1, 2, 3, 12, 'Desert', 1),
+  (1, 2, 3, 12, 'Wight', 1),
+  (1, 2, 4, 12, 'El Blanco', 1),
+  (1, 2, 4, 12, 'Mariachi', 1),
+  (1, 2, 4, 12, 'Nevermore', 1),
+  (1, 2, 4, 12, 'Plague Doctor', 1),
+  (3, 2, 4, 12, 'Blackwatch Reyes', 1), -- Origins Edition Reaper Skins
+  (7, 2, 4, 12, 'Pumpkin', 7), -- Halloween Terror Reaper Skins
+  (1, 2, 2, 13, 'Brass', 1), -- Normal Reinhardt Skins
+  (1, 2, 2, 13, 'Cobalt', 1),
+  (1, 2, 2, 13, 'Copper', 1),
+  (1, 2, 2, 13, 'Viridian', 1),
+  (1, 2, 3, 13, 'Bundeswehr', 1),
+  (1, 2, 3, 13, 'Paragon', 1),
+  (1, 2, 4, 13, 'Balderich', 5),
+  (1, 2, 4, 13, 'Blackhardt', 1),
+  (1, 2, 4, 13, 'Bloodhardt', 1),
+  (1, 2, 4, 13, 'Griefhardt', 5),
+  (1, 2, 4, 13, 'Lionhardt', 1),
+  (1, 2, 4, 13, 'Stonehardt', 1),
+  (7, 2, 3, 13, 'Coldhardt', 7), -- Halloween Terror Reinhardt Skins
+  (1, 2, 2, 14, 'Kiwi', 1), -- Normal Roadhog Skins
+  (1, 2, 2, 14, 'Mud', 1),
+  (1, 2, 2, 14, 'Sand', 1),
+  (1, 2, 2, 14, 'Thistle', 1),
+  (1, 2, 3, 14, 'Pigpen', 1),
+  (1, 2, 3, 14, 'Stitched', 1),
+  (1, 2, 4, 14, 'Islander', 1),
+  (1, 2, 4, 14, 'Mako', 1),
+  (1, 2, 4, 14, 'Sharkbait', 1),
+  (1, 2, 4, 14, 'Toa', 1),
+  (7, 2, 4, 14, 'Junkenstein''s Monster', 7), -- Halloween Terror Roadhog Skins
+  (1, 2, 2, 15, 'Jet', 1), -- Normal Soldier: 76 Skins
+  (1, 2, 2, 15, 'Olive', 1),
+  (1, 2, 2, 15, 'Russet', 1),
+  (1, 2, 2, 15, 'Smoke', 1),
+  (1, 2, 3, 15, 'Bone', 1),
+  (1, 2, 3, 15, 'Golden', 1),
+  (1, 2, 4, 15, 'Commando: 76', 1),
+  (1, 2, 4, 15, 'Daredevil: 76', 1),
+  (1, 2, 4, 15, 'Night Ops: 76', 1),
+  (1, 2, 4, 15, 'Stunt Rider: 76', 1),
+  (3, 2, 4, 15, 'Strike-Commander Morrison', 1), -- Origins Edition Soldier: 76 Skins
+  (7, 2, 3, 15, 'Immortal', 7), -- Halloween Terror Soldier: 76 Skins
+  (1, 2, 2, 16, 'Cardamom', 1), -- Normal Symmetra Skins
+  (1, 2, 2, 16, 'Hyacinth', 1),
+  (1, 2, 2, 16, 'Saffron', 1),
+  (1, 2, 2, 16, 'Technomancer', 1),
+  (1, 2, 3, 16, 'Regal', 1),
+  (1, 2, 3, 16, 'Utopaea', 1),
+  (1, 2, 4, 16, 'Architech', 1),
+  (1, 2, 4, 16, 'Devi', 1),
+  (1, 2, 4, 16, 'Goddess', 1),
+  (1, 2, 4, 16, 'Vishkar', 1),
+  (7, 2, 3, 16, 'Vampire', 7), -- Halloween Terror Symmetra Skins
+  (1, 2, 2, 17, 'Blå', 1), -- Normal Torbjörn Skins
+  (1, 2, 2, 17, 'Citron', 1),
+  (1, 2, 2, 17, 'Grön', 1),
+  (1, 2, 2, 17, 'Plommon', 1),
+  (1, 2, 3, 17, 'Cathode', 1),
+  (1, 2, 3, 17, 'Woodclad', 1),
+  (1, 2, 4, 17, 'Barbarossa', 1),
+  (1, 2, 4, 17, 'Blackbeard', 1),
+  (1, 2, 4, 17, 'Chopper', 1),
+  (1, 2, 4, 17, 'Deadlock', 1),
+  (6, 2, 3, 17, 'Tre Kronor', 4), -- Summer Games Torbjörn Skins
+  (1, 2, 2, 18, 'Electric Purple', 1), -- Normal Tracer Skins
+  (1, 2, 2, 18, 'Hot Pink', 1),
+  (1, 2, 2, 18, 'Neon Green', 1),
+  (1, 2, 2, 18, 'Royal Blue', 1),
+  (1, 2, 3, 18, 'Posh', 1),
+  (1, 2, 3, 18, 'Sporty', 1),
+  (1, 2, 4, 18, 'Mach T', 1),
+  (1, 2, 4, 18, 'Punk', 1),
+  (1, 2, 4, 18, 'T. Racer', 1),
+  (1, 2, 4, 18, 'Ultraviolet', 1),
+  (3, 2, 4, 18, 'Slipstream', 1), -- Origins Edition Tracer Skins
+  (6, 2, 4, 18, 'Sprinter', 4), -- Summer Games Tracer Skins
+  (6, 2, 4, 18, 'Track And Field', 4),
+  (1, 2, 2, 19, 'Ciel', 1), -- Normal Widowmaker Skins
+  (1, 2, 2, 19, 'Nuit', 1),
+  (1, 2, 2, 19, 'Rose', 1),
+  (1, 2, 2, 19, 'Vert', 1),
+  (1, 2, 3, 19, 'Patina', 1),
+  (1, 2, 3, 19, 'Winter', 1),
+  (1, 2, 4, 19, 'Comptesse', 1),
+  (1, 2, 4, 19, 'Huntress', 1),
+  (1, 2, 4, 19, 'Odette', 1),
+  (1, 2, 4, 19, 'Odile', 1),
+  (4, 2, 4, 19, 'Noire', 1), -- Preorder Widowmaker Skins
+  (6, 2, 3, 19, 'Tricolore', 4), -- Summer Games Widowmaker Skins
+  (1, 2, 2, 20, 'Atmosphere', 1), -- Normal Winston Skins
+  (1, 2, 2, 20, 'Banana', 1),
+  (1, 2, 2, 20, 'Forest', 1),
+  (1, 2, 2, 20, 'Red Planet', 1),
+  (1, 2, 3, 20, 'Desert', 1),
+  (1, 2, 3, 20, 'Horizon', 1),
+  (1, 2, 4, 20, 'Explorer', 1),
+  (1, 2, 4, 20, 'Frogston', 1),
+  (1, 2, 4, 20, 'Safari', 1),
+  (1, 2, 4, 20, 'Undersea', 1),
+  (1, 2, 2, 21, 'Brick', 1), -- Normal Zarya Skins
+  (1, 2, 2, 21, 'Goldenrod', 1),
+  (1, 2, 2, 21, 'Taiga', 1),
+  (1, 2, 2, 21, 'Violet', 1),
+  (1, 2, 3, 21, 'Dawn', 1),
+  (1, 2, 3, 21, 'Midnight', 1),
+  (1, 2, 4, 21, 'Arctic', 1),
+  (1, 2, 4, 21, 'Cybergoth', 1),
+  (1, 2, 4, 21, 'Industrial', 1),
+  (1, 2, 4, 21, 'Siberian Front', 1),
+  (6, 2, 4, 21, 'Champion', 4), -- Summer Games Zarya Skins
+  (6, 2, 4, 21, 'Weightlifter', 4),
+  (1, 2, 2, 22, 'Air', 1), -- Normal Zenyatta Skins
+  (1, 2, 2, 22, 'Earth', 1),
+  (1, 2, 2, 22, 'Leaf', 1),
+  (1, 2, 2, 22, 'Water', 1),
+  (1, 2, 3, 22, 'Ascendant', 1),
+  (1, 2, 3, 22, 'Harmonious', 1),
+  (1, 2, 4, 22, 'Djinnyatta', 1),
+  (1, 2, 4, 22, 'Ifrit', 1),
+  (1, 2, 4, 22, 'Ra', 1),
+  (1, 2, 4, 22, 'Sunyatta', 1),
+  (7, 2, 3, 22, 'Skullyatta', 7), -- Halloween Terror Zenyatta Skins
+  (1, 2, 2, 23, 'Cidro', 9), -- Normal Sombra Skins
+  (1, 2, 2, 23, 'Incendio', 9),
+  (1, 2, 2, 23, 'Mar', 9),
+  (1, 2, 2, 23, 'Noche', 9),
+  (1, 2, 3, 23, 'Azúcar', 9),
+  (1, 2, 3, 23, 'Glitch', 9),
+  (1, 2, 4, 23, 'Virus', 9),
+  (1, 2, 4, 23, 'Augmented', 9),
+  (1, 2, 4, 23, 'Cyberspace', 9),
+  (1, 2, 4, 23, 'Los Muertos', 9),
   -- Emotes TODO dates for sitting 08-23
-  (1, 3, 3, 1, 'Disapproving', '2016-07-19'), -- Normal Ana Emotes
-  (1, 3, 3, 1, 'Not Impressed', '2016-07-19'),
-  (1, 3, 3, 1, 'Protector', '2016-07-19'),
-  (1, 3, 3, 1, 'Take A Knee', '2016-07-19'),
-  (1, 3, 3, 1, 'Tea Time', '2016-07-19'),
-  (7, 3, 3, 1, 'Candy', '2016-10-11'), -- Halloween Terror Ana Emotes
-  (1, 3, 3, 2, 'Alert! Alert!', '2016-05-24'), -- Normal Bastion Emotes
-  (1, 3, 3, 2, 'Chortle', '2016-05-24'),
-  (1, 3, 3, 2, 'Dizzy', '2016-05-24'),
-  (1, 3, 3, 2, 'Robot', '2016-05-24'),
-  (1, 3, 3, 2, 'CandyCandy', '2016-05-24'),
-  (1, 3, 3, 2, 'Rest Mode', '2016-05-24'),
-  (6, 3, 3, 2, 'Boxing', '2016-08-02'), -- Summer Games Bastion Emotes
-  (1, 3, 3, 3, '^O^', '2016-05-24'), -- Normal D.Va Emotes
-  (1, 3, 3, 3, 'Bunny Hop', '2016-05-24'),
-  (1, 3, 3, 3, 'Heartbreaker', '2016-05-24'),
-  (1, 3, 3, 3, 'Party Time', '2016-05-24'),
-  (1, 3, 4, 3, 'Game On', '2016-08-23'),
-  (1, 3, 3, 4, 'Amusing', '2016-05-24'), -- Normal Genji Emotes
-  (1, 3, 3, 4, 'Challenge', '2016-05-24'),
-  (1, 3, 3, 4, 'Cutting Edge', '2016-05-24'),
-  (1, 3, 3, 4, 'Meditate', '2016-05-24'),
-  (1, 3, 3, 4, 'Salute', '2016-05-24'),
-  (1, 3, 3, 5, 'Beckon', '2016-05-24'), -- Normal Hanzo Emotes
-  (1, 3, 3, 5, 'Brush Shoulder', '2016-05-24'),
-  (1, 3, 3, 5, 'Chuckle', '2016-05-24'),
-  (1, 3, 3, 5, 'Meditate', '2016-05-24'),
-  (1, 3, 3, 5, 'Victory', '2016-05-24'),
-  (1, 3, 3, 6, 'Can''t Deal', '2016-05-24'), -- Normal Junkrat Emotes
-  (1, 3, 3, 6, 'Juggling', '2016-05-24'),
-  (1, 3, 3, 6, 'Lounging', '2016-05-24'),
-  (1, 3, 3, 6, 'Puppet', '2016-05-24'),
-  (1, 3, 3, 6, 'Vaudeville', '2016-05-24'),
-  (1, 3, 3, 7, 'Capoeira', '2016-05-24'), -- Normal Lúcio Emotes
-  (1, 3, 3, 7, 'Chilling', '2016-05-24'),
-  (1, 3, 3, 7, 'In The Groove', '2016-05-24'),
-  (1, 3, 3, 7, 'Knee Slapper', '2016-05-24'),
-  (1, 3, 3, 7, 'Nah!', '2016-05-24'),
-  (6, 3, 3, 7, 'Juggle', '2016-08-02'), -- Summer Games Lúcio Emotes
-  (1, 3, 3, 8, 'Gunspinning', '2016-05-24'), -- Normal McCree Emotes
-  (1, 3, 3, 8, 'Hat Tip', '2016-05-24'),
-  (1, 3, 3, 8, 'Joker', '2016-05-24'),
-  (1, 3, 3, 8, 'Spit', '2016-05-24'),
-  (1, 3, 3, 8, 'Take A Load Off', '2016-05-24'),
-  (1, 3, 3, 9, 'Companion', '2016-05-24'), -- Normal Mei Emotes
-  (1, 3, 3, 9, 'Giggle', '2016-05-24'),
-  (1, 3, 3, 9, 'Kneel', '2016-05-24'),
-  (1, 3, 3, 9, 'Spray', '2016-05-24'),
-  (1, 3, 3, 9, 'Yaaaaaaaaay!', '2016-05-24'),
-  (1, 3, 3, 10, 'Applause', '2016-05-24'), -- Normal Mercy Emotes
-  (1, 3, 3, 10, 'Caduceus', '2016-05-24'),
-  (1, 3, 3, 10, 'No Pulse', '2016-05-24'),
-  (1, 3, 3, 10, 'Relax', '2016-05-24'),
-  (1, 3, 3, 10, 'The Best Medicine', '2016-05-24'),
-  (1, 3, 3, 11, 'Cheer', '2016-05-24'), -- Normal Pharah Emotes
-  (1, 3, 3, 11, 'Chuckle', '2016-05-24'),
-  (1, 3, 3, 11, 'Flourish', '2016-05-24'),
-  (1, 3, 3, 11, 'Knuckles', '2016-05-24'),
-  (1, 3, 3, 11, 'Take A Knee', '2016-05-24'),
-  (1, 3, 3, 12, 'Cackle', '2016-05-24'), -- Normal Reaper Emotes
-  (1, 3, 3, 12, 'Not Impressed', '2016-05-24'),
-  (1, 3, 3, 12, 'Slice', '2016-05-24'),
-  (1, 3, 3, 12, 'Slow Clap', '2016-05-24'),
-  (1, 3, 3, 12, 'Take A Knee', '2016-05-24'),
-  (1, 3, 3, 13, 'Flex', '2016-05-24'), -- Normal Reinhardt Emotes
-  (1, 3, 3, 13, 'Kneel', '2016-05-24'),
-  (1, 3, 3, 13, 'Taunt', '2016-05-24'),
-  (1, 3, 3, 13, 'Uproarious', '2016-05-24'),
-  (1, 3, 3, 13, 'Warrior''s Salute', '2016-05-24'),
-  (7, 3, 3, 13, 'Pumpkin Smash', '2016-10-11'), -- Halloween Terror Reinhardt Emotes
-  (1, 3, 3, 14, 'Belly Laugh', '2016-05-24'), -- Normal Roadhog Emotes
-  (1, 3, 3, 14, 'Boo!', '2016-05-24'),
-  (1, 3, 3, 14, 'Can Crusher', '2016-05-24'),
-  (1, 3, 3, 14, 'Headbanging', '2016-05-24'),
-  (1, 3, 3, 14, 'Tuckered Out', '2016-05-24'),
-  (1, 3, 3, 15, 'Amused', '2016-05-24'), -- Normal Soldier: 76 Emotes
-  (1, 3, 3, 15, 'Fist', '2016-05-24'),
-  (1, 3, 3, 15, 'I See You', '2016-05-24'),
-  (1, 3, 3, 15, 'Locked And Loaded', '2016-05-24'),
-  (1, 3, 3, 15, 'Take A Knee', '2016-05-24'),
-  (1, 3, 3, 16, 'Clap', '2016-05-24'), -- Normal Symmetra Emotes
-  (1, 3, 3, 16, 'Flow', '2016-05-24'),
-  (1, 3, 3, 16, 'Have A Seat', '2016-05-24'),
-  (1, 3, 3, 16, 'Insignificant', '2016-05-24'),
-  (1, 3, 3, 16, 'Snicker', '2016-05-24'),
-  (6, 3, 3, 16, 'Ribbon', '2016-05-24'), -- Summer Games Symmetra Emotes
-  (1, 3, 3, 17, 'Clicking Heels', '2016-05-24'), -- Normal Torbjörn Emotes
-  (1, 3, 3, 17, 'Fisticuffs', '2016-05-24'),
-  (1, 3, 3, 17, 'Guffaw', '2016-05-24'),
-  (1, 3, 3, 17, 'Overload', '2016-05-24'),
-  (1, 3, 3, 17, 'Taking A Break', '2016-05-24'),
-  (1, 3, 3, 18, 'Cheer', '2016-05-24'), -- Normal Tracer Emotes
-  (1, 3, 3, 18, 'Having A Laugh', '2016-05-24'),
-  (1, 3, 3, 18, 'Sitting Around...', '2016-05-24'),
-  (1, 3, 3, 18, 'Spin', '2016-05-24'),
-  (1, 3, 3, 19, 'At Rest', '2016-05-24'), -- Normal Widowmaker Emotes
-  (1, 3, 3, 19, 'Curtain Call', '2016-05-24'),
-  (1, 3, 3, 19, 'Delighted', '2016-05-24'),
-  (1, 3, 3, 19, 'Shot Dead', '2016-05-24'),
-  (1, 3, 3, 19, 'Widow''s Kiss', '2016-05-24'),
-  (1, 3, 3, 20, 'Laughing Matter', '2016-05-24'), -- Normal Winston Emotes
-  (1, 3, 3, 20, 'Monkey Business', '2016-05-24'),
-  (1, 3, 3, 20, 'Peanut Butter?', '2016-05-24'),
-  (1, 3, 3, 20, 'Roar', '2016-05-24'),
-  (1, 3, 3, 20, 'Sitting Around', '2016-05-24'),
-  (7, 3, 3, 20, 'Shadow Puppets', '2016-05-24'), -- Halloween Terror Winston Emotes
-  (1, 3, 3, 21, 'Bring It On', '2016-05-24'), -- Normal Zarya Emotes
-  (1, 3, 3, 21, 'Comedy Gold', '2016-05-24'),
-  (1, 3, 3, 21, 'Crush You', '2016-05-24'),
-  (1, 3, 3, 21, 'Pumping Iron', '2016-05-24'),
-  (1, 3, 3, 21, 'Take A Knee', '2016-05-24'),
-  (1, 3, 3, 22, 'Focusing', '2016-05-24'), -- Normal Zenyatta Emotes
-  (1, 3, 3, 22, 'Meditate', '2016-05-24'),
-  (1, 3, 3, 22, 'Round Of Applause', '2016-05-24'),
-  (1, 3, 3, 22, 'Taunt', '2016-05-24'),
-  (1, 3, 3, 22, 'Tickled', '2016-05-24'),
+  (1, 3, 3, 1, 'Disapproving', 3), -- Normal Ana Emotes
+  (1, 3, 3, 1, 'Not Impressed', 3),
+  (1, 3, 3, 1, 'Protector', 3),
+  (1, 3, 3, 1, 'Take A Knee', 3),
+  (1, 3, 3, 1, 'Tea Time', 3),
+  (7, 3, 3, 1, 'Candy', 7), -- Halloween Terror Ana Emotes
+  (1, 3, 3, 2, 'Alert! Alert!', 1), -- Normal Bastion Emotes
+  (1, 3, 3, 2, 'Chortle', 1),
+  (1, 3, 3, 2, 'Dizzy', 1),
+  (1, 3, 3, 2, 'Robot', 1),
+  (1, 3, 3, 2, 'CandyCandy', 1),
+  (1, 3, 3, 2, 'Rest Mode', 1),
+  (6, 3, 3, 2, 'Boxing', 4), -- Summer Games Bastion Emotes
+  (1, 3, 3, 3, '^O^', 1), -- Normal D.Va Emotes
+  (1, 3, 3, 3, 'Bunny Hop', 1),
+  (1, 3, 3, 3, 'Heartbreaker', 1),
+  (1, 3, 3, 3, 'Party Time', 1),
+  (1, 3, 4, 3, 'Game On', 5),
+  (1, 3, 3, 4, 'Amusing', 1), -- Normal Genji Emotes
+  (1, 3, 3, 4, 'Challenge', 1),
+  (1, 3, 3, 4, 'Cutting Edge', 1),
+  (1, 3, 3, 4, 'Meditate', 1),
+  (1, 3, 3, 4, 'Salute', 1),
+  (1, 3, 3, 5, 'Beckon', 1), -- Normal Hanzo Emotes
+  (1, 3, 3, 5, 'Brush Shoulder', 1),
+  (1, 3, 3, 5, 'Chuckle', 1),
+  (1, 3, 3, 5, 'Meditate', 1),
+  (1, 3, 3, 5, 'Victory', 1),
+  (1, 3, 3, 6, 'Can''t Deal', 1), -- Normal Junkrat Emotes
+  (1, 3, 3, 6, 'Juggling', 1),
+  (1, 3, 3, 6, 'Lounging', 1),
+  (1, 3, 3, 6, 'Puppet', 1),
+  (1, 3, 3, 6, 'Vaudeville', 1),
+  (1, 3, 3, 7, 'Capoeira', 1), -- Normal Lúcio Emotes
+  (1, 3, 3, 7, 'Chilling', 1),
+  (1, 3, 3, 7, 'In The Groove', 1),
+  (1, 3, 3, 7, 'Knee Slapper', 1),
+  (1, 3, 3, 7, 'Nah!', 1),
+  (6, 3, 3, 7, 'Juggle', 4), -- Summer Games Lúcio Emotes
+  (1, 3, 3, 8, 'Gunspinning', 1), -- Normal McCree Emotes
+  (1, 3, 3, 8, 'Hat Tip', 1),
+  (1, 3, 3, 8, 'Joker', 1),
+  (1, 3, 3, 8, 'Spit', 1),
+  (1, 3, 3, 8, 'Take A Load Off', 1),
+  (1, 3, 3, 9, 'Companion', 1), -- Normal Mei Emotes
+  (1, 3, 3, 9, 'Giggle', 1),
+  (1, 3, 3, 9, 'Kneel', 1),
+  (1, 3, 3, 9, 'Spray', 1),
+  (1, 3, 3, 9, 'Yaaaaaaaaay!', 1),
+  (1, 3, 3, 10, 'Applause', 1), -- Normal Mercy Emotes
+  (1, 3, 3, 10, 'Caduceus', 1),
+  (1, 3, 3, 10, 'No Pulse', 1),
+  (1, 3, 3, 10, 'Relax', 1),
+  (1, 3, 3, 10, 'The Best Medicine', 1),
+  (1, 3, 3, 11, 'Cheer', 1), -- Normal Pharah Emotes
+  (1, 3, 3, 11, 'Chuckle', 1),
+  (1, 3, 3, 11, 'Flourish', 1),
+  (1, 3, 3, 11, 'Knuckles', 1),
+  (1, 3, 3, 11, 'Take A Knee', 1),
+  (1, 3, 3, 12, 'Cackle', 1), -- Normal Reaper Emotes
+  (1, 3, 3, 12, 'Not Impressed', 1),
+  (1, 3, 3, 12, 'Slice', 1),
+  (1, 3, 3, 12, 'Slow Clap', 1),
+  (1, 3, 3, 12, 'Take A Knee', 1),
+  (1, 3, 3, 13, 'Flex', 1), -- Normal Reinhardt Emotes
+  (1, 3, 3, 13, 'Kneel', 1),
+  (1, 3, 3, 13, 'Taunt', 1),
+  (1, 3, 3, 13, 'Uproarious', 1),
+  (1, 3, 3, 13, 'Warrior''s Salute', 1),
+  (7, 3, 3, 13, 'Pumpkin Smash', 7), -- Halloween Terror Reinhardt Emotes
+  (1, 3, 3, 14, 'Belly Laugh', 1), -- Normal Roadhog Emotes
+  (1, 3, 3, 14, 'Boo!', 1),
+  (1, 3, 3, 14, 'Can Crusher', 1),
+  (1, 3, 3, 14, 'Headbanging', 1),
+  (1, 3, 3, 14, 'Tuckered Out', 1),
+  (1, 3, 3, 15, 'Amused', 1), -- Normal Soldier: 76 Emotes
+  (1, 3, 3, 15, 'Fist', 1),
+  (1, 3, 3, 15, 'I See You', 1),
+  (1, 3, 3, 15, 'Locked And Loaded', 1),
+  (1, 3, 3, 15, 'Take A Knee', 1),
+  (1, 3, 3, 16, 'Clap', 1), -- Normal Symmetra Emotes
+  (1, 3, 3, 16, 'Flow', 1),
+  (1, 3, 3, 16, 'Have A Seat', 1),
+  (1, 3, 3, 16, 'Insignificant', 1),
+  (1, 3, 3, 16, 'Snicker', 1),
+  (6, 3, 3, 16, 'Ribbon', 1), -- Summer Games Symmetra Emotes
+  (1, 3, 3, 17, 'Clicking Heels', 1), -- Normal Torbjörn Emotes
+  (1, 3, 3, 17, 'Fisticuffs', 1),
+  (1, 3, 3, 17, 'Guffaw', 1),
+  (1, 3, 3, 17, 'Overload', 1),
+  (1, 3, 3, 17, 'Taking A Break', 1),
+  (1, 3, 3, 18, 'Cheer', 1), -- Normal Tracer Emotes
+  (1, 3, 3, 18, 'Having A Laugh', 1),
+  (1, 3, 3, 18, 'Sitting Around...', 1),
+  (1, 3, 3, 18, 'Spin', 1),
+  (1, 3, 3, 19, 'At Rest', 1), -- Normal Widowmaker Emotes
+  (1, 3, 3, 19, 'Curtain Call', 1),
+  (1, 3, 3, 19, 'Delighted', 1),
+  (1, 3, 3, 19, 'Shot Dead', 1),
+  (1, 3, 3, 19, 'Widow''s Kiss', 1),
+  (1, 3, 3, 20, 'Laughing Matter', 1), -- Normal Winston Emotes
+  (1, 3, 3, 20, 'Monkey Business', 1),
+  (1, 3, 3, 20, 'Peanut Butter?', 1),
+  (1, 3, 3, 20, 'Roar', 1),
+  (1, 3, 3, 20, 'Sitting Around', 1),
+  (7, 3, 3, 20, 'Shadow Puppets', 1), -- Halloween Terror Winston Emotes
+  (1, 3, 3, 21, 'Bring It On', 1), -- Normal Zarya Emotes
+  (1, 3, 3, 21, 'Comedy Gold', 1),
+  (1, 3, 3, 21, 'Crush You', 1),
+  (1, 3, 3, 21, 'Pumping Iron', 1),
+  (1, 3, 3, 21, 'Take A Knee', 1),
+  (1, 3, 3, 22, 'Focusing', 1), -- Normal Zenyatta Emotes
+  (1, 3, 3, 22, 'Meditate', 1),
+  (1, 3, 3, 22, 'Round Of Applause', 1),
+  (1, 3, 3, 22, 'Taunt', 1),
+  (1, 3, 3, 22, 'Tickled', 1),
+  (1, 3, 3, 23, 'Amused', 9), -- Normal Sombra Emotes
+  (1, 3, 3, 23, 'Hold On', 9),
+  (1, 3, 3, 23, 'Masterpiece', 9),
   -- Victory Poses
-  (1, 4, 2, 1, 'Mission Complete', '2016-07-19'), -- Normal Ana Victory Poses
-  (1, 4, 2, 1, 'Protector', '2016-07-19'),
-  (1, 4, 2, 1, 'Seated', '2016-07-19'),
-  (7, 4, 2, 1, 'R.I.P.', '2016-10-11'), -- Halloween Terror Ana Victory Poses
-  (1, 4, 2, 2, 'Birdwatching', '2016-05-24'), -- Normal Bastion Victory Poses
-  (1, 4, 2, 2, 'Pop Up', '2016-05-24'),
-  (1, 4, 2, 2, 'Tank', '2016-05-24'),
-  (7, 4, 2, 2, 'R.I.P.', '2016-10-11'), -- Halloween Terror Bastion Victory Poses
-  (1, 4, 2, 3, 'I Heart You', '2016-05-24'), -- Normal D.Va Victory Poses
-  (1, 4, 2, 3, 'Peace', '2016-05-24'),
-  (1, 4, 2, 3, 'Sitting', '2016-05-24'),
-  (7, 4, 2, 3, 'R.I.P.', '2016-10-11'), -- Halloween Terror D.Va Victory Poses
-  (1, 4, 2, 4, 'Kneeling', '2016-05-24'), -- Normal Genji Victory Poses
-  (1, 4, 2, 4, 'Shuriken', '2016-05-24'),
-  (1, 4, 2, 4, 'Sword Stance', '2016-05-24'),
-  (7, 4, 2, 4, 'R.I.P.', '2016-10-11'), -- Halloween Terror Genji Victory Poses
-  (1, 4, 2, 5, 'Confident', '2016-05-24'), -- Normal Hanzo Victory Poses
-  (1, 4, 2, 5, 'Kneeling', '2016-05-24'),
-  (1, 4, 2, 5, 'Over The Shoulder', '2016-05-24'),
-  (1, 4, 2, 5, 'Candy', '2016-05-24'),
-  (7, 4, 2, 5, 'R.I.P.', '2016-10-11'), -- Halloween Terror Hanzo Victory Poses
-  (1, 4, 2, 6, 'It''ll Freeze That Way', '2016-05-24'), -- Normal Junkrat Victory Poses
-  (1, 4, 2, 6, 'Kneeling', '2016-05-24'),
-  (1, 4, 2, 6, 'Nyah Nyah', '2016-05-24'),
-  (7, 4, 2, 6, 'R.I.P.', '2016-10-11'), -- Halloween Terror Junkrat Victory Poses
-  (1, 4, 2, 7, 'Confident', '2016-05-24'), -- Normal Lúcio Victory Poses
-  (1, 4, 2, 7, 'Grooving', '2016-05-24'),
-  (1, 4, 2, 7, 'Ready For Action', '2016-05-24'),
-  (7, 4, 2, 7, 'R.I.P.', '2016-10-11'), -- Halloween Terror Lúcio Victory Poses
-  (1, 4, 2, 8, 'Contemplative', '2016-05-24'), -- Normal McCree Victory Poses
-  (1, 4, 2, 8, 'Over The Shoulder', '2016-05-24'),
-  (1, 4, 2, 8, 'Take It Easy', '2016-05-24'),
-  (7, 4, 2, 8, 'R.I.P.', '2016-10-11'), -- Halloween Terror McCree Victory Poses
-  (1, 4, 2, 9, 'Casual', '2016-05-24'), -- Normal Mei Victory Poses
-  (1, 4, 2, 9, 'Hands On Hips', '2016-05-24'),
-  (1, 4, 2, 9, 'Kneeling', '2016-05-24'),
-  (6, 4, 2, 9, 'Medal', '2016-08-02'), -- Summer Games Mei Victory Poses
-  (7, 4, 2, 9, 'R.I.P.', '2016-10-11'), -- Halloween Terror Mei Victory Poses
-  (1, 4, 2, 10, 'Angelic', '2016-05-24'), -- Normal Mercy Victory Poses
-  (1, 4, 2, 10, 'Carefree', '2016-05-24'),
-  (1, 4, 2, 10, 'Ready For Battle', '2016-05-24'),
-  (7, 4, 2, 10, 'R.I.P.', '2016-10-11'), -- Halloween Terror Mercy Victory Poses
-  (1, 4, 2, 11, 'Guardian', '2016-05-24'), -- Normal Pharah Victory Poses
-  (1, 4, 2, 11, 'Jump Jet', '2016-05-24'),
-  (1, 4, 2, 11, 'Kneeling', '2016-05-24'),
-  (6, 4, 2, 11, 'Medal', '2016-08-02'), -- Summer Games Pharah Victory Poses
-  (7, 4, 2, 11, 'R.I.P.', '2016-10-11'), -- Halloween Terror Pharah Victory Poses
-  (1, 4, 2, 12, 'Casual', '2016-05-24'), -- Normal Reaper Victory Poses
-  (1, 4, 2, 12, 'Enigmatic', '2016-05-24'),
-  (1, 4, 2, 12, 'Menacing', '2016-05-24'),
-  (1, 4, 2, 12, 'Medal', '2016-05-24'), -- Summer Games Reaper Victory Poses
-  (7, 4, 2, 12, 'R.I.P.', '2016-10-11'), -- Halloween Terror Reaper Victory Poses
-  (1, 4, 2, 13, 'Confident', '2016-05-24'), -- Normal Reinhardt Victory Poses
-  (1, 4, 2, 13, 'Flex', '2016-05-24'),
-  (1, 4, 2, 13, 'Legendary', '2016-05-24'),
-  (7, 4, 2, 13, 'R.I.P.', '2016-10-11'), -- Halloween Terror Reinhardt Victory Poses
-  (1, 4, 2, 14, 'Pointing To The Sky', '2016-05-24'), -- Normal Roadhog Victory Poses
-  (1, 4, 2, 14, 'Thumbs Up', '2016-05-24'),
-  (1, 4, 2, 14, 'Tuckered Out', '2016-05-24'),
-  (6, 4, 2, 14, 'Medal', '2016-08-02'), -- Summer Games Roadhog Victory Poses
-  (7, 4, 2, 14, 'R.I.P.', '2016-10-11'), -- Halloween Terror Roadhog Victory Poses
-  (1, 4, 2, 15, 'Fist Pump', '2016-05-24'), -- Normal Soldier: 76 Victory Poses
-  (1, 4, 2, 15, 'Locked And Loaded', '2016-05-24'),
-  (1, 4, 2, 15, 'Soldier', '2016-05-24'),
-  (6, 4, 2, 15, 'Golf Swing', '2016-08-02'), -- Summer Games Soldier: 76 Victory Poses
-  (7, 4, 2, 15, 'R.I.P.', '2016-10-11'), -- Halloween Terror Soldier: 76 Victory Poses
-  (1, 4, 2, 16, 'Balance', '2016-05-24'), -- Normal Symmetra Victory Poses
-  (1, 4, 2, 16, 'Creation', '2016-05-24'),
-  (1, 4, 2, 16, 'Dance', '2016-05-24'),
-  (7, 4, 2, 16, 'R.I.P.', '2016-10-11'), -- Halloween Terror Symmetra Victory Poses
-  (1, 4, 2, 17, 'Hammer', '2016-05-24'), -- Normal Torbjörn Victory Poses
-  (1, 4, 2, 17, 'Sitting Pretty', '2016-05-24'),
-  (1, 4, 2, 17, 'Take Five', '2016-05-24'),
-  (6, 4, 2, 17, 'Medal', '2016-08-02'), -- Summer Games Torbjörn Victory Poses
-  (7, 4, 2, 17, 'R.I.P.', '2016-10-11'), -- Halloween Terror Torbjörn Victory Poses
-  (1, 4, 2, 18, 'Over The Shoulder', '2016-05-24'), -- Normal Tracer Victory Poses
-  (1, 4, 2, 18, 'Salute', '2016-05-24'),
-  (1, 4, 2, 18, 'Sitting', '2016-05-24'),
-  (7, 4, 2, 18, 'R.I.P.', '2016-10-11'), -- Halloween Terror Tracer Victory Poses
-  (1, 4, 2, 19, 'Activating Visor', '2016-05-24'), -- Normal Widowmaker Victory Poses
-  (1, 4, 2, 19, 'Gaze', '2016-05-24'),
-  (1, 4, 2, 19, 'Over The Shoulder', '2016-05-24'),
-  (6, 4, 2, 19, 'Medal', '2016-08-02'), -- Summer Games Widowmaker Victory Poses
-  (7, 4, 2, 19, 'R.I.P.', '2016-10-11'), -- Halloween Terror Widowmaker Victory Poses
-  (1, 4, 2, 20, 'Beast', '2016-05-24'), -- Normal Winston Victory Poses
-  (1, 4, 2, 20, 'Glasses', '2016-05-24'),
-  (1, 4, 2, 20, 'The Thinker', '2016-05-24'),
-  (6, 4, 2, 20, 'Medal', '2016-08-02'), -- Summer Games Winston Victory Poses
-  (7, 4, 2, 20, 'R.I.P.', '2016-10-11'), -- Halloween Terror Winston Victory Poses
-  (1, 4, 2, 21, 'Casual', '2016-05-24'), -- Normal Zarya Victory Poses
-  (1, 4, 2, 21, 'Check Out This Gun', '2016-05-24'),
-  (1, 4, 2, 21, 'Flexing', '2016-05-24'),
-  (7, 4, 2, 21, 'R.I.P.', '2016-10-11'), -- Halloween Terror Zarya Victory Poses
-  (1, 4, 2, 22, 'Balance', '2016-05-24'), -- Normal Zenyatta Victory Poses
-  (1, 4, 2, 22, 'Harmony', '2016-05-24'),
-  (1, 4, 2, 22, 'Peace', '2016-05-24'),
-  (6, 4, 2, 22, 'Medals', '2016-08-02'), -- Summer Games Zenyatta Victory Poses
-  (7, 4, 2, 22, 'R.I.P.', '2016-10-11'), -- Halloween Terror Zenyatta Victory Poses
+  (1, 4, 2, 1, 'Mission Complete', 3), -- Normal Ana Victory Poses
+  (1, 4, 2, 1, 'Protector', 3),
+  (1, 4, 2, 1, 'Seated', 3),
+  (7, 4, 2, 1, 'R.I.P.', 7), -- Halloween Terror Ana Victory Poses
+  (1, 4, 2, 2, 'Birdwatching', 1), -- Normal Bastion Victory Poses
+  (1, 4, 2, 2, 'Pop Up', 1),
+  (1, 4, 2, 2, 'Tank', 1),
+  (7, 4, 2, 2, 'R.I.P.', 7), -- Halloween Terror Bastion Victory Poses
+  (1, 4, 2, 3, 'I Heart You', 1), -- Normal D.Va Victory Poses
+  (1, 4, 2, 3, 'Peace', 1),
+  (1, 4, 2, 3, 'Sitting', 1),
+  (7, 4, 2, 3, 'R.I.P.', 7), -- Halloween Terror D.Va Victory Poses
+  (1, 4, 2, 4, 'Kneeling', 1), -- Normal Genji Victory Poses
+  (1, 4, 2, 4, 'Shuriken', 1),
+  (1, 4, 2, 4, 'Sword Stance', 1),
+  (7, 4, 2, 4, 'R.I.P.', 7), -- Halloween Terror Genji Victory Poses
+  (1, 4, 2, 5, 'Confident', 1), -- Normal Hanzo Victory Poses
+  (1, 4, 2, 5, 'Kneeling', 1),
+  (1, 4, 2, 5, 'Over The Shoulder', 1),
+  (1, 4, 2, 5, 'Candy', 1),
+  (7, 4, 2, 5, 'R.I.P.', 7), -- Halloween Terror Hanzo Victory Poses
+  (1, 4, 2, 6, 'It''ll Freeze That Way', 1), -- Normal Junkrat Victory Poses
+  (1, 4, 2, 6, 'Kneeling', 1),
+  (1, 4, 2, 6, 'Nyah Nyah', 1),
+  (7, 4, 2, 6, 'R.I.P.', 7), -- Halloween Terror Junkrat Victory Poses
+  (1, 4, 2, 7, 'Confident', 1), -- Normal Lúcio Victory Poses
+  (1, 4, 2, 7, 'Grooving', 1),
+  (1, 4, 2, 7, 'Ready For Action', 1),
+  (7, 4, 2, 7, 'R.I.P.', 7), -- Halloween Terror Lúcio Victory Poses
+  (1, 4, 2, 8, 'Contemplative', 1), -- Normal McCree Victory Poses
+  (1, 4, 2, 8, 'Over The Shoulder', 1),
+  (1, 4, 2, 8, 'Take It Easy', 1),
+  (7, 4, 2, 8, 'R.I.P.', 7), -- Halloween Terror McCree Victory Poses
+  (1, 4, 2, 9, 'Casual', 1), -- Normal Mei Victory Poses
+  (1, 4, 2, 9, 'Hands On Hips', 1),
+  (1, 4, 2, 9, 'Kneeling', 1),
+  (6, 4, 2, 9, 'Medal', 4), -- Summer Games Mei Victory Poses
+  (7, 4, 2, 9, 'R.I.P.', 7), -- Halloween Terror Mei Victory Poses
+  (1, 4, 2, 10, 'Angelic', 1), -- Normal Mercy Victory Poses
+  (1, 4, 2, 10, 'Carefree', 1),
+  (1, 4, 2, 10, 'Ready For Battle', 1),
+  (7, 4, 2, 10, 'R.I.P.', 7), -- Halloween Terror Mercy Victory Poses
+  (1, 4, 2, 11, 'Guardian', 1), -- Normal Pharah Victory Poses
+  (1, 4, 2, 11, 'Jump Jet', 1),
+  (1, 4, 2, 11, 'Kneeling', 1),
+  (6, 4, 2, 11, 'Medal', 4), -- Summer Games Pharah Victory Poses
+  (7, 4, 2, 11, 'R.I.P.', 7), -- Halloween Terror Pharah Victory Poses
+  (1, 4, 2, 12, 'Casual', 1), -- Normal Reaper Victory Poses
+  (1, 4, 2, 12, 'Enigmatic', 1),
+  (1, 4, 2, 12, 'Menacing', 1),
+  (1, 4, 2, 12, 'Medal', 1), -- Summer Games Reaper Victory Poses
+  (7, 4, 2, 12, 'R.I.P.', 7), -- Halloween Terror Reaper Victory Poses
+  (1, 4, 2, 13, 'Confident', 1), -- Normal Reinhardt Victory Poses
+  (1, 4, 2, 13, 'Flex', 1),
+  (1, 4, 2, 13, 'Legendary', 1),
+  (7, 4, 2, 13, 'R.I.P.', 7), -- Halloween Terror Reinhardt Victory Poses
+  (1, 4, 2, 14, 'Pointing To The Sky', 1), -- Normal Roadhog Victory Poses
+  (1, 4, 2, 14, 'Thumbs Up', 1),
+  (1, 4, 2, 14, 'Tuckered Out', 1),
+  (6, 4, 2, 14, 'Medal', 4), -- Summer Games Roadhog Victory Poses
+  (7, 4, 2, 14, 'R.I.P.', 7), -- Halloween Terror Roadhog Victory Poses
+  (1, 4, 2, 15, 'Fist Pump', 1), -- Normal Soldier: 76 Victory Poses
+  (1, 4, 2, 15, 'Locked And Loaded', 1),
+  (1, 4, 2, 15, 'Soldier', 1),
+  (6, 4, 2, 15, 'Golf Swing', 4), -- Summer Games Soldier: 76 Victory Poses
+  (7, 4, 2, 15, 'R.I.P.', 7), -- Halloween Terror Soldier: 76 Victory Poses
+  (1, 4, 2, 16, 'Balance', 1), -- Normal Symmetra Victory Poses
+  (1, 4, 2, 16, 'Creation', 1),
+  (1, 4, 2, 16, 'Dance', 1),
+  (7, 4, 2, 16, 'R.I.P.', 7), -- Halloween Terror Symmetra Victory Poses
+  (1, 4, 2, 17, 'Hammer', 1), -- Normal Torbjörn Victory Poses
+  (1, 4, 2, 17, 'Sitting Pretty', 1),
+  (1, 4, 2, 17, 'Take Five', 1),
+  (6, 4, 2, 17, 'Medal', 4), -- Summer Games Torbjörn Victory Poses
+  (7, 4, 2, 17, 'R.I.P.', 7), -- Halloween Terror Torbjörn Victory Poses
+  (1, 4, 2, 18, 'Over The Shoulder', 1), -- Normal Tracer Victory Poses
+  (1, 4, 2, 18, 'Salute', 1),
+  (1, 4, 2, 18, 'Sitting', 1),
+  (7, 4, 2, 18, 'R.I.P.', 7), -- Halloween Terror Tracer Victory Poses
+  (1, 4, 2, 19, 'Activating Visor', 1), -- Normal Widowmaker Victory Poses
+  (1, 4, 2, 19, 'Gaze', 1),
+  (1, 4, 2, 19, 'Over The Shoulder', 1),
+  (6, 4, 2, 19, 'Medal', 4), -- Summer Games Widowmaker Victory Poses
+  (7, 4, 2, 19, 'R.I.P.', 7), -- Halloween Terror Widowmaker Victory Poses
+  (1, 4, 2, 20, 'Beast', 1), -- Normal Winston Victory Poses
+  (1, 4, 2, 20, 'Glasses', 1),
+  (1, 4, 2, 20, 'The Thinker', 1),
+  (6, 4, 2, 20, 'Medal', 4), -- Summer Games Winston Victory Poses
+  (7, 4, 2, 20, 'R.I.P.', 7), -- Halloween Terror Winston Victory Poses
+  (1, 4, 2, 21, 'Casual', 1), -- Normal Zarya Victory Poses
+  (1, 4, 2, 21, 'Check Out This Gun', 1),
+  (1, 4, 2, 21, 'Flexing', 1),
+  (7, 4, 2, 21, 'R.I.P.', 7), -- Halloween Terror Zarya Victory Poses
+  (1, 4, 2, 22, 'Balance', 1), -- Normal Zenyatta Victory Poses
+  (1, 4, 2, 22, 'Harmony', 1),
+  (1, 4, 2, 22, 'Peace', 1),
+  (6, 4, 2, 22, 'Medals', 4), -- Summer Games Zenyatta Victory Poses
+  (7, 4, 2, 22, 'R.I.P.', 7), -- Halloween Terror Zenyatta Victory Poses
+  (1, 4, 2, 23, 'Hacked', 9), -- Normal Sombra Victory Poses
+  (1, 4, 2, 23, 'Kneeling', 9),
+  (1, 4, 2, 23, 'Rising', 9),
   -- Voice Lines
+  (1, 5, 1, 1, 'Children, Behave', 3), -- Normal Ana Voice Lines
+  (1, 5, 1, 1, 'Everyone Dies', 3),
+  (1, 5, 1, 1, 'It Takes A Woman To Know It', 3),
+  (1, 5, 1, 1, 'Justice Rains From Above', 3),
+  (1, 5, 1, 1, 'Mother Knows Best', 3),
+  (1, 5, 1, 1, 'No Scope Needed', 3),
+  (1, 5, 1, 1, 'Someone To Tuck You In?', 3),
+  (1, 5, 1, 1, 'What Are You Thinking?', 3),
+  (1, 5, 1, 1, 'Witness Me', 3),
+  (1, 5, 1, 1, 'You Know Nothing', 3),
+  (6, 5, 1, 1, 'Learn From The Pain', 4), -- Summer Games Ana Voice Lines
+  (7, 5, 1, 1, 'Are You Scared?', 7), -- Halloween Terror Ana Voice Lines
+  (1, 5, 1, 2, 'Beeple', 1), -- Normal Bastion Voice Lines
+  (1, 5, 1, 2, 'Boo Boo Doo De Doo', 1),
+  (1, 5, 1, 2, 'Bweeeeeeeeeee', 1),
+  (1, 5, 1, 2, 'Chirr Chirr Chirr', 1),
+  (1, 5, 1, 2, 'Dah-Dah Weeeee!', 1),
+  (1, 5, 1, 2, 'Dun Dun Boop Boop', 1),
+  (1, 5, 1, 2, 'Dweet Dweet Dweet!', 1),
+  (1, 5, 1, 2, 'Hee Hoo Hoo', 1),
+  (1, 5, 1, 2, 'Sh-Sh-Sh', 1),
+  (1, 5, 1, 2, 'Zwee?', 1),
+  (6, 5, 1, 2, 'Whoo-Vweeeeee', 4), -- Summer Games Bastion Voice Lines
+  (7, 5, 1, 2, 'W-w-wooooo...?', 7), -- Halloween Terror Bastion Voice Lines
+  (1, 5, 1, 3, ';)', 1), -- Normal D.Va Voice Lines
+  (1, 5, 1, 3, 'A New Challenger!', 1),
+  (1, 5, 1, 3, 'AFK', 1),
+  (1, 5, 1, 3, 'Aw, Yeah!', 1),
+  (1, 5, 1, 3, 'D.Va: 1, Bad Guys: 0', 1),
+  (1, 5, 1, 3, 'GG!', 1),
+  (1, 5, 1, 3, 'I Play To Win', 1),
+  (1, 5, 1, 3, 'Is This Easy Mode?', 1),
+  (1, 5, 1, 3, 'LOL', 1),
+  (1, 5, 1, 3, 'No Hacks Required', 1),
+  (6, 5, 1, 3, 'I''m #1', 4), -- Summer Games D.Va Voice Lines
+  (7, 5, 1, 3, 'Happy Halloween', 7), -- Halloween Terror D.Va Voice Lines
+  (1, 5, 1, 4, 'Come on!', 1), -- Normal Genji Voice Lines
+  (1, 5, 1, 4, 'Damn!', 1),
+  (1, 5, 1, 4, 'I Am Prepared!', 1),
+  (1, 5, 1, 4, 'Let''s Fight!', 1),
+  (1, 5, 1, 4, 'Measure Twice, Cut Once', 1),
+  (1, 5, 1, 4, 'My Soul Seeks Balance', 1),
+  (1, 5, 1, 4, 'Not Good Enough', 1),
+  (1, 5, 1, 4, 'Simple', 1),
+  (1, 5, 1, 4, 'Yeah!', 1),
+  (1, 5, 1, 4, 'You Are Only Human', 1),
+  (6, 5, 1, 4, 'I Was Hoping For A Challenge', 4), -- Summer Games Genji Voice Lines
+  (7, 5, 1, 4, 'My Halloween Costume?', 7), -- Halloween Terror Genji Voice Lines
+  (1, 5, 1, 5, 'Flow Like Water', 1), -- Normal Hanzo Voice Lines
+  (1, 5, 1, 5, 'From One Thing...', 1),
+  (1, 5, 1, 5, 'Hm...', 1),
+  (1, 5, 1, 5, 'I Do What I Must', 1),
+  (1, 5, 1, 5, 'Never In Doubt', 1),
+  (1, 5, 1, 5, 'Never Second Best', 1),
+  (1, 5, 1, 5, 'Remember This Moment', 1),
+  (1, 5, 1, 5, 'Sake!', 1),
+  (1, 5, 1, 5, 'Spirit Dragon', 1),
+  (1, 5, 1, 5, 'Step Into The Dojo', 1),
+  (6, 5, 1, 5, 'Ignore All Distractions', 4), -- Summer Games Hanzo Voice Lines
+  (7, 5, 1, 5, 'You Are Already Dead', 7), -- Halloween Terror Hanzo Voice Lines
+  (1, 5, 1, 6, '...Blow It Up Again', 1), -- Normal Junkrat Voice Lines
+  (1, 5, 1, 6, 'Anyone Want Some BBQ?', 1),
+  (1, 5, 1, 6, 'Brrring!', 1),
+  (1, 5, 1, 6, 'Coming Up Explodey!', 1),
+  (1, 5, 1, 6, 'Happy Birthday', 1),
+  (1, 5, 1, 6, 'Have A Nice Day!', 1),
+  (1, 5, 1, 6, 'It''s The Little Things', 1),
+  (1, 5, 1, 6, 'Kaboom', 1),
+  (1, 5, 1, 6, 'Ohh, Shiny', 1),
+  (1, 5, 1, 6, 'Smile!', 1),
+  (6, 5, 1, 6, 'I Give It A 10!', 4), -- Summer Games Junkrat Voice Lines
+  (7, 5, 1, 6, 'Happy Halloween', 7), -- Halloween Terror Junkrat Voice Lines
+  (1, 5, 1, 7, 'Golden', 1), -- Normal Lúcio Voice Lines
+  (1, 5, 1, 7, 'Golden', 1),
+  (1, 5, 1, 8, 'Golden', 1), -- Normal McCree Voice Lines
+  (1, 5, 1, 8, 'Golden', 1),
+  (1, 5, 1, 9, 'Golden', 1), -- Normal Mei Voice Lines
+  (1, 5, 1, 9, 'Golden', 1),
+  (1, 5, 1, 10, 'Golden', 1), -- Normal Mercy Voice Lines
+  (1, 5, 1, 10, 'Golden', 1),
+  (1, 5, 1, 11, 'Golden', 1), -- Normal Pharah Voice Lines
+  (1, 5, 1, 11, 'Golden', 1),
+  (1, 5, 1, 12, 'Golden', 1), -- Normal Reaper Voice Lines
+  (1, 5, 1, 12, 'Golden', 1),
+  (1, 5, 1, 13, 'Golden', 1), -- Normal Reinhardt Voice Lines
+  (1, 5, 1, 13, 'Golden', 1),
+  (1, 5, 1, 14, 'Golden', 1), -- Normal Roadhog Voice Lines
+  (1, 5, 1, 14, 'Golden', 1),
+  (1, 5, 1, 15, 'Golden', 1), -- Normal Soldier: 76 Voice Lines
+  (1, 5, 1, 15, 'Golden', 1),
+  (1, 5, 1, 16, 'Golden', 1), -- Normal Symmetra Voice Lines
+  (1, 5, 1, 16, 'Golden', 1),
+  (1, 5, 1, 17, 'Golden', 1), -- Normal Torbjörn Voice Lines
+  (1, 5, 1, 17, 'Golden', 1),
+  (1, 5, 1, 18, 'Golden', 1), -- Normal Tracer Voice Lines
+  (1, 5, 1, 18, 'Golden', 1),
+  (1, 5, 1, 19, 'Golden', 1), -- Normal Widowmaker Voice Lines
+  (1, 5, 1, 19, 'Golden', 1),
+  (1, 5, 1, 20, 'Golden', 1), -- Normal Winston Voice Lines
+  (1, 5, 1, 20, 'Golden', 1),
+  (1, 5, 1, 21, 'Golden', 1), -- Normal Zarya Voice Lines
+  (1, 5, 1, 21, 'Golden', 1),
+  (1, 5, 1, 22, 'Golden', 1), -- Normal Zenyatta Voice Lines
+  (1, 5, 1, 22, 'Golden', 1),
+  (1, 5, 1, 23, 'Golden', 9), -- Normal Sombra Voice Lines
+  (1, 5, 1, 23, 'Golden', 9),
   -- Sprays
-  (NULL, 6, NULL, NULL, 'Logo', '2016-05-24'), -- Default All Heroes Sprays
-  (NULL, 6, NULL, NULL, 'You Are Not Prepared', '2016-07-19'),
-  (NULL, 6, NULL, NULL, 'Día De Los Muertos', '2016-11-01'),
-  (1, 6, 1, NULL, '...Punch', '2016-05-24'), -- Normal All Heroes Sprays
-  (1, 6, 1, NULL, 'Catcher', '2016-05-24'),
-  (1, 6, 1, NULL, 'Caution', '2016-05-24'),
-  (1, 6, 1, NULL, 'Dance', '2016-05-24'),
-  (1, 6, 1, NULL, 'Dark Logo', '2016-05-24'),
-  (1, 6, 1, NULL, 'Dark Overwatch', '2016-05-24'),
-  (1, 6, 1, NULL, 'Dark Title', '2016-05-24'),
-  (1, 6, 1, NULL, 'FotS2', '2016-05-24'),
-  (1, 6, 1, NULL, 'Fuji', '2016-05-24'),
-  (1, 6, 1, NULL, 'Goldshire Pictures', '2016-05-24'),
-  (1, 6, 1, NULL, 'Leek', '2016-05-24'),
-  (1, 6, 1, NULL, 'Lumérico', '2016-05-24'),
-  (1, 6, 1, NULL, 'Numbani Statue', '2016-05-24'),
-  (1, 6, 1, NULL, 'Omnic Rights', '2016-05-24'),
-  (1, 6, 1, NULL, 'Overwatch', '2016-05-24'),
-  (1, 6, 1, NULL, 'Overwatch Title', '2016-05-24'),
-  (1, 6, 1, NULL, 'Pachimari', '2016-05-24'),
-  (1, 6, 1, NULL, 'Rhino', '2016-05-24'),
-  (1, 6, 1, NULL, 'Rikimaru', '2016-05-24'),
-  (1, 6, 1, NULL, 'Sarcophagus', '2016-05-24'),
-  (1, 6, 1, NULL, 'Scooter', '2016-05-24'),
-  (1, 6, 1, NULL, 'Scroll', '2016-05-24'),
-  (1, 6, 1, NULL, 'Siege Mode', '2016-05-24'),
-  (1, 6, 1, NULL, 'Six Gun Killer', '2016-05-24'),
-  (1, 6, 1, NULL, 'Sol', '2016-05-24'),
-  (1, 6, 1, NULL, 'Soulstone', '2016-05-24'),
-  (1, 6, 1, NULL, 'Vivi''s Adventure', '2016-05-24'),
-  (2, 6, 1, NULL, 'Beyond The Moon', '2016-05-24'), -- Achievements All Heroes Sprays
-  (2, 6, 1, NULL, 'Forge Onward', '2016-05-24'),
-  (2, 6, 1, NULL, 'GL HF', '2016-05-24'),
-  (2, 6, 1, NULL, 'Halloween Special', '2016-10-11'),
-  (2, 6, 1, NULL, 'Jail', '2016-05-24'),
-  (2, 6, 1, NULL, 'Junkenstein''s Revenge', '2016-10-11'),
-  (2, 6, 1, NULL, 'Man And Omnic', '2016-05-24'),
-  (2, 6, 1, NULL, 'Oops', '2016-05-24'),
-  (2, 6, 1, NULL, 'Out Of My Way', '2016-05-24'),
-  (2, 6, 1, NULL, 'Piñata', '2016-05-24'),
-  (2, 6, 1, NULL, 'Red O', '2016-05-24'),
-  (2, 6, 1, NULL, 'Red X', '2016-05-24'),
-  (2, 6, 1, NULL, 'Respect', '2016-05-24'),
-  (2, 6, 1, NULL, 'Rise', '2016-05-24'),
-  (2, 6, 1, NULL, 'Rise Of The Zomnics', '2016-10-11'),
-  (2, 6, 1, NULL, 'Sorry', '2016-05-24'),
-  (2, 6, 1, NULL, 'Tea Time', '2016-05-24'),
-  (2, 6, 1, NULL, 'Thanks', '2016-05-24'),
-  (2, 6, 1, NULL, 'The Reapening', '2016-10-11'),
-  (2, 6, 1, NULL, 'Victory', '2016-05-24'),
-  (2, 6, 1, NULL, 'Well Played', '2016-05-24'),
-  (5, 6, 1, NULL, 'Season 1 Competitor', '2016-06-28'), -- Competitive All Heroes Sprays
-  (5, 6, 1, NULL, 'Season 1 Hero', '2016-06-28'),
-  (5, 6, 1, NULL, 'Season 2 Competitor', '2016-07-02'),
-  (5, 6, 1, NULL, 'Season 2 Hero', '2016-07-02'),
-  (7, 6, 1, NULL, '...Never Die', '2016-10-11'), -- Halloween Terror All Heroes Sprays
-  (7, 6, 1, NULL, 'Bats', '2016-10-11'),
-  (7, 6, 1, NULL, 'Boo!', '2016-10-11'),
-  (7, 6, 1, NULL, 'Boop!', '2016-10-11'),
-  (7, 6, 1, NULL, 'Candyball', '2016-10-11'),
-  (7, 6, 1, NULL, 'Fangs', '2016-10-11'),
-  (7, 6, 1, NULL, 'Gummy Hog', '2016-10-11'),
-  (7, 6, 1, NULL, 'Halloween Special', '2016-10-11'),
-  (7, 6, 1, NULL, 'Halloween Terror', '2016-10-11'),
-  (7, 6, 1, NULL, 'Junkenstein''s Revenge', '2016-10-11'),
-  (7, 6, 1, NULL, 'Pumpkins', '2016-10-11'),
-  (7, 6, 1, NULL, 'Rise Of The Zomnics', '2016-10-11'),
-  (7, 6, 1, NULL, 'The Reapening', '2016-10-11'),
-  (7, 6, 1, NULL, 'Witch''s Brew', '2016-10-11'),
-  (1, 6, 1, NULL, '', '2016-05-24'),
-  --TODO characters
+  (NULL, 6, NULL, NULL, 'Logo', 1), -- Default All Heroes Sprays
+  (NULL, 6, NULL, NULL, 'You Are Not Prepared', 3),
+  (NULL, 6, NULL, NULL, 'Día De Los Muertos', 8),
+  (1, 6, 1, NULL, '...Punch', 1), -- Normal All Heroes Sprays
+  (1, 6, 1, NULL, 'Catcher', 1),
+  (1, 6, 1, NULL, 'Caution', 1),
+  (1, 6, 1, NULL, 'Dance', 1),
+  (1, 6, 1, NULL, 'Dark Logo', 1),
+  (1, 6, 1, NULL, 'Dark Overwatch', 1),
+  (1, 6, 1, NULL, 'Dark Title', 1),
+  (1, 6, 1, NULL, 'FotS2', 1),
+  (1, 6, 1, NULL, 'Fuji', 1),
+  (1, 6, 1, NULL, 'Goldshire Pictures', 1),
+  (1, 6, 1, NULL, 'Leek', 1),
+  (1, 6, 1, NULL, 'Lumérico', 1),
+  (1, 6, 1, NULL, 'Numbani Statue', 1),
+  (1, 6, 1, NULL, 'Omnic Rights', 1),
+  (1, 6, 1, NULL, 'Overwatch', 1),
+  (1, 6, 1, NULL, 'Overwatch Title', 1),
+  (1, 6, 1, NULL, 'Pachimari', 1),
+  (1, 6, 1, NULL, 'Rhino', 1),
+  (1, 6, 1, NULL, 'Rikimaru', 1),
+  (1, 6, 1, NULL, 'Sarcophagus', 1),
+  (1, 6, 1, NULL, 'Scooter', 1),
+  (1, 6, 1, NULL, 'Scroll', 1),
+  (1, 6, 1, NULL, 'Siege Mode', 1),
+  (1, 6, 1, NULL, 'Six Gun Killer', 1),
+  (1, 6, 1, NULL, 'Sol', 1),
+  (1, 6, 1, NULL, 'Soulstone', 1),
+  (1, 6, 1, NULL, 'Vivi''s Adventure', 1),
+  (2, 6, 1, NULL, 'Beyond The Moon', 1), -- Achievements All Heroes Sprays
+  (2, 6, 1, NULL, 'Forge Onward', 1),
+  (2, 6, 1, NULL, 'GL HF', 1),
+  (2, 6, 1, NULL, 'Halloween Special', 7),
+  (2, 6, 1, NULL, 'Jail', 1),
+  (2, 6, 1, NULL, 'Junkenstein''s Revenge', 7),
+  (2, 6, 1, NULL, 'Man And Omnic', 1),
+  (2, 6, 1, NULL, 'Oops', 1),
+  (2, 6, 1, NULL, 'Out Of My Way', 1),
+  (2, 6, 1, NULL, 'Piñata', 1),
+  (2, 6, 1, NULL, 'Red O', 1),
+  (2, 6, 1, NULL, 'Red X', 1),
+  (2, 6, 1, NULL, 'Respect', 1),
+  (2, 6, 1, NULL, 'Rise', 1),
+  (2, 6, 1, NULL, 'Rise Of The Zomnics', 7),
+  (2, 6, 1, NULL, 'Sorry', 1),
+  (2, 6, 1, NULL, 'Tea Time', 1),
+  (2, 6, 1, NULL, 'Thanks', 1),
+  (2, 6, 1, NULL, 'The Reapening', 7),
+  (2, 6, 1, NULL, 'Victory', 1),
+  (2, 6, 1, NULL, 'Well Played', 1),
+  (5, 6, 1, NULL, 'Season 1 Competitor', 2), -- Competitive All Heroes Sprays
+  (5, 6, 1, NULL, 'Season 1 Hero', 2),
+  (5, 6, 1, NULL, 'Season 2 Competitor', 6),
+  (5, 6, 1, NULL, 'Season 2 Hero', 6),
+  (5, 6, 1, NULL, 'Season 3 Competitor', 10),
+  (5, 6, 1, NULL, 'Season 3 Hero', 10),
+  (7, 6, 1, NULL, '...Never Die', 7), -- Halloween Terror All Heroes Sprays
+  (7, 6, 1, NULL, 'Bats', 7),
+  (7, 6, 1, NULL, 'Boo!', 7),
+  (7, 6, 1, NULL, 'Boop!', 7),
+  (7, 6, 1, NULL, 'Candyball', 7),
+  (7, 6, 1, NULL, 'Fangs', 7),
+  (7, 6, 1, NULL, 'Gummy Hog', 7),
+  (7, 6, 1, NULL, 'Halloween Special', 7),
+  (7, 6, 1, NULL, 'Halloween Terror', 7),
+  (7, 6, 1, NULL, 'Junkenstein''s Revenge', 7),
+  (7, 6, 1, NULL, 'Pumpkins', 7),
+  (7, 6, 1, NULL, 'Rise Of The Zomnics', 7),
+  (7, 6, 1, NULL, 'The Reapening', 7),
+  (7, 6, 1, NULL, 'Witch''s Brew', 7),
+  (1, 6, 1, 1, '', 3), -- Normal Ana Sprays
+  (1, 6, 1, 2, 'Golden', 1), -- Normal Bastion Sprays
+  (1, 6, 1, 3, 'Golden', 1), -- Normal D.Va Sprays
+  (1, 6, 1, 4, 'Golden', 1), -- Normal Genji Sprays
+  (1, 6, 1, 5, 'Golden', 1), -- Normal Hanzo Sprays
+  (1, 6, 1, 6, 'Golden', 1), -- Normal Junkrat Sprays
+  (1, 6, 1, 7, 'Golden', 1), -- Normal Lúcio Sprays
+  (1, 6, 1, 8, 'Golden', 1), -- Normal McCree Sprays
+  (1, 6, 1, 9, 'Golden', 1), -- Normal Mei Sprays
+  (1, 6, 1, 10, 'Golden', 1), -- Normal Mercy Sprays
+  (1, 6, 1, 11, 'Golden', 1), -- Normal Pharah Sprays
+  (1, 6, 1, 12, 'Golden', 1), -- Normal Reaper Sprays
+  (1, 6, 1, 13, 'Golden', 1), -- Normal Reinhardt Sprays
+  (1, 6, 1, 14, 'Golden', 1), -- Normal Roadhog Sprays
+  (1, 6, 1, 15, 'Golden', 1), -- Normal Soldier: 76 Sprays
+  (1, 6, 1, 16, 'Golden', 1), -- Normal Symmetra Sprays
+  (1, 6, 1, 17, 'Golden', 1), -- Normal Torbjörn Sprays
+  (1, 6, 1, 18, 'Golden', 1), -- Normal Tracer Sprays
+  (1, 6, 1, 19, 'Golden', 1), -- Normal Widowmaker Sprays
+  (1, 6, 1, 20, 'Golden', 1), -- Normal Winston Sprays
+  (1, 6, 1, 21, 'Golden', 1), -- Normal Zarya Sprays
+  (1, 6, 1, 22, 'Golden', 1), -- Normal Zenyatta Sprays
+  (1, 6, 1, 23, 'Golden', 9), -- Normal Sombra Sprays--TODO characters
   -- Highlight Intros
-  (1, 7, 3, 1, 'Guardian', '2016-07-19'), -- Normal Ana Highlight Intros
-  (1, 7, 3, 1, 'Locked On', '2016-07-19'),
-  (1, 7, 3, 1, 'Shh...', '2016-07-19'),
-  (1, 7, 3, 2, 'Bullet Rain', '2016-05-24'), -- Normal Bastion Highlight Intros
-  (1, 7, 3, 2, 'Ganymede', '2016-05-24'),
-  (1, 7, 3, 2, 'On Guard', '2016-05-24'),
-  (1, 7, 3, 3, 'Eject', '2016-05-24'), -- Normal D.Va Highlight Intros
-  (1, 7, 3, 3, 'Lying Around', '2016-05-24'),
-  (1, 7, 3, 3, 'Meka Activated', '2016-05-24'),
-  (1, 7, 3, 4, 'Shuriken', '2016-05-24'), -- Normal Genji Highlight Intros
-  (1, 7, 3, 4, 'Unsheathing The Sword', '2016-05-24'),
-  (1, 7, 3, 4, 'Warrior''s Salute', '2016-05-24'),
-  (7, 7, 3, 4, 'Pumpkin Carving', '2016-10-11'), -- Halloween Terror Genji Highlight Intros
-  (1, 7, 3, 5, 'Backflip', '2016-05-24'), -- Normal Hanzo Highlight Intros
-  (1, 7, 3, 5, 'My Aim Is True', '2016-05-24'),
-  (1, 7, 3, 5, 'Superior', '2016-05-24'),
-  (1, 7, 3, 6, 'I''m Flying', '2016-05-24'), -- Normal Junkrat Highlight Intros
-  (1, 7, 3, 6, 'Rip-Tire', '2016-05-24'),
-  (1, 7, 3, 6, 'Unfortunate', '2016-05-24'),
-  (6, 7, 3, 6, 'Shotput', '2016-08-02'), -- Summer Games Junkrat Highlight Intros
-  (1, 7, 3, 7, 'Drop The Beat', '2016-05-24'), -- Normal Lúcio Highlight Intros
-  (1, 7, 3, 7, 'Freestyle', '2016-05-24'),
-  (1, 7, 3, 7, 'In The Groove', '2016-05-24'),
-  (1, 7, 3, 7, 'Bicycle Kick', '2016-05-24'), -- Summer Games Lúcio Highlight Intros
-  (1, 7, 3, 8, 'Rolling Into Action', '2016-05-24'), -- Normal McCree Highlight Intros
-  (1, 7, 3, 8, 'The Duel', '2016-05-24'),
-  (1, 7, 3, 8, 'The Name''s McCree', '2016-05-24'),
-  (1, 7, 3, 9, 'Frosty :)', '2016-05-24'), -- Normal Mei Highlight Intros
-  (1, 7, 3, 9, 'Going Up!', '2016-05-24'),
-  (1, 7, 3, 9, 'Skating Around', '2016-05-24'),
-  (7, 7, 3, 9, 'Ice Scream', '2016-10-11'), -- Halloween Terror Mei Highlight Intros
-  (1, 7, 3, 10, 'Battle Angel', '2016-05-24'), -- Normal Mercy Highlight Intros
-  (1, 7, 3, 10, 'Guardian Angel', '2016-05-24'),
-  (1, 7, 3, 10, 'Heroes Never Die', '2016-05-24'),
-  (1, 7, 3, 11, 'Barrage', '2016-05-24'), -- Normal Pharah Highlight Intros
-  (1, 7, 3, 11, 'Mission Complete', '2016-05-24'),
-  (1, 7, 3, 11, 'Touchdown', '2016-05-24'),
-  (1, 7, 3, 12, 'Death Blossom', '2016-05-24'), -- Normal Reaper Highlight Intros
-  (1, 7, 3, 12, 'Executioner', '2016-05-24'), --TODO check spelling
-  (1, 7, 3, 12, 'Shadow Step', '2016-05-24'),
-  (7, 7, 3, 12, 'Eternal Rest', '2016-10-11'), -- Halloween Terror Reaper Highlight Intros
-  (1, 7, 3, 13, 'Charge', '2016-05-24'), -- Normal Reinhardt Highlight Intros
-  (1, 7, 3, 13, 'Hammer Down', '2016-05-24'),
-  (1, 7, 3, 13, 'More Stretching Required', '2016-05-24'),
-  (1, 7, 3, 14, 'Little Piggy', '2016-05-24'), -- Normal Roadhog Highlight Intros
-  (1, 7, 3, 14, 'Say "Cheese"', '2016-05-24'),
-  (1, 7, 3, 14, 'Whole Hog', '2016-05-24'),
-  (1, 7, 3, 15, 'Helix', '2016-05-24'), -- Normal Soldier: 76 Highlight Intros
-  (1, 7, 3, 15, 'Looking At You', '2016-05-24'),
-  (1, 7, 3, 15, 'Target Rich Environment', '2016-05-24'),
-  (1, 7, 3, 16, 'Askew', '2016-05-24'), -- Normal Symmetra Highlight Intros
-  (1, 7, 3, 16, 'Dance', '2016-05-24'),
-  (1, 7, 3, 16, 'My Reality', '2016-05-24'),
-  (1, 7, 3, 17, 'In Your Face', '2016-05-24'), -- Normal Torbjörn Highlight Intros
-  (1, 7, 3, 17, 'Refreshing', '2016-05-24'),
-  (1, 7, 3, 17, 'Ride ''Em', '2016-05-24'),
-  (1, 7, 3, 18, 'Backflip', '2016-05-24'), -- Normal Tracer Highlight Intros
-  (1, 7, 3, 18, 'Just In Time', '2016-05-24'),
-  (1, 7, 3, 18, 'Serious Business', '2016-05-24'),
-  (6, 7, 3, 18, 'Hurdle', '2016-08-02'), -- Summer Games Tracer Highlight Intros
-  (1, 7, 3, 19, 'Hanging Around', '2016-05-24'), -- Normal Widowmaker Highlight Intros
-  (1, 7, 3, 19, 'I See You...', '2016-05-24'),
-  (1, 7, 3, 19, 'Swinging Into Action', '2016-05-24'),
-  (1, 7, 3, 20, 'Excuse Me', '2016-05-24'), -- Normal Winston Highlight Intros
-  (1, 7, 3, 20, 'Glasses', '2016-05-24'),
-  (1, 7, 3, 20, 'Primal Rage', '2016-05-24'),
-  (1, 7, 3, 21, 'Deadlift', '2016-05-24'), -- Normal Zarya Highlight Intros
-  (1, 7, 3, 21, 'Maximum Charge', '2016-05-24'),
-  (1, 7, 3, 21, 'This Is Strength', '2016-05-24'),
-  (1, 7, 3, 22, 'Focused', '2016-05-24'), -- Normal Zenyatta Highlight Intros
-  (1, 7, 3, 22, 'Harmony And Discord', '2016-05-24'),
-  (1, 7, 3, 22, 'Transcendence', '2016-05-24');
-
--- Weapons
+  (1, 7, 3, 1, 'Guardian', 3), -- Normal Ana Highlight Intros
+  (1, 7, 3, 1, 'Locked On', 3),
+  (1, 7, 3, 1, 'Shh...', 3),
+  (1, 7, 3, 2, 'Bullet Rain', 1), -- Normal Bastion Highlight Intros
+  (1, 7, 3, 2, 'Ganymede', 1),
+  (1, 7, 3, 2, 'On Guard', 1),
+  (1, 7, 3, 3, 'Eject', 1), -- Normal D.Va Highlight Intros
+  (1, 7, 3, 3, 'Lying Around', 1),
+  (1, 7, 3, 3, 'Meka Activated', 1),
+  (1, 7, 3, 4, 'Shuriken', 1), -- Normal Genji Highlight Intros
+  (1, 7, 3, 4, 'Unsheathing The Sword', 1),
+  (1, 7, 3, 4, 'Warrior''s Salute', 1),
+  (7, 7, 3, 4, 'Pumpkin Carving', 7), -- Halloween Terror Genji Highlight Intros
+  (1, 7, 3, 5, 'Backflip', 1), -- Normal Hanzo Highlight Intros
+  (1, 7, 3, 5, 'My Aim Is True', 1),
+  (1, 7, 3, 5, 'Superior', 1),
+  (1, 7, 3, 6, 'I''m Flying', 1), -- Normal Junkrat Highlight Intros
+  (1, 7, 3, 6, 'Rip-Tire', 1),
+  (1, 7, 3, 6, 'Unfortunate', 1),
+  (6, 7, 3, 6, 'Shotput', 4), -- Summer Games Junkrat Highlight Intros
+  (1, 7, 3, 7, 'Drop The Beat', 1), -- Normal Lúcio Highlight Intros
+  (1, 7, 3, 7, 'Freestyle', 1),
+  (1, 7, 3, 7, 'In The Groove', 1),
+  (1, 7, 3, 7, 'Bicycle Kick', 1), -- Summer Games Lúcio Highlight Intros
+  (1, 7, 3, 8, 'Rolling Into Action', 1), -- Normal McCree Highlight Intros
+  (1, 7, 3, 8, 'The Duel', 1),
+  (1, 7, 3, 8, 'The Name''s McCree', 1),
+  (1, 7, 3, 9, 'Frosty :)', 1), -- Normal Mei Highlight Intros
+  (1, 7, 3, 9, 'Going Up!', 1),
+  (1, 7, 3, 9, 'Skating Around', 1),
+  (7, 7, 3, 9, 'Ice Scream', 7), -- Halloween Terror Mei Highlight Intros
+  (1, 7, 3, 10, 'Battle Angel', 1), -- Normal Mercy Highlight Intros
+  (1, 7, 3, 10, 'Guardian Angel', 1),
+  (1, 7, 3, 10, 'Heroes Never Die', 1),
+  (1, 7, 3, 11, 'Barrage', 1), -- Normal Pharah Highlight Intros
+  (1, 7, 3, 11, 'Mission Complete', 1),
+  (1, 7, 3, 11, 'Touchdown', 1),
+  (1, 7, 3, 12, 'Death Blossom', 1), -- Normal Reaper Highlight Intros
+  (1, 7, 3, 12, 'Executioner', 1), --TODO check spelling
+  (1, 7, 3, 12, 'Shadow Step', 1),
+  (7, 7, 3, 12, 'Eternal Rest', 7), -- Halloween Terror Reaper Highlight Intros
+  (1, 7, 3, 13, 'Charge', 1), -- Normal Reinhardt Highlight Intros
+  (1, 7, 3, 13, 'Hammer Down', 1),
+  (1, 7, 3, 13, 'More Stretching Required', 1),
+  (1, 7, 3, 14, 'Little Piggy', 1), -- Normal Roadhog Highlight Intros
+  (1, 7, 3, 14, 'Say "Cheese"', 1),
+  (1, 7, 3, 14, 'Whole Hog', 1),
+  (1, 7, 3, 15, 'Helix', 1), -- Normal Soldier: 76 Highlight Intros
+  (1, 7, 3, 15, 'Looking At You', 1),
+  (1, 7, 3, 15, 'Target Rich Environment', 1),
+  (1, 7, 3, 16, 'Askew', 1), -- Normal Symmetra Highlight Intros
+  (1, 7, 3, 16, 'Dance', 1),
+  (1, 7, 3, 16, 'My Reality', 1),
+  (1, 7, 3, 17, 'In Your Face', 1), -- Normal Torbjörn Highlight Intros
+  (1, 7, 3, 17, 'Refreshing', 1),
+  (1, 7, 3, 17, 'Ride ''Em', 1),
+  (1, 7, 3, 18, 'Backflip', 1), -- Normal Tracer Highlight Intros
+  (1, 7, 3, 18, 'Just In Time', 1),
+  (1, 7, 3, 18, 'Serious Business', 1),
+  (6, 7, 3, 18, 'Hurdle', 4), -- Summer Games Tracer Highlight Intros
+  (1, 7, 3, 19, 'Hanging Around', 1), -- Normal Widowmaker Highlight Intros
+  (1, 7, 3, 19, 'I See You...', 1),
+  (1, 7, 3, 19, 'Swinging Into Action', 1),
+  (1, 7, 3, 20, 'Excuse Me', 1), -- Normal Winston Highlight Intros
+  (1, 7, 3, 20, 'Glasses', 1),
+  (1, 7, 3, 20, 'Primal Rage', 1),
+  (1, 7, 3, 21, 'Deadlift', 1), -- Normal Zarya Highlight Intros
+  (1, 7, 3, 21, 'Maximum Charge', 1),
+  (1, 7, 3, 21, 'This Is Strength', 1),
+  (1, 7, 3, 22, 'Focused', 1), -- Normal Zenyatta Highlight Intros
+  (1, 7, 3, 22, 'Harmony And Discord', 1),
+  (1, 7, 3, 22, 'Transcendence', 1),
+  (1, 7, 3, 23, 'Hacking', 9), -- Normal Sombra Highlight Intros
+  (1, 7, 3, 23, 'Pulse', 9),
+  (1, 7, 3, 23, 'Undetected', 9),
+  -- Weapons
+  (5, 8, 5, 1, 'Golden', 3), -- Golden Ana Weapons
+  (5, 8, 5, 2, 'Golden', 2), -- Golden Bastion Weapons
+  (5, 8, 5, 3, 'Golden', 2), -- Golden D.Va Weapons
+  (5, 8, 5, 4, 'Golden', 2), -- Golden Genji Weapons
+  (5, 8, 5, 5, 'Golden', 2), -- Golden Hanzo Weapons
+  (5, 8, 5, 6, 'Golden', 2), -- Golden Junkrat Weapons
+  (5, 8, 5, 7, 'Golden', 2), -- Golden Lúcio Weapons
+  (5, 8, 5, 8, 'Golden', 2), -- Golden McCree Weapons
+  (5, 8, 5, 9, 'Golden', 2), -- Golden Mei Weapons
+  (5, 8, 5, 10, 'Golden', 2), -- Golden Mercy Weapons
+  (5, 8, 5, 11, 'Golden', 2), -- Golden Pharah Weapons
+  (5, 8, 5, 12, 'Golden', 2), -- Golden Reaper Weapons
+  (5, 8, 5, 13, 'Golden', 2), -- Golden Reinhardt Weapons
+  (5, 8, 5, 14, 'Golden', 2), -- Golden Roadhog Weapons
+  (5, 8, 5, 15, 'Golden', 2), -- Golden Soldier: 76 Weapons
+  (5, 8, 5, 16, 'Golden', 2), -- Golden Symmetra Weapons
+  (5, 8, 5, 17, 'Golden', 2), -- Golden Torbjörn Weapons
+  (5, 8, 5, 18, 'Golden', 2), -- Golden Tracer Weapons
+  (5, 8, 5, 19, 'Golden', 2), -- Golden Widowmaker Weapons
+  (5, 8, 5, 20, 'Golden', 2), -- Golden Winston Weapons
+  (5, 8, 5, 21, 'Golden', 2), -- Golden Zarya Weapons
+  (5, 8, 5, 22, 'Golden', 2), -- Golden Zenyatta Weapons
+  (5, 8, 5, 23, 'Golden', 9); -- Golden Sombra Weapons
 
 --TODO double check season 2 competitive start date
 -- Double check defaults
-
-CREATE TABLE events (
-  id    SERIAL,
-  name  TEXT NOT NULL,
-  start DATE NOT NULL,
-  "end" DATE,
-  CONSTRAINT pk_events PRIMARY KEY (id)
-);
-
-INSERT INTO events (name, start, "end")
-VALUES
-  ('Overwatch Release', '2016-05-24', NULL),
-  ('Competitive Season 1', '2016-06-28', '2016-08-18'),
-  ('Ana Patch', '2016-07-19', NULL),
-  ('Summer Games 2016', '2016-08-02', '2016-08-23'),
-  ('Eichenwalde Patch', '2016-08-23', NULL),
-  ('Competitive Season 2', '2016-07-02', '2016-11-24'),
-  ('Halloween Terror 2016', '2016-10-11', '2016-11-01'),
-  ('Sombra Patch', '2016-11-15', NULL), -- TODO Cuando es Sombra?
-  ('Competitive Season 3', '2016-12-01', NULL); -- TODO end
 
 
 CREATE TABLE users (
