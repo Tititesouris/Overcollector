@@ -1,6 +1,3 @@
-#cosmetics-menu .cosmetics-menu--update {
-}
-
 #cosmetics-menu hr {
     margin: 0;
 }
@@ -15,8 +12,10 @@
     padding: 0 0.1rem;
 }
 
-#cosmetics-menu .cosmetics-menu--item img {
+#cosmetics-menu .cosmetics-menu--item .cosmetics-menu--item--image img {
     padding-right: 0.5rem;
+    width: 45px;
+    height: 45px;
 }
 
 #cosmetics-table {
@@ -31,6 +30,10 @@
 #cosmetics-table .cosmetics-table--type td {
     font-size: 1.5rem;
     text-align: left;
+}
+
+#cosmetics-table tr:not(.cosmetics-table--character):not(.cosmetics-table--type) td {
+    padding: 0 0.5rem;
 }
 
 .cosmetic.cosmetic-rarity-common .cosmetic--name {
@@ -49,17 +52,30 @@
     color: #ff8000;
 }
 
+.cosmetic .cosmetic--image {
+    float: left;
+    padding: 0 0.25rem 0 0;
+    margin: 0;
+}
+
+.cosmetic .cosmetic--image img {
+    width: 30px;
+    height: 30px;
+}
+
 .cosmetic .cosmetic--checkbox {
     float: left;
+    padding-top: 0.25rem;
 }
 
 .cosmetic .cosmetic--name {
     float: left;
     font-weight: bold;
     font-size: 1.25rem;
+    padding-top: 0.40rem;
 }
 
 .cosmetic .cosmetic--category img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }

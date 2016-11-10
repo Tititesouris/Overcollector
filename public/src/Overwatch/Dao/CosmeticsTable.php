@@ -14,7 +14,7 @@ class CosmeticsTable
 
     private $handler;
 
-    private $fetchAllCosmetics = "SELECT id, category_id, type_id, rarity_id, character_id, name FROM cosmetics ORDER BY character_id, type_id, name, category_id, rarity_id;";
+    private $fetchAllCosmetics = "SELECT id, category_id, type_id, rarity_id, character_id, name FROM cosmetics ORDER BY character_id, type_id, category_id, rarity_id, name;";
 
     private $fetchCosmeticsIdByUserId = "SELECT id, category_id, type_id, rarity_id, character_id, name FROM cosmetics LEFT JOIN user_cosmetics ON cosmetics.id = cosmetic_id WHERE user_id = $1 OR cosmetics.category_id IS NULL ORDER BY character_id, type_id, name, category_id, rarity_id;";
 

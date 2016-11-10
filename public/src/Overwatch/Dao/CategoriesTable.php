@@ -14,7 +14,7 @@ class CategoriesTable
 
     private $handler;
 
-    private $fetchAllCategories = "SELECT id, name, description FROM categories;";
+    private $fetchAllCategories = "SELECT id, name, description FROM categories INNER JOIN (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (3, 7), (4, 8), (8, 9)) AS orders(category_id, ordering) ON category_id = categories.id ORDER BY ordering;";
 
     private $fetchCategoryById = "SELECT id, name, description FROM categories WHERE id = $1;";
 
@@ -42,11 +42,26 @@ class CategoriesTable
         );
     }
 
-    public function getCategoryById($id) {
+    public function getCategoryById($id)
+    {
         $response = pg_execute($this->handler, "fetchCategoryById", array($id));
         if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
             return $this->parseCategory($row);
         }
         return null;
+    }
+
+    public function getAllCategoriesOrderById()
+    {
+        $response = pg_execute($this->handler, "fetchAllCategories", array());
+        if ($response !== false) {
+            $categories = [];
+            while (($row = pg_fetch_assoc($response)) !== false) {
+                $category = $this->parseCategory($row);
+                $categories[$category->getId()] = $category;
+            }
+            return $categories;
+        }
+        return [];
     }
 }

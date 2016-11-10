@@ -16,6 +16,7 @@ require_once(__DIR__ . "/functions.php");
 
 use \Overwatch\Dao\UsersTable;
 use \Overwatch\Dao\CharactersTable;
+use \Overwatch\Dao\CategoriesTable;
 use \Overwatch\Dao\TypesTable;
 use \Overwatch\Dao\CosmeticsTable;
 
@@ -23,6 +24,7 @@ if (!isUserLoggedIn()) {
     $_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
     $_SESSION["user"]->setCosmetics(CosmeticsTable::getInstance()->getCosmeticsByUserId($_SESSION["user"]->getId()));
     $_SESSION["characters"] = CharactersTable::getInstance()->getAllCharactersOrderById();
+    $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesOrderById();
     $_SESSION["types"] = TypesTable::getInstance()->getAllTypesOrderById();
     $_SESSION["cosmetics"] = CosmeticsTable::getInstance()->getAllCosmeticsOrderByCharactersAndType();
 }

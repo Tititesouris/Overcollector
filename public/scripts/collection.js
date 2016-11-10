@@ -27,21 +27,28 @@ $(function () {
     });
 
     // On toggle change all checkboxes
-    cosmeticsMenu.find(".cosmetics-menu--heroes-toggle input[type=checkbox]").change(function () {
-        cosmeticsMenu.find(".cosmetics-menu--item input[type=checkbox]").prop("checked", $(this).prop("checked"));
+    cosmeticsMenu.find(".cosmetics-menu--toggle input[type=checkbox]").change(function () {
+        var checkboxes = cosmeticsMenu.find(".cosmetics-menu--item-" + $(this).data("item") + " input[type=checkbox]");
+        checkboxes.prop("checked", $(this).prop("checked"));
         // Update MDL
         if ($(this).prop("checked")) {
-            cosmeticsMenu.find(".cosmetics-menu--item label").addClass("is-checked");
+            cosmeticsMenu.find(".cosmetics-menu--item-" + $(this).data("item") + " label").addClass("is-checked");
         }
         else {
-            cosmeticsMenu.find(".cosmetics-menu--item label").removeClass("is-checked");
+            cosmeticsMenu.find(".cosmetics-menu--item-" + $(this).data("item") + " label").removeClass("is-checked");
         }
-        cosmeticsMenu.find(".cosmetics-menu--item input[type=checkbox]").trigger("change");
+        checkboxes.trigger("change");
     });
 
-    // On checkbox change hide/show hero
+    // On checkbox change hide/show category/hero
     cosmeticsMenu.find(".cosmetics-menu--item input[type=checkbox]").change(function () {
-        $("#cosmetics-table").find(".cosmetics-table--body-" + $(this).data("hero-id")).css("display", $(this).prop("checked") ? "table-row-group" : "none");
+        console.log("test");
+        if ($(this).attr("data-category-id")) {
+            $("#cosmetics-table").find(".cosmetics-table--category.category-" + $(this).data("category-id")).css("display", $(this).prop("checked") ? "table-cell" : "none");
+        }
+        else {
+            $("#cosmetics-table").find(".cosmetics-table--body.character-" + $(this).data("hero-id")).css("display", $(this).prop("checked") ? "table-row-group" : "none");
+        }
     });
 
 }());

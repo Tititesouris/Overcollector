@@ -1,5 +1,8 @@
 {% macro cosmetic(cosmetic, owned) %}
     <div class="cosmetic cosmetic-rarity-{{ cosmetic.rarity is not null ? cosmetic.rarity.name|lower : "common" }}">
+        <span class="cosmetic--image">
+            <img src="img/collection/icons/0.png"/>
+        </span>
         <span class="cosmetic--checkbox">
             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"
                    for="cosmetic-checkbox[{{ cosmetic.id }}]">
@@ -10,7 +13,7 @@
         <span class="cosmetic--name">{{ cosmetic.name }}</span>
         {% if cosmetic.category is not null and cosmetic.category.id != 1 %}
             <span id="cosmetic-category[{{ cosmetic.id }}]" class="cosmetic--category">
-                <img src="img/collection/categories/{{ cosmetic.category.name|lower|replace({' ': ''}) }}.png"/>
+                <img src="img/collection/categories/{{ cosmetic.category.id }}.png"/>
             </span>
             <div class="mdl-tooltip" data-mdl-for="cosmetic-category[{{ cosmetic.id }}]">
                 {{ cosmetic.category.description|breverynword(5) }}
