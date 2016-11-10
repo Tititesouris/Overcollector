@@ -22,7 +22,6 @@ use \Overwatch\Dao\CosmeticsTable;
 
 if (!isUserLoggedIn()) {
     $_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
-    $_SESSION["user"]->setCosmetics(CosmeticsTable::getInstance()->getCosmeticsByUserId($_SESSION["user"]->getId()));
     $_SESSION["characters"] = CharactersTable::getInstance()->getAllCharactersOrderById();
     $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesOrderById();
     $_SESSION["types"] = TypesTable::getInstance()->getAllTypesOrderById();

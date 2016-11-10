@@ -3,14 +3,10 @@ namespace Overwatch\Dao;
 
 use Overwatch\User;
 
-require_once(__DIR__ . "/Database.php");
-
-class UsersTable
+class UsersTable extends Table
 {
 
     private static $instance;
-
-    private $handler;
 
     private $fetchUserByName = "SELECT id, username FROM users WHERE username = $1;";
 
@@ -18,9 +14,9 @@ class UsersTable
 
     private $removeCosmeticsByUserId = "DELETE FROM user_cosmetics WHERE user_id = $1;";
 
-    private function __construct()
+    protected function __construct()
     {
-        $this->handler = Database::getInstance()->getHandler();
+        parent::__construct();
         pg_prepare($this->handler, "fetchUserByName", $this->fetchUserByName);
         pg_prepare($this->handler, "addCosmetic", $this->addCosmetic);
         pg_prepare($this->handler, "removeCosmeticsByUserId", $this->removeCosmeticsByUserId);
@@ -36,9 +32,11 @@ class UsersTable
 
     private static function parseUser($row)
     {
-        return new User(
+        return User::createUser(
             intval($row["id"]),
-            $row["username"]
+            $row["username"],
+            CosmeticsTable::getInstance()->getCosmeticsByUserId(intval($row["id"])),
+            SettingsTable::getInstance()->getUserSettings(intval($row["id"]))
         );
     }
 

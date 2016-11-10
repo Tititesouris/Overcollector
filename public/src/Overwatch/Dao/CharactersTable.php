@@ -3,22 +3,18 @@ namespace Overwatch\Dao;
 
 use Overwatch\Character;
 
-require_once(__DIR__ . "/Database.php");
-
-class CharactersTable
+class CharactersTable extends Table
 {
 
     private static $instance;
-
-    private $handler;
 
     private $fetchAllCharacters = "SELECT id, name FROM characters ORDER BY name;";
 
     private $fetchCharacterById = "SELECT id, name FROM characters WHERE id = $1;";
 
-    private function __construct()
+    protected function __construct()
     {
-        $this->handler = Database::getInstance()->getHandler();
+        parent::__construct();
         pg_prepare($this->handler, "fetchAllCharacters", $this->fetchAllCharacters);
         pg_prepare($this->handler, "fetchCharacterById", $this->fetchCharacterById);
     }

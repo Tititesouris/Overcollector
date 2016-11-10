@@ -4,20 +4,18 @@ namespace Overwatch\Dao;
 
 use Overwatch\Type;
 
-class TypesTable
+class TypesTable extends Table
 {
 
     private static $instance;
-
-    private $handler;
 
     private $fetchAllTypes = "SELECT id, name FROM types ORDER BY id;";
 
     private $fetchTypeById = "SELECT id, name FROM types WHERE id = $1;";
 
-    private function __construct()
+    protected function __construct()
     {
-        $this->handler = Database::getInstance()->getHandler();
+        parent::__construct();
         pg_prepare($this->handler, "fetchAllTypes", $this->fetchAllTypes);
         pg_prepare($this->handler, "fetchTypeById", $this->fetchTypeById);
     }

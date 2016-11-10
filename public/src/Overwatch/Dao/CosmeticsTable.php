@@ -5,22 +5,18 @@ namespace Overwatch\Dao;
 use Overwatch\Category;
 use Overwatch\Cosmetic;
 
-require_once(__DIR__ . "/Database.php");
-
-class CosmeticsTable
+class CosmeticsTable extends Table
 {
 
     private static $instance;
-
-    private $handler;
 
     private $fetchAllCosmetics = "SELECT id, category_id, type_id, rarity_id, character_id, name FROM cosmetics ORDER BY character_id, type_id, category_id, rarity_id, name;";
 
     private $fetchCosmeticsIdByUserId = "SELECT id, category_id, type_id, rarity_id, character_id, name FROM cosmetics LEFT JOIN user_cosmetics ON cosmetics.id = cosmetic_id WHERE user_id = $1 OR cosmetics.category_id IS NULL ORDER BY character_id, type_id, name, category_id, rarity_id;";
 
-    private function __construct()
+    protected function __construct()
     {
-        $this->handler = Database::getInstance()->getHandler();
+        parent::__construct();
         pg_prepare($this->handler, "fetchAllCosmetics", $this->fetchAllCosmetics);
         pg_prepare($this->handler, "fetchCosmeticsIdByUserId", $this->fetchCosmeticsIdByUserId);
     }

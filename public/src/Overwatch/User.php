@@ -11,10 +11,19 @@ class User implements JsonSerializable
 
     private $cosmetics;
 
-    function __construct($id, $username)
+    private $settings;
+
+    private function __construct($id, $username, $cosmetics, $settings)
     {
         $this->id = $id;
         $this->username = $username;
+        $this->cosmetics = $cosmetics;
+        $this->settings = $settings;
+    }
+
+    public static function createUser($id, $username, $cosmetics, $settings)
+    {
+        return new self($id, $username, $cosmetics, $settings);
     }
 
     /**
@@ -60,11 +69,21 @@ class User implements JsonSerializable
         return false;
     }
 
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    public function setSetting($setting)
+    {
+        $this->settings[$setting->getName()] = $setting;
+    }
+
     public function jsonSerialize()
     {
         return [
             "id" => $this->id,
-            "username" => $this->username,
+            "username" => $this->username
         ];
     }
 

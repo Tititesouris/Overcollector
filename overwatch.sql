@@ -1,5 +1,5 @@
 DROP OWNED BY overwatch;
-DROP TABLE IF EXISTS characters, categories, types, rarities, events, cosmetics, users, user_cosmetics;
+DROP TABLE IF EXISTS characters, categories, types, rarities, events, cosmetics, users, user_cosmetics, settings, user_settings;
 DROP ROLE IF EXISTS overwatch;
 
 CREATE ROLE overwatch WITH LOGIN PASSWORD 'localpass';
@@ -32,7 +32,7 @@ VALUES
   (17, 'Torbjörn'),
   (18, 'Tracer'),
   (19, 'Widowmaker'),
-  (20, 'Wiston'),
+  (20, 'Winston'),
   (21, 'Zarya'),
   (22, 'Zenyatta'),
   (23, 'Sombra');
@@ -1225,6 +1225,7 @@ CREATE TABLE settings (
   description TEXT        NOT NULL,
   CONSTRAINT pk_settings PRIMARY KEY (id)
 );
+GRANT SELECT ON TABLE settings TO overwatch;
 
 INSERT INTO settings (name, description)
 VALUES
@@ -1244,4 +1245,38 @@ VALUES
   ('collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection'),
   ('collection-show-heroes', 'Show cosmetics for every hero and All Heroes in the collection'),
   ('collection-show-hero-allheroes', 'Show cosmetics for All Heroes in the collection'),
-  ('collection-show-hero-ana', 'Show cosmetics for Ana in the collection');
+  ('collection-show-hero-ana', 'Show cosmetics for Ana in the collection'),
+  ('collection-show-hero-bastion', 'Show cosmetics for Bastion in the collection'),
+  ('collection-show-hero-dva', 'Show cosmetics for D.Va in the collection'),
+  ('collection-show-hero-genji', 'Show cosmetics for Genji in the collection'),
+  ('collection-show-hero-hanzo', 'Show cosmetics for Hanzo in the collection'),
+  ('collection-show-hero-junkrat', 'Show cosmetics for Junkrat in the collection'),
+  ('collection-show-hero-lucio', 'Show cosmetics for Lúcio in the collection'),
+  ('collection-show-hero-mccree', 'Show cosmetics for McCree in the collection'),
+  ('collection-show-hero-mei', 'Show cosmetics for Mei in the collection'),
+  ('collection-show-hero-mercy', 'Show cosmetics for Mercy in the collection'),
+  ('collection-show-hero-pharah', 'Show cosmetics for Pharah in the collection'),
+  ('collection-show-hero-reaper', 'Show cosmetics for Reaper in the collection'),
+  ('collection-show-hero-reinhardt', 'Show cosmetics for Reinhardt in the collection'),
+  ('collection-show-hero-roadhog', 'Show cosmetics for Roadhog in the collection'),
+  ('collection-show-hero-soldier76', 'Show cosmetics for Soldier: 76 in the collection'),
+  ('collection-show-hero-sombra', 'Show cosmetics for Sombra in the collection'),
+  ('collection-show-hero-symmetra', 'Show cosmetics for Symmetra in the collection'),
+  ('collection-show-hero-torbjorn', 'Show cosmetics for Torbjörn in the collection'),
+  ('collection-show-hero-tracer', 'Show cosmetics for Tracer in the collection'),
+  ('collection-show-hero-widowmaker', 'Show cosmetics for Widowmaker in the collection'),
+  ('collection-show-hero-winston', 'Show cosmetics for Winston in the collection'),
+  ('collection-show-hero-zarya', 'Show cosmetics for Zarya in the collection'),
+  ('collection-show-hero-zenyatta', 'Show cosmetics for Zenyatta in the collection');
+
+CREATE TABLE user_settings (
+  user_id    INTEGER NOT NULL,
+  setting_id INTEGER NOT NULL,
+  value      TEXT    NOT NULL,
+  CONSTRAINT pk_user_settings PRIMARY KEY (user_id, setting_id),
+  CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users (id)
+  ON UPDATE CASCADE ON DELETE RESTRICT,
+  CONSTRAINT fk_setting FOREIGN KEY (setting_id) REFERENCES settings (id)
+  ON UPDATE CASCADE ON DELETE RESTRICT
+);
+GRANT SELECT, INSERT, UPDATE ON TABLE user_settings TO overwatch;

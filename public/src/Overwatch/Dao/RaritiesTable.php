@@ -2,23 +2,20 @@
 
 namespace Overwatch\Dao;
 
-
 use Overwatch\Rarity;
 
-class RaritiesTable
+class RaritiesTable extends Table
 {
 
     private static $instance;
-
-    private $handler;
 
     private $fetchAllRarities = "SELECT id, name, base_price FROM rarities;";
 
     private $fetchRarityById = "SELECT id, name, base_price FROM rarities WHERE id = $1;";
 
-    private function __construct()
+    protected function __construct()
     {
-        $this->handler = Database::getInstance()->getHandler();
+        parent::__construct();
         pg_prepare($this->handler, "fetchAllRarities", $this->fetchAllRarities);
         pg_prepare($this->handler, "fetchRarityById", $this->fetchRarityById);
     }

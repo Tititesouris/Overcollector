@@ -5,22 +5,18 @@ namespace Overwatch\Dao;
 
 use Overwatch\Category;
 
-require_once(__DIR__ . "/Database.php");
-
-class CategoriesTable
+class CategoriesTable extends Table
 {
 
     private static $instance;
-
-    private $handler;
 
     private $fetchAllCategories = "SELECT id, name, description FROM categories INNER JOIN (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (3, 7), (4, 8), (8, 9)) AS orders(category_id, ordering) ON category_id = categories.id ORDER BY ordering;";
 
     private $fetchCategoryById = "SELECT id, name, description FROM categories WHERE id = $1;";
 
-    private function __construct()
+    protected function __construct()
     {
-        $this->handler = Database::getInstance()->getHandler();
+        parent::__construct();
         pg_prepare($this->handler, "fetchAllCategories", $this->fetchAllCategories);
         pg_prepare($this->handler, "fetchCategoryById", $this->fetchCategoryById);
     }
@@ -64,4 +60,5 @@ class CategoriesTable
         }
         return [];
     }
+
 }

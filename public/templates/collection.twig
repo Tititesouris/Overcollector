@@ -18,7 +18,8 @@
                     </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-show-owned">
-                            <input type="checkbox" id="switch-show-owned" class="mdl-switch__input" checked>
+                            <input type="checkbox" id="switch-show-owned" class="setting-input mdl-switch__input"
+                                   data-setting="collection-show-owned-cosmetics" {{ SESSION.user.settings["collection-show-owned-cosmetics"].value ?? true ? "checked" }}>
                         </label>
                     </span>
                 </li>
@@ -29,7 +30,8 @@
                     </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-categories">
-                            <input type="checkbox" id="switch-all-categories" class="mdl-switch__input" data-item="category" checked>
+                            <input type="checkbox" id="switch-all-categories" class="setting-input mdl-switch__input"
+                                   data-setting="collection-show-categories" {{ SESSION.user.settings["collection-show-categories"].value ?? true ? "checked" }}>
                         </label>
                     </span>
                 </li>
@@ -39,8 +41,8 @@
                         </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="category-checkbox[0]">
-                            <input type="checkbox" id="category-checkbox[0]" class="mdl-checkbox__input"
-                                   data-category-id="0" checked/>
+                            <input type="checkbox" id="category-checkbox[0]" class="setting-input mdl-checkbox__input"
+                                   data-setting="collection-show-category-default" {{ SESSION.user.settings["collection-show-category-default"].value ?? true ? "checked" }}/>
                         </label>
                     </span>
                 </li>
@@ -53,7 +55,9 @@
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
                                    for="category-checkbox[{{ category.id }}]">
                                 <input type="checkbox" id="category-checkbox[{{ category.id }}]"
-                                       class="mdl-checkbox__input" data-category-id="{{ category.id }}" checked/>
+                                       class="setting-input mdl-checkbox__input"
+                                       data-setting="collection-show-category-{{ category.name|lower|replace({" ": ""}) }}"
+                                        {{ SESSION.user.settings["collection-show-category-" ~ category.name|lower|replace({" ": ""})].value ?? true ? "checked" }}/>
                             </label>
                         </span>
                     </li>
@@ -65,7 +69,8 @@
                     </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-heroes">
-                            <input type="checkbox" id="switch-all-heroes" class="mdl-switch__input" data-item="hero" checked>
+                            <input type="checkbox" id="switch-all-heroes" class="setting-input mdl-switch__input"
+                                   data-setting="collection-show-heroes" {{ SESSION.user.settings["collection-show-heroes"].value ?? true ? "checked" }}>
                         </label>
                     </span>
                 </li>
@@ -75,8 +80,8 @@
                         </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="character-checkbox[0]">
-                            <input type="checkbox" id="character-checkbox[0]" class="mdl-checkbox__input"
-                                   data-hero-id="0" checked/>
+                            <input type="checkbox" id="character-checkbox[0]" class="setting-input mdl-checkbox__input"
+                                   data-setting="collection-show-hero-allheroes" {{ SESSION.user.settings["collection-show-hero-allheroes"].value ?? true ? "checked" }}/>
                         </label>
                     </span>
                 </li>
@@ -89,7 +94,9 @@
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
                                    for="character-checkbox[{{ character.id }}]">
                                 <input type="checkbox" id="character-checkbox[{{ character.id }}]"
-                                       class="mdl-checkbox__input" data-hero-id="{{ character.id }}" checked/>
+                                       class="setting-input mdl-checkbox__input"
+                                       data-setting="collection-show-hero-{{ character.name|lower|replace({" ": ""}) }}"
+                                        {{ SESSION.user.settings["collection-show-hero-" ~ character.name|lower|replace({" ": ""})].value ?? true ? "checked" }}/>
                             </label>
                         </span>
                     </li>
