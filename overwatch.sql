@@ -125,7 +125,7 @@ CREATE TABLE cosmetics (
   rarity_id    INTEGER,
   character_id INTEGER,
   name         TEXT    NOT NULL,
-  event        INTEGER,
+  event_id     INTEGER,
   CONSTRAINT pk_cosmetics PRIMARY KEY (id),
   CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES categories (id)
   ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -140,7 +140,7 @@ CREATE TABLE cosmetics (
 );
 GRANT SELECT ON TABLE cosmetics TO overwatch;
 
-INSERT INTO cosmetics (category_id, type_id, rarity_id, character_id, name, event)
+INSERT INTO cosmetics (category_id, type_id, rarity_id, character_id, name, event_id)
 VALUES
   -- Player Icons
   (NULL, 1, NULL, NULL, 'Overwatch Dark', 1), -- Default All Heroes Player Icons
@@ -1217,3 +1217,31 @@ INSERT INTO user_cosmetics (user_id, cosmetic_id)
 VALUES
   (1, 15),
   (1, 25);
+
+
+CREATE TABLE settings (
+  id          SERIAL,
+  name        TEXT UNIQUE NOT NULL,
+  description TEXT        NOT NULL,
+  CONSTRAINT pk_settings PRIMARY KEY (id)
+);
+
+INSERT INTO settings (name, description)
+VALUES
+  ('collection-show-images', 'Show images in the collection'),
+  ('collection-show-colors', 'Show the completion progress with colors in the collection'),
+  ('collection-show-owned-cosmetics', 'Show owned cosmetics in the collection'),
+  ('collection-show-categories', 'Show cosmetics for every category in the collection'),
+  ('collection-show-category-default', 'Show Default cosmetics in the collection'),
+  ('collection-show-category-normal', 'Show Normal cosmetics in the collection'),
+  ('collection-show-category-achievements', 'Show Achievements cosmetics in the collection'),
+  ('collection-show-category-competitive', 'Show Competitive cosmetics in the collection'),
+  ('collection-show-category-summergames', 'Show Summer Games cosmetics in the collection'),
+  ('collection-show-category-halloweenterror', 'Show Halloween Terror cosmetics in the collection'),
+  ('collection-show-category-blizzard', 'Show Blizzard cosmetics in the collection'),
+  ('collection-show-category-originsedition', 'Show Origins Edition cosmetics in the collection'),
+  ('collection-show-category-preorder', 'Show Preorder cosmetics in the collection'),
+  ('collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection'),
+  ('collection-show-heroes', 'Show cosmetics for every hero and All Heroes in the collection'),
+  ('collection-show-hero-allheroes', 'Show cosmetics for All Heroes in the collection'),
+  ('collection-show-hero-ana', 'Show cosmetics for Ana in the collection');

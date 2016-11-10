@@ -8,7 +8,7 @@
 }
 
 #cosmetics-menu .cosmetics-menu--item {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 0 0.1rem;
 }
 
@@ -71,8 +71,9 @@
 .cosmetic .cosmetic--name {
     float: left;
     font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 1rem;
     padding-top: 0.40rem;
+    text-transform: capitalize;
 }
 
 .cosmetic .cosmetic--category img {
