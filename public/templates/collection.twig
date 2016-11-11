@@ -1,10 +1,8 @@
 {% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
-    {% set itemsPerRow = 3 %}
-    {# TODO: Owned or not, show the same stats #}
     {% set heroStats = {} %}
-    {% for hero, types in SESSION.cosmetics %}
+    {% for hero, types in SESSION.allcosmetics %}
         {% set heroOwned = 0 %}
         {% set heroTotal = 0 %}
         {% set typesStats = {} %}
@@ -162,7 +160,7 @@
                     <tbody class="cosmetics-table--body">
                     <tr class="cosmetics-table--hero"
                         style="background-color: {{ ratio|colorgradient("rgba") }};">
-                        <td colspan="{{ itemsPerRow - 1 }}"
+                        <td colspan="{{ SESSION.user.settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}"
                             class="mdl-typography--headline mdl-data-table__cell--non-numeric">
                             <a name="{{ hero > 0 ? SESSION.heroes[hero].short : "allheroes" }}">
                                 {{ hero > 0 ? SESSION.heroes[hero].name : "All Heroes" }}
@@ -177,14 +175,16 @@
                         {% set ratio = heroStats["hero-"~hero].types["type-"~type].owned / heroStats["hero-"~hero].types["type-"~type].total %}
                         <tr class="cosmetics-table--type"
                             style="background-color: {{ ratio|colorgradient("rgba") }};">
-                            <td colspan="{{ itemsPerRow - 1 }}">{{ SESSION.types[type].name }}s</td>
+                            <td colspan="{{ SESSION.user.settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}">
+                                {{ SESSION.types[type].name }}s
+                            </td>
                             <td>
                                 {{ (ratio * 100)|round(2, 'floor') }}%
                                 ({{ heroStats["hero-"~hero].types["type-"~type].owned }}
                                 / {{ heroStats["hero-"~hero].types["type-"~type].total }})
                             </td>
                         </tr>
-                        {% for row in cosmetics|batch(itemsPerRow) %}
+                        {% for row in cosmetics|batch(SESSION.user.settings["collection-cosmetics-per-row"].value ?? 3) %}
                             <tr>
                                 {% for cosmetic in row %}
                                     <td class="cosmetics-table--category category-{{ cosmetic.category is not null ? cosmetic.category.id : 0 }}">

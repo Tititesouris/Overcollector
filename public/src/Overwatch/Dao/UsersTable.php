@@ -35,7 +35,7 @@ class UsersTable extends Table
         return User::createUser(
             intval($row["id"]),
             $row["username"],
-            CosmeticsTable::getInstance()->getCosmeticsByUserId(intval($row["id"])),
+            CosmeticsTable::getInstance()->getOwnedCosmeticsByUserId(intval($row["id"])),
             SettingsTable::getInstance()->getUserSettings(intval($row["id"]))
         );
     }

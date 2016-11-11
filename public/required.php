@@ -25,7 +25,8 @@ if (!isUserLoggedIn()) {
     $_SESSION["heroes"] = HeroesTable::getInstance()->getAllHeroesOrderById();
     $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesOrderById();
     $_SESSION["types"] = TypesTable::getInstance()->getAllTypesOrderById();
-    $_SESSION["cosmetics"] = CosmeticsTable::getInstance()->getAllCosmeticsOrderByHeroesAndType();
+    $_SESSION["allcosmetics"] = CosmeticsTable::getInstance()->getAllCosmeticsByUserIdSortByHeroesAndType($_SESSION["user"]->getId());
+    $_SESSION["cosmetics"] = CosmeticsTable::getInstance()->getCosmeticsByUserIdSortByHeroesAndType($_SESSION["user"]->getId());
 }
 
 //echo '<pre>' . var_export($_SESSION, true) . '</pre>';

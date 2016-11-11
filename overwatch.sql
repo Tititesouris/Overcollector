@@ -1240,6 +1240,7 @@ INSERT INTO settings (name, description, "default")
 VALUES
   ('collection-show-images', 'Show images in the collection', 'true'),
   ('collection-show-colors', 'Show the completion progress with colors in the collection', 'true'),
+  ('collection-cosmetics-per-row', 'Number of cosmetics to display per row in the collection', '3'),
   ('collection-show-owned-cosmetics', 'Show owned cosmetics in the collection', 'true'),
   ('collection-show-categories', 'Show cosmetics for every category in the collection', 'true'),
   ('collection-show-category-default', 'Show Default cosmetics in the collection', 'true'),
