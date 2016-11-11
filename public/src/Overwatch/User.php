@@ -42,12 +42,12 @@ class User implements JsonSerializable
         return $this->username;
     }
 
-    public function getCosmetics($characterId)
+    public function getCosmetics($heroId) //TODO remove if I manage to do without it
     {
         $cosmetics = [];
         foreach ($this->cosmetics as $cosmetic) {
-            if (($cosmetic->getCharacter() === null && $characterId === 0) ||
-                ($cosmetic->getCharacter() !== null && $cosmetic->getCharacter()->getId() === $characterId)
+            if (($cosmetic->getHero() === null && $heroId === 0) ||
+                ($cosmetic->getHero() !== null && $cosmetic->getHero()->getId() === $heroId)
             ) {
                 $cosmetics[$cosmetic->getType()->getId()][] = $cosmetic;
             }
@@ -74,7 +74,7 @@ class User implements JsonSerializable
         return $this->settings;
     }
 
-    public function setSetting($setting)
+    public function setSetting(UserSetting $setting)
     {
         $this->settings[$setting->getName()] = $setting;
     }

@@ -15,17 +15,17 @@ if (DEBUG) {
 require_once(__DIR__ . "/functions.php");
 
 use \Overwatch\Dao\UsersTable;
-use \Overwatch\Dao\CharactersTable;
+use \Overwatch\Dao\HeroesTable;
 use \Overwatch\Dao\CategoriesTable;
 use \Overwatch\Dao\TypesTable;
 use \Overwatch\Dao\CosmeticsTable;
 
 if (!isUserLoggedIn()) {
     $_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
-    $_SESSION["characters"] = CharactersTable::getInstance()->getAllCharactersOrderById();
+    $_SESSION["heroes"] = HeroesTable::getInstance()->getAllHeroesOrderById();
     $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesOrderById();
     $_SESSION["types"] = TypesTable::getInstance()->getAllTypesOrderById();
-    $_SESSION["cosmetics"] = CosmeticsTable::getInstance()->getAllCosmeticsOrderByCharactersAndType();
+    $_SESSION["cosmetics"] = CosmeticsTable::getInstance()->getAllCosmeticsOrderByHeroesAndType();
 }
 
 //echo '<pre>' . var_export($_SESSION, true) . '</pre>';

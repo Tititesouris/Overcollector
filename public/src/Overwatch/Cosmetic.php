@@ -16,74 +16,64 @@ class Cosmetic implements JsonSerializable
 
     private $rarity;
 
-    private $character;
+    private $hero;
 
     private $name;
 
-    private function __construct($id, $category, $type, $rarity, $character, $name)
+    private $event;
+
+    private function __construct($id, $category, $type, $rarity, $hero, $name, $event)
     {
         $this->id = $id;
         $this->category = $category;
         $this->type = $type;
         $this->rarity = $rarity;
-        $this->character = $character;
+        $this->hero = $hero;
         $this->name = $name;
+        $this->event = $event;
     }
 
-    public static function createCosmetic($id, $category, $type, $rarity, $character, $name)
+    public static function createCosmetic($id, $category, $type, $rarity, $hero, $name, $event)
     {
         if (!array_key_exists($id, self::$cosmetics)) {
-            self::$cosmetics[$id] = new Cosmetic($id, $category, $type, $rarity, $character, $name);
+            self::$cosmetics[$id] = new Cosmetic($id, $category, $type, $rarity, $hero, $name, $event);
         }
         return self::$cosmetics[$id];
     }
 
-    /**
-     * @return mixed
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getCategory()
     {
         return $this->category;
     }
 
-    /**
-     * @return mixed
-     */
     public function getType()
     {
         return $this->type;
     }
 
-    /**
-     * @return mixed
-     */
     public function getRarity()
     {
         return $this->rarity;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCharacter()
+    public function getHero()
     {
-        return $this->character;
+        return $this->hero;
     }
 
-    /**
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getEvent()
+    {
+        return $this->event;
     }
 
     function jsonSerialize()

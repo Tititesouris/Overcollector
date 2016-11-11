@@ -11,5 +11,8 @@ if (isUserLoggedIn()) {
             echo true;
         }
     }
+    else if (isset($_POST["export"])) {
+
+    }
 }
 echo false;

@@ -10,9 +10,9 @@ class CategoriesTable extends Table
 
     private static $instance;
 
-    private $fetchAllCategories = "SELECT id, name, description FROM categories INNER JOIN (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (3, 7), (4, 8), (8, 9)) AS orders(category_id, ordering) ON category_id = categories.id ORDER BY ordering;";
+    private $fetchAllCategories = "SELECT id, name, description, short FROM categories INNER JOIN (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (3, 7), (4, 8), (8, 9)) AS orders(category_id, ordering) ON category_id = categories.id ORDER BY ordering;";
 
-    private $fetchCategoryById = "SELECT id, name, description FROM categories WHERE id = $1;";
+    private $fetchCategoryById = "SELECT id, name, description, short FROM categories WHERE id = $1;";
 
     protected function __construct()
     {
@@ -34,7 +34,8 @@ class CategoriesTable extends Table
         return Category::createCategory(
             intval($row["id"]),
             $row["name"],
-            $row["description"]
+            $row["description"],
+            $row["short"]
         );
     }
 

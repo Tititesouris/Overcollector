@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+#cosmetics-menu .cosmetics-menu--update button {
+    margin-left: 1rem;
+}
+
 #cosmetics-menu .cosmetics-menu--item {
     font-size: 1.1rem;
     padding: 0 0.1rem;
@@ -22,7 +26,7 @@
     width: 100%;
 }
 
-#cosmetics-table .cosmetics-table--character td {
+#cosmetics-table .cosmetics-table--hero td {
     font-size: 2rem;
     text-align: center;
 }
@@ -32,7 +36,7 @@
     text-align: left;
 }
 
-#cosmetics-table tr:not(.cosmetics-table--character):not(.cosmetics-table--type) td {
+#cosmetics-table tr:not(.cosmetics-table--hero):not(.cosmetics-table--type) td {
     padding: 0 0.5rem;
 }
 

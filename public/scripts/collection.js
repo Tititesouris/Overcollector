@@ -3,17 +3,13 @@ $(function () {
 
     var cosmeticsMenu = $("#cosmetics-menu");
 
-    // Save changes to collection
-    cosmeticsMenu.find(".cosmetics-menu--update button").click(function () {
+    cosmeticsMenu.find(".cosmetics-menu--update-save, button").click(function () {
         var cosmetics = [];
         $("#cosmetics-table").find(".cosmetic--checkbox input[type='checkbox']:checked").each(function () {
             cosmetics.push($(this).data("cosmetic-id"));
         });
-        $.post(
-            "cosmetics.php",
-            {
-                cosmetics: cosmetics
-            },
+
+        saveCollection(cosmetics,
             function (data) {
                 document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
                     message: data ? "Collection updated!" : "Error: Update failed"
@@ -28,18 +24,36 @@ $(function () {
     });
 
     cosmeticsMenu.find(".setting-input, input[type=checkbox]").change(function () {
+        saveSetting($(this).data("setting"), $(this).prop("checked"), function (data) {
+            if (data) {
+                cosmeticsMenu.find(".cosmetics-menu--update-save, button").trigger("click");
+            }
+        })
+    });
+
+    function saveCollection(cosmetics, f) {
+        $.post(
+            "cosmetics.php",
+            {
+                cosmetics: cosmetics
+            },
+            function (data) {
+                f(data);
+            }
+        );
+    }
+
+    function saveSetting(setting, value, f) {
         $.post(
             "settings.php",
             {
-                setting: $(this).data("setting"),
-                value: $(this).prop("checked")
+                setting: setting,
+                value: value
             },
             function (data) {
-                if (data) {
-                    location.reload();
-                }
+                f(data);
             }
         );
-    });
+    }
 
 }());

@@ -1,63 +1,66 @@
 DROP OWNED BY overwatch;
-DROP TABLE IF EXISTS characters, categories, types, rarities, events, cosmetics, users, user_cosmetics, settings, user_settings;
+DROP TABLE IF EXISTS heroes, categories, types, rarities, events, cosmetics, users, user_cosmetics, settings, user_settings;
 DROP ROLE IF EXISTS overwatch;
 
 CREATE ROLE overwatch WITH LOGIN PASSWORD 'localpass';
 
-CREATE TABLE characters (
-  id   INTEGER,
-  name TEXT NOT NULL,
-  CONSTRAINT pk_characters PRIMARY KEY (id)
+CREATE TABLE heroes (
+  id    INTEGER,
+  name  TEXT NOT NULL,
+  short TEXT NOT NULL,
+  CONSTRAINT pk_heroes PRIMARY KEY (id)
 );
-GRANT SELECT ON TABLE characters TO overwatch;
+GRANT SELECT ON TABLE heroes TO overwatch;
 
-INSERT INTO characters (id, name)
+INSERT INTO heroes (id, name, short)
 VALUES
-  (1, 'Ana'),
-  (2, 'Bastion'),
-  (3, 'D.Va'),
-  (4, 'Genji'),
-  (5, 'Hanzo'),
-  (6, 'Junkrat'),
-  (7, 'Lúcio'),
-  (8, 'McCree'),
-  (9, 'Mei'),
-  (10, 'Mercy'),
-  (11, 'Pharah'),
-  (12, 'Reaper'),
-  (13, 'Reinhardt'),
-  (14, 'Roadhog'),
-  (15, 'Soldier: 76'),
-  (16, 'Symmetra'),
-  (17, 'Torbjörn'),
-  (18, 'Tracer'),
-  (19, 'Widowmaker'),
-  (20, 'Winston'),
-  (21, 'Zarya'),
-  (22, 'Zenyatta'),
-  (23, 'Sombra');
+  (1, 'Ana', 'ana'),
+  (2, 'Bastion', 'bastion'),
+  (3, 'D.Va', 'dva'),
+  (4, 'Genji', 'genji'),
+  (5, 'Hanzo', 'hanzo'),
+  (6, 'Junkrat', 'junkrat'),
+  (7, 'Lúcio', 'lucio'),
+  (8, 'McCree', 'mccree'),
+  (9, 'Mei', 'mei'),
+  (10, 'Mercy', 'mercy'),
+  (11, 'Pharah', 'pharah'),
+  (12, 'Reaper', 'reaper'),
+  (13, 'Reinhardt', 'reinhardt'),
+  (14, 'Roadhog', 'roadhog'),
+  (15, 'Soldier: 76', 'soldier76'),
+  (16, 'Symmetra', 'symmetra'),
+  (17, 'Torbjörn', 'torbjorn'),
+  (18, 'Tracer', 'tracer'),
+  (19, 'Widowmaker', 'widowmaker'),
+  (20, 'Winston', 'winston'),
+  (21, 'Zarya', 'zarya'),
+  (22, 'Zenyatta', 'zenyatta'),
+  (23, 'Sombra', 'sombra');
 
 
 CREATE TABLE categories (
   id          INTEGER,
   name        TEXT NOT NULL,
   description TEXT NOT NULL,
+  short       TEXT NOT NULL,
   CONSTRAINT pk_categories PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE categories TO overwatch;
 
-INSERT INTO categories (id, name, description)
+INSERT INTO categories (id, name, description, short)
 VALUES
-  (1, 'Normal', 'Unlockable by opening normal Loot Boxes or by spending the normal amount of credits.'),
-  (2, 'Achievements', 'Unlockable by completing achievements.'),
-  (3, 'Origins Edition', 'Unlockable by buying the Origins Edition of Overwatch.'),
-  (4, 'Preorder', 'Unlockable by preodering Overwatch.'),
-  (5, 'Competitive', 'Unlockable by spending competitive points.'),
-  (6, 'Summer Games', 'Unlockable by opening Summer Games Loot Boxes.'),
+  (1, 'Normal', 'Unlockable by opening normal Loot Boxes or by spending the normal amount of credits.', 'normal'),
+  (2, 'Achievements', 'Unlockable by completing achievements.', 'achievements'),
+  (3, 'Origins Edition', 'Unlockable by buying the Origins Edition of Overwatch.', 'originsedition'),
+  (4, 'Preorder', 'Unlockable by preodering Overwatch.', 'preorder'),
+  (5, 'Competitive', 'Unlockable by spending competitive points.', 'competitive'),
+  (6, 'Summer Games', 'Unlockable by opening Summer Games Loot Boxes.', 'summergames'),
   (7, 'Halloween Terror',
-   'Unlockable by opening Halloween Loot Boxes or by spending 3 times the normal amount of credits during the Halloween Terror event.'),
-  (8, 'BlizzCon', 'Unlockable by purchasing a BlizzCon ticket.'),
-  (9, 'Blizzard', 'Unlockable by playing other Blizzard games.');
+   'Unlockable by opening Halloween Loot Boxes or by spending 3 times the normal amount of credits during the Halloween Terror event.',
+   'halloweenterror'),
+  (8, 'BlizzCon', 'Unlockable by purchasing a BlizzCon ticket.', 'blizzcon'),
+  (9, 'Blizzard', 'Unlockable by playing other Blizzard games.', 'blizzard');
 
 
 CREATE TABLE types (
@@ -123,7 +126,7 @@ CREATE TABLE cosmetics (
   category_id  INTEGER,
   type_id      INTEGER NOT NULL,
   rarity_id    INTEGER,
-  character_id INTEGER,
+  hero_id INTEGER,
   name         TEXT    NOT NULL,
   event_id     INTEGER,
   CONSTRAINT pk_cosmetics PRIMARY KEY (id),
@@ -133,14 +136,14 @@ CREATE TABLE cosmetics (
   ON UPDATE CASCADE ON DELETE RESTRICT,
   CONSTRAINT fk_rarity FOREIGN KEY (rarity_id) REFERENCES rarities (id)
   ON UPDATE CASCADE ON DELETE RESTRICT,
-  CONSTRAINT fk_character FOREIGN KEY (character_id) REFERENCES characters (id)
+  CONSTRAINT fk_hero FOREIGN KEY (hero_id) REFERENCES heroes (id)
   ON UPDATE CASCADE ON DELETE RESTRICT,
   CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES events (id)
   ON UPDATE CASCADE ON DELETE RESTRICT
 );
 GRANT SELECT ON TABLE cosmetics TO overwatch;
 
-INSERT INTO cosmetics (category_id, type_id, rarity_id, character_id, name, event_id)
+INSERT INTO cosmetics (category_id, type_id, rarity_id, hero_id, name, event_id)
 VALUES
   -- Player Icons
   (NULL, 1, NULL, NULL, 'Overwatch Dark', 1), -- Default All Heroes Player Icons
@@ -1084,7 +1087,7 @@ VALUES
   (1, 6, 1, 20, 'Golden', 1), -- Normal Winston Sprays
   (1, 6, 1, 21, 'Golden', 1), -- Normal Zarya Sprays
   (1, 6, 1, 22, 'Golden', 1), -- Normal Zenyatta Sprays
-  (1, 6, 1, 23, 'Golden', 9), -- Normal Sombra Sprays--TODO characters
+  (1, 6, 1, 23, 'Golden', 9), -- Normal Sombra Sprays--TODO heroes
   -- Highlight Intros
   (1, 7, 3, 1, 'Guardian', 3), -- Normal Ana Highlight Intros
   (1, 7, 3, 1, 'Locked On', 3),
@@ -1199,7 +1202,9 @@ GRANT SELECT ON TABLE users TO overwatch;
 
 INSERT INTO users (username)
 VALUES
-  ('Tititesouris');
+  ('Tititesouris'),
+  ('Bob'),
+  ('Bill');
 
 
 CREATE TABLE user_cosmetics (
@@ -1215,59 +1220,64 @@ GRANT SELECT, INSERT, DELETE ON TABLE user_cosmetics TO overwatch;
 
 INSERT INTO user_cosmetics (user_id, cosmetic_id)
 VALUES
-  (1, 15),
-  (1, 25);
+  (1, 11),
+  (1, 22),
+  (2, 99),
+  (2, 22),
+  (3, 88),
+  (3, 22);
 
 
 CREATE TABLE settings (
   id          SERIAL,
   name        TEXT UNIQUE NOT NULL,
   description TEXT        NOT NULL,
+  "default"   TEXT,
   CONSTRAINT pk_settings PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE settings TO overwatch;
 
-INSERT INTO settings (name, description)
+INSERT INTO settings (name, description, "default")
 VALUES
-  ('collection-show-images', 'Show images in the collection'),
-  ('collection-show-colors', 'Show the completion progress with colors in the collection'),
-  ('collection-show-owned-cosmetics', 'Show owned cosmetics in the collection'),
-  ('collection-show-categories', 'Show cosmetics for every category in the collection'),
-  ('collection-show-category-default', 'Show Default cosmetics in the collection'),
-  ('collection-show-category-normal', 'Show Normal cosmetics in the collection'),
-  ('collection-show-category-achievements', 'Show Achievements cosmetics in the collection'),
-  ('collection-show-category-competitive', 'Show Competitive cosmetics in the collection'),
-  ('collection-show-category-summergames', 'Show Summer Games cosmetics in the collection'),
-  ('collection-show-category-halloweenterror', 'Show Halloween Terror cosmetics in the collection'),
-  ('collection-show-category-blizzard', 'Show Blizzard cosmetics in the collection'),
-  ('collection-show-category-originsedition', 'Show Origins Edition cosmetics in the collection'),
-  ('collection-show-category-preorder', 'Show Preorder cosmetics in the collection'),
-  ('collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection'),
-  ('collection-show-heroes', 'Show cosmetics for every hero and All Heroes in the collection'),
-  ('collection-show-hero-allheroes', 'Show cosmetics for All Heroes in the collection'),
-  ('collection-show-hero-ana', 'Show cosmetics for Ana in the collection'),
-  ('collection-show-hero-bastion', 'Show cosmetics for Bastion in the collection'),
-  ('collection-show-hero-dva', 'Show cosmetics for D.Va in the collection'),
-  ('collection-show-hero-genji', 'Show cosmetics for Genji in the collection'),
-  ('collection-show-hero-hanzo', 'Show cosmetics for Hanzo in the collection'),
-  ('collection-show-hero-junkrat', 'Show cosmetics for Junkrat in the collection'),
-  ('collection-show-hero-lucio', 'Show cosmetics for Lúcio in the collection'),
-  ('collection-show-hero-mccree', 'Show cosmetics for McCree in the collection'),
-  ('collection-show-hero-mei', 'Show cosmetics for Mei in the collection'),
-  ('collection-show-hero-mercy', 'Show cosmetics for Mercy in the collection'),
-  ('collection-show-hero-pharah', 'Show cosmetics for Pharah in the collection'),
-  ('collection-show-hero-reaper', 'Show cosmetics for Reaper in the collection'),
-  ('collection-show-hero-reinhardt', 'Show cosmetics for Reinhardt in the collection'),
-  ('collection-show-hero-roadhog', 'Show cosmetics for Roadhog in the collection'),
-  ('collection-show-hero-soldier76', 'Show cosmetics for Soldier: 76 in the collection'),
-  ('collection-show-hero-sombra', 'Show cosmetics for Sombra in the collection'),
-  ('collection-show-hero-symmetra', 'Show cosmetics for Symmetra in the collection'),
-  ('collection-show-hero-torbjorn', 'Show cosmetics for Torbjörn in the collection'),
-  ('collection-show-hero-tracer', 'Show cosmetics for Tracer in the collection'),
-  ('collection-show-hero-widowmaker', 'Show cosmetics for Widowmaker in the collection'),
-  ('collection-show-hero-winston', 'Show cosmetics for Winston in the collection'),
-  ('collection-show-hero-zarya', 'Show cosmetics for Zarya in the collection'),
-  ('collection-show-hero-zenyatta', 'Show cosmetics for Zenyatta in the collection');
+  ('collection-show-images', 'Show images in the collection', 'true'),
+  ('collection-show-colors', 'Show the completion progress with colors in the collection', 'true'),
+  ('collection-show-owned-cosmetics', 'Show owned cosmetics in the collection', 'true'),
+  ('collection-show-categories', 'Show cosmetics for every category in the collection', 'true'),
+  ('collection-show-category-default', 'Show Default cosmetics in the collection', 'true'),
+  ('collection-show-category-normal', 'Show Normal cosmetics in the collection', 'true'),
+  ('collection-show-category-achievements', 'Show Achievements cosmetics in the collection', 'true'),
+  ('collection-show-category-competitive', 'Show Competitive cosmetics in the collection', 'true'),
+  ('collection-show-category-summergames', 'Show Summer Games cosmetics in the collection', 'true'),
+  ('collection-show-category-halloweenterror', 'Show Halloween Terror cosmetics in the collection', 'true'),
+  ('collection-show-category-blizzard', 'Show Blizzard cosmetics in the collection', 'true'),
+  ('collection-show-category-originsedition', 'Show Origins Edition cosmetics in the collection', 'true'),
+  ('collection-show-category-preorder', 'Show Preorder cosmetics in the collection', 'true'),
+  ('collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection', 'true'),
+  ('collection-show-heroes', 'Show cosmetics for every hero and All Heroes in the collection', 'true'),
+  ('collection-show-hero-allheroes', 'Show cosmetics for All Heroes in the collection', 'true'),
+  ('collection-show-hero-ana', 'Show cosmetics for Ana in the collection', 'true'),
+  ('collection-show-hero-bastion', 'Show cosmetics for Bastion in the collection', 'true'),
+  ('collection-show-hero-dva', 'Show cosmetics for D.Va in the collection', 'true'),
+  ('collection-show-hero-genji', 'Show cosmetics for Genji in the collection', 'true'),
+  ('collection-show-hero-hanzo', 'Show cosmetics for Hanzo in the collection', 'true'),
+  ('collection-show-hero-junkrat', 'Show cosmetics for Junkrat in the collection', 'true'),
+  ('collection-show-hero-lucio', 'Show cosmetics for Lúcio in the collection', 'true'),
+  ('collection-show-hero-mccree', 'Show cosmetics for McCree in the collection', 'true'),
+  ('collection-show-hero-mei', 'Show cosmetics for Mei in the collection', 'true'),
+  ('collection-show-hero-mercy', 'Show cosmetics for Mercy in the collection', 'true'),
+  ('collection-show-hero-pharah', 'Show cosmetics for Pharah in the collection', 'true'),
+  ('collection-show-hero-reaper', 'Show cosmetics for Reaper in the collection', 'true'),
+  ('collection-show-hero-reinhardt', 'Show cosmetics for Reinhardt in the collection', 'true'),
+  ('collection-show-hero-roadhog', 'Show cosmetics for Roadhog in the collection', 'true'),
+  ('collection-show-hero-soldier76', 'Show cosmetics for Soldier: 76 in the collection', 'true'),
+  ('collection-show-hero-sombra', 'Show cosmetics for Sombra in the collection', 'true'),
+  ('collection-show-hero-symmetra', 'Show cosmetics for Symmetra in the collection', 'true'),
+  ('collection-show-hero-torbjorn', 'Show cosmetics for Torbjörn in the collection', 'true'),
+  ('collection-show-hero-tracer', 'Show cosmetics for Tracer in the collection', 'true'),
+  ('collection-show-hero-widowmaker', 'Show cosmetics for Widowmaker in the collection', 'true'),
+  ('collection-show-hero-winston', 'Show cosmetics for Winston in the collection', 'true'),
+  ('collection-show-hero-zarya', 'Show cosmetics for Zarya in the collection', 'true'),
+  ('collection-show-hero-zenyatta', 'Show cosmetics for Zenyatta in the collection', 'true');
 
 CREATE TABLE user_settings (
   user_id    INTEGER NOT NULL,
