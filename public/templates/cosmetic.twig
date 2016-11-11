@@ -12,13 +12,10 @@
             </label>
         </span>
         <span class="cosmetic--name">{{ cosmetic.name }}</span>
+        <span class="cosmetic--category">
         {% if cosmetic.category is not null and cosmetic.category.id != 1 %}
-            <span id="cosmetic-category[{{ cosmetic.id }}]" class="cosmetic--category">
-                <img src="img/collection/categories/{{ cosmetic.category.short }}.png"/>
-            </span>
-            <div class="mdl-tooltip" data-mdl-for="cosmetic-category[{{ cosmetic.id }}]">
-                {{ cosmetic.category.description|breverynword(5) }}
-            </div>
+            <img src="img/collection/categories/{{ cosmetic.category.short }}.png"/>
         {% endif %}
+        </span>
     </div>
 {% endmacro %}

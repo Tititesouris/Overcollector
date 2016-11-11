@@ -3,14 +3,15 @@
 {% block body %}
     {% set itemsPerRow = 3 %}
     {% set allCosmetics = SESSION.cosmetics %}
-    <!--suppress HtmlUnknownTarget -->
+    <!--suppress HtmlUnknownTarget, HtmlUnknownAnchorTarget -->
     <div class="mdl-grid">
         <div id="cosmetics-menu" class="mdl-cell mdl-cell--3-col">
             <ul class="demo-list-icon mdl-list mdl-shadow--2dp">
                 <li class="cosmetics-menu--update mdl-list__item">
                     <span class="mdl-list__item-primary-content">
                         <button class="cosmetics-menu--update-save mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Save</button>
-                        <button class="cosmetics-menu--update-cancel mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled>Cancel</button>
+                        <button class="cosmetics-menu--update-cancel mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                disabled>Cancel</button>
                     </span>
                 </li>
                 <li class="mdl-list__item">
@@ -27,45 +28,6 @@
                 <hr/>
                 <li class="cosmetics-menu--toggle mdl-list__item">
                     <span class="mdl-list__item-primary-content mdl-typography--font-bold">
-                        Categories
-                    </span>
-                    <span class="mdl-list__item-secondary-action">
-                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-categories">
-                            <input type="checkbox" id="switch-all-categories" class="setting-input mdl-switch__input"
-                                   data-setting="collection-show-categories" {{ SESSION.user.settings["collection-show-categories"].value ?? true ? "checked" }}>
-                        </label>
-                    </span>
-                </li>
-                <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item">
-                        <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
-                            <img src="img/collection/categories/default.png"/>Default
-                        </span>
-                    <span class="mdl-list__item-secondary-action">
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="category-checkbox-default">
-                            <input type="checkbox" id="category-checkbox-default" class="setting-input mdl-checkbox__input"
-                                   data-setting="collection-show-category-default" {{ SESSION.user.settings["collection-show-category-default"].value ?? true ? "checked" }}/>
-                        </label>
-                    </span>
-                </li>
-                {% for category in SESSION.categories %}
-                    <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item">
-                        <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
-                            <img src="img/collection/categories/{{ category.short }}.png"/>{{ category.name }}
-                        </span>
-                        <span class="mdl-list__item-secondary-action">
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                                   for="category-checkbox-{{ category.short }}">
-                                <input type="checkbox" id="category-checkbox-{{ category.short }}"
-                                       class="setting-input mdl-checkbox__input"
-                                       data-setting="collection-show-category-{{ category.short }}"
-                                        {{ SESSION.user.settings["collection-show-category-" ~ category.short].value ?? true ? "checked" }}/>
-                            </label>
-                        </span>
-                    </li>
-                {% endfor %}
-                <hr/>
-                <li class="cosmetics-menu--toggle mdl-list__item">
-                    <span class="mdl-list__item-primary-content mdl-typography--font-bold">
                         Heroes
                     </span>
                     <span class="mdl-list__item-secondary-action">
@@ -77,11 +39,14 @@
                 </li>
                 <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item">
                         <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
-                            <img src="img/collection/heroes/allheroes.png"/>All Heroes
+                            <a href="#allheroes">
+                                <img src="img/collection/heroes/allheroes.png"/>All Heroes
+                            </a>
                         </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hero-checkbox-allheroes">
-                            <input type="checkbox" id="hero-checkbox-allheroes" class="setting-input mdl-checkbox__input"
+                            <input type="checkbox" id="hero-checkbox-allheroes"
+                                   class="setting-input mdl-checkbox__input"
                                    data-setting="collection-show-hero-allheroes" {{ SESSION.user.settings["collection-show-hero-allheroes"].value ?? true ? "checked" }}/>
                         </label>
                     </span>
@@ -89,7 +54,9 @@
                 {% for hero in SESSION.heroes %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item">
                         <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
-                            <img src="img/collection/heroes/{{ hero.short }}.png"/>{{ hero.name }}
+                            <a href="#{{ hero.short }}">
+                                <img src="img/collection/heroes/{{ hero.short }}.png"/>{{ hero.name }}
+                            </a>
                         </span>
                         <span class="mdl-list__item-secondary-action">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
@@ -100,6 +67,54 @@
                                         {{ SESSION.user.settings["collection-show-hero-" ~ hero.short].value ?? true ? "checked" }}/>
                             </label>
                         </span>
+                    </li>
+                {% endfor %}
+                <hr/>
+                <li class="cosmetics-menu--toggle mdl-list__item">
+                    <span class="mdl-list__item-primary-content mdl-typography--font-bold">
+                        Categories
+                    </span>
+                    <span class="mdl-list__item-secondary-action">
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-categories">
+                            <input type="checkbox" id="switch-all-categories" class="setting-input mdl-switch__input"
+                                   data-setting="collection-show-categories" {{ SESSION.user.settings["collection-show-categories"].value ?? true ? "checked" }}>
+                        </label>
+                    </span>
+                </li>
+                <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item">
+                    <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
+                        <img src="img/collection/categories/default.png"/>Default
+                    </span>
+                    <span id="cosmetics-menu--category-default" class="mdl-list__item-secondary-action">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                               for="category-checkbox-default">
+                            <input type="checkbox" id="category-checkbox-default"
+                                   class="setting-input mdl-checkbox__input"
+                                   data-setting="collection-show-category-default" {{ SESSION.user.settings["collection-show-category-default"].value ?? true ? "checked" }}/>
+                        </label>
+                    </span>
+                    <div class="mdl-tooltip" data-mdl-for="cosmetics-menu--category-default">
+                        Obtained by default
+                    </div>
+                </li>
+                {% for category in SESSION.categories %}
+                    <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item">
+                        <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
+                            <img src="img/collection/categories/{{ category.short }}.png"/>{{ category.name }}
+                        </span>
+                        <span id="cosmetics-menu--category-{{ category.short }}"
+                              class="mdl-list__item-secondary-action">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                   for="category-checkbox-{{ category.short }}">
+                                <input type="checkbox" id="category-checkbox-{{ category.short }}"
+                                       class="setting-input mdl-checkbox__input"
+                                       data-setting="collection-show-category-{{ category.short }}"
+                                        {{ SESSION.user.settings["collection-show-category-" ~ category.short].value ?? true ? "checked" }}/>
+                            </label>
+                        </span>
+                        <div class="mdl-tooltip" data-mdl-for="cosmetics-menu--category-{{ category.short }}">
+                            {{ category.description|breverynword(5) }}
+                        </div>
                     </li>
                 {% endfor %}
             </ul>
@@ -120,7 +135,9 @@
                     <tr class="cosmetics-table--hero" style="background-color: {{ ratio|colorgradient("rgba") }};">
                         <td colspan="{{ itemsPerRow - 1 }}"
                             class="mdl-typography--headline mdl-data-table__cell--non-numeric">
-                            {{ hero > 0 ? SESSION.heroes[hero].name : "All Heroes" }}
+                            <a name="{{ hero > 0 ? SESSION.heroes[hero].short : "allheroes" }}">
+                                {{ hero > 0 ? SESSION.heroes[hero].name : "All Heroes" }}
+                            </a>
                         </td>
                         <td>
                             {{ (ratio * 100)|round(2, 'floor') }}%

@@ -25,7 +25,8 @@ FROM cosmetics
     CASE WHEN cosmetics.category_id IS NULL
       THEN
         'collection-show-category-default'
-    ELSE 'collection-show-category-' || categories.short END
+    ELSE 'collection-show-category-' || categories.short END,
+    'collection-show-owned-cosmetics'
   )
   LEFT JOIN user_settings
     ON settings.id = user_settings.setting_id
@@ -36,10 +37,18 @@ WHERE (
       AND (
         (user_settings.value IS NULL AND settings.default = 'true')
         OR (user_settings.value IS NOT NULL AND user_settings.value = 'true')
+        OR (
+          settings.name = 'collection-show-owned-cosmetics'
+          AND cosmetics.id NOT IN (
+            SELECT cosmetic_id
+            FROM user_cosmetics
+            WHERE user_id = $1
+          )
+        )
       )
-GROUP BY cosmetics.id
-HAVING COUNT(*) > 1
-ORDER BY hero_id, type_id, rarity_id, category_id, cosmetics.name, event_id;
+GROUP BY cosmetics.id, heroes.name
+HAVING COUNT(*) > 2
+ORDER BY heroes.name, type_id, rarity_id, category_id, cosmetics.name, event_id;
 ";
 
     private $fetchOwnedCosmeticsByUserId = "
@@ -72,9 +81,9 @@ WHERE (
         (user_settings.value IS NULL AND settings.default = 'true')
         OR (user_settings.value IS NOT NULL AND user_settings.value = 'true')
       )
-GROUP BY cosmetics.id
+GROUP BY cosmetics.id, heroes.name
 HAVING COUNT(*) > 1
-ORDER BY hero_id, type_id, rarity_id, category_id, cosmetics.name, event_id;
+ORDER BY heroes.name, type_id, rarity_id, category_id, cosmetics.name, event_id;
 ";
 
     protected function __construct()

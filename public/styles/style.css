@@ -1,3 +1,12 @@
+html {
+    font-size: 16px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
 #cosmetics-menu hr {
     margin: 0;
 }
@@ -18,8 +27,8 @@
 
 #cosmetics-menu .cosmetics-menu--item .cosmetics-menu--item--image img {
     padding-right: 0.5rem;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
 }
 
 #cosmetics-table {
@@ -28,12 +37,18 @@
 
 #cosmetics-table .cosmetics-table--hero td {
     font-size: 2rem;
-    text-align: center;
+    text-align: left;
+    text-indent: 10%;
+    font-weight: bold;
+    padding: 0;
+    border-spacing: 0;
 }
 
 #cosmetics-table .cosmetics-table--type td {
     font-size: 1.5rem;
     text-align: left;
+    text-indent: 15%;
+    padding: 0;
 }
 
 #cosmetics-table tr:not(.cosmetics-table--hero):not(.cosmetics-table--type) td {

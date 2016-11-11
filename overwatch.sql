@@ -50,17 +50,17 @@ GRANT SELECT ON TABLE categories TO overwatch;
 
 INSERT INTO categories (id, name, description, short)
 VALUES
-  (1, 'Normal', 'Unlockable by opening normal Loot Boxes or by spending the normal amount of credits.', 'normal'),
-  (2, 'Achievements', 'Unlockable by completing achievements.', 'achievements'),
-  (3, 'Origins Edition', 'Unlockable by buying the Origins Edition of Overwatch.', 'originsedition'),
-  (4, 'Preorder', 'Unlockable by preodering Overwatch.', 'preorder'),
-  (5, 'Competitive', 'Unlockable by spending competitive points.', 'competitive'),
-  (6, 'Summer Games', 'Unlockable by opening Summer Games Loot Boxes.', 'summergames'),
+  (1, 'Normal', 'Obtainable by opening normal Loot Boxes or by spending the normal amount of credits.', 'normal'),
+  (2, 'Achievements', 'Obtainable by completing achievements.', 'achievements'),
+  (3, 'Origins Edition', 'Obtainable by buying the Origins Edition of Overwatch.', 'originsedition'),
+  (4, 'Preorder', 'Obtainable by preodering Overwatch.', 'preorder'),
+  (5, 'Competitive', 'Obtainable by spending competitive points.', 'competitive'),
+  (6, 'Summer Games', 'Obtainable by opening Summer Games Loot Boxes.', 'summergames'),
   (7, 'Halloween Terror',
-   'Unlockable by opening Halloween Loot Boxes or by spending 3 times the normal amount of credits during the Halloween Terror event.',
+   'Obtainable by opening Halloween Loot Boxes or by spending 3 times the normal amount of credits during the Halloween Terror event.',
    'halloweenterror'),
-  (8, 'BlizzCon', 'Unlockable by purchasing a BlizzCon ticket.', 'blizzcon'),
-  (9, 'Blizzard', 'Unlockable by playing other Blizzard games.', 'blizzard');
+  (8, 'BlizzCon', 'Obtainable by purchasing a BlizzCon ticket.', 'blizzcon'),
+  (9, 'Blizzard', 'Obtainable by playing other Blizzard games.', 'blizzard');
 
 
 CREATE TABLE types (
@@ -122,13 +122,13 @@ VALUES
 
 
 CREATE TABLE cosmetics (
-  id           SERIAL,
-  category_id  INTEGER,
-  type_id      INTEGER NOT NULL,
-  rarity_id    INTEGER,
-  hero_id INTEGER,
-  name         TEXT    NOT NULL,
-  event_id     INTEGER,
+  id          SERIAL,
+  category_id INTEGER,
+  type_id     INTEGER NOT NULL,
+  rarity_id   INTEGER,
+  hero_id     INTEGER,
+  name        TEXT    NOT NULL,
+  event_id    INTEGER,
   CONSTRAINT pk_cosmetics PRIMARY KEY (id),
   CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES categories (id)
   ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -899,7 +899,6 @@ VALUES
   (6, 5, 1, 6, 'I Give It A 10!', 4), -- Summer Games Junkrat Voice Lines
   (7, 5, 1, 6, 'Happy Halloween', 7), -- Halloween Terror Junkrat Voice Lines
   (1, 5, 1, 7, 'Can''t Stop, Won''t Stop', 1), -- Normal Lúcio Voice Lines
-  (1, 5, 1, 7, '', 1),
   (1, 5, 1, 7, 'Hit Me!', 1),
   (1, 5, 1, 7, 'I Could Do This All Day', 1),
   (1, 5, 1, 7, 'I''m On Top Of The World', 1),
@@ -1065,7 +1064,7 @@ VALUES
   (7, 6, 1, NULL, 'Rise Of The Zomnics', 7),
   (7, 6, 1, NULL, 'The Reapening', 7),
   (7, 6, 1, NULL, 'Witch''s Brew', 7),
-  (1, 6, 1, 1, '', 3), -- Normal Ana Sprays
+  (1, 6, 1, 1, 'todo', 3), -- Normal Ana Sprays
   (1, 6, 1, 2, 'Golden', 1), -- Normal Bastion Sprays
   (1, 6, 1, 3, 'Golden', 1), -- Normal D.Va Sprays
   (1, 6, 1, 4, 'Golden', 1), -- Normal Genji Sprays
