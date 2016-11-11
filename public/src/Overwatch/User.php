@@ -49,7 +49,7 @@ class User implements JsonSerializable
             if (($cosmetic->getHero() === null && $heroId === 0) ||
                 ($cosmetic->getHero() !== null && $cosmetic->getHero()->getId() === $heroId)
             ) {
-                $cosmetics[$cosmetic->getType()->getId()][] = $cosmetic;
+                $cosmetics[] = $cosmetic;
             }
         }
         return $cosmetics;

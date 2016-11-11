@@ -25,10 +25,20 @@ a {
     padding: 0 0.1rem;
 }
 
+#cosmetics-menu .cosmetics-menu--item a {
+    width: 100%;
+}
+
 #cosmetics-menu .cosmetics-menu--item .cosmetics-menu--item--image img {
     padding-right: 0.5rem;
     width: 40px;
     height: 40px;
+}
+
+#cosmetics-menu .cosmetics-menu--item .cosmetics-menu--item--stats {
+    float: right;
+    padding: 1rem;
+    font-size: 0.75rem;
 }
 
 #cosmetics-table {

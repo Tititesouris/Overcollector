@@ -2,7 +2,26 @@
 {% extends "page.twig" %}
 {% block body %}
     {% set itemsPerRow = 3 %}
-    {% set allCosmetics = SESSION.cosmetics %}
+    {# TODO: Owned or not, show the same stats #}
+    {% set heroStats = {} %}
+    {% for hero, types in SESSION.cosmetics %}
+        {% set heroOwned = 0 %}
+        {% set heroTotal = 0 %}
+        {% set typesStats = {} %}
+        {% for type, cosmetics in types %}
+            {% set typeTotal = cosmetics|length %}
+            {% set typeOwned = 0 %}
+            {% for cosmetic in cosmetics %}
+                {% if SESSION.user.hasCosmetic(cosmetic.id) %}
+                    {% set typeOwned = typeOwned + 1 %}
+                {% endif %}
+            {% endfor %}
+            {% set typesStats = typesStats|merge({("type-" ~ type): {"owned": typeOwned, "total": typeTotal}}) %}
+            {% set heroOwned = heroOwned + typeOwned %}
+            {% set heroTotal = heroTotal + typeTotal %}
+        {% endfor %}
+        {% set heroStats = heroStats|merge({("hero-" ~ hero): {"owned": heroOwned, "total": heroTotal, "types": typesStats}}) %}
+    {% endfor %}
     <!--suppress HtmlUnknownTarget, HtmlUnknownAnchorTarget -->
     <div class="mdl-grid">
         <div id="cosmetics-menu" class="mdl-cell mdl-cell--3-col">
@@ -37,12 +56,20 @@
                         </label>
                     </span>
                 </li>
-                <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item">
-                        <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
-                            <a href="#allheroes">
+                {% set ratio = heroStats["hero-0"].owned / heroStats["hero-0"].total %}
+                <li class="cosmetics-menu--item mdl-list__item"
+                    style="background-color: {{ ratio|colorgradient("rgba") }};">
+                    <span class="mdl-list__item-primary-content">
+                        <a href="#allheroes">
+                            <span class="cosmetics-menu--item--image">
                                 <img src="img/collection/heroes/allheroes.png"/>All Heroes
-                            </a>
-                        </span>
+                            </span>
+                            <span class="cosmetics-menu--item--stats">
+                                {{ (ratio * 100)|round(2, 'floor') }}% ({{ heroStats["hero-0"].owned }}
+                                / {{ heroStats["hero-0"].total }})
+                            </span>
+                        </a>
+                    </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hero-checkbox-allheroes">
                             <input type="checkbox" id="hero-checkbox-allheroes"
@@ -52,10 +79,18 @@
                     </span>
                 </li>
                 {% for hero in SESSION.heroes %}
-                    <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item">
-                        <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
+                    {% set ratio = heroStats["hero-"~hero.id].owned / heroStats["hero-"~hero.id].total %}
+                    <li class="cosmetics-menu--item mdl-list__item"
+                        style="background-color: {{ ratio|colorgradient("rgba") }};">
+                        <span class="mdl-list__item-primary-content">
                             <a href="#{{ hero.short }}">
-                                <img src="img/collection/heroes/{{ hero.short }}.png"/>{{ hero.name }}
+                                <span class="cosmetics-menu--item--image">
+                                    <img src="img/collection/heroes/{{ hero.short }}.png"/>{{ hero.name }}
+                                </span>
+                                <span class="cosmetics-menu--item--stats">
+                                    {{ (ratio * 100)|round(2, 'floor') }}% ({{ heroStats["hero-"~hero.id].owned }}
+                                    / {{ heroStats["hero-"~hero.id].total }})
+                                </span>
                             </a>
                         </span>
                         <span class="mdl-list__item-secondary-action">
@@ -112,7 +147,8 @@
                                         {{ SESSION.user.settings["collection-show-category-" ~ category.short].value ?? true ? "checked" }}/>
                             </label>
                         </span>
-                        <div class="mdl-tooltip" data-mdl-for="cosmetics-menu--category-{{ category.short }}">
+                        <div class="mdl-tooltip"
+                             data-mdl-for="cosmetics-menu--category-{{ category.short }}">
                             {{ category.description|breverynword(5) }}
                         </div>
                     </li>
@@ -121,18 +157,11 @@
         </div>
         <div class="mdl-cell mdl-cell--9-col-desktop">
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                {% for hero, types in allCosmetics %}
-                    {% set ownedCosmetics = SESSION.user.getCosmetics(hero) %}
-                    {% set totalOwned, totalCosmetics = 0, 0 %}
-                    {% for owned in ownedCosmetics %}
-                        {% set totalOwned = totalOwned + owned|length %}
-                    {% endfor %}
-                    {% for cosmetics in allCosmetics[hero] %}
-                        {% set totalCosmetics = totalCosmetics + cosmetics|length %}
-                    {% endfor %}
-                    <tbody class="cosmetics-table--body hero-{{ hero > 0 ? SESSION.heroes[hero].id : 0 }}">
-                    {% set ratio = totalOwned / totalCosmetics %}
-                    <tr class="cosmetics-table--hero" style="background-color: {{ ratio|colorgradient("rgba") }};">
+                {% for hero, types in SESSION.cosmetics %}
+                    {% set ratio = heroStats["hero-"~hero].owned / heroStats["hero-"~hero].total %}
+                    <tbody class="cosmetics-table--body">
+                    <tr class="cosmetics-table--hero"
+                        style="background-color: {{ ratio|colorgradient("rgba") }};">
                         <td colspan="{{ itemsPerRow - 1 }}"
                             class="mdl-typography--headline mdl-data-table__cell--non-numeric">
                             <a name="{{ hero > 0 ? SESSION.heroes[hero].short : "allheroes" }}">
@@ -141,29 +170,28 @@
                         </td>
                         <td>
                             {{ (ratio * 100)|round(2, 'floor') }}%
-                            ({{ totalOwned }} / {{ totalCosmetics }})
+                            ({{ heroStats["hero-"~hero].owned }} / {{ heroStats["hero-"~hero].total }})
                         </td>
                     </tr>
                     {% for type, cosmetics in types %}
-                        {% set ratio = (ownedCosmetics[type] is defined ? ownedCosmetics[type]|length : 0) / allCosmetics[hero][type]|length %}
-                        <tr class="cosmetics-table--type" style="background-color: {{ ratio|colorgradient("rgba") }};">
+                        {% set ratio = heroStats["hero-"~hero].types["type-"~type].owned / heroStats["hero-"~hero].types["type-"~type].total %}
+                        <tr class="cosmetics-table--type"
+                            style="background-color: {{ ratio|colorgradient("rgba") }};">
                             <td colspan="{{ itemsPerRow - 1 }}">{{ SESSION.types[type].name }}s</td>
                             <td>
                                 {{ (ratio * 100)|round(2, 'floor') }}%
-                                ({{ ownedCosmetics[type] is defined ? ownedCosmetics[type]|length : 0 }}
-                                / {{ allCosmetics[hero][type]|length }})
+                                ({{ heroStats["hero-"~hero].types["type-"~type].owned }}
+                                / {{ heroStats["hero-"~hero].types["type-"~type].total }})
                             </td>
                         </tr>
-                        {% for cosmetic in cosmetics %}
-                            {% if loop.index0 % itemsPerRow == 0 %}
-                                <tr>
-                            {% endif %}
-                            <td class="cosmetics-table--category category-{{ cosmetic.category is not null ? cosmetic.category.id : 0 }}">
-                                {{ cosmeticMacro.cosmetic(cosmetic, SESSION.user.hasCosmetic(cosmetic.id)) }}
-                            </td>
-                            {% if loop.index0 % itemsPerRow == (itemsPerRow - 1) or loop.index == loop.length %}
-                                </tr>
-                            {% endif %}
+                        {% for row in cosmetics|batch(itemsPerRow) %}
+                            <tr>
+                                {% for cosmetic in row %}
+                                    <td class="cosmetics-table--category category-{{ cosmetic.category is not null ? cosmetic.category.id : 0 }}">
+                                        {{ cosmeticMacro.cosmetic(cosmetic, SESSION.user.hasCosmetic(cosmetic.id)) }}
+                                    </td>
+                                {% endfor %}
+                            </tr>
                         {% endfor %}
                     {% endfor %}
                     </tbody>

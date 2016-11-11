@@ -43,7 +43,7 @@ CREATE TABLE categories (
   id          INTEGER,
   name        TEXT NOT NULL,
   description TEXT NOT NULL,
-  short       TEXT NOT NULL,
+  short       TEXT NOT NULL,--TODO rename short to slug
   CONSTRAINT pk_categories PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE categories TO overwatch;
