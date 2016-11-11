@@ -48,7 +48,7 @@ a {
 #cosmetics-table .cosmetics-table--hero td {
     font-size: 2rem;
     text-align: left;
-    text-indent: 10%;
+    text-indent: 5%;
     font-weight: bold;
     padding: 0;
     border-spacing: 0;
@@ -57,7 +57,7 @@ a {
 #cosmetics-table .cosmetics-table--type td {
     font-size: 1.5rem;
     text-align: left;
-    text-indent: 15%;
+    text-indent: 10%;
     padding: 0;
 }
 

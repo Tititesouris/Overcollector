@@ -8,11 +8,22 @@ class UsersTable extends Table
 
     private static $instance;
 
-    private $fetchUserByName = "SELECT id, username FROM users WHERE username = $1;";
+    private $fetchUserByName = "
+SELECT id, username
+FROM users
+WHERE username = $1
+;";
 
-    private $addCosmetic = "INSERT INTO user_cosmetics (user_id, cosmetic_id) VALUES ($1, $2) RETURNING cosmetic_id;";
+    private $addCosmetic = "
+INSERT INTO user_cosmetics (user_id, cosmetic_id)
+VALUES ($1, $2)
+RETURNING cosmetic_id;
+";
 
-    private $removeCosmeticsByUserId = "DELETE FROM user_cosmetics WHERE user_id = $1;";
+    private $removeCosmeticsByUserId = "
+DELETE FROM user_cosmetics
+WHERE user_id = $1;
+";
 
     protected function __construct()
     {

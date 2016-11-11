@@ -9,9 +9,17 @@ class TypesTable extends Table
 
     private static $instance;
 
-    private $fetchAllTypes = "SELECT id, name FROM types ORDER BY id;";
+    private $fetchAllTypes = "
+SELECT id, name
+FROM types
+ORDER BY id;
+";
 
-    private $fetchTypeById = "SELECT id, name FROM types WHERE id = $1;";
+    private $fetchTypeById = "
+SELECT id, name
+FROM types
+WHERE id = $1;
+";
 
     protected function __construct()
     {
@@ -49,7 +57,7 @@ class TypesTable extends Table
         return [];
     }
 
-    public function getAllTypesOrderById()
+    public function getAllTypesSortById()
     {
         $response = pg_execute($this->handler, "fetchAllTypes", array());
         if ($response !== false) {
@@ -71,4 +79,5 @@ class TypesTable extends Table
         }
         return null;
     }
+
 }

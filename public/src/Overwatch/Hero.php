@@ -13,45 +13,37 @@ class Hero implements JsonSerializable
 
     private $name;
 
-    private $short;
+    private $slug;
 
-    private function __construct($id, $name, $short)
+    private function __construct($id, $name, $slug)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->short = $short;
+        $this->slug = $slug;
     }
 
-    public static function createHero($id, $name, $short)
+    public static function createHero($id, $name, $slug)
     {
         if (!array_key_exists($id, self::$heroes)) {
-            self::$heroes[$id] = new Hero($id, $name, $short);
+            self::$heroes[$id] = new Hero($id, $name, $slug);
         }
         return self::$heroes[$id];
     }
 
-    /**
-     * @return mixed
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getShort()
+
+    public function getSlug()
     {
-        return $this->short;
+        return $this->slug;
     }
 
     function jsonSerialize()
@@ -59,7 +51,7 @@ class Hero implements JsonSerializable
         return [
             "id" => $this->id,
             "name" => $this->name,
-            "short" => $this->short
+            "slug" => $this->slug
         ];
     }
 }

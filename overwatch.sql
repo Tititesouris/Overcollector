@@ -7,12 +7,12 @@ CREATE ROLE overwatch WITH LOGIN PASSWORD 'localpass';
 CREATE TABLE heroes (
   id    INTEGER,
   name  TEXT NOT NULL,
-  short TEXT NOT NULL,
+  slug TEXT NOT NULL,
   CONSTRAINT pk_heroes PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE heroes TO overwatch;
 
-INSERT INTO heroes (id, name, short)
+INSERT INTO heroes (id, name, slug)
 VALUES
   (1, 'Ana', 'ana'),
   (2, 'Bastion', 'bastion'),
@@ -43,12 +43,12 @@ CREATE TABLE categories (
   id          INTEGER,
   name        TEXT NOT NULL,
   description TEXT NOT NULL,
-  short       TEXT NOT NULL,--TODO rename short to slug
+  slug       TEXT NOT NULL,
   CONSTRAINT pk_categories PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE categories TO overwatch;
 
-INSERT INTO categories (id, name, description, short)
+INSERT INTO categories (id, name, description, slug)
 VALUES
   (1, 'Normal', 'Obtainable by opening normal Loot Boxes or by spending the normal amount of credits.', 'normal'),
   (2, 'Achievements', 'Obtainable by completing achievements.', 'achievements'),
@@ -106,6 +106,7 @@ CREATE TABLE events (
   "end" DATE,
   CONSTRAINT pk_events PRIMARY KEY (id)
 );
+GRANT SELECT ON TABLE events TO overwatch;
 
 INSERT INTO events (id, name, start, "end")
 VALUES
@@ -1126,7 +1127,7 @@ VALUES
   (1, 7, 3, 11, 'Mission Complete', 1),
   (1, 7, 3, 11, 'Touchdown', 1),
   (1, 7, 3, 12, 'Death Blossom', 1), -- Normal Reaper Highlight Intros
-  (1, 7, 3, 12, 'Executioner', 1), --TODO check spelling
+  (1, 7, 3, 12, 'Executioner', 1),
   (1, 7, 3, 12, 'Shadow Step', 1),
   (7, 7, 3, 12, 'Eternal Rest', 7), -- Halloween Terror Reaper Highlight Intros
   (1, 7, 3, 13, 'Charge', 1), -- Normal Reinhardt Highlight Intros

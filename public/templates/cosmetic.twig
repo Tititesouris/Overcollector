@@ -14,7 +14,7 @@
         <span class="cosmetic--name">{{ cosmetic.name }}</span>
         <span class="cosmetic--category">
         {% if cosmetic.category is not null and cosmetic.category.id != 1 %}
-            <img src="img/collection/categories/{{ cosmetic.category.short }}.png"/>
+            <img src="img/collection/categories/{{ cosmetic.category.slug }}.png"/>
         {% endif %}
         </span>
     </div>

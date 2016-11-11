@@ -25,9 +25,6 @@ $(function () {
 
     cosmeticsMenu.find(".setting-input, input[type=checkbox]").change(function () {
         saveSetting($(this).data("setting"), $(this).prop("checked"), function (data) {
-            if (data) {
-                cosmeticsMenu.find(".cosmetics-menu--update-save, button").trigger("click");
-            }
         })
     });
 

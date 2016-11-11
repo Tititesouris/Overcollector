@@ -9,11 +9,29 @@ class SettingsTable extends Table
 {
     private static $instance;
 
-    private $fetchUserSettings = "SELECT id, name, description, value FROM settings INNER JOIN user_settings ON settings.id = user_settings.setting_id WHERE user_id = $1;";
+    private $fetchUserSettings = "
+SELECT id, name, description, value
+FROM settings INNER JOIN user_settings
+  ON settings.id = user_settings.setting_id
+WHERE user_id = $1;
+";
 
-    private $fetchUserSetting = "SELECT id, name, description, value FROM settings LEFT JOIN user_settings ON settings.id = user_settings.setting_id WHERE id = $1;";
+    private $fetchUserSetting = "
+SELECT id, name, description, value
+FROM settings LEFT JOIN user_settings
+  ON settings.id = user_settings.setting_id
+WHERE id = $1;
+";
 
-    private $updateUserSetting = "INSERT INTO user_settings (user_id, setting_id, value) SELECT $1, id, $3 FROM settings WHERE name = $2 ON CONFLICT ON CONSTRAINT pk_user_settings DO UPDATE SET value = $3 RETURNING setting_id;";
+    private $updateUserSetting = "
+INSERT INTO user_settings (user_id, setting_id, value)
+SELECT $1, id, $3
+FROM settings
+WHERE name = $2
+ON CONFLICT ON CONSTRAINT pk_user_settings
+DO UPDATE SET value = $3
+RETURNING setting_id;
+";
 
     protected function __construct()
     {

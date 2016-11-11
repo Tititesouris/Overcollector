@@ -15,20 +15,20 @@ class Category implements JsonSerializable
 
     private $description;
 
-    private $short;
+    private $slug;
 
-    private function __construct($id, $name, $description, $short)
+    private function __construct($id, $name, $description, $slug)
     {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
-        $this->short = $short;
+        $this->slug = $slug;
     }
 
-    public static function createCategory($id, $name, $description, $short)
+    public static function createCategory($id, $name, $description, $slug)
     {
         if (!array_key_exists($id, self::$categories)) {
-            self::$categories[$id] = new Category($id, $name, $description, $short);
+            self::$categories[$id] = new Category($id, $name, $description, $slug);
         }
         return self::$categories[$id];
     }
@@ -48,9 +48,9 @@ class Category implements JsonSerializable
         return $this->description;
     }
 
-    public function getShort()
+    public function getSlug()
     {
-        return $this->short;
+        return $this->slug;
     }
 
     function jsonSerialize()
@@ -59,7 +59,7 @@ class Category implements JsonSerializable
             "id" => $this->id,
             "name" => $this->name,
             "description" => $this->description,
-            "short" => $this->short
+            "short" => $this->slug
         ];
     }
 

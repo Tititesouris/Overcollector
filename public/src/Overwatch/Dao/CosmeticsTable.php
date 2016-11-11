@@ -21,11 +21,11 @@ FROM cosmetics
     CASE WHEN cosmetics.hero_id IS NULL
       THEN
         'collection-show-hero-allheroes'
-    ELSE 'collection-show-hero-' || heroes.short END,
+    ELSE 'collection-show-hero-' || heroes.slug END,
     CASE WHEN cosmetics.category_id IS NULL
       THEN
         'collection-show-category-default'
-    ELSE 'collection-show-category-' || categories.short END
+    ELSE 'collection-show-category-' || categories.slug END
   )
   LEFT JOIN user_settings
     ON settings.id = user_settings.setting_id
@@ -54,11 +54,11 @@ FROM cosmetics
     CASE WHEN cosmetics.hero_id IS NULL
       THEN
         'collection-show-hero-allheroes'
-    ELSE 'collection-show-hero-' || heroes.short END,
+    ELSE 'collection-show-hero-' || heroes.slug END,
     CASE WHEN cosmetics.category_id IS NULL
       THEN
         'collection-show-category-default'
-    ELSE 'collection-show-category-' || categories.short END,
+    ELSE 'collection-show-category-' || categories.slug END,
     'collection-show-owned-cosmetics'
   )
   LEFT JOIN user_settings
@@ -98,11 +98,11 @@ FROM cosmetics
     CASE WHEN cosmetics.hero_id IS NULL
       THEN
         'collection-show-hero-allheroes'
-    ELSE 'collection-show-hero-' || heroes.short END,
+    ELSE 'collection-show-hero-' || heroes.slug END,
     CASE WHEN cosmetics.category_id IS NULL
       THEN
         'collection-show-category-default'
-    ELSE 'collection-show-category-' || categories.short END
+    ELSE 'collection-show-category-' || categories.slug END
   )
   LEFT JOIN user_settings
     ON settings.id = user_settings.setting_id
@@ -144,7 +144,7 @@ ORDER BY heroes.name, type_id, rarity_id, category_id, cosmetics.name, event_id;
             RaritiesTable::getInstance()->getRarityById(intval($row["rarity_id"])),
             HeroesTable::getInstance()->getHeroById(intval($row["hero_id"])),
             $row["name"],
-            $row["event_id"]//TODO add BO
+            EventsTable::getInstance()->getEventById(intval($row["event_id"]))
         );
     }
 

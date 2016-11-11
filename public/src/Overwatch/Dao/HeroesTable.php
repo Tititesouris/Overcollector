@@ -8,15 +8,23 @@ class HeroesTable extends Table
 
     private static $instance;
 
-    private $fetchAllHeroes = "SELECT id, name, short FROM heroes ORDER BY name;";
+    private $fetchAllHeroes = "
+SELECT id, name, slug
+FROM heroes
+ORDER BY name;
+";
 
-    private $fetchHeroesById = "SELECT id, name, short FROM heroes WHERE id = $1;";
+    private $fetchHeroById = "
+SELECT id, name, slug
+FROM heroes
+WHERE id = $1
+;";
 
     protected function __construct()
     {
         parent::__construct();
         pg_prepare($this->handler, "fetchAllHeroes", $this->fetchAllHeroes);
-        pg_prepare($this->handler, "fetchHeroesById", $this->fetchHeroesById);
+        pg_prepare($this->handler, "fetchHeroById", $this->fetchHeroById);
     }
 
     public static function getInstance()
@@ -32,7 +40,7 @@ class HeroesTable extends Table
         return Hero::createHero(
             intval($row["id"]),
             $row["name"],
-            $row["short"]
+            $row["slug"]
         );
     }
 
@@ -51,14 +59,14 @@ class HeroesTable extends Table
 
     public function getHeroById($id)
     {
-        $response = pg_execute($this->handler, "fetchHeroesById", array($id));
+        $response = pg_execute($this->handler, "fetchHeroById", array($id));
         if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
             return $this->parseHero($row);
         }
         return null;
     }
 
-    public function getAllHeroesOrderById()
+    public function getAllHeroesSortById()
     {
         $response = pg_execute($this->handler, "fetchAllHeroes", array());
         if ($response !== false) {

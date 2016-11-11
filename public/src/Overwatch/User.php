@@ -26,23 +26,17 @@ class User implements JsonSerializable
         return new self($id, $username, $cosmetics, $settings);
     }
 
-    /**
-     * @return mixed
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getUsername()
     {
         return $this->username;
     }
 
-    public function getCosmetics($heroId) //TODO remove if I manage to do without it
+    public function getCosmetics($heroId)
     {
         $cosmetics = [];
         foreach ($this->cosmetics as $cosmetic) {

@@ -9,9 +9,16 @@ class RaritiesTable extends Table
 
     private static $instance;
 
-    private $fetchAllRarities = "SELECT id, name, base_price FROM rarities;";
+    private $fetchAllRarities = "
+SELECT id, name, base_price
+FROM rarities;
+";
 
-    private $fetchRarityById = "SELECT id, name, base_price FROM rarities WHERE id = $1;";
+    private $fetchRarityById = "
+SELECT id, name, base_price
+FROM rarities
+WHERE id = $1;
+";
 
     protected function __construct()
     {

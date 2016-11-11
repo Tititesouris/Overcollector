@@ -22,9 +22,9 @@ use \Overwatch\Dao\CosmeticsTable;
 
 if (!isUserLoggedIn()) {
     $_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
-    $_SESSION["heroes"] = HeroesTable::getInstance()->getAllHeroesOrderById();
-    $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesOrderById();
-    $_SESSION["types"] = TypesTable::getInstance()->getAllTypesOrderById();
+    $_SESSION["heroes"] = HeroesTable::getInstance()->getAllHeroesSortById();
+    $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesSortById();
+    $_SESSION["types"] = TypesTable::getInstance()->getAllTypesSortById();
     $_SESSION["allcosmetics"] = CosmeticsTable::getInstance()->getAllCosmeticsByUserIdSortByHeroesAndType($_SESSION["user"]->getId());
     $_SESSION["cosmetics"] = CosmeticsTable::getInstance()->getCosmeticsByUserIdSortByHeroesAndType($_SESSION["user"]->getId());
 }
