@@ -2,8 +2,9 @@
 
 namespace Overwatch;
 
+use JsonSerializable;
 
-class Type
+class Type implements JsonSerializable
 {
 
     private static $types = array();
@@ -26,20 +27,22 @@ class Type
         return self::$types[$id];
     }
 
-    /**
-     * @return mixed
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
+    }
+
+    function jsonSerialize()
+    {
+        return [
+            "id" => $this->id,
+            "name" => $this->name
+        ];
     }
 
 }

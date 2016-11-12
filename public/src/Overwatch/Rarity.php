@@ -30,25 +30,16 @@ class Rarity implements JsonSerializable
         return self::$rarities[$id];
     }
 
-    /**
-     * @return mixed
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * @return mixed
-     */
     public function getBasePrice()
     {
         return $this->basePrice;

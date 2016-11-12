@@ -1,18 +1,14 @@
 <?php
 require_once("required.php");
 
-use \Overwatch\Dao\UsersTable;
-use \Overwatch\Dao\CosmeticsTable;
+use Overwatch\Dao\UsersTable;
 
 if (isUserLoggedIn()) {
-    if (isset($_POST["cosmetics"])) {
-        if (UsersTable::getInstance()->updateCosmetics($_SESSION["user"]->getId(), $_POST["cosmetics"])) {
-            $_SESSION["user"]->setCosmetics(CosmeticsTable::getInstance()->getOwnedCosmeticsByUserId($_SESSION["user"]->getId()));
+    if (isset($_POST["cosmetic"]) && isset($_POST["owned"])) {
+        if (UsersTable::getInstance()->updateUserCosmetic($_SESSION["user"]->getId(), $_POST["cosmetic"], $_POST["owned"])) {
+            $_SESSION["needrefresh"] = true;
             echo true;
         }
-    }
-    else if (isset($_POST["export"])) {
-
     }
 }
 echo false;

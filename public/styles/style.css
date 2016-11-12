@@ -7,6 +7,14 @@ a {
     text-decoration: none;
 }
 
+#import-collection--dialog {
+    width: 400px;
+}
+
+#cosmetics-menu {
+    background-color: #f3f3f3;
+}
+
 #cosmetics-menu hr {
     margin: 0;
 }
@@ -17,7 +25,13 @@ a {
 }
 
 #cosmetics-menu .cosmetics-menu--update button {
-    margin-left: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#cosmetics-menu .cosmetics-menu--update button:not(:first-child) {
+    margin-left: 0.75rem;
+    background-color: #ffffff;
 }
 
 #cosmetics-menu .cosmetics-menu--item {

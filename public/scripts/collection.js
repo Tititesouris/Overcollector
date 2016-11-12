@@ -3,38 +3,91 @@ $(function () {
 
     var cosmeticsMenu = $("#cosmetics-menu");
 
-    cosmeticsMenu.find(".cosmetics-menu--update-save, button").click(function () {
-        var cosmetics = [];
-        $("#cosmetics-table").find(".cosmetic--checkbox input[type='checkbox']:checked").each(function () {
-            cosmetics.push($(this).data("cosmetic-id"));
-        });
+    var importDialog = document.querySelector('#import-collection--dialog');
+    if (!importDialog.showModal) {
+        dialogPolyfill.registerDialog(importDialog);
+    }
 
-        saveCollection(cosmetics,
-            function (data) {
+    // Refresh button
+    cosmeticsMenu.find("button.cosmetics-menu--update-refresh").click(function () {
+        location.reload();
+    });
+
+    // Import button
+    cosmeticsMenu.find("button.cosmetics-menu--update-import").click(function () {
+        importDialog.showModal();
+    });
+
+    $(importDialog).find("button.close").click(function () {
+        importDialog.close();
+    });
+
+    $(importDialog).find("button.confirm").click(function () {
+        importCollection($("#import-collection--textarea").val(), function (data) {
+            if (data) {
                 document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
-                    message: data ? "Collection updated!" : "Error: Update failed"
+                    message: "Collection imported!"
                 });
-                if (data) {
-                    setTimeout(function () {
-                        location.reload();
-                    }, 500);
-                }
+                importDialog.close();
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
+            }
+            else {
+                $(importDialog).find(".mdl-textfield--floating-label").addClass("is-invalid");
+            }
+        });
+    });
+
+    // Export button
+    cosmeticsMenu.find("button.cosmetics-menu--update-export").click(function () {
+        window.open("export.php", "_blank");
+    });
+
+    // Settings
+    cosmeticsMenu.find("input[type=checkbox].setting-input").change(function () {
+        saveSetting($(this).data("setting"), $(this).prop("checked"), function (data) {
+            if (!data) {
+                document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
+                    message: "Error: Failed to update settings"
+                });
+            }
+        });
+    });
+
+    // Cosmetics
+    $("#cosmetics-table").find(".cosmetic--checkbox input[type='checkbox']").change(function () {
+        saveCosmetic($(this).data("cosmetic-id"), $(this).prop("checked"), function (data) {
+            if (!data) {
+                document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
+                    message: "Error: Failed to update collection"
+                });
+            }
+        });
+    });
+
+    function importCollection(collectionData, f) {
+        $.post(
+            "import.php",
+            {
+                data: collectionData
+            },
+            function (data) {
+                console.log(data);
+                f(data);
             }
         );
-    });
+    }
 
-    cosmeticsMenu.find(".setting-input, input[type=checkbox]").change(function () {
-        saveSetting($(this).data("setting"), $(this).prop("checked"), function (data) {
-        })
-    });
-
-    function saveCollection(cosmetics, f) {
+    function saveCosmetic(cosmetic, owned, f) {
         $.post(
             "cosmetics.php",
             {
-                cosmetics: cosmetics
+                cosmetic: cosmetic,
+                owned: owned
             },
             function (data) {
+                console.log(data);
                 f(data);
             }
         );
@@ -48,6 +101,7 @@ $(function () {
                 value: value
             },
             function (data) {
+                console.log(data);
                 f(data);
             }
         );

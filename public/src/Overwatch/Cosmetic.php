@@ -79,7 +79,13 @@ class Cosmetic implements JsonSerializable
     function jsonSerialize()
     {
         return [
-            "todo" => "todo"
+            "id" => $this->id,
+            "category" => $this->category,
+            "type" => $this->type,
+            "rarity" => $this->rarity,
+            "hero" => $this->hero,
+            "name" => $this->name,
+            "event" => $this->event
         ];
     }
 }

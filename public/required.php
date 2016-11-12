@@ -15,21 +15,16 @@ if (DEBUG) {
 require_once(__DIR__ . "/functions.php");
 
 use \Overwatch\Dao\UsersTable;
-use \Overwatch\Dao\HeroesTable;
-use \Overwatch\Dao\CategoriesTable;
-use \Overwatch\Dao\TypesTable;
-use \Overwatch\Dao\CosmeticsTable;
 
 if (!isUserLoggedIn()) {
     $_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
-    $_SESSION["heroes"] = HeroesTable::getInstance()->getAllHeroesSortById();
-    $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesSortById();
-    $_SESSION["types"] = TypesTable::getInstance()->getAllTypesSortById();
-    $_SESSION["allcosmetics"] = CosmeticsTable::getInstance()->getAllCosmeticsByUserIdSortByHeroesAndType($_SESSION["user"]->getId());
-    $_SESSION["cosmetics"] = CosmeticsTable::getInstance()->getCosmeticsByUserIdSortByHeroesAndType($_SESSION["user"]->getId());
+    $_SESSION["needrefresh"] = true;
+}
+if ($_SESSION["needrefresh"]) {
+    updateSession();
 }
 
-//echo '<pre>' . var_export($_SESSION, true) . '</pre>';
+//echo '<pre>' . var_export(SESSION, true) . '</pre>';
 
 
 // Twig

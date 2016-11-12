@@ -84,6 +84,15 @@ HAVING COUNT(*) > 2
 ORDER BY heroes.name, type_id, rarity_id, category_id, cosmetics.name, event_id;
 ";
 
+    private $fetchAllOwnedCosmeticsByUserId = "
+SELECT id, category_id, type_id, rarity_id, hero_id, name, event_id
+FROM cosmetics INNER JOIN user_cosmetics
+  ON cosmetics.id = user_cosmetics.cosmetic_id
+WHERE user_id = $1
+  AND category_id IS NOT NULL
+ORDER BY id, type_id, rarity_id, category_id, name, event_id;
+";
+
     private $fetchOwnedCosmeticsByUserId = "
 SELECT cosmetics.id, category_id, type_id, rarity_id, hero_id, cosmetics.name, event_id
 FROM cosmetics
@@ -124,6 +133,7 @@ ORDER BY heroes.name, type_id, rarity_id, category_id, cosmetics.name, event_id;
         parent::__construct();
         pg_prepare($this->handler, "fetchAllCosmeticsByUserId", $this->fetchAllCosmeticsByUserId);
         pg_prepare($this->handler, "fetchCosmeticsByUserId", $this->fetchCosmeticsByUserId);
+        pg_prepare($this->handler, "fetchAllOwnedCosmeticsByUserId", $this->fetchAllOwnedCosmeticsByUserId);
         pg_prepare($this->handler, "fetchOwnedCosmeticsByUserId", $this->fetchOwnedCosmeticsByUserId);
     }
 
@@ -178,6 +188,19 @@ ORDER BY heroes.name, type_id, rarity_id, category_id, cosmetics.name, event_id;
             }
         }
         return $cosmetics;
+    }
+
+    public function getAllOwnedCosmeticsByUserId($userId)
+    {
+        $response = pg_execute($this->handler, "fetchAllOwnedCosmeticsByUserId", array($userId));
+        if ($response !== false) {
+            $cosmetics = [];
+            while (($row = pg_fetch_assoc($response)) !== false) {
+                $cosmetics[] = $this->parseCosmetic($row);
+            }
+            return $cosmetics;
+        }
+        return [];
     }
 
     public function getOwnedCosmeticsByUserId($userId)

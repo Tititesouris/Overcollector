@@ -26,11 +26,37 @@
             <ul class="demo-list-icon mdl-list mdl-shadow--2dp">
                 <li class="cosmetics-menu--update mdl-list__item">
                     <span class="mdl-list__item-primary-content">
-                        <button class="cosmetics-menu--update-save mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Save</button>
-                        <button class="cosmetics-menu--update-cancel mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                                disabled>Cancel</button>
+                        <button class="cosmetics-menu--update-refresh mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            Refresh
+                        </button>
+                        <button id="show-dialog"
+                                class="cosmetics-menu--update-import mdl-button mdl-js-button mdl-button--raised">
+                            Import
+                        </button>
+                        <dialog id="import-collection--dialog" class="mdl-dialog">
+                            <h4 class="mdl-dialog__title">Import</h4>
+                            <div class="mdl-dialog__content">
+                                <p>
+                                    Import your collection by pasting your collection data here. It will replace the current collection, <b>there is no way back</b>.<br />
+                                    <b>We strongly suggest that you export the current collection before importing a new one.</b>
+                                </p>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <textarea id="import-collection--textarea" class="mdl-textfield__input" type="text" rows="3" maxrows="3"></textarea>
+                                    <label class="mdl-textfield__label" for="import-collection--textarea">Collection data (JSON format)</label>
+                                    <span class="mdl-textfield__error">Data isn't formatted correctly</span>
+                                </div>
+                            </div>
+                            <div class="mdl-dialog__actions">
+                                <button type="button" class="mdl-button mdl-button--raised mdl-button--colored confirm">Import</button>
+                                <button type="button" class="mdl-button mdl-button--raised close">Cancel</button>
+                            </div>
+                        </dialog>
+                        <button class="cosmetics-menu--update-export mdl-button mdl-js-button mdl-button--raised">
+                            Export
+                        </button>
                     </span>
                 </li>
+                <hr/>
                 <li class="mdl-list__item">
                     <span class="mdl-list__item-primary-content mdl-typography--font-bold">
                         Show Owned
@@ -77,7 +103,8 @@
                     </span>
                 </li>
                 {% for hero in SESSION.heroes %}
-                    {% set ratio = heroStats["hero-"~hero.id].owned / heroStats["hero-"~hero.id].total %}
+                    {% set heroStat = heroStats["hero-"~hero.id] is defined ? heroStats["hero-"~hero.id] : null %}
+                    {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
                     <li class="cosmetics-menu--item mdl-list__item"
                         style="background-color: {{ ratio|colorgradient("rgba") }};">
                         <span class="mdl-list__item-primary-content">
@@ -86,8 +113,8 @@
                                     <img src="img/collection/heroes/{{ hero.slug }}.png"/>{{ hero.name }}
                                 </span>
                                 <span class="cosmetics-menu--item--stats">
-                                    {{ (ratio * 100)|round(2, 'floor') }}% ({{ heroStats["hero-"~hero.id].owned }}
-                                    / {{ heroStats["hero-"~hero.id].total }})
+                                    {{ (ratio * 100)|round(2, "floor") }}% ({{ heroStat.owned ?? 0 }}
+                                    / {{ heroStat.total ?? 0 }})
                                 </span>
                             </a>
                         </span>
