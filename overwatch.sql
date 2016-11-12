@@ -5,8 +5,8 @@ DROP ROLE IF EXISTS overwatch;
 CREATE ROLE overwatch WITH LOGIN PASSWORD 'localpass';
 
 CREATE TABLE heroes (
-  id    INTEGER,
-  name  TEXT NOT NULL,
+  id   INTEGER,
+  name TEXT NOT NULL,
   slug TEXT NOT NULL,
   CONSTRAINT pk_heroes PRIMARY KEY (id)
 );
@@ -43,7 +43,7 @@ CREATE TABLE categories (
   id          INTEGER,
   name        TEXT NOT NULL,
   description TEXT NOT NULL,
-  slug       TEXT NOT NULL,
+  slug        TEXT NOT NULL,
   CONSTRAINT pk_categories PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE categories TO overwatch;
@@ -971,28 +971,136 @@ VALUES
   (1, 5, 1, 12, 'Was That All?', 1),
   (6, 5, 1, 12, 'It''s In The Refrigerator', 4), -- Summer Games Reaper Voice Lines
   (7, 5, 1, 12, 'I Work The Graveyard Shift', 7), -- Halloween Terror Reaper Voice Lines
-  (1, 5, 1, 13, 'Golden', 1), -- Normal Reinhardt Voice Lines
-  (1, 5, 1, 13, 'Golden', 1),
-  (1, 5, 1, 14, 'Golden', 1), -- Normal Roadhog Voice Lines
-  (1, 5, 1, 14, 'Golden', 1),
-  (1, 5, 1, 15, 'Golden', 1), -- Normal Soldier: 76 Voice Lines
-  (1, 5, 1, 15, 'Golden', 1),
-  (1, 5, 1, 16, 'Golden', 1), -- Normal Symmetra Voice Lines
-  (1, 5, 1, 16, 'Golden', 1),
-  (1, 5, 1, 17, 'Golden', 1), -- Normal Torbjörn Voice Lines
-  (1, 5, 1, 17, 'Golden', 1),
-  (1, 5, 1, 18, 'Golden', 1), -- Normal Tracer Voice Lines
-  (1, 5, 1, 18, 'Golden', 1),
-  (1, 5, 1, 19, 'Golden', 1), -- Normal Widowmaker Voice Lines
-  (1, 5, 1, 19, 'Golden', 1),
-  (1, 5, 1, 20, 'Golden', 1), -- Normal Winston Voice Lines
-  (1, 5, 1, 20, 'Golden', 1),
-  (1, 5, 1, 21, 'Golden', 1), -- Normal Zarya Voice Lines
-  (1, 5, 1, 21, 'Golden', 1),
-  (1, 5, 1, 22, 'Golden', 1), -- Normal Zenyatta Voice Lines
-  (1, 5, 1, 22, 'Golden', 1),
-  (1, 5, 1, 23, 'Golden', 9), -- Normal Sombra Voice Lines
-  (1, 5, 1, 23, 'Golden', 9),
+  (1, 5, 1, 13, 'Are You Afraid?', 1), -- Normal Reinhardt Voice Lines
+  (1, 5, 1, 13, 'Bring Me Another', 1),
+  (1, 5, 1, 13, 'Catch Phrase!', 1),
+  (1, 5, 1, 13, 'Crusader Online', 1),
+  (1, 5, 1, 13, 'Crushing Machine', 1),
+  (1, 5, 1, 13, 'German Engineering', 1),
+  (1, 5, 1, 13, 'Honor And Glory', 1),
+  (1, 5, 1, 13, 'Respect Your Elders', 1),
+  (1, 5, 1, 13, 'Show You How It''s Done', 1),
+  (1, 5, 1, 13, 'This Old Dog', 1),
+  (1, 5, 1, 13, '100% German Power', 1), -- Summer Games Reinhardt Voice Lines
+  (1, 5, 1, 13, 'Smashing', 1), -- Halloween Terror Reinhardt Voice Lines
+  (1, 5, 1, 14, 'Candy From A Baby', 1), -- Normal Roadhog Voice Lines
+  (1, 5, 1, 14, 'Got Something To Say?', 1),
+  (1, 5, 1, 14, 'Hahaha!', 1),
+  (1, 5, 1, 14, 'Hook, Line, And Sinker', 1),
+  (1, 5, 1, 14, 'Life Is Pain, So Is Death', 1),
+  (1, 5, 1, 14, 'Piece Of Cake', 1),
+  (1, 5, 1, 14, 'Push Off', 1),
+  (1, 5, 1, 14, 'Say "Bacon..."', 1),
+  (1, 5, 1, 14, 'Violence Is The Answer', 1),
+  (1, 5, 1, 14, 'We''re All Animals', 1),
+  (1, 5, 1, 14, 'What''s Mine Is Mine', 1), -- Summer Games Roadhog Voice Lines
+  (1, 5, 1, 14, 'Want Some Candy?', 1), -- Halloween Terror Roadhog Voice Lines
+  (1, 5, 1, 15, 'Get Off My Lawn', 1), -- Normal Soldier: 76 Voice Lines
+  (1, 5, 1, 15, 'I Didn''t Start This War...', 1),
+  (1, 5, 1, 15, 'I''m An Army Of One', 1),
+  (1, 5, 1, 15, 'Not On My Watch', 1),
+  (1, 5, 1, 15, 'Old Soldiers', 1),
+  (1, 5, 1, 15, 'Smells Like Victory', 1),
+  (1, 5, 1, 15, 'That''s "Sir" To You', 1),
+  (1, 5, 1, 15, 'What Are You Lookin'' At?', 1),
+  (1, 5, 1, 15, 'You Didn''t Make The Cut', 1),
+  (1, 5, 1, 15, 'You''re The Other One', 1),
+  (1, 5, 1, 15, 'You Want A Medal?', 1), -- Summer Games Soldier: 76 Voice Lines
+  (1, 5, 1, 15, 'Knock Knock', 1), -- Halloween Terror Soldier: 76 Voice Lines
+  (1, 5, 1, 16, 'Everything By Design', 1), -- Normal Symmetra Voice Lines
+  (1, 5, 1, 16, 'Exquisite', 1),
+  (1, 5, 1, 16, 'How Unsightly', 1),
+  (1, 5, 1, 16, 'I Don''t Think So', 1),
+  (1, 5, 1, 16, 'Impressive', 1),
+  (1, 5, 1, 16, 'Perfect Harmony', 1),
+  (1, 5, 1, 16, 'Precisely', 1),
+  (1, 5, 1, 16, 'Put You In Your Place', 1),
+  (1, 5, 1, 16, 'Welcome To My Reality', 1),
+  (1, 5, 1, 16, 'Why Do You Struggle?', 1),
+  (1, 5, 1, 16, 'Hard Work And Dedication', 1), -- Summer Games Symmetra Voice Lines
+  (1, 5, 1, 16, 'A Frightening Thought', 1), -- Halloween Terror Symmetra Voice Lines
+  (1, 5, 1, 17, 'A Chicken Out Of A Feather', 1), -- Normal Torbjörn Voice Lines
+  (1, 5, 1, 17, 'Completion Date?', 1),
+  (1, 5, 1, 17, 'Don''t Get Caught', 1),
+  (1, 5, 1, 17, 'Engineers', 1),
+  (1, 5, 1, 17, 'I''m Givng It All I''ve Got!', 1),
+  (1, 5, 1, 17, 'I''m Swedish!', 1),
+  (1, 5, 1, 17, 'Leave This To An Expert', 1),
+  (1, 5, 1, 17, 'Let''s Not Buy The Pig', 1),
+  (1, 5, 1, 17, 'Some Assembly Required', 1),
+  (1, 5, 1, 17, 'Working As Intended', 1),
+  (1, 5, 1, 17, 'More Where That Came From', 1), -- Summer Games Torbjörn Voice Lines
+  (1, 5, 1, 17, 'If You Build It', 1), -- Halloween Terror Torbjörn Voice Lines
+  (1, 5, 1, 18, 'Aw, Rubbish', 1), -- Normal Tracer Voice Lines
+  (1, 5, 1, 18, 'Be Right Back!', 1),
+  (1, 5, 1, 18, 'Check Me Out', 1),
+  (1, 5, 1, 18, 'Cheers, Love!', 1),
+  (1, 5, 1, 18, 'Déjà Vu', 1),
+  (1, 5, 1, 18, 'Keep Calm', 1),
+  (1, 5, 1, 18, 'She Shoots, She Scores', 1),
+  (1, 5, 1, 18, 'The World Needs Heroes', 1),
+  (1, 5, 1, 18, 'Under Control', 1),
+  (1, 5, 1, 18, 'You Need A Time Out', 1),
+  (1, 5, 1, 18, 'Eat My Dust', 1), -- Summer Games Tracer Voice Lines
+  (1, 5, 1, 18, 'Ooh, Scary!', 1), -- Halloween Terror Tracer Voice Lines
+  (1, 5, 1, 19, 'Encore?', 1), -- Normal Widowmaker Voice Lines
+  (1, 5, 1, 19, 'Let Them Eat The Cake', 1),
+  (1, 5, 1, 19, 'Look For The Woman', 1),
+  (1, 5, 1, 19, 'Magnifique', 1),
+  (1, 5, 1, 19, 'One Shot, One Kill', 1),
+  (1, 5, 1, 19, 'Ouh Là Là', 1),
+  (1, 5, 1, 19, 'Step Into My Parlor...', 1),
+  (1, 5, 1, 19, 'That''s How It Is', 1),
+  (1, 5, 1, 19, 'To Life, To Death', 1),
+  (1, 5, 1, 19, 'What''s An Aimbot?', 1),
+  (1, 5, 1, 19, 'I Don''t Miss', 1), -- Summer Games Widowmaker Voice Lines
+  (1, 5, 1, 19, 'The Party Is Over', 1), -- Halloween Terror Widowmaker Voice Lines
+  (1, 5, 1, 20, '...Excuse Me', 1), -- Normal Winston Voice Lines
+  (1, 5, 1, 20, 'Don''t Get Me Angry', 1),
+  (1, 5, 1, 20, 'How Embarrassing!', 1),
+  (1, 5, 1, 20, 'I Do Not Want A Banana', 1),
+  (1, 5, 1, 20, 'Natural Selection', 1),
+  (1, 5, 1, 20, 'No Monkey Business', 1),
+  (1, 5, 1, 20, 'Peanut Butter?', 1),
+  (1, 5, 1, 20, 'Sorry About That!', 1),
+  (1, 5, 1, 20, 'The Power Of Science!', 1),
+  (1, 5, 1, 20, 'We Have A Problem', 1),
+  (1, 5, 1, 20, 'Playtime''s Over', 1), -- Summer Games Winston Voice Lines
+  (1, 5, 1, 20, 'This Is Not A Costume', 1), -- Halloween Terror Winston Voice Lines
+  (1, 5, 1, 21, 'Get Down, Give Me 20', 1), -- Normal Zarya Voice Lines
+  (1, 5, 1, 21, 'I Am Mother Russia', 1),
+  (1, 5, 1, 21, 'I Can Bench More Than You', 1),
+  (1, 5, 1, 21, 'I Will Break You', 1),
+  (1, 5, 1, 21, 'In Russia, Game Plays You', 1),
+  (1, 5, 1, 21, 'Need Personal Training?', 1),
+  (1, 5, 1, 21, 'No Mercy', 1),
+  (1, 5, 1, 21, 'Siberian Bear', 1),
+  (1, 5, 1, 21, 'Together We Are Strong', 1),
+  (1, 5, 1, 21, 'Welcome To The Gun Show', 1),
+  (1, 5, 1, 21, 'No Pain, No Gain', 1), -- Summer Games Zarya Voice Lines
+  (1, 5, 1, 21, 'Never Forget The Fallen', 1), -- Halloween Terror Zarya Voice Lines
+  (1, 5, 1, 22, 'Death Is Whimsical Today', 1), -- Normal Zenyatta Voice Lines
+  (1, 5, 1, 22, 'Do I Think?', 1),
+  (1, 5, 1, 22, 'Free Your Mind', 1),
+  (1, 5, 1, 22, 'Hello, World!', 1),
+  (1, 5, 1, 22, 'I Dreamt I Was A Butterfly', 1),
+  (1, 5, 1, 22, 'I Think, Therefore I Am', 1),
+  (1, 5, 1, 22, 'I Will Not Juggle', 1),
+  (1, 5, 1, 22, 'Ones And Zeroes', 1),
+  (1, 5, 1, 22, 'Peace And Blessings', 1),
+  (1, 5, 1, 22, 'The Iris Embraces You', 1),
+  (1, 5, 1, 22, 'Strive For Improvement', 1), -- Summer Games Zenyatta Voice Lines
+  (1, 5, 1, 22, 'Trick Or Treat?', 1), -- Halloween Terror Zenyatta Voice Lines
+  (1, 5, 1, 23, 'Cool', 9), -- Normal Sombra Voice Lines
+  (1, 5, 1, 23, 'Did You Mean To Do That?', 9),
+  (1, 5, 1, 23, 'Glitch In The System', 9),
+  (1, 5, 1, 23, 'Good One', 9),
+  (1, 5, 1, 23, 'Hack The Planet', 9),
+  (1, 5, 1, 23, 'In Over Your Head', 9),
+  (1, 5, 1, 23, 'Just Squishing A Bug', 9),
+  (1, 5, 1, 23, 'Mess With The Best...', 9),
+  (1, 5, 1, 23, 'Show Me What You Got', 9),
+  (1, 5, 1, 23, 'Taking This Very Seriously', 9),
   -- Sprays
   (NULL, 6, NULL, NULL, 'Logo', 1), -- Default All Heroes Sprays
   (NULL, 6, NULL, NULL, 'You Are Not Prepared', 3),
@@ -1064,30 +1172,64 @@ VALUES
   (7, 6, 1, NULL, 'Pumpkins', 7),
   (7, 6, 1, NULL, 'Rise Of The Zomnics', 7),
   (7, 6, 1, NULL, 'The Reapening', 7),
-  (7, 6, 1, NULL, 'Witch''s Brew', 7),
+  (7, 6, 1, NULL, 'Witch''s Brew', 7), --TODO heroes
   (1, 6, 1, 1, 'todo', 3), -- Normal Ana Sprays
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
+  (1, 6, 1, 1, 'todo', 3),
   (1, 6, 1, 2, 'Golden', 1), -- Normal Bastion Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 3, 'Golden', 1), -- Normal D.Va Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 4, 'Golden', 1), -- Normal Genji Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 5, 'Golden', 1), -- Normal Hanzo Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 6, 'Golden', 1), -- Normal Junkrat Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 7, 'Golden', 1), -- Normal Lúcio Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 8, 'Golden', 1), -- Normal McCree Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 9, 'Golden', 1), -- Normal Mei Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 10, 'Golden', 1), -- Normal Mercy Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 11, 'Golden', 1), -- Normal Pharah Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 12, 'Golden', 1), -- Normal Reaper Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 13, 'Golden', 1), -- Normal Reinhardt Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 14, 'Golden', 1), -- Normal Roadhog Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 15, 'Golden', 1), -- Normal Soldier: 76 Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 16, 'Golden', 1), -- Normal Symmetra Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 17, 'Golden', 1), -- Normal Torbjörn Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 18, 'Golden', 1), -- Normal Tracer Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 19, 'Golden', 1), -- Normal Widowmaker Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 20, 'Golden', 1), -- Normal Winston Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 21, 'Golden', 1), -- Normal Zarya Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   (1, 6, 1, 22, 'Golden', 1), -- Normal Zenyatta Sprays
-  (1, 6, 1, 23, 'Golden', 9), -- Normal Sombra Sprays--TODO heroes
+  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 23, 'Golden', 9), -- Normal Sombra Sprays
+  (1, 6, 1, 2, 'Golden', 1),
   -- Highlight Intros
   (1, 7, 3, 1, 'Guardian', 3), -- Normal Ana Highlight Intros
   (1, 7, 3, 1, 'Locked On', 3),
@@ -1241,6 +1383,7 @@ INSERT INTO settings (name, description, "default")
 VALUES
   ('collection-show-images', 'Show images in the collection', 'true'),
   ('collection-show-colors', 'Show the completion progress with colors in the collection', 'true'),
+  ('collection-heroes-per-page', 'Number of heroes to display per page in the collection', '3'),
   ('collection-cosmetics-per-row', 'Number of cosmetics to display per row in the collection', '3'),
   ('collection-show-owned-cosmetics', 'Show owned cosmetics in the collection', 'true'),
   ('collection-show-categories', 'Show cosmetics for every category in the collection', 'true'),

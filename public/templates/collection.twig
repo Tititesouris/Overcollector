@@ -1,6 +1,11 @@
 {% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
+    {% set settings = SESSION.user.settings %}
+    {% set pages = {
+    "start": (GET.page ?? 0) * (settings["collection-heroes-per-page"].value ?? 3),
+    "end": (GET.page ?? 0 + 1) * (settings["collection-heroes-per-page"].value ?? 3)
+    } %}
     {% set heroStats = {} %}
     {% for hero, types in SESSION.allcosmetics %}
         {% set heroOwned = 0 %}
@@ -20,7 +25,6 @@
         {% endfor %}
         {% set heroStats = heroStats|merge({("hero-" ~ hero): {"owned": heroOwned, "total": heroTotal, "types": typesStats}}) %}
     {% endfor %}
-    <!--suppress HtmlUnknownTarget, HtmlUnknownAnchorTarget -->
     <div class="mdl-grid">
         <div id="cosmetics-menu" class="mdl-cell mdl-cell--3-col">
             <ul class="demo-list-icon mdl-list mdl-shadow--2dp">
@@ -37,11 +41,12 @@
                             <h4 class="mdl-dialog__title">Import</h4>
                             <div class="mdl-dialog__content">
                                 <p>
-                                    Import your collection by pasting your collection data here. It will replace the current collection, <b>there is no way back</b>.<br />
+                                    Import your collection by pasting your collection data here. It will replace the current collection, <b>there is no way back</b>.<br/>
                                     <b>We strongly suggest that you export the current collection before importing a new one.</b>
                                 </p>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <textarea id="import-collection--textarea" class="mdl-textfield__input" type="text" rows="3" maxrows="3"></textarea>
+                                    <textarea id="import-collection--textarea" class="mdl-textfield__input" type="text"
+                                              rows="3" maxrows="3"></textarea>
                                     <label class="mdl-textfield__label" for="import-collection--textarea">Collection data (JSON format)</label>
                                     <span class="mdl-textfield__error">Data isn't formatted correctly</span>
                                 </div>
@@ -64,7 +69,7 @@
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-show-owned">
                             <input type="checkbox" id="switch-show-owned" class="setting-input mdl-switch__input"
-                                   data-setting="collection-show-owned-cosmetics" {{ SESSION.user.settings["collection-show-owned-cosmetics"].value ?? true ? "checked" }}>
+                                   data-setting="collection-show-owned-cosmetics" {{ settings["collection-show-owned-cosmetics"].value ?? true ? "checked" }}>
                         </label>
                     </span>
                 </li>
@@ -76,7 +81,7 @@
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-heroes">
                             <input type="checkbox" id="switch-all-heroes" class="setting-input mdl-switch__input"
-                                   data-setting="collection-show-heroes" {{ SESSION.user.settings["collection-show-heroes"].value ?? true ? "checked" }}>
+                                   data-setting="collection-show-heroes" {{ settings["collection-show-heroes"].value ?? true ? "checked" }}>
                         </label>
                     </span>
                 </li>
@@ -98,7 +103,7 @@
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hero-checkbox-allheroes">
                             <input type="checkbox" id="hero-checkbox-allheroes"
                                    class="setting-input mdl-checkbox__input"
-                                   data-setting="collection-show-hero-allheroes" {{ SESSION.user.settings["collection-show-hero-allheroes"].value ?? true ? "checked" }}/>
+                                   data-setting="collection-show-hero-allheroes" {{ settings["collection-show-hero-allheroes"].value ?? true ? "checked" }}/>
                         </label>
                     </span>
                 </li>
@@ -124,7 +129,7 @@
                                 <input type="checkbox" id="hero-checkbox-{{ hero.slug }}"
                                        class="setting-input mdl-checkbox__input"
                                        data-setting="collection-show-hero-{{ hero.slug }}"
-                                        {{ SESSION.user.settings["collection-show-hero-" ~ hero.slug].value ?? true ? "checked" }}/>
+                                        {{ settings["collection-show-hero-" ~ hero.slug].value ?? true ? "checked" }}/>
                             </label>
                         </span>
                     </li>
@@ -137,7 +142,7 @@
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-categories">
                             <input type="checkbox" id="switch-all-categories" class="setting-input mdl-switch__input"
-                                   data-setting="collection-show-categories" {{ SESSION.user.settings["collection-show-categories"].value ?? true ? "checked" }}>
+                                   data-setting="collection-show-categories" {{ settings["collection-show-categories"].value ?? true ? "checked" }}>
                         </label>
                     </span>
                 </li>
@@ -150,7 +155,7 @@
                                for="category-checkbox-default">
                             <input type="checkbox" id="category-checkbox-default"
                                    class="setting-input mdl-checkbox__input"
-                                   data-setting="collection-show-category-default" {{ SESSION.user.settings["collection-show-category-default"].value ?? true ? "checked" }}/>
+                                   data-setting="collection-show-category-default" {{ settings["collection-show-category-default"].value ?? true ? "checked" }}/>
                         </label>
                     </span>
                     <div class="mdl-tooltip" data-mdl-for="cosmetics-menu--category-default">
@@ -169,7 +174,7 @@
                                 <input type="checkbox" id="category-checkbox-{{ category.slug }}"
                                        class="setting-input mdl-checkbox__input"
                                        data-setting="collection-show-category-{{ category.slug }}"
-                                        {{ SESSION.user.settings["collection-show-category-" ~ category.slug].value ?? true ? "checked" }}/>
+                                        {{ settings["collection-show-category-" ~ category.slug].value ?? true ? "checked" }}/>
                             </label>
                         </span>
                         <div class="mdl-tooltip"
@@ -183,48 +188,49 @@
         <div class="mdl-cell mdl-cell--9-col-desktop">
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 {% for hero, types in SESSION.cosmetics %}
-                    {% set ratio = heroStats["hero-"~hero].owned / heroStats["hero-"~hero].total %}
-                    <tbody class="cosmetics-table--body">
-                    <tr class="cosmetics-table--hero"
-                        style="background-color: {{ ratio|colorgradient("rgba") }};">
-                        <td colspan="{{ SESSION.user.settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}"
-                            class="mdl-typography--headline mdl-data-table__cell--non-numeric">
-                            <a name="{{ hero > 0 ? SESSION.heroes[hero].slug : "allheroes" }}">
-                                {{ hero > 0 ? SESSION.heroes[hero].name : "All Heroes" }}
-                            </a>
-                        </td>
-                        <td>
-                            {{ (ratio * 100)|round(2, 'floor') }}%
-                            ({{ heroStats["hero-"~hero].owned }} / {{ heroStats["hero-"~hero].total }})
-                        </td>
-                    </tr>
-                    {% for type, cosmetics in types %}
-                        {% set ratio = heroStats["hero-"~hero].types["type-"~type].owned / heroStats["hero-"~hero].types["type-"~type].total %}
-                        <tr class="cosmetics-table--type"
+                    {% if pages.start <= loop.index0 and loop.index0 < pages.end %}
+                        {% set ratio = heroStats["hero-"~hero].owned / heroStats["hero-"~hero].total %}
+                        <tbody class="cosmetics-table--body">
+                        <tr class="cosmetics-table--hero"
                             style="background-color: {{ ratio|colorgradient("rgba") }};">
-                            <td colspan="{{ SESSION.user.settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}">
-                                {{ SESSION.types[type].name }}s
+                            <td colspan="{{ settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}"
+                                class="mdl-typography--headline mdl-data-table__cell--non-numeric">
+                                <a name="{{ hero > 0 ? SESSION.heroes[hero].slug : "allheroes" }}">
+                                    {{ hero > 0 ? SESSION.heroes[hero].name : "All Heroes" }}
+                                </a>
                             </td>
                             <td>
                                 {{ (ratio * 100)|round(2, 'floor') }}%
-                                ({{ heroStats["hero-"~hero].types["type-"~type].owned }}
-                                / {{ heroStats["hero-"~hero].types["type-"~type].total }})
+                                ({{ heroStats["hero-"~hero].owned }} / {{ heroStats["hero-"~hero].total }})
                             </td>
                         </tr>
-                        {% for row in cosmetics|batch(SESSION.user.settings["collection-cosmetics-per-row"].value ?? 3) %}
-                            <tr>
-                                {% for cosmetic in row %}
-                                    <td class="cosmetics-table--category category-{{ cosmetic.category is not null ? cosmetic.category.id : 0 }}">
-                                        {{ cosmeticMacro.cosmetic(cosmetic, SESSION.user.hasCosmetic(cosmetic.id)) }}
-                                    </td>
-                                {% endfor %}
+                        {% for type, cosmetics in types %}
+                            {% set ratio = heroStats["hero-"~hero].types["type-"~type].owned / heroStats["hero-"~hero].types["type-"~type].total %}
+                            <tr class="cosmetics-table--type"
+                                style="background-color: {{ ratio|colorgradient("rgba") }};">
+                                <td colspan="{{ settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}">
+                                    {{ SESSION.types[type].name }}s
+                                </td>
+                                <td>
+                                    {{ (ratio * 100)|round(2, 'floor') }}%
+                                    ({{ heroStats["hero-"~hero].types["type-"~type].owned }}
+                                    / {{ heroStats["hero-"~hero].types["type-"~type].total }})
+                                </td>
                             </tr>
+                            {% for row in cosmetics|batch(settings["collection-cosmetics-per-row"].value ?? 3) %}
+                                <tr>
+                                    {% for cosmetic in row %}
+                                        <td class="cosmetics-table--category category-{{ cosmetic.category is not null ? cosmetic.category.id : 0 }}">
+                                            {{ cosmeticMacro.cosmetic(cosmetic, SESSION.user.hasCosmetic(cosmetic.id)) }}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
                         {% endfor %}
-                    {% endfor %}
-                    </tbody>
+                        </tbody>
+                    {% endif %}
                 {% endfor %}
             </table>
         </div>
     </div>
-
 {% endblock %}

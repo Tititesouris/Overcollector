@@ -39,7 +39,7 @@ WHERE (
       )
 GROUP BY cosmetics.id, heroes.name
 HAVING COUNT(*) > 1
-ORDER BY heroes.name, type_id, rarity_id, category_id, cosmetics.name, event_id;
+ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, category_id, cosmetics.name, event_id;
 ";
 
     private $fetchCosmeticsByUserId = "
@@ -81,7 +81,7 @@ WHERE (
       )
 GROUP BY cosmetics.id, heroes.name
 HAVING COUNT(*) > 2
-ORDER BY heroes.name, type_id, rarity_id, category_id, cosmetics.name, event_id;
+ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, category_id, cosmetics.name, event_id;
 ";
 
     private $fetchAllOwnedCosmeticsByUserId = "
@@ -125,7 +125,7 @@ WHERE (
       )
 GROUP BY cosmetics.id, heroes.name
 HAVING COUNT(*) > 1
-ORDER BY heroes.name, type_id, rarity_id, category_id, cosmetics.name, event_id;
+ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, category_id, cosmetics.name, event_id;
 ";
 
     protected function __construct()
