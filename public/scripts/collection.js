@@ -46,6 +46,24 @@ $(function () {
 
     // Settings
     cosmeticsMenu.find("input[type=checkbox].setting-input").change(function () {
+        if ($(this).data("setting") === "collection-show-heroes") {
+            cosmeticsMenu.find(".cosmetics-menu--item-hero input[type=checkbox]").prop("checked", $(this).prop("checked"));
+            if ($(this).prop("checked")) {
+                cosmeticsMenu.find(".cosmetics-menu--item-hero label").addClass("is-checked");
+            }
+            else {
+                cosmeticsMenu.find(".cosmetics-menu--item-hero label").removeClass("is-checked");
+            }
+        }
+        if ($(this).data("setting") === "collection-show-categories") {
+            cosmeticsMenu.find(".cosmetics-menu--item-category input[type=checkbox]").prop("checked", $(this).prop("checked"));
+            if ($(this).prop("checked")) {
+                cosmeticsMenu.find(".cosmetics-menu--item-category label").addClass("is-checked");
+            }
+            else {
+                cosmeticsMenu.find(".cosmetics-menu--item-category label").removeClass("is-checked");
+            }
+        }
         saveSetting($(this).data("setting"), $(this).prop("checked"), function (data) {
             if (!data) {
                 document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
@@ -54,6 +72,7 @@ $(function () {
             }
         });
     });
+
 
     // Cosmetics
     $("#cosmetics-table").find(".cosmetic--checkbox input[type='checkbox']").change(function () {

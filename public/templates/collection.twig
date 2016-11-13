@@ -7,6 +7,8 @@
     "end": (GET.page ?? 0 + 1) * (settings["collection-heroes-per-page"].value ?? 3)
     } %}
     {% set heroStats = {} %}
+    {% set categoryStats = {} %}
+    {% set categoryStats = {} %}
     {% for hero, types in SESSION.allcosmetics %}
         {% set heroOwned = 0 %}
         {% set heroTotal = 0 %}
@@ -17,7 +19,9 @@
             {% for cosmetic in cosmetics %}
                 {% if SESSION.user.hasCosmetic(cosmetic.id) %}
                     {% set typeOwned = typeOwned + 1 %}
+                    {% set categoryStats = categoryStats|merge({("category-" ~ (cosmetic.category.id ?? 0)): {"owned": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].owned ?? 0 + 1, "total": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].total ?? 0}}) %}
                 {% endif %}
+                {% set categoryStats = categoryStats|merge({("category-" ~ (cosmetic.category.id ?? 0)): {"owned": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].owned ?? 0, "total": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].total ?? 0 + 1}}) %}
             {% endfor %}
             {% set typesStats = typesStats|merge({("type-" ~ type): {"owned": typeOwned, "total": typeTotal}}) %}
             {% set heroOwned = heroOwned + typeOwned %}
@@ -74,30 +78,31 @@
                     </span>
                 </li>
                 <hr/>
-                <li class="cosmetics-menu--toggle mdl-list__item">
+                <li class="cosmetics-menu--toggle cosmetics-menu--toggle-heroes mdl-list__item">
                     <span class="mdl-list__item-primary-content mdl-typography--font-bold">
                         Heroes
                     </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-heroes">
-                            <input type="checkbox" id="switch-all-heroes" class="setting-input mdl-switch__input"
+                            <input type="checkbox" id="switch-all-heroes"
+                                   class="setting-input mdl-switch__input"
                                    data-setting="collection-show-heroes" {{ settings["collection-show-heroes"].value ?? true ? "checked" }}>
                         </label>
                     </span>
                 </li>
-                {% set ratio = heroStats["hero-0"].owned / heroStats["hero-0"].total %}
-                <li class="cosmetics-menu--item mdl-list__item"
+                {% set heroStat = heroStats["hero-0"] is defined ? heroStats["hero-0"] : null %}
+                {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
+                <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
                     style="background-color: {{ ratio|colorgradient("rgba") }};">
                     <span class="mdl-list__item-primary-content">
                         <a href="#allheroes">
-                            <span class="cosmetics-menu--item--image">
-                                <img src="img/collection/heroes/allheroes.png"/>All Heroes
-                            </span>
-                            <span class="cosmetics-menu--item--stats">
-                                {{ (ratio * 100)|round(2, 'floor') }}% ({{ heroStats["hero-0"].owned }}
-                                / {{ heroStats["hero-0"].total }})
-                            </span>
+                            <img class="cosmetics-menu--item--image mdl-list__item-avatar" src="img/collection/heroes/allheroes.png"/>
+                            <span class="cosmetics-menu--item--text">All Heroes</span>
                         </a>
+                        <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
+                            {{ (ratio * 100)|round(2, 'floor') }}% ({{ heroStat.owned ?? 0 }}
+                            / {{ heroStat.total ?? 0 }})
+                        </span>
                     </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hero-checkbox-allheroes">
@@ -110,18 +115,17 @@
                 {% for hero in SESSION.heroes %}
                     {% set heroStat = heroStats["hero-"~hero.id] is defined ? heroStats["hero-"~hero.id] : null %}
                     {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
-                    <li class="cosmetics-menu--item mdl-list__item"
+                    <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
                         style="background-color: {{ ratio|colorgradient("rgba") }};">
                         <span class="mdl-list__item-primary-content">
                             <a href="#{{ hero.slug }}">
-                                <span class="cosmetics-menu--item--image">
-                                    <img src="img/collection/heroes/{{ hero.slug }}.png"/>{{ hero.name }}
-                                </span>
-                                <span class="cosmetics-menu--item--stats">
-                                    {{ (ratio * 100)|round(2, "floor") }}% ({{ heroStat.owned ?? 0 }}
-                                    / {{ heroStat.total ?? 0 }})
-                                </span>
+                                <img class="cosmetics-menu--item--image mdl-list__item-avatar" src="img/collection/heroes/{{ hero.slug }}.png"/>
+                                <span class="cosmetics-menu--item--text">{{ hero.name }}</span>
                             </a>
+                            <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
+                                {{ (ratio * 100)|round(2, "floor") }}% ({{ heroStat.owned ?? 0 }}
+                                / {{ heroStat.total ?? 0 }})
+                            </span>
                         </span>
                         <span class="mdl-list__item-secondary-action">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
@@ -135,20 +139,29 @@
                     </li>
                 {% endfor %}
                 <hr/>
-                <li class="cosmetics-menu--toggle mdl-list__item">
+                <li class="cosmetics-menu--toggle cosmetics-menu--toggle-categories mdl-list__item">
                     <span class="mdl-list__item-primary-content mdl-typography--font-bold">
                         Categories
                     </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-categories">
-                            <input type="checkbox" id="switch-all-categories" class="setting-input mdl-switch__input"
+                            <input type="checkbox" id="switch-all-categories"
+                                   class="setting-input mdl-switch__input"
                                    data-setting="collection-show-categories" {{ settings["collection-show-categories"].value ?? true ? "checked" }}>
                         </label>
                     </span>
                 </li>
-                <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item">
-                    <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
-                        <img src="img/collection/categories/default.png"/>Default
+                {% set categoryStat = categoryStats["category-0"] is defined ? categoryStats["category-0"] : null %}
+                {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
+                <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
+                    style="background-color: {{ ratio|colorgradient("rgba") }};">
+                    <span class="mdl-list__item-primary-content">
+                        <img class="cosmetics-menu--item--image mdl-list__item-avatar" src="img/collection/categories/default.png"/>
+                        <span class="cosmetics-menu--item--text">Default</span>
+                        <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
+                            {{ (ratio * 100)|round(2, "floor") }}% ({{ categoryStat.owned ?? 0 }}
+                            /{{ categoryStat.total ?? 0 }})
+                        </span>
                     </span>
                     <span id="cosmetics-menu--category-default" class="mdl-list__item-secondary-action">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
@@ -163,9 +176,17 @@
                     </div>
                 </li>
                 {% for category in SESSION.categories %}
-                    <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item">
-                        <span class="cosmetics-menu--item--image mdl-list__item-primary-content">
-                            <img src="img/collection/categories/{{ category.slug }}.png"/>{{ category.name }}
+                    {% set categoryStat = categoryStats["category-"~category.id] is defined ? categoryStats["category-"~category.id] : null %}
+                    {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
+                    <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
+                        style="background-color: {{ ratio|colorgradient("rgba") }};">
+                        <span class="mdl-list__item-primary-content">
+                            <img class="cosmetics-menu--item--image mdl-list__item-avatar" src="img/collection/categories/{{ category.slug }}.png"/>
+                            <span class="cosmetics-menu--item--text">{{ category.name }}</span>
+                            <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
+                                {{ (ratio * 100)|round(2, "floor") }}% ({{ categoryStat.owned ?? 0 }}
+                                /{{ categoryStat.total ?? 0 }})
+                            </span>
                         </span>
                         <span id="cosmetics-menu--category-{{ category.slug }}"
                               class="mdl-list__item-secondary-action">
