@@ -1,7 +1,7 @@
 <?php
-namespace Overwatch\Dao;
+namespace Overcollector\Dao;
 
-use Overwatch\Hero;
+use Overcollector\Hero;
 
 class HeroesTable extends Table
 {

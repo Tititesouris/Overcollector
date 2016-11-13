@@ -1,8 +1,8 @@
 <?php
 
-namespace Overwatch\Dao;
+namespace Overcollector\Dao;
 
-use Overwatch\Event;
+use Overcollector\Event;
 
 
 class EventsTable extends Table

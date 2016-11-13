@@ -1,7 +1,7 @@
 <?php
 require_once("required.php");
 
-use \Overwatch\Dao\CosmeticsTable;
+use Overcollector\Dao\CosmeticsTable;
 
 if (isUserLoggedIn()) {
     header('Content-disposition: attachment; filename=export.json');

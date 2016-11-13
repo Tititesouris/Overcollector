@@ -1,5 +1,5 @@
 <?php
-namespace Overwatch;
+namespace Overcollector;
 
 use JsonSerializable;
 

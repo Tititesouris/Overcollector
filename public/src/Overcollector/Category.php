@@ -1,11 +1,13 @@
 <?php
+namespace Overcollector;
 
-namespace Overwatch;
 
 use JsonSerializable;
 
-class UserSetting implements JsonSerializable
+class Category implements JsonSerializable
 {
+
+    private static $categories = array();
 
     private $id;
 
@@ -13,28 +15,22 @@ class UserSetting implements JsonSerializable
 
     private $description;
 
-    private $value;
+    private $slug;
 
-    private function __construct($id, $name, $description, $value)
+    private function __construct($id, $name, $description, $slug)
     {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
-        $this->value = $value;
+        $this->slug = $slug;
     }
 
-    public static function createUserSetting($id, $name, $description, $value)
+    public static function createCategory($id, $name, $description, $slug)
     {
-        return new self($id, $name, $description, self::parseValue($value));
-    }
-
-    private static function parseValue($value)
-    {
-        if ($value === "true")
-            return true;
-        if ($value === "false")
-            return false;
-        return null;
+        if (!array_key_exists($id, self::$categories)) {
+            self::$categories[$id] = new Category($id, $name, $description, $slug);
+        }
+        return self::$categories[$id];
     }
 
     public function getId()
@@ -52,9 +48,9 @@ class UserSetting implements JsonSerializable
         return $this->description;
     }
 
-    public function getValue()
+    public function getSlug()
     {
-        return $this->value;
+        return $this->slug;
     }
 
     function jsonSerialize()
@@ -63,7 +59,7 @@ class UserSetting implements JsonSerializable
             "id" => $this->id,
             "name" => $this->name,
             "description" => $this->description,
-            "value" => $this->value
+            "short" => $this->slug
         ];
     }
 

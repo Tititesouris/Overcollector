@@ -1,8 +1,8 @@
 <?php
 
-namespace Overwatch\Dao;
+namespace Overcollector\Dao;
 
-use Overwatch\Type;
+use Overcollector\Type;
 
 class TypesTable extends Table
 {

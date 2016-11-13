@@ -1,9 +1,9 @@
 <?php
 
-namespace Overwatch\Dao;
+namespace Overcollector\Dao;
 
 
-use Overwatch\UserSetting;
+use Overcollector\UserSetting;
 
 class SettingsTable extends Table
 {

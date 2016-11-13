@@ -1,20 +1,19 @@
 <?php
-
 require_once(__DIR__ . "/../vendor/autoload.php");
 session_start();
 
-define("DEBUG", true);
-define("LOCALHOST", true);
+$config = parse_ini_file(__DIR__ . "/../overcollector.ini", true);
+$debug = $config["config"]["debug"];
 
-if (DEBUG) {
-    ini_set("display_errors", DEBUG);
-    ini_set("display_startup_errors", DEBUG);
+if ($debug) {
+    ini_set("display_errors", true);
+    ini_set("display_startup_errors", true);
     error_reporting(E_ALL);
 }
 
 require_once(__DIR__ . "/functions.php");
 
-use \Overwatch\Dao\UsersTable;
+use Overcollector\Dao\UsersTable;
 
 if (!isUserLoggedIn()) {
     $_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
@@ -30,8 +29,8 @@ if ($_SESSION["needrefresh"]) {
 // Twig
 $loader = new Twig_Loader_Filesystem(__DIR__ . "/templates");
 $twig = new Twig_Environment($loader, array(
-    "debug" => DEBUG,
-    "strict_variables" => DEBUG
+    "debug" => $debug,
+    "strict_variables" => $debug
 ));
 $twig->addExtension(new Twig_Extension_Debug());
 $twig->addFilter(new Twig_SimpleFilter("breverynword", function ($string, $n) {

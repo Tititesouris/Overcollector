@@ -1,6 +1,6 @@
 <?php
 
-namespace Overwatch\Dao;
+namespace Overcollector\Dao;
 
 require_once(__DIR__ . "/Database.php");
 

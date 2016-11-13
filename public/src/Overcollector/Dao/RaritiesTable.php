@@ -1,8 +1,8 @@
 <?php
 
-namespace Overwatch\Dao;
+namespace Overcollector\Dao;
 
-use Overwatch\Rarity;
+use Overcollector\Rarity;
 
 class RaritiesTable extends Table
 {

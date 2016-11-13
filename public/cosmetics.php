@@ -1,7 +1,7 @@
 <?php
 require_once("required.php");
 
-use Overwatch\Dao\UsersTable;
+use Overcollector\Dao\UsersTable;
 
 if (isUserLoggedIn()) {
     if (isset($_POST["cosmetic"]) && isset($_POST["owned"])) {

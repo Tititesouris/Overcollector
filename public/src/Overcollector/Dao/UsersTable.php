@@ -1,7 +1,7 @@
 <?php
-namespace Overwatch\Dao;
+namespace Overcollector\Dao;
 
-use Overwatch\User;
+use Overcollector\User;
 
 class UsersTable extends Table
 {

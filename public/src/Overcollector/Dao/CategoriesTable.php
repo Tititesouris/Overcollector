@@ -1,9 +1,9 @@
 <?php
 
-namespace Overwatch\Dao;
+namespace Overcollector\Dao;
 
 
-use Overwatch\Category;
+use Overcollector\Category;
 
 class CategoriesTable extends Table
 {

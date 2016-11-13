@@ -1,6 +1,6 @@
 {
-  "name": "Overwatch",
-  "description": "Overwatch Collectors Tool",
+  "name": "Overcollector",
+  "description": "Keep track of your Overwatch cosmetics collection using this tool. You can track your progress, filter out the cosmetics you're not interested in, get statistics, set up a wishlist and many more things to come.",
   "license": "proprietary",
   "authors": [
     {

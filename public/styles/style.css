@@ -24,6 +24,10 @@ a {
     padding: 0;
 }
 
+#cosmetics-menu li {
+    height: 100%;
+}
+
 #cosmetics-menu .cosmetics-menu--update button {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -34,22 +38,11 @@ a {
     background-color: #ffffff;
 }
 
-#cosmetics-menu .cosmetics-menu--item .cosmetics-menu--item--image {
-    width: 40px;
-    height: 40px;
-}
-/*
 #cosmetics-menu .cosmetics-menu--item {
-    font-size: 0.9rem;
-    padding: 0 0.1rem;
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
 }
 
-#cosmetics-menu .cosmetics-menu--item .cosmetics-menu--item--stats {
-    float: right;
-    padding: 1rem 0.25rem 1rem 0;
-    font-size: 0.75rem;
-}
-*/
 #cosmetics-table {
     width: 100%;
 }

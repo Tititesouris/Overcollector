@@ -1,7 +1,7 @@
 <?php
 require_once("required.php");
 
-use \Overwatch\Dao\SettingsTable;
+use Overcollector\Dao\SettingsTable;
 
 if (isUserLoggedIn()) {
     if (isset($_POST["setting"]) && isset($_POST["value"])) {

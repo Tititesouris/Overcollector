@@ -1,8 +1,8 @@
 <?php
 
-namespace Overwatch\Dao;
+namespace Overcollector\Dao;
 
-use Overwatch\Cosmetic;
+use Overcollector\Cosmetic;
 
 class CosmeticsTable extends Table
 {

@@ -34,7 +34,7 @@
             <ul class="demo-list-icon mdl-list mdl-shadow--2dp">
                 <li class="cosmetics-menu--update mdl-list__item">
                     <span class="mdl-list__item-primary-content">
-                        <button class="cosmetics-menu--update-refresh mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                        <button class="cosmetics-menu--update-refresh mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled>
                             Refresh
                         </button>
                         <button id="show-dialog"
@@ -78,18 +78,6 @@
                     </span>
                 </li>
                 <hr/>
-                <li class="cosmetics-menu--toggle cosmetics-menu--toggle-heroes mdl-list__item">
-                    <span class="mdl-list__item-primary-content mdl-typography--font-bold">
-                        Heroes
-                    </span>
-                    <span class="mdl-list__item-secondary-action">
-                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-heroes">
-                            <input type="checkbox" id="switch-all-heroes"
-                                   class="setting-input mdl-switch__input"
-                                   data-setting="collection-show-heroes" {{ settings["collection-show-heroes"].value ?? true ? "checked" }}>
-                        </label>
-                    </span>
-                </li>
                 {% set heroStat = heroStats["hero-0"] is defined ? heroStats["hero-0"] : null %}
                 {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
@@ -139,18 +127,6 @@
                     </li>
                 {% endfor %}
                 <hr/>
-                <li class="cosmetics-menu--toggle cosmetics-menu--toggle-categories mdl-list__item">
-                    <span class="mdl-list__item-primary-content mdl-typography--font-bold">
-                        Categories
-                    </span>
-                    <span class="mdl-list__item-secondary-action">
-                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-all-categories">
-                            <input type="checkbox" id="switch-all-categories"
-                                   class="setting-input mdl-switch__input"
-                                   data-setting="collection-show-categories" {{ settings["collection-show-categories"].value ?? true ? "checked" }}>
-                        </label>
-                    </span>
-                </li>
                 {% set categoryStat = categoryStats["category-0"] is defined ? categoryStats["category-0"] : null %}
                 {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
