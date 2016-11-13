@@ -9,7 +9,7 @@ class UsersTable extends Table
     private static $instance;
 
     private $fetchUserByName = "
-SELECT id, username
+SELECT id, username, region, token
 FROM users
 WHERE username = $1
 ;";
@@ -55,6 +55,8 @@ WHERE user_id = $1;
         return User::createUser(
             intval($row["id"]),
             $row["username"],
+            $row["region"],
+            $row["token"],
             CosmeticsTable::getInstance()->getOwnedCosmeticsByUserId(intval($row["id"])),
             SettingsTable::getInstance()->getUserSettings(intval($row["id"]))
         );

@@ -9,21 +9,27 @@ class User implements JsonSerializable
 
     private $username;
 
+    private $region;
+
+    private $token;
+
     private $cosmetics;
 
     private $settings;
 
-    private function __construct($id, $username, $cosmetics, $settings)
+    public function __construct($id, $username, $region, $token, $cosmetics, $settings)
     {
         $this->id = $id;
         $this->username = $username;
+        $this->region = $region;
+        $this->token = $token;
         $this->cosmetics = $cosmetics;
         $this->settings = $settings;
     }
 
-    public static function createUser($id, $username, $cosmetics, $settings)
+    public static function createUser($id, $username, $region, $token, $cosmetics, $settings)
     {
-        return new self($id, $username, $cosmetics, $settings);
+        return new self($id, $username, $region, $token, $cosmetics, $settings);
     }
 
     public function getId()
@@ -34,6 +40,16 @@ class User implements JsonSerializable
     public function getUsername()
     {
         return $this->username;
+    }
+
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
     }
 
     public function getCosmetics($heroId)
@@ -77,7 +93,9 @@ class User implements JsonSerializable
     {
         return [
             "id" => $this->id,
-            "username" => $this->username
+            "username" => $this->username,
+            "region" => $this->region,
+            "token" => $this->token
         ];
     }
 

@@ -1,8 +1,28 @@
 DROP OWNED BY overwatch;
-DROP TABLE IF EXISTS heroes, categories, types, rarities, events, cosmetics, users, user_cosmetics, settings, user_settings;
+DROP TABLE IF EXISTS heroes, categories, types, rarities, events, cosmetics, users, user_cosmetics, settings, user_settings, tokens;
+DROP FUNCTION IF EXISTS gen_token();
 DROP ROLE IF EXISTS overwatch;
 
 CREATE ROLE overwatch WITH LOGIN PASSWORD 'localpass';
+
+-- Creates a random unique 32 char hexadecimal string for the tokens table
+CREATE FUNCTION gen_token()
+  RETURNS CHAR(32) AS $$
+DECLARE
+  t    TEXT;
+  done BOOLEAN DEFAULT FALSE;
+BEGIN
+  WHILE NOT done LOOP
+    t := md5(random() :: CHAR(32));
+    done := NOT EXISTS(
+        SELECT 1
+        FROM tokens
+        WHERE token = t
+    );
+  END LOOP;
+  RETURN t;
+END;
+$$ LANGUAGE plpgsql VOLATILE;
 
 CREATE TABLE heroes (
   id   INTEGER,
@@ -1337,16 +1357,18 @@ VALUES
 
 CREATE TABLE users (
   id       SERIAL,
-  username TEXT NOT NULL,
+  username TEXT    NOT NULL,
+  region   CHAR(2) NOT NULL,
+  token     TEXT,
   CONSTRAINT pk_users PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE users TO overwatch;
 
-INSERT INTO users (username)
+INSERT INTO users (username, region)
 VALUES
-  ('Tititesouris'),
-  ('Bob'),
-  ('Bill');
+  ('Tititesouris', 'eu'),
+  ('Bob', 'eu'),
+  ('Bill', 'eu');
 
 
 CREATE TABLE user_cosmetics (
@@ -1432,3 +1454,11 @@ CREATE TABLE user_settings (
   ON UPDATE CASCADE ON DELETE RESTRICT
 );
 GRANT SELECT, INSERT, UPDATE ON TABLE user_settings TO overwatch;
+
+CREATE TABLE tokens (
+  token      TEXT      NOT NULL                 DEFAULT gen_token(),
+  created_at TIMESTAMP NOT NULL                 DEFAULT (now() AT TIME ZONE 'UTC'),
+  expires_at TIMESTAMP NOT NULL                 DEFAULT (now() AT TIME ZONE 'UTC') + INTERVAL '5 minutes',
+  CONSTRAINT pk_tokens PRIMARY KEY (token)
+);
+GRANT SELECT ON TABLE tokens TO overwatch;
