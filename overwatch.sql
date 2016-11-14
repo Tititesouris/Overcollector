@@ -1193,7 +1193,6 @@ VALUES
   (7, 6, 1, NULL, 'Rise Of The Zomnics', 7),
   (7, 6, 1, NULL, 'The Reapening', 7),
   (7, 6, 1, NULL, 'Witch''s Brew', 7),
-  --TODO heroes
   (1, 6, 1, 1, 'Action', 3), -- Normal Ana Sprays
   (1, 6, 1, 1, 'Ana', 3),
   (1, 6, 1, 1, 'Bearer', 3),
