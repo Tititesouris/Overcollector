@@ -1193,63 +1193,205 @@ VALUES
   (7, 6, 1, NULL, 'Rise Of The Zomnics', 7),
   (7, 6, 1, NULL, 'The Reapening', 7),
   (7, 6, 1, NULL, 'Witch''s Brew', 7), --TODO heroes
-  (1, 6, 1, 1, 'todo', 3), -- Normal Ana Sprays
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 1, 'todo', 3),
-  (1, 6, 1, 2, 'Golden', 1), -- Normal Bastion Sprays
-  (1, 6, 1, 2, 'Golden', 1),
-  (1, 6, 1, 3, 'Golden', 1), -- Normal D.Va Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 1, 'Action', 3), -- Normal Ana Sprays
+  (1, 6, 1, 1, 'Ana', 3),
+  (1, 6, 1, 1, 'Bearer', 3),
+  (1, 6, 1, 1, 'Cheer', 3),
+  (1, 6, 1, 1, 'Cracked', 3),
+  (1, 6, 1, 1, 'Eyepatch', 3),
+  (1, 6, 1, 1, 'Fareeha', 3),
+  (1, 6, 1, 1, 'Gaze', 3),
+  (1, 6, 1, 1, 'Grenade', 3),
+  (1, 6, 1, 1, 'Guardian', 3),
+  (1, 6, 1, 1, 'Hesitation', 3),
+  (1, 6, 1, 1, 'Icon', 3),
+  (1, 6, 1, 1, 'Letter', 3),
+  (1, 6, 1, 1, 'Old Soldier', 3),
+  (1, 6, 1, 1, 'Overhead', 3),
+  (1, 6, 1, 1, 'Photograph', 3),
+  (1, 6, 1, 1, 'Rifle', 3),
+  (1, 6, 1, 1, 'Shadow', 3),
+  (1, 6, 1, 1, 'Shhh', 3),
+  (1, 6, 1, 1, 'Sidearm', 3),
+  (1, 6, 1, 1, 'Wedjat', 3),
+  (1, 6, 1, 1, 'Wrist Launcher', 3),
+  (1, 6, 1, 1, 'Zzz', 3),
+  (2, 6, 1, 1, 'Cute', 3), -- Achievements Ana Sprays
+  (2, 6, 1, 1, 'Pixel', 3),
+  (6, 6, 1, 1, 'Shooting', 4), -- Summer Games Ana Sprays
+  (7, 6, 1, 1, 'Trick Or Treat', 7), -- Halloween Terror Ana Sprays
+  (1, 6, 1, 2, 'Action', 1), -- Normal Bastion Sprays
+  (1, 6, 1, 2, 'Bird', 1),
+  (1, 6, 1, 2, 'Birdwatchers', 1),
+  (1, 6, 1, 2, 'Black', 1),
+  (1, 6, 1, 2, 'Blocks', 1),
+  (1, 6, 1, 2, 'Cannon', 1),
+  (1, 6, 1, 2, 'Crisis', 1),
+  (1, 6, 1, 2, 'Curious', 1),
+  (1, 6, 1, 2, 'E54', 1),
+  (1, 6, 1, 2, 'Fire At Will', 1),
+  (1, 6, 1, 2, 'Flight', 1),
+  (1, 6, 1, 2, 'Flower Power', 1),
+  (1, 6, 1, 2, 'Ganymede', 1),
+  (1, 6, 1, 2, 'Giant', 1),
+  (1, 6, 1, 2, 'Icon', 1),
+  (1, 6, 1, 2, 'In Repair', 1),
+  (1, 6, 1, 2, 'Nest', 1),
+  (1, 6, 1, 2, 'Omnic', 1),
+  (1, 6, 1, 2, 'Overgrown', 1),
+  (1, 6, 1, 2, 'Recovery', 1),
+  (1, 6, 1, 2, 'Retro', 1),
+  (1, 6, 1, 2, 'Sprout', 1),
+  (1, 6, 1, 2, 'Wood And Stone', 1),
+  (2, 6, 1, 2, 'Cute', 1), -- Achievements Bastion Sprays
+  (2, 6, 1, 2, 'Pixel', 1),
+  (6, 6, 1, 2, 'Boxing', 4), -- Summer Games Bastion Sprays
+  (7, 6, 1, 2, 'Trick Or Treat', 7), -- Halloween Terror Bastion Sprays
+  (1, 6, 1, 3, 'B.ny', 1), -- Normal D.Va Sprays
+  (1, 6, 1, 3, 'Bang', 1),
+  (1, 6, 1, 3, 'Bubble', 1),
+  (1, 6, 1, 3, 'Bubble Gum', 1),
+  (1, 6, 1, 3, 'Bunny Hop', 1),
+  (1, 6, 1, 3, 'Diva', 1),
+  (1, 6, 1, 3, 'GG', 1),
+  (1, 6, 1, 3, 'Hana', 1),
+  (1, 6, 1, 3, 'Headset', 1),
+  (1, 6, 1, 3, 'Heart', 1),
+  (1, 6, 1, 3, 'Icon', 1),
+  (1, 6, 1, 3, 'Light Gun', 1),
+  (1, 6, 1, 3, 'Love D.Va', 1),
+  (1, 6, 1, 3, 'Meka', 1),
+  (1, 6, 1, 3, 'Nano Cola', 1),
+  (1, 6, 1, 3, 'Photo', 1),
+  (1, 6, 1, 3, 'Pixel Bunny', 1),
+  (1, 6, 1, 3, 'Power Up!', 1),
+  (1, 6, 1, 3, 'Salt', 1),
+  (1, 6, 1, 3, 'Star', 1),
+  (1, 6, 1, 3, 'Unload', 1),
+  (1, 6, 1, 3, 'Walk Of Fame', 1),
+  (1, 6, 1, 3, 'Watching', 1),
+  (2, 6, 1, 3, 'Cute', 1), -- Achievements D.Va Sprays
+  (2, 6, 1, 3, 'Pixel', 1),
+  (6, 6, 1, 3, 'Cycling', 4), -- Summer Games D.Va Sprays
+  (7, 6, 1, 3, 'Trick Or Treat', 7), -- Halloween Terror D.Va Sprays
   (1, 6, 1, 4, 'Golden', 1), -- Normal Genji Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 4, 'Golden', 1),
+  (2, 6, 1, 4, 'Cute', 1), -- Achievements Genji Sprays
+  (2, 6, 1, 4, 'Pixel', 1),
+  (6, 6, 1, 4, 'Golden', 4), -- Summer Games Genji Sprays
+  (7, 6, 1, 4, 'Trick Or Treat', 7), -- Halloween Terror Genji Sprays
   (1, 6, 1, 5, 'Golden', 1), -- Normal Hanzo Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 5, 'Golden', 1),
+  (2, 6, 1, 5, 'Cute', 1), -- Achievements Hanzo Sprays
+  (2, 6, 1, 5, 'Pixel', 1),
+  (6, 6, 1, 5, 'Golden', 4), -- Summer Games Hanzo Sprays
+  (7, 6, 1, 5, 'Trick Or Treat', 7), -- Halloween Terror Hanzo Sprays
   (1, 6, 1, 6, 'Golden', 1), -- Normal Junkrat Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 6, 'Golden', 1),
+  (2, 6, 1, 6, 'Cute', 1), -- Achievements Junkrat Sprays
+  (2, 6, 1, 6, 'Pixel', 1),
+  (6, 6, 1, 6, 'Golden', 4), -- Summer Games Junkrat Sprays
+  (7, 6, 1, 6, 'Trick Or Treat', 7), -- Halloween Terror Junkrat Sprays
   (1, 6, 1, 7, 'Golden', 1), -- Normal Lúcio Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 7, 'Golden', 1),
+  (2, 6, 1, 7, 'Cute', 1), -- Achievements Lúcio Sprays
+  (2, 6, 1, 7, 'Pixel', 1),
+  (6, 6, 1, 7, 'Golden', 4), -- Summer Games Lúcio Sprays
+  (7, 6, 1, 7, 'Trick Or Treat', 7), -- Halloween Terror Lúcio Sprays
   (1, 6, 1, 8, 'Golden', 1), -- Normal McCree Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 8, 'Golden', 1),
+  (2, 6, 1, 8, 'Cute', 1), -- Achievements McCree Sprays
+  (2, 6, 1, 8, 'Pixel', 1),
+  (6, 6, 1, 8, 'Golden', 4), -- Summer Games McCree Sprays
+  (7, 6, 1, 8, 'Trick Or Treat', 7), -- Halloween Terror McCree Sprays
   (1, 6, 1, 9, 'Golden', 1), -- Normal Mei Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 9, 'Golden', 1),
+  (2, 6, 1, 9, 'Cute', 1), -- Achievements Mei Sprays
+  (2, 6, 1, 9, 'Pixel', 1),
+  (6, 6, 1, 9, 'Golden', 4), -- Summer Games Mei Sprays
+  (7, 6, 1, 9, 'Trick Or Treat', 7), -- Halloween Terror Mei Sprays
   (1, 6, 1, 10, 'Golden', 1), -- Normal Mercy Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 10, 'Golden', 1),
+  (2, 6, 1, 10, 'Cute', 1), -- Achievements Mercy Sprays
+  (2, 6, 1, 10, 'Pixel', 1),
+  (6, 6, 1, 10, 'Golden', 4), -- Summer Games Mercy Sprays
+  (7, 6, 1, 10, 'Trick Or Treat', 7), -- Halloween Terror Mercy Sprays
   (1, 6, 1, 11, 'Golden', 1), -- Normal Pharah Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 11, 'Golden', 1),
+  (2, 6, 1, 11, 'Cute', 1), -- Achievements Pharah Sprays
+  (2, 6, 1, 11, 'Pixel', 1),
+  (6, 6, 1, 11, 'Golden', 4), -- Summer Games Pharah Sprays
+  (7, 6, 1, 11, 'Trick Or Treat', 7), -- Halloween Terror Pharah Sprays
   (1, 6, 1, 12, 'Golden', 1), -- Normal Reaper Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 12, 'Golden', 1),
+  (2, 6, 1, 12, 'Cute', 1), -- Achievements Reaper Sprays
+  (2, 6, 1, 12, 'Pixel', 1),
+  (6, 6, 1, 12, 'Golden', 4), -- Summer Games Reaper Sprays
+  (7, 6, 1, 12, 'Trick Or Treat', 7), -- Halloween Terror Reaper Sprays
   (1, 6, 1, 13, 'Golden', 1), -- Normal Reinhardt Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 13, 'Golden', 1),
+  (2, 6, 1, 13, 'Cute', 1), -- Achievements Reinhardt Sprays
+  (2, 6, 1, 13, 'Pixel', 1),
+  (6, 6, 1, 13, 'Golden', 4), -- Summer Games Reinhardt Sprays
+  (7, 6, 1, 13, 'Trick Or Treat', 7), -- Halloween Terror Reinhardt Sprays
   (1, 6, 1, 14, 'Golden', 1), -- Normal Roadhog Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 14, 'Golden', 1),
+  (2, 6, 1, 14, 'Cute', 1), -- Achievements Roadhog Sprays
+  (2, 6, 1, 14, 'Pixel', 1),
+  (6, 6, 1, 14, 'Golden', 4), -- Summer Games Roadhog Sprays
+  (7, 6, 1, 14, 'Trick Or Treat', 7), -- Halloween Terror Roadhog Sprays
   (1, 6, 1, 15, 'Golden', 1), -- Normal Soldier: 76 Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 15, 'Golden', 1),
+  (2, 6, 1, 15, 'Cute', 1), -- Achievements Soldier: 76 Sprays
+  (2, 6, 1, 15, 'Pixel', 1),
+  (6, 6, 1, 15, 'Golden', 4), -- Summer Games Soldier: 76 Sprays
+  (7, 6, 1, 15, 'Trick Or Treat', 7), -- Halloween Terror Soldier: 76 Sprays
   (1, 6, 1, 16, 'Golden', 1), -- Normal Symmetra Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 16, 'Golden', 1),
+  (2, 6, 1, 16, 'Cute', 1), -- Achievements Symmetra Sprays
+  (2, 6, 1, 16, 'Pixel', 1),
+  (6, 6, 1, 16, 'Golden', 4), -- Summer Games Symmetra Sprays
+  (7, 6, 1, 16, 'Trick Or Treat', 7), -- Halloween Terror Symmetra Sprays
   (1, 6, 1, 17, 'Golden', 1), -- Normal Torbjörn Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 17, 'Golden', 1),
+  (2, 6, 1, 17, 'Cute', 1), -- Achievements Torbjörn Sprays
+  (2, 6, 1, 17, 'Pixel', 1),
+  (6, 6, 1, 17, 'Golden', 4), -- Summer Games Torbjörn Sprays
+  (7, 6, 1, 17, 'Trick Or Treat', 7), -- Halloween Terror Torbjörn Sprays
   (1, 6, 1, 18, 'Golden', 1), -- Normal Tracer Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 18, 'Golden', 1),
+  (2, 6, 1, 18, 'Cute', 1), -- Achievements Tracer Sprays
+  (2, 6, 1, 18, 'Pixel', 1),
+  (6, 6, 1, 18, 'Golden', 4), -- Summer Games Tracer Sprays
+  (7, 6, 1, 18, 'Trick Or Treat', 7), -- Halloween Terror Tracer Sprays
   (1, 6, 1, 19, 'Golden', 1), -- Normal Widowmaker Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 19, 'Golden', 1),
+  (2, 6, 1, 19, 'Cute', 1), -- Achievements Widowmaker Sprays
+  (2, 6, 1, 19, 'Pixel', 1),
+  (6, 6, 1, 19, 'Golden', 4), -- Summer Games Widowmaker Sprays
+  (7, 6, 1, 19, 'Trick Or Treat', 7), -- Halloween Terror Widowmaker Sprays
   (1, 6, 1, 20, 'Golden', 1), -- Normal Winston Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 20, 'Golden', 1),
+  (2, 6, 1, 20, 'Cute', 1), -- Achievements Winston Sprays
+  (2, 6, 1, 20, 'Pixel', 1),
+  (6, 6, 1, 20, 'Golden', 4), -- Summer Games Winston Sprays
+  (7, 6, 1, 20, 'Trick Or Treat', 7), -- Halloween Terror Winston Sprays
   (1, 6, 1, 21, 'Golden', 1), -- Normal Zarya Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 21, 'Golden', 1),
+  (2, 6, 1, 21, 'Cute', 1), -- Achievements Zarya Sprays
+  (2, 6, 1, 21, 'Pixel', 1),
+  (6, 6, 1, 21, 'Golden', 4), -- Summer Games Zarya Sprays
+  (7, 6, 1, 21, 'Trick Or Treat', 7), -- Halloween Terror Zarya Sprays
   (1, 6, 1, 22, 'Golden', 1), -- Normal Zenyatta Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 22, 'Golden', 1),
+  (2, 6, 1, 22, 'Cute', 1), -- Achievements Zenyatta Sprays
+  (2, 6, 1, 22, 'Pixel', 1),
+  (6, 6, 1, 22, 'Golden', 4), -- Summer Games Zenyatta Sprays
+  (7, 6, 1, 22, 'Trick Or Treat', 7), -- Halloween Terror Zenyatta Sprays
   (1, 6, 1, 23, 'Golden', 9), -- Normal Sombra Sprays
-  (1, 6, 1, 2, 'Golden', 1),
+  (1, 6, 1, 23, 'Golden', 9),
+  (2, 6, 1, 23, 'Cute', 9), -- Achievements Sombra Sprays
+  (2, 6, 1, 23, 'Pixel', 9),
   -- Highlight Intros
   (1, 7, 3, 1, 'Guardian', 3), -- Normal Ana Highlight Intros
   (1, 7, 3, 1, 'Locked On', 3),
@@ -1359,7 +1501,7 @@ CREATE TABLE users (
   id       SERIAL,
   username TEXT    NOT NULL,
   region   CHAR(2) NOT NULL,
-  token     TEXT,
+  token    TEXT,
   CONSTRAINT pk_users PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE users TO overwatch;
