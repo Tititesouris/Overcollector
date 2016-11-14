@@ -360,7 +360,7 @@ VALUES
   (1, 1, 1, 23, 'Hacker', 9), -- Normal Sombra Player Icons
   (1, 1, 1, 23, 'Skull', 9),
   (1, 1, 1, 23, 'Sombra', 9),
-  -- Skins TODO defaults
+  (NULL, 2, NULL, 1, 'Classic', 3), -- Default Ana Skins
   (1, 2, 2, 1, 'Citrine', 3), -- Normal Ana Skins
   (1, 2, 2, 1, 'Garnet', 3),
   (1, 2, 2, 1, 'Peridot', 3),
@@ -372,6 +372,7 @@ VALUES
   (1, 2, 4, 1, 'Captain Amari', 3),
   (1, 2, 4, 1, 'Horus', 3),
   (7, 2, 3, 1, 'Ghoul', 7), -- Halloween Terror Ana Skins
+  (NULL, 2, NULL, 2, 'Classic', 1), -- Default Bastion Skins
   (1, 2, 2, 2, 'Dawn', 1), -- Normal Bastion Skins
   (1, 2, 2, 2, 'Meadow', 1),
   (1, 2, 2, 2, 'Sky', 1),
@@ -385,6 +386,7 @@ VALUES
   (3, 2, 4, 2, 'Overgrown', 1), -- Origins Edition Bastion Skins
   (7, 2, 3, 2, 'Tombstone', 7), -- Halloween Terror Bastion Skins
   (8, 2, 3, 2, 'BlizzCon 2016', 7), -- BlizzCon Bastion Skins
+  (NULL, 2, NULL, 3, 'Classic', 1), -- Default D.Va Skins
   (1, 2, 2, 3, 'Blueberry', 1), -- Normal D.Va Skins
   (1, 2, 2, 3, 'Lemon-Lime', 1),
   (1, 2, 2, 3, 'Tangerine', 1),
@@ -396,17 +398,20 @@ VALUES
   (1, 2, 4, 3, 'Junker', 1),
   (1, 2, 4, 3, 'Scavenger', 1),
   (6, 2, 3, 3, 'Taegeukgi', 4), -- Summer Games D.Va Skins
+  (NULL, 2, NULL, 4, 'Classic', 1), -- Default Genji Skins
   (1, 2, 2, 4, 'Azurite', 1), -- Normal Genji Skins
   (1, 2, 2, 4, 'Cinnabar', 1),
   (1, 2, 2, 4, 'Malachite', 1),
   (1, 2, 2, 4, 'Ochre', 1),
-  (1, 2, 3, 4, 'Carbon Fiber', 1), --TODO double check name
+  (1, 2, 3, 4, 'Carbon Fiber', 1),
   (1, 2, 3, 4, 'Chrome', 1),
   (1, 2, 4, 4, 'Bedouin', 1),
   (1, 2, 4, 4, 'Nomad', 1),
   (1, 2, 4, 4, 'Sparrow', 1),
   (1, 2, 4, 4, 'Young Genji', 1),
   (6, 2, 3, 4, 'Nihon', 4), -- Summer Games Genji Skins
+  (9, 2, 4, 4, 'Oni', 9), -- Blizzard Genji Skins
+  (NULL, 2, NULL, 5, 'Classic', 1), -- Default Hanzo Skins
   (1, 2, 2, 5, 'Azuki', 1), -- Normal Hanzo Skins
   (1, 2, 2, 5, 'Kinoko', 1),
   (1, 2, 2, 5, 'Midori', 1),
@@ -418,6 +423,7 @@ VALUES
   (1, 2, 4, 5, 'Young Hanzo', 1),
   (1, 2, 4, 5, 'Young Master', 1),
   (6, 2, 3, 5, 'Demon', 4), -- Summer Games Hanzo Skins
+  (NULL, 2, NULL, 6, 'Classic', 1), -- Default Junkrat Skins
   (1, 2, 2, 6, 'Bleached', 1), -- Normal Junkrat Skins
   (1, 2, 2, 6, 'Drowned', 1),
   (1, 2, 2, 6, 'Irradiated', 1),
@@ -429,6 +435,7 @@ VALUES
   (1, 2, 4, 6, 'Jester', 1),
   (1, 2, 4, 6, 'Scarecrow', 1),
   (7, 2, 4, 6, 'Dr. Junkenstein', 7), -- Halloween Terror Junkrat Skins
+  (NULL, 2, NULL, 7, 'Classic', 1), -- Default Lúcio Skins
   (1, 2, 2, 7, 'Azul', 1), -- Normal Lúcio Skins
   (1, 2, 2, 7, 'Laranja', 1),
   (1, 2, 2, 7, 'Roxo', 1),
@@ -441,6 +448,7 @@ VALUES
   (1, 2, 4, 7, 'Slapshot', 1),
   (6, 2, 4, 7, 'Seleção', 4), -- Summer Games Lúcio Skins
   (6, 2, 4, 7, 'Striker', 4),
+  (NULL, 2, NULL, 8, 'Classic', 1), -- Default McCree Skins
   (1, 2, 2, 8, 'Ebony', 1), -- Normal McCree Skins
   (1, 2, 2, 8, 'Lake', 1),
   (1, 2, 2, 8, 'Sage', 1),
@@ -452,6 +460,7 @@ VALUES
   (1, 2, 4, 8, 'Riverboat', 1),
   (1, 2, 4, 8, 'Vigilante', 1),
   (6, 2, 3, 8, 'American', 4), -- Summer Games McCree Skins
+  (NULL, 2, NULL, 9, 'Classic', 1), -- Default Mei Skins
   (1, 2, 2, 9, 'Chrysanthemum', 1), -- Normal Mei Skins
   (1, 2, 2, 9, 'Heliotrope', 1),
   (1, 2, 2, 9, 'Jade', 1),
@@ -462,6 +471,7 @@ VALUES
   (1, 2, 4, 9, 'Firefighter', 1),
   (1, 2, 4, 9, 'Rescue Mei', 1),
   (1, 2, 4, 9, 'Yeti Hunter', 1),
+  (NULL, 2, NULL, 10, 'Classic', 1), -- Default Mercy Skins
   (1, 2, 2, 10, 'Celestial', 1), -- Normal Mercy Skins
   (1, 2, 2, 10, 'Mist', 1),
   (1, 2, 2, 10, 'Orchid', 1),
@@ -474,6 +484,7 @@ VALUES
   (1, 2, 4, 10, 'Valkyrie', 1),
   (6, 2, 3, 10, 'Eidgenossin', 4), -- Summer Games Mercy Skins
   (7, 2, 4, 10, 'Witch', 7), -- Halloween Terror Mercy Skins
+  (NULL, 2, NULL, 11, 'Classic', 1), -- Default Pharah Skins
   (1, 2, 2, 11, 'Amethyst', 1), -- Normal Pharah Skins
   (1, 2, 2, 11, 'Copper', 1),
   (1, 2, 2, 11, 'Emerald', 1),
@@ -486,6 +497,7 @@ VALUES
   (1, 2, 4, 11, 'Thunderbird', 1),
   (3, 2, 4, 11, 'Security Chief', 1), -- Origins Edition Pharah Skins
   (6, 2, 3, 11, 'Possessed', 7), -- Halloween Terror Pharah Skins
+  (NULL, 2, NULL, 12, 'Classic', 1), -- Default Reaper Skins
   (1, 2, 2, 12, 'Blood', 1), -- Normal Reaper Skins
   (1, 2, 2, 12, 'Midnight', 1),
   (1, 2, 2, 12, 'Moss', 1),
@@ -498,6 +510,7 @@ VALUES
   (1, 2, 4, 12, 'Plague Doctor', 1),
   (3, 2, 4, 12, 'Blackwatch Reyes', 1), -- Origins Edition Reaper Skins
   (7, 2, 4, 12, 'Pumpkin', 7), -- Halloween Terror Reaper Skins
+  (NULL, 2, NULL, 13, 'Classic', 1), -- Default Reinhardt Skins
   (1, 2, 2, 13, 'Brass', 1), -- Normal Reinhardt Skins
   (1, 2, 2, 13, 'Cobalt', 1),
   (1, 2, 2, 13, 'Copper', 1),
@@ -511,6 +524,7 @@ VALUES
   (1, 2, 4, 13, 'Lionhardt', 1),
   (1, 2, 4, 13, 'Stonehardt', 1),
   (7, 2, 3, 13, 'Coldhardt', 7), -- Halloween Terror Reinhardt Skins
+  (NULL, 2, NULL, 14, 'Classic', 1), -- Default Roadhog Skins
   (1, 2, 2, 14, 'Kiwi', 1), -- Normal Roadhog Skins
   (1, 2, 2, 14, 'Mud', 1),
   (1, 2, 2, 14, 'Sand', 1),
@@ -522,6 +536,7 @@ VALUES
   (1, 2, 4, 14, 'Sharkbait', 1),
   (1, 2, 4, 14, 'Toa', 1),
   (7, 2, 4, 14, 'Junkenstein''s Monster', 7), -- Halloween Terror Roadhog Skins
+  (NULL, 2, NULL, 15, 'Classic', 1), -- Default Soldier: 76 Skins
   (1, 2, 2, 15, 'Jet', 1), -- Normal Soldier: 76 Skins
   (1, 2, 2, 15, 'Olive', 1),
   (1, 2, 2, 15, 'Russet', 1),
@@ -534,6 +549,7 @@ VALUES
   (1, 2, 4, 15, 'Stunt Rider: 76', 1),
   (3, 2, 4, 15, 'Strike-Commander Morrison', 1), -- Origins Edition Soldier: 76 Skins
   (7, 2, 3, 15, 'Immortal', 7), -- Halloween Terror Soldier: 76 Skins
+  (NULL, 2, NULL, 16, 'Classic', 1), -- Default Symmetra Skins
   (1, 2, 2, 16, 'Cardamom', 1), -- Normal Symmetra Skins
   (1, 2, 2, 16, 'Hyacinth', 1),
   (1, 2, 2, 16, 'Saffron', 1),
@@ -545,6 +561,7 @@ VALUES
   (1, 2, 4, 16, 'Goddess', 1),
   (1, 2, 4, 16, 'Vishkar', 1),
   (7, 2, 3, 16, 'Vampire', 7), -- Halloween Terror Symmetra Skins
+  (NULL, 2, NULL, 17, 'Classic', 1), -- Default Torbjörn Skins
   (1, 2, 2, 17, 'Blå', 1), -- Normal Torbjörn Skins
   (1, 2, 2, 17, 'Citron', 1),
   (1, 2, 2, 17, 'Grön', 1),
@@ -556,6 +573,7 @@ VALUES
   (1, 2, 4, 17, 'Chopper', 1),
   (1, 2, 4, 17, 'Deadlock', 1),
   (6, 2, 3, 17, 'Tre Kronor', 4), -- Summer Games Torbjörn Skins
+  (NULL, 2, NULL, 18, 'Classic', 1), -- Default Tracer Skins
   (1, 2, 2, 18, 'Electric Purple', 1), -- Normal Tracer Skins
   (1, 2, 2, 18, 'Hot Pink', 1),
   (1, 2, 2, 18, 'Neon Green', 1),
@@ -569,6 +587,7 @@ VALUES
   (3, 2, 4, 18, 'Slipstream', 1), -- Origins Edition Tracer Skins
   (6, 2, 4, 18, 'Sprinter', 4), -- Summer Games Tracer Skins
   (6, 2, 4, 18, 'Track And Field', 4),
+  (NULL, 2, NULL, 19, 'Classic', 1), -- Default Widowmaker Skins
   (1, 2, 2, 19, 'Ciel', 1), -- Normal Widowmaker Skins
   (1, 2, 2, 19, 'Nuit', 1),
   (1, 2, 2, 19, 'Rose', 1),
@@ -581,6 +600,7 @@ VALUES
   (1, 2, 4, 19, 'Odile', 1),
   (4, 2, 4, 19, 'Noire', 1), -- Preorder Widowmaker Skins
   (6, 2, 3, 19, 'Tricolore', 4), -- Summer Games Widowmaker Skins
+  (NULL, 2, NULL, 20, 'Classic', 1), -- Default Winston Skins
   (1, 2, 2, 20, 'Atmosphere', 1), -- Normal Winston Skins
   (1, 2, 2, 20, 'Banana', 1),
   (1, 2, 2, 20, 'Forest', 1),
@@ -591,6 +611,7 @@ VALUES
   (1, 2, 4, 20, 'Frogston', 1),
   (1, 2, 4, 20, 'Safari', 1),
   (1, 2, 4, 20, 'Undersea', 1),
+  (NULL, 2, NULL, 21, 'Classic', 1), -- Default Zarya Skins
   (1, 2, 2, 21, 'Brick', 1), -- Normal Zarya Skins
   (1, 2, 2, 21, 'Goldenrod', 1),
   (1, 2, 2, 21, 'Taiga', 1),
@@ -603,6 +624,7 @@ VALUES
   (1, 2, 4, 21, 'Siberian Front', 1),
   (6, 2, 4, 21, 'Champion', 4), -- Summer Games Zarya Skins
   (6, 2, 4, 21, 'Weightlifter', 4),
+  (NULL, 2, NULL, 22, 'Classic', 1), -- Default Zenyatta Skins
   (1, 2, 2, 22, 'Air', 1), -- Normal Zenyatta Skins
   (1, 2, 2, 22, 'Earth', 1),
   (1, 2, 2, 22, 'Leaf', 1),
@@ -614,6 +636,7 @@ VALUES
   (1, 2, 4, 22, 'Ra', 1),
   (1, 2, 4, 22, 'Sunyatta', 1),
   (7, 2, 3, 22, 'Skullyatta', 7), -- Halloween Terror Zenyatta Skins
+  (NULL, 2, NULL, 23, 'Classic', 9), -- Default Sombra Skins
   (1, 2, 2, 23, 'Cidro', 9), -- Normal Sombra Skins
   (1, 2, 2, 23, 'Incendio', 9),
   (1, 2, 2, 23, 'Mar', 9),
@@ -624,123 +647,144 @@ VALUES
   (1, 2, 4, 23, 'Augmented', 9),
   (1, 2, 4, 23, 'Cyberspace', 9),
   (1, 2, 4, 23, 'Los Muertos', 9),
-  -- Emotes TODO dates for sitting 08-23
+  (NULL, 3, NULL, 1, 'Heroic', 3), -- Default Ana Emotes
   (1, 3, 3, 1, 'Disapproving', 3), -- Normal Ana Emotes
-  (1, 3, 3, 1, 'Not Impressed', 3),
+  (1, 3, 3, 1, 'Not Impressed', 5),
   (1, 3, 3, 1, 'Protector', 3),
-  (1, 3, 3, 1, 'Take A Knee', 3),
+  (1, 3, 3, 1, 'Take A Knee', 5),
   (1, 3, 3, 1, 'Tea Time', 3),
   (7, 3, 3, 1, 'Candy', 7), -- Halloween Terror Ana Emotes
+  (NULL, 3, NULL, 2, 'Heroic', 1), -- Default Bastion Emotes
   (1, 3, 3, 2, 'Alert! Alert!', 1), -- Normal Bastion Emotes
-  (1, 3, 3, 2, 'Chortle', 1),
+  (1, 3, 3, 2, 'Chortle', 5),
   (1, 3, 3, 2, 'Dizzy', 1),
   (1, 3, 3, 2, 'Robot', 1),
-  (1, 3, 3, 2, 'CandyCandy', 1),
-  (1, 3, 3, 2, 'Rest Mode', 1),
+  (1, 3, 3, 2, 'Rest Mode', 5),
   (6, 3, 3, 2, 'Boxing', 4), -- Summer Games Bastion Emotes
-  (1, 3, 3, 3, '^O^', 1), -- Normal D.Va Emotes
+  (NULL, 3, NULL, 3, 'Heroic', 1), -- Default D.Va Emotes
+  (1, 3, 3, 3, '^O^', 5), -- Normal D.Va Emotes
   (1, 3, 3, 3, 'Bunny Hop', 1),
   (1, 3, 3, 3, 'Heartbreaker', 1),
   (1, 3, 3, 3, 'Party Time', 1),
   (1, 3, 4, 3, 'Game On', 5),
-  (1, 3, 3, 4, 'Amusing', 1), -- Normal Genji Emotes
+  (NULL, 3, NULL, 4, 'Heroic', 1), -- Default Genji Emotes
+  (1, 3, 3, 4, 'Amusing', 5), -- Normal Genji Emotes
   (1, 3, 3, 4, 'Challenge', 1),
   (1, 3, 3, 4, 'Cutting Edge', 1),
-  (1, 3, 3, 4, 'Meditate', 1),
+  (1, 3, 3, 4, 'Meditate', 5),
   (1, 3, 3, 4, 'Salute', 1),
+  (NULL, 3, NULL, 5, 'Heroic', 1), -- Default Hanzo Emotes
   (1, 3, 3, 5, 'Beckon', 1), -- Normal Hanzo Emotes
   (1, 3, 3, 5, 'Brush Shoulder', 1),
-  (1, 3, 3, 5, 'Chuckle', 1),
-  (1, 3, 3, 5, 'Meditate', 1),
+  (1, 3, 3, 5, 'Chuckle', 5),
+  (1, 3, 3, 5, 'Meditate', 5),
   (1, 3, 3, 5, 'Victory', 1),
-  (1, 3, 3, 6, 'Can''t Deal', 1), -- Normal Junkrat Emotes
+  (NULL, 3, NULL, 6, 'Heroic', 1), -- Default Junkrat Emotes
+  (1, 3, 3, 6, 'Can''t Deal', 5), -- Normal Junkrat Emotes
   (1, 3, 3, 6, 'Juggling', 1),
-  (1, 3, 3, 6, 'Lounging', 1),
+  (1, 3, 3, 6, 'Lounging', 5),
   (1, 3, 3, 6, 'Puppet', 1),
   (1, 3, 3, 6, 'Vaudeville', 1),
+  (NULL, 3, NULL, 7, 'Heroic', 1), -- Default Lúcio Emotes
   (1, 3, 3, 7, 'Capoeira', 1), -- Normal Lúcio Emotes
-  (1, 3, 3, 7, 'Chilling', 1),
+  (1, 3, 3, 7, 'Chilling', 5),
   (1, 3, 3, 7, 'In The Groove', 1),
-  (1, 3, 3, 7, 'Knee Slapper', 1),
+  (1, 3, 3, 7, 'Knee Slapper', 5),
   (1, 3, 3, 7, 'Nah!', 1),
   (6, 3, 3, 7, 'Juggle', 4), -- Summer Games Lúcio Emotes
+  (NULL, 3, NULL, 8, 'Heroic', 1), -- Default McCree Emotes
   (1, 3, 3, 8, 'Gunspinning', 1), -- Normal McCree Emotes
   (1, 3, 3, 8, 'Hat Tip', 1),
-  (1, 3, 3, 8, 'Joker', 1),
+  (1, 3, 3, 8, 'Joker', 5),
   (1, 3, 3, 8, 'Spit', 1),
-  (1, 3, 3, 8, 'Take A Load Off', 1),
+  (1, 3, 3, 8, 'Take A Load Off', 5),
+  (NULL, 3, NULL, 9, 'Heroic', 1), -- Default Mei Emotes
   (1, 3, 3, 9, 'Companion', 1), -- Normal Mei Emotes
-  (1, 3, 3, 9, 'Giggle', 1),
-  (1, 3, 3, 9, 'Kneel', 1),
+  (1, 3, 3, 9, 'Giggle', 5),
+  (1, 3, 3, 9, 'Kneel', 5),
   (1, 3, 3, 9, 'Spray', 1),
   (1, 3, 3, 9, 'Yaaaaaaaaay!', 1),
+  (NULL, 3, NULL, 10, 'Heroic', 1), -- Default Mercy Emotes
   (1, 3, 3, 10, 'Applause', 1), -- Normal Mercy Emotes
   (1, 3, 3, 10, 'Caduceus', 1),
   (1, 3, 3, 10, 'No Pulse', 1),
-  (1, 3, 3, 10, 'Relax', 1),
-  (1, 3, 3, 10, 'The Best Medicine', 1),
+  (1, 3, 3, 10, 'Relax', 5),
+  (1, 3, 3, 10, 'The Best Medicine', 5),
+  (NULL, 3, NULL, 11, 'Heroic', 1), -- Default Pharah Emotes
   (1, 3, 3, 11, 'Cheer', 1), -- Normal Pharah Emotes
-  (1, 3, 3, 11, 'Chuckle', 1),
+  (1, 3, 3, 11, 'Chuckle', 5),
   (1, 3, 3, 11, 'Flourish', 1),
   (1, 3, 3, 11, 'Knuckles', 1),
-  (1, 3, 3, 11, 'Take A Knee', 1),
-  (1, 3, 3, 12, 'Cackle', 1), -- Normal Reaper Emotes
+  (1, 3, 3, 11, 'Take A Knee', 5),
+  (NULL, 3, NULL, 12, 'Heroic', 1), -- Default Reaper Emotes
+  (1, 3, 3, 12, 'Cackle', 5), -- Normal Reaper Emotes
   (1, 3, 3, 12, 'Not Impressed', 1),
   (1, 3, 3, 12, 'Slice', 1),
   (1, 3, 3, 12, 'Slow Clap', 1),
-  (1, 3, 3, 12, 'Take A Knee', 1),
+  (1, 3, 3, 12, 'Take A Knee', 5),
+  (NULL, 3, NULL, 13, 'Heroic', 1), -- Default Reinhardt Emotes
   (1, 3, 3, 13, 'Flex', 1), -- Normal Reinhardt Emotes
-  (1, 3, 3, 13, 'Kneel', 1),
+  (1, 3, 3, 13, 'Kneel', 5),
   (1, 3, 3, 13, 'Taunt', 1),
-  (1, 3, 3, 13, 'Uproarious', 1),
+  (1, 3, 3, 13, 'Uproarious', 5),
   (1, 3, 3, 13, 'Warrior''s Salute', 1),
   (7, 3, 3, 13, 'Pumpkin Smash', 7), -- Halloween Terror Reinhardt Emotes
-  (1, 3, 3, 14, 'Belly Laugh', 1), -- Normal Roadhog Emotes
+  (NULL, 3, NULL, 14, 'Heroic', 1), -- Default Roadhog Emotes
+  (1, 3, 3, 14, 'Belly Laugh', 5), -- Normal Roadhog Emotes
   (1, 3, 3, 14, 'Boo!', 1),
   (1, 3, 3, 14, 'Can Crusher', 1),
   (1, 3, 3, 14, 'Headbanging', 1),
-  (1, 3, 3, 14, 'Tuckered Out', 1),
-  (1, 3, 3, 15, 'Amused', 1), -- Normal Soldier: 76 Emotes
+  (1, 3, 3, 14, 'Tuckered Out', 5),
+  (NULL, 3, NULL, 15, 'Heroic', 1), -- Default Soldier: 76 Emotes
+  (1, 3, 3, 15, 'Amused', 5), -- Normal Soldier: 76 Emotes
   (1, 3, 3, 15, 'Fist', 1),
   (1, 3, 3, 15, 'I See You', 1),
   (1, 3, 3, 15, 'Locked And Loaded', 1),
-  (1, 3, 3, 15, 'Take A Knee', 1),
+  (1, 3, 3, 15, 'Take A Knee', 5),
+  (NULL, 3, NULL, 16, 'Heroic', 1), -- Default Symmetra Emotes
   (1, 3, 3, 16, 'Clap', 1), -- Normal Symmetra Emotes
   (1, 3, 3, 16, 'Flow', 1),
-  (1, 3, 3, 16, 'Have A Seat', 1),
+  (1, 3, 3, 16, 'Have A Seat', 5),
   (1, 3, 3, 16, 'Insignificant', 1),
-  (1, 3, 3, 16, 'Snicker', 1),
-  (6, 3, 3, 16, 'Ribbon', 1), -- Summer Games Symmetra Emotes
+  (1, 3, 3, 16, 'Snicker', 5),
+  (6, 3, 3, 16, 'Ribbon', 4), -- Summer Games Symmetra Emotes
+  (NULL, 3, NULL, 17, 'Heroic', 1), -- Default Torbjörn Emotes
   (1, 3, 3, 17, 'Clicking Heels', 1), -- Normal Torbjörn Emotes
   (1, 3, 3, 17, 'Fisticuffs', 1),
-  (1, 3, 3, 17, 'Guffaw', 1),
+  (1, 3, 3, 17, 'Guffaw', 5),
   (1, 3, 3, 17, 'Overload', 1),
-  (1, 3, 3, 17, 'Taking A Break', 1),
+  (1, 3, 3, 17, 'Taking A Break', 5),
+  (NULL, 3, NULL, 18, 'Heroic', 1), -- Default Tracer Emotes
   (1, 3, 3, 18, 'Cheer', 1), -- Normal Tracer Emotes
   (1, 3, 3, 18, 'Having A Laugh', 1),
-  (1, 3, 3, 18, 'Sitting Around...', 1),
+  (1, 3, 3, 18, 'Sitting Around...', 5),
   (1, 3, 3, 18, 'Spin', 1),
-  (1, 3, 3, 19, 'At Rest', 1), -- Normal Widowmaker Emotes
+  (NULL, 3, NULL, 19, 'Heroic', 1), -- Default Widowmaker Emotes
+  (1, 3, 3, 19, 'At Rest', 5), -- Normal Widowmaker Emotes
   (1, 3, 3, 19, 'Curtain Call', 1),
-  (1, 3, 3, 19, 'Delighted', 1),
+  (1, 3, 3, 19, 'Delighted', 5),
   (1, 3, 3, 19, 'Shot Dead', 1),
   (1, 3, 3, 19, 'Widow''s Kiss', 1),
-  (1, 3, 3, 20, 'Laughing Matter', 1), -- Normal Winston Emotes
+  (NULL, 3, NULL, 20, 'Heroic', 1), -- Default Winston Emotes
+  (1, 3, 3, 20, 'Laughing Matter', 5), -- Normal Winston Emotes
   (1, 3, 3, 20, 'Monkey Business', 1),
   (1, 3, 3, 20, 'Peanut Butter?', 1),
   (1, 3, 3, 20, 'Roar', 1),
-  (1, 3, 3, 20, 'Sitting Around', 1),
-  (7, 3, 3, 20, 'Shadow Puppets', 1), -- Halloween Terror Winston Emotes
+  (1, 3, 3, 20, 'Sitting Around', 5),
+  (7, 3, 3, 20, 'Shadow Puppets', 7), -- Halloween Terror Winston Emotes
+  (NULL, 3, NULL, 21, 'Heroic', 1), -- Default Zarya Emotes
   (1, 3, 3, 21, 'Bring It On', 1), -- Normal Zarya Emotes
-  (1, 3, 3, 21, 'Comedy Gold', 1),
+  (1, 3, 3, 21, 'Comedy Gold', 5),
   (1, 3, 3, 21, 'Crush You', 1),
   (1, 3, 3, 21, 'Pumping Iron', 1),
-  (1, 3, 3, 21, 'Take A Knee', 1),
+  (1, 3, 3, 21, 'Take A Knee', 5),
+  (NULL, 3, NULL, 22, 'Heroic', 1), -- Default Zenyatta Emotes
   (1, 3, 3, 22, 'Focusing', 1), -- Normal Zenyatta Emotes
   (1, 3, 3, 22, 'Meditate', 1),
   (1, 3, 3, 22, 'Round Of Applause', 1),
-  (1, 3, 3, 22, 'Taunt', 1),
-  (1, 3, 3, 22, 'Tickled', 1),
+  (1, 3, 3, 22, 'Taunt', 5),
+  (1, 3, 3, 22, 'Tickled', 5),
+  (NULL, 3, NULL, 23, 'Heroic', 9), -- Default Sombra Emotes
   (1, 3, 3, 23, 'Amused', 9), -- Normal Sombra Emotes
   (1, 3, 3, 23, 'Hold On', 9),
   (1, 3, 3, 23, 'Masterpiece', 9),
@@ -764,7 +808,6 @@ VALUES
   (1, 4, 2, 5, 'Confident', 1), -- Normal Hanzo Victory Poses
   (1, 4, 2, 5, 'Kneeling', 1),
   (1, 4, 2, 5, 'Over The Shoulder', 1),
-  (1, 4, 2, 5, 'Candy', 1),
   (7, 4, 2, 5, 'R.I.P.', 7), -- Halloween Terror Hanzo Victory Poses
   (1, 4, 2, 6, 'It''ll Freeze That Way', 1), -- Normal Junkrat Victory Poses
   (1, 4, 2, 6, 'Kneeling', 1),
@@ -1532,7 +1575,6 @@ VALUES
   (1, 6, 1, 13, 'Icon', 1),
   (1, 6, 1, 13, 'Knight', 1),
   (1, 6, 1, 13, 'Lion', 1),
-  (1, 6, 1, 13, 'Pixel', 1),
   (1, 6, 1, 13, 'Roar', 1),
   (1, 6, 1, 13, 'Royal', 1),
   (1, 6, 1, 13, 'Shield Up', 1),
@@ -1593,7 +1635,6 @@ VALUES
   (1, 6, 1, 15, 'Rockets', 1),
   (1, 6, 1, 15, 'Salute', 1),
   (1, 6, 1, 15, 'Strike Commander', 1),
-  (1, 6, 1, 15, 'Trick Or Treat', 1),
   (1, 6, 1, 15, 'Vigilante', 1),
   (1, 6, 1, 15, 'Visor', 1),
   (1, 6, 1, 15, 'Wanted', 1),

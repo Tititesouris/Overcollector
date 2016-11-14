@@ -33,6 +33,26 @@ class Event implements JsonSerializable
         return self::$events[$id];
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
     function jsonSerialize()
     {
         return [
