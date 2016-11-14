@@ -1192,7 +1192,8 @@ VALUES
   (7, 6, 1, NULL, 'Pumpkins', 7),
   (7, 6, 1, NULL, 'Rise Of The Zomnics', 7),
   (7, 6, 1, NULL, 'The Reapening', 7),
-  (7, 6, 1, NULL, 'Witch''s Brew', 7), --TODO heroes
+  (7, 6, 1, NULL, 'Witch''s Brew', 7),
+  --TODO heroes
   (1, 6, 1, 1, 'Action', 3), -- Normal Ana Sprays
   (1, 6, 1, 1, 'Ana', 3),
   (1, 6, 1, 1, 'Bearer', 3),
@@ -1274,122 +1275,548 @@ VALUES
   (2, 6, 1, 3, 'Pixel', 1),
   (6, 6, 1, 3, 'Cycling', 4), -- Summer Games D.Va Sprays
   (7, 6, 1, 3, 'Trick Or Treat', 7), -- Halloween Terror D.Va Sprays
-  (1, 6, 1, 4, 'Golden', 1), -- Normal Genji Sprays
-  (1, 6, 1, 4, 'Golden', 1),
+  (1, 6, 1, 4, 'Assassin', 1), -- Normal Genji Sprays
+  (1, 6, 1, 4, 'Dragon', 1),
+  (1, 6, 1, 4, 'Dragonblade', 1),
+  (1, 6, 1, 4, 'Draw', 1),
+  (1, 6, 1, 4, 'Fully Loaded', 1),
+  (1, 6, 1, 4, 'God Of War', 1),
+  (1, 6, 1, 4, 'Green Ninja', 1),
+  (1, 6, 1, 4, 'Icon', 1),
+  (1, 6, 1, 4, 'Kaze No Gotoku', 1),
+  (1, 6, 1, 4, 'Lunge', 1),
+  (1, 6, 1, 4, 'Nin', 1),
+  (1, 6, 1, 4, 'Onmyodo', 1),
+  (1, 6, 1, 4, 'Prepared', 1),
+  (1, 6, 1, 4, 'Ryugekiken', 1),
+  (1, 6, 1, 4, 'Shimada', 1),
+  (1, 6, 1, 4, 'Shuriken', 1),
+  (1, 6, 1, 4, 'Signature', 1),
+  (1, 6, 1, 4, 'Soul', 1),
+  (1, 6, 1, 4, 'Stance', 1),
+  (1, 6, 1, 4, 'Stoic', 1),
+  (1, 6, 1, 4, 'Swords', 1),
+  (1, 6, 1, 4, 'Target Practice', 1),
+  (1, 6, 1, 4, 'Warrior', 1),
   (2, 6, 1, 4, 'Cute', 1), -- Achievements Genji Sprays
   (2, 6, 1, 4, 'Pixel', 1),
-  (6, 6, 1, 4, 'Golden', 4), -- Summer Games Genji Sprays
+  (6, 6, 1, 4, 'Fencing', 4), -- Summer Games Genji Sprays
+  (9, 6, 1, 4, 'Oni', 9), -- Blizzard Genji Sprays
   (7, 6, 1, 4, 'Trick Or Treat', 7), -- Halloween Terror Genji Sprays
-  (1, 6, 1, 5, 'Golden', 1), -- Normal Hanzo Sprays
-  (1, 6, 1, 5, 'Golden', 1),
+  (1, 6, 1, 5, 'Archer', 1), -- Normal Hanzo Sprays
+  (1, 6, 1, 5, 'Challenge', 1),
+  (1, 6, 1, 5, 'Cloud', 1),
+  (1, 6, 1, 5, 'Dragon', 1),
+  (1, 6, 1, 5, 'Dragons', 1),
+  (1, 6, 1, 5, 'Dragonstrike', 1),
+  (1, 6, 1, 5, 'Drawn', 1),
+  (1, 6, 1, 5, 'Duty', 1),
+  (1, 6, 1, 5, 'Haori', 1),
+  (1, 6, 1, 5, 'Icon', 1),
+  (1, 6, 1, 5, 'Kneeling', 1),
+  (1, 6, 1, 5, 'Kumo', 1),
+  (1, 6, 1, 5, 'Moon', 1),
+  (1, 6, 1, 5, 'Nin', 1),
+  (1, 6, 1, 5, 'Sake', 1),
+  (1, 6, 1, 5, 'Scarf', 1),
+  (1, 6, 1, 5, 'Seal', 1),
+  (1, 6, 1, 5, 'Spray', 1),
+  (1, 6, 1, 5, 'Stoic', 1),
+  (1, 6, 1, 5, 'Successor', 1),
+  (1, 6, 1, 5, 'Tea', 1),
+  (1, 6, 1, 5, 'Wanderer', 1),
+  (1, 6, 1, 5, 'Yellow', 1),
   (2, 6, 1, 5, 'Cute', 1), -- Achievements Hanzo Sprays
   (2, 6, 1, 5, 'Pixel', 1),
-  (6, 6, 1, 5, 'Golden', 4), -- Summer Games Hanzo Sprays
+  (6, 6, 1, 5, 'Archery', 4), -- Summer Games Hanzo Sprays
   (7, 6, 1, 5, 'Trick Or Treat', 7), -- Halloween Terror Hanzo Sprays
-  (1, 6, 1, 6, 'Golden', 1), -- Normal Junkrat Sprays
-  (1, 6, 1, 6, 'Golden', 1),
+  (1, 6, 1, 6, 'Ahhhh!', 1), -- Normal Junkrat Sprays
+  (1, 6, 1, 6, 'Bang Bang', 1),
+  (1, 6, 1, 6, 'Crazy', 1),
+  (1, 6, 1, 6, 'Fireball', 1),
+  (1, 6, 1, 6, 'Firework', 1),
+  (1, 6, 1, 6, 'For You', 1),
+  (1, 6, 1, 6, 'Frag', 1),
+  (1, 6, 1, 6, 'Fuse', 1),
+  (1, 6, 1, 6, 'Grin', 1),
+  (1, 6, 1, 6, 'Icon', 1),
+  (1, 6, 1, 6, 'Junk', 1),
+  (1, 6, 1, 6, 'Kaboom!', 1),
+  (1, 6, 1, 6, 'Mad', 1),
+  (1, 6, 1, 6, 'Mayhem', 1),
+  (1, 6, 1, 6, 'Mine', 1),
+  (1, 6, 1, 6, 'Minefield', 1),
+  (1, 6, 1, 6, 'Rolling', 1),
+  (1, 6, 1, 6, 'Smile', 1),
+  (1, 6, 1, 6, 'Smoke', 1),
+  (1, 6, 1, 6, 'Spin', 1),
+  (1, 6, 1, 6, 'Trapper', 1),
+  (1, 6, 1, 6, 'Vroom!!', 1),
+  (1, 6, 1, 6, 'Wanted', 1),
   (2, 6, 1, 6, 'Cute', 1), -- Achievements Junkrat Sprays
   (2, 6, 1, 6, 'Pixel', 1),
-  (6, 6, 1, 6, 'Golden', 4), -- Summer Games Junkrat Sprays
+  (6, 6, 1, 6, 'Tennis', 4), -- Summer Games Junkrat Sprays
   (7, 6, 1, 6, 'Trick Or Treat', 7), -- Halloween Terror Junkrat Sprays
-  (1, 6, 1, 7, 'Golden', 1), -- Normal Lúcio Sprays
-  (1, 6, 1, 7, 'Golden', 1),
+  (1, 6, 1, 7, 'Acelerar', 1), -- Normal Lúcio Sprays
+  (1, 6, 1, 7, 'Baixo', 1),
+  (1, 6, 1, 7, 'Bass', 1),
+  (1, 6, 1, 7, 'Break It Down', 1),
+  (1, 6, 1, 7, 'Cereal', 1),
+  (1, 6, 1, 7, 'Confident', 1),
+  (1, 6, 1, 7, 'Deck', 1),
+  (1, 6, 1, 7, 'Frog', 1),
+  (1, 6, 1, 7, 'Grin', 1),
+  (1, 6, 1, 7, 'Hero', 1),
+  (1, 6, 1, 7, 'Icon', 1),
+  (1, 6, 1, 7, 'In Concert', 1),
+  (1, 6, 1, 7, 'Kambô', 1),
+  (1, 6, 1, 7, 'Mural', 1),
+  (1, 6, 1, 7, 'Scratch', 1),
+  (1, 6, 1, 7, 'Signature', 1),
+  (1, 6, 1, 7, 'Spin', 1),
+  (1, 6, 1, 7, 'Tag', 1),
+  (1, 6, 1, 7, 'Triplo', 1),
+  (1, 6, 1, 7, 'Under Control', 1),
+  (1, 6, 1, 7, 'Vinyl', 1),
+  (1, 6, 1, 7, 'Walk Of Fame', 1),
+  (1, 6, 1, 7, 'Wave', 1),
   (2, 6, 1, 7, 'Cute', 1), -- Achievements Lúcio Sprays
   (2, 6, 1, 7, 'Pixel', 1),
-  (6, 6, 1, 7, 'Golden', 4), -- Summer Games Lúcio Sprays
+  (6, 6, 1, 7, 'Football', 4), -- Summer Games Lúcio Sprays
   (7, 6, 1, 7, 'Trick Or Treat', 7), -- Halloween Terror Lúcio Sprays
-  (1, 6, 1, 8, 'Golden', 1), -- Normal McCree Sprays
-  (1, 6, 1, 8, 'Golden', 1),
+  (1, 6, 1, 8, 'Badge', 1), -- Normal McCree Sprays
+  (1, 6, 1, 8, 'BAMF', 1),
+  (1, 6, 1, 8, 'Bang!', 1),
+  (1, 6, 1, 8, 'Buckle', 1),
+  (1, 6, 1, 8, 'Bullet', 1),
+  (1, 6, 1, 8, 'Deadeye', 1),
+  (1, 6, 1, 8, 'Draw', 1),
+  (1, 6, 1, 8, 'Enigma', 1),
+  (1, 6, 1, 8, 'Gunslinger', 1),
+  (1, 6, 1, 8, 'High Noon', 1),
+  (1, 6, 1, 8, 'Icon', 1),
+  (1, 6, 1, 8, 'Jesse', 1),
+  (1, 6, 1, 8, 'Noose', 1),
+  (1, 6, 1, 8, 'Outlaw', 1),
+  (1, 6, 1, 8, 'Skull', 1),
+  (1, 6, 1, 8, 'Spin', 1),
+  (1, 6, 1, 8, 'Take It Easy', 1),
+  (1, 6, 1, 8, 'Target', 1),
+  (1, 6, 1, 8, 'The Name''s', 1),
+  (1, 6, 1, 8, 'Thumbs Up', 1),
+  (1, 6, 1, 8, 'Tumbleweed', 1),
+  (1, 6, 1, 8, 'Wanted', 1),
+  (1, 6, 1, 8, 'Your Face Here', 1),
   (2, 6, 1, 8, 'Cute', 1), -- Achievements McCree Sprays
   (2, 6, 1, 8, 'Pixel', 1),
-  (6, 6, 1, 8, 'Golden', 4), -- Summer Games McCree Sprays
+  (6, 6, 1, 8, 'Equestrian', 4), -- Summer Games McCree Sprays
   (7, 6, 1, 8, 'Trick Or Treat', 7), -- Halloween Terror McCree Sprays
-  (1, 6, 1, 9, 'Golden', 1), -- Normal Mei Sprays
-  (1, 6, 1, 9, 'Golden', 1),
+  (1, 6, 1, 9, '^_^', 1), -- Normal Mei Sprays
+  (1, 6, 1, 9, '>_<', 1),
+  (1, 6, 1, 9, 'Beat The Heat', 1),
+  (1, 6, 1, 9, 'Blaster', 1),
+  (1, 6, 1, 9, 'Carefree', 1),
+  (1, 6, 1, 9, 'Casual', 1),
+  (1, 6, 1, 9, 'Confident', 1),
+  (1, 6, 1, 9, 'Dizzy', 1),
+  (1, 6, 1, 9, 'Explorer', 1),
+  (1, 6, 1, 9, 'Eyes', 1),
+  (1, 6, 1, 9, 'Hairpin', 1),
+  (1, 6, 1, 9, 'Icon', 1),
+  (1, 6, 1, 9, 'Mei''s Journal', 1),
+  (1, 6, 1, 9, 'Popsicle', 1),
+  (1, 6, 1, 9, 'Print', 1),
+  (1, 6, 1, 9, 'Reading', 1),
+  (1, 6, 1, 9, 'Sketch', 1),
+  (1, 6, 1, 9, 'Smile', 1),
+  (1, 6, 1, 9, 'Snow Art', 1),
+  (1, 6, 1, 9, 'Snowball', 1),
+  (1, 6, 1, 9, 'Snowman', 1),
+  (1, 6, 1, 9, 'Soft Serve', 1),
+  (1, 6, 1, 9, 'Walled', 1),
   (2, 6, 1, 9, 'Cute', 1), -- Achievements Mei Sprays
   (2, 6, 1, 9, 'Pixel', 1),
-  (6, 6, 1, 9, 'Golden', 4), -- Summer Games Mei Sprays
+  (6, 6, 1, 9, 'Table Tennis', 4), -- Summer Games Mei Sprays
   (7, 6, 1, 9, 'Trick Or Treat', 7), -- Halloween Terror Mei Sprays
-  (1, 6, 1, 10, 'Golden', 1), -- Normal Mercy Sprays
-  (1, 6, 1, 10, 'Golden', 1),
+  (1, 6, 1, 10, 'Arrow', 1), -- Normal Mercy Sprays
+  (1, 6, 1, 10, 'Bandage', 1),
+  (1, 6, 1, 10, 'Battle Ready', 1),
+  (1, 6, 1, 10, 'Blaster', 1),
+  (1, 6, 1, 10, 'Emblem', 1),
+  (1, 6, 1, 10, 'Gauze', 1),
+  (1, 6, 1, 10, 'Halo', 1),
+  (1, 6, 1, 10, 'Heroes Never Die', 1),
+  (1, 6, 1, 10, 'Huge Rez!!', 1),
+  (1, 6, 1, 10, 'Icon', 1),
+  (1, 6, 1, 10, 'Light', 1),
+  (1, 6, 1, 10, 'Medic', 1),
+  (1, 6, 1, 10, 'On Call', 1),
+  (1, 6, 1, 10, 'Patched Up', 1),
+  (1, 6, 1, 10, 'Resurrect', 1),
+  (1, 6, 1, 10, 'Smile', 1),
+  (1, 6, 1, 10, 'Stethoscope', 1),
+  (1, 6, 1, 10, 'Sting', 1),
+  (1, 6, 1, 10, 'Support', 1),
+  (1, 6, 1, 10, 'Swiss', 1),
+  (1, 6, 1, 10, 'Valkyrie', 1),
+  (1, 6, 1, 10, 'Wings', 1),
+  (1, 6, 1, 10, 'Ziegler', 1),
   (2, 6, 1, 10, 'Cute', 1), -- Achievements Mercy Sprays
   (2, 6, 1, 10, 'Pixel', 1),
-  (6, 6, 1, 10, 'Golden', 4), -- Summer Games Mercy Sprays
+  (6, 6, 1, 10, 'Badminton', 4), -- Summer Games Mercy Sprays
   (7, 6, 1, 10, 'Trick Or Treat', 7), -- Halloween Terror Mercy Sprays
-  (1, 6, 1, 11, 'Golden', 1), -- Normal Pharah Sprays
-  (1, 6, 1, 11, 'Golden', 1),
+  (1, 6, 1, 11, 'Aerial Superiority', 1), -- Normal Pharah Sprays
+  (1, 6, 1, 11, 'Amari', 1),
+  (1, 6, 1, 11, 'Ana', 1),
+  (1, 6, 1, 11, 'Cobra', 1),
+  (1, 6, 1, 11, 'Concussive Blast', 1),
+  (1, 6, 1, 11, 'Guardian', 1),
+  (1, 6, 1, 11, 'Hieroglyph', 1),
+  (1, 6, 1, 11, 'Icon', 1),
+  (1, 6, 1, 11, 'Incoming', 1),
+  (1, 6, 1, 11, 'Justice...', 1),
+  (1, 6, 1, 11, 'On Guard', 1),
+  (1, 6, 1, 11, 'Play Pharah', 1),
+  (1, 6, 1, 11, 'Raptora', 1),
+  (1, 6, 1, 11, 'Rocket Jump', 1),
+  (1, 6, 1, 11, 'Rocket Launcher', 1),
+  (1, 6, 1, 11, 'Salute', 1),
+  (1, 6, 1, 11, 'Scarab', 1),
+  (1, 6, 1, 11, 'Statue', 1),
+  (1, 6, 1, 11, 'Stone', 1),
+  (1, 6, 1, 11, 'Tattoo', 1),
+  (1, 6, 1, 11, 'Wedjat', 1),
+  (1, 6, 1, 11, 'Wings', 1),
+  (1, 6, 1, 11, 'Wrist Launcher', 1),
   (2, 6, 1, 11, 'Cute', 1), -- Achievements Pharah Sprays
   (2, 6, 1, 11, 'Pixel', 1),
-  (6, 6, 1, 11, 'Golden', 4), -- Summer Games Pharah Sprays
+  (6, 6, 1, 11, 'Basketball', 4), -- Summer Games Pharah Sprays
   (7, 6, 1, 11, 'Trick Or Treat', 7), -- Halloween Terror Pharah Sprays
-  (1, 6, 1, 12, 'Golden', 1), -- Normal Reaper Sprays
-  (1, 6, 1, 12, 'Golden', 1),
+  (1, 6, 1, 12, 'Blackwatch', 1), -- Normal Reaper Sprays
+  (1, 6, 1, 12, 'Blossom', 1),
+  (1, 6, 1, 12, 'Cloaked', 1),
+  (1, 6, 1, 12, 'Death Blossom', 1),
+  (1, 6, 1, 12, 'Death Comes', 1),
+  (1, 6, 1, 12, 'Die Die Die', 1),
+  (1, 6, 1, 12, 'Everywhere', 1),
+  (1, 6, 1, 12, 'Grave', 1),
+  (1, 6, 1, 12, 'Hellfire', 1),
+  (1, 6, 1, 12, 'Hooded', 1),
+  (1, 6, 1, 12, 'Horns', 1),
+  (1, 6, 1, 12, 'Icon', 1),
+  (1, 6, 1, 12, 'Oops', 1),
+  (1, 6, 1, 12, 'Psst', 1),
+  (1, 6, 1, 12, 'Reap On', 1),
+  (1, 6, 1, 12, 'Reaping', 1),
+  (1, 6, 1, 12, 'Revenge', 1),
+  (1, 6, 1, 12, 'Scythes', 1),
+  (1, 6, 1, 12, 'Shadow', 1),
+  (1, 6, 1, 12, 'Shadow Step', 1),
+  (1, 6, 1, 12, 'Silent', 1),
+  (1, 6, 1, 12, 'Soul Globe', 1),
+  (1, 6, 1, 12, 'Time To Kill', 1),
   (2, 6, 1, 12, 'Cute', 1), -- Achievements Reaper Sprays
   (2, 6, 1, 12, 'Pixel', 1),
-  (6, 6, 1, 12, 'Golden', 4), -- Summer Games Reaper Sprays
+  (6, 6, 1, 12, 'BMX', 4), -- Summer Games Reaper Sprays
   (7, 6, 1, 12, 'Trick Or Treat', 7), -- Halloween Terror Reaper Sprays
-  (1, 6, 1, 13, 'Golden', 1), -- Normal Reinhardt Sprays
-  (1, 6, 1, 13, 'Golden', 1),
+  (1, 6, 1, 13, 'Barrier', 1), -- Normal Reinhardt Sprays
+  (1, 6, 1, 13, 'Charge', 1),
+  (1, 6, 1, 13, 'Cracks', 1),
+  (1, 6, 1, 13, 'Crusader', 1),
+  (1, 6, 1, 13, 'Earthshatter', 1),
+  (1, 6, 1, 13, 'Emblem', 1),
+  (1, 6, 1, 13, 'Fire Strike', 1),
+  (1, 6, 1, 13, 'Glorious', 1),
+  (1, 6, 1, 13, 'Hammer Down', 1),
+  (1, 6, 1, 13, 'Helm', 1),
+  (1, 6, 1, 13, 'Honor', 1),
+  (1, 6, 1, 13, 'Icon', 1),
+  (1, 6, 1, 13, 'Knight', 1),
+  (1, 6, 1, 13, 'Lion', 1),
+  (1, 6, 1, 13, 'Pixel', 1),
+  (1, 6, 1, 13, 'Roar', 1),
+  (1, 6, 1, 13, 'Royal', 1),
+  (1, 6, 1, 13, 'Shield Up', 1),
+  (1, 6, 1, 13, 'Stein', 1),
+  (1, 6, 1, 13, 'Swing', 1),
+  (1, 6, 1, 13, 'Vigilant', 1),
+  (1, 6, 1, 13, 'White', 1),
+  (1, 6, 1, 13, 'Wilhelm', 1),
+  (1, 6, 1, 13, 'Wrestle', 1),
   (2, 6, 1, 13, 'Cute', 1), -- Achievements Reinhardt Sprays
   (2, 6, 1, 13, 'Pixel', 1),
-  (6, 6, 1, 13, 'Golden', 4), -- Summer Games Reinhardt Sprays
+  (6, 6, 1, 13, 'Wrestling', 4), -- Summer Games Reinhardt Sprays
   (7, 6, 1, 13, 'Trick Or Treat', 7), -- Halloween Terror Reinhardt Sprays
-  (1, 6, 1, 14, 'Golden', 1), -- Normal Roadhog Sprays
-  (1, 6, 1, 14, 'Golden', 1),
+  (1, 6, 1, 14, 'Breathin''', 1), -- Normal Roadhog Sprays
+  (1, 6, 1, 14, 'Deep Thoughts', 1),
+  (1, 6, 1, 14, 'Emblem', 1),
+  (1, 6, 1, 14, 'Eyes', 1),
+  (1, 6, 1, 14, 'Free Pig', 1),
+  (1, 6, 1, 14, 'Fresh Meat', 1),
+  (1, 6, 1, 14, 'Gotcha', 1),
+  (1, 6, 1, 14, 'Grand Theft', 1),
+  (1, 6, 1, 14, 'Helmet', 1),
+  (1, 6, 1, 14, 'Here Piggy', 1),
+  (1, 6, 1, 14, 'Hogpower', 1),
+  (1, 6, 1, 14, 'Hooked', 1),
+  (1, 6, 1, 14, 'Icon', 1),
+  (1, 6, 1, 14, 'Left', 1),
+  (1, 6, 1, 14, 'License', 1),
+  (1, 6, 1, 14, 'Mako', 1),
+  (1, 6, 1, 14, 'No Pork', 1),
+  (1, 6, 1, 14, 'Piggy', 1),
+  (1, 6, 1, 14, 'Popper', 1),
+  (1, 6, 1, 14, 'Tails', 1),
+  (1, 6, 1, 14, 'Toxic', 1),
+  (1, 6, 1, 14, 'Wanted', 1),
+  (1, 6, 1, 14, 'Wild Hog', 1),
   (2, 6, 1, 14, 'Cute', 1), -- Achievements Roadhog Sprays
   (2, 6, 1, 14, 'Pixel', 1),
-  (6, 6, 1, 14, 'Golden', 4), -- Summer Games Roadhog Sprays
+  (6, 6, 1, 14, 'Diving', 4), -- Summer Games Roadhog Sprays
   (7, 6, 1, 14, 'Trick Or Treat', 7), -- Halloween Terror Roadhog Sprays
-  (1, 6, 1, 15, 'Golden', 1), -- Normal Soldier: 76 Sprays
-  (1, 6, 1, 15, 'Golden', 1),
+  (1, 6, 1, 15, '76', 1), -- Normal Soldier: 76 Sprays
+  (1, 6, 1, 15, 'All Soldiers', 1),
+  (1, 6, 1, 15, 'American Hero', 1),
+  (1, 6, 1, 15, 'Coin', 1),
+  (1, 6, 1, 15, 'Grave', 1),
+  (1, 6, 1, 15, 'Grizzled', 1),
+  (1, 6, 1, 15, 'Heal Up', 1),
+  (1, 6, 1, 15, 'Helix', 1),
+  (1, 6, 1, 15, 'Hooah', 1),
+  (1, 6, 1, 15, 'Icon', 1),
+  (1, 6, 1, 15, 'Jacket: 76', 1),
+  (1, 6, 1, 15, 'Move!', 1),
+  (1, 6, 1, 15, 'Muzzle', 1),
+  (1, 6, 1, 15, 'Old Soldier', 1),
+  (1, 6, 1, 15, 'Pulse Rifle', 1),
+  (1, 6, 1, 15, 'Resolute', 1),
+  (1, 6, 1, 15, 'Rifle: 76', 1),
+  (1, 6, 1, 15, 'Rockets', 1),
+  (1, 6, 1, 15, 'Salute', 1),
+  (1, 6, 1, 15, 'Strike Commander', 1),
+  (1, 6, 1, 15, 'Trick Or Treat', 1),
+  (1, 6, 1, 15, 'Vigilante', 1),
+  (1, 6, 1, 15, 'Visor', 1),
+  (1, 6, 1, 15, 'Wanted', 1),
   (2, 6, 1, 15, 'Cute', 1), -- Achievements Soldier: 76 Sprays
   (2, 6, 1, 15, 'Pixel', 1),
-  (6, 6, 1, 15, 'Golden', 4), -- Summer Games Soldier: 76 Sprays
+  (6, 6, 1, 15, 'Golf', 4), -- Summer Games Soldier: 76 Sprays
   (7, 6, 1, 15, 'Trick Or Treat', 7), -- Halloween Terror Soldier: 76 Sprays
-  (1, 6, 1, 16, 'Golden', 1), -- Normal Symmetra Sprays
-  (1, 6, 1, 16, 'Golden', 1),
+  (1, 6, 1, 16, 'Agent', 1), -- Normal Symmetra Sprays
+  (1, 6, 1, 16, 'Architect', 1),
+  (1, 6, 1, 16, 'Behold', 1),
+  (1, 6, 1, 16, 'Blueprint', 1),
+  (1, 6, 1, 16, 'Builder', 1),
+  (1, 6, 1, 16, 'Car Wash', 1),
+  (1, 6, 1, 16, 'Caution', 1),
+  (1, 6, 1, 16, 'Design', 1),
+  (1, 6, 1, 16, 'Glove', 1),
+  (1, 6, 1, 16, 'Icon', 1),
+  (1, 6, 1, 16, 'Light', 1),
+  (1, 6, 1, 16, 'Lines', 1),
+  (1, 6, 1, 16, 'Lotus', 1),
+  (1, 6, 1, 16, 'Pose', 1),
+  (1, 6, 1, 16, 'Projector', 1),
+  (1, 6, 1, 16, 'Satya', 1),
+  (1, 6, 1, 16, 'Superior', 1),
+  (1, 6, 1, 16, 'The Path', 1),
+  (1, 6, 1, 16, 'Vaswani', 1),
+  (1, 6, 1, 16, 'Vishkar', 1),
+  (1, 6, 1, 16, 'Visor', 1),
+  (1, 6, 1, 16, 'Weaver', 1),
+  (1, 6, 1, 16, 'Will', 1),
   (2, 6, 1, 16, 'Cute', 1), -- Achievements Symmetra Sprays
   (2, 6, 1, 16, 'Pixel', 1),
-  (6, 6, 1, 16, 'Golden', 4), -- Summer Games Symmetra Sprays
+  (6, 6, 1, 16, 'Rythmic', 4), -- Summer Games Symmetra Sprays
   (7, 6, 1, 16, 'Trick Or Treat', 7), -- Halloween Terror Symmetra Sprays
-  (1, 6, 1, 17, 'Golden', 1), -- Normal Torbjörn Sprays
-  (1, 6, 1, 17, 'Golden', 1),
+  (1, 6, 1, 17, 'Armor', 1), -- Normal Torbjörn Sprays
+  (1, 6, 1, 17, 'Beard', 1),
+  (1, 6, 1, 17, 'Catch A Ride', 1),
+  (1, 6, 1, 17, 'Chef', 1),
+  (1, 6, 1, 17, 'Claw', 1),
+  (1, 6, 1, 17, 'Fix It Up', 1),
+  (1, 6, 1, 17, 'Forged', 1),
+  (1, 6, 1, 17, 'Gears', 1),
+  (1, 6, 1, 17, 'Get Ready', 1),
+  (1, 6, 1, 17, 'Hammer', 1),
+  (1, 6, 1, 17, 'Hot', 1),
+  (1, 6, 1, 17, 'Icon', 1),
+  (1, 6, 1, 17, 'Ironclad', 1),
+  (1, 6, 1, 17, 'Kanon', 1),
+  (1, 6, 1, 17, 'Mask', 1),
+  (1, 6, 1, 17, 'Molten Core', 1),
+  (1, 6, 1, 17, 'Ready To Work', 1),
+  (1, 6, 1, 17, 'Run!', 1),
+  (1, 6, 1, 17, 'Smält', 1),
+  (1, 6, 1, 17, 'Stoic', 1),
+  (1, 6, 1, 17, 'Turret', 1),
+  (1, 6, 1, 17, 'Turrets', 1),
+  (1, 6, 1, 17, 'Uppgradera', 1),
   (2, 6, 1, 17, 'Cute', 1), -- Achievements Torbjörn Sprays
   (2, 6, 1, 17, 'Pixel', 1),
-  (6, 6, 1, 17, 'Golden', 4), -- Summer Games Torbjörn Sprays
+  (6, 6, 1, 17, 'Water Polo', 4), -- Summer Games Torbjörn Sprays
   (7, 6, 1, 17, 'Trick Or Treat', 7), -- Halloween Terror Torbjörn Sprays
-  (1, 6, 1, 18, 'Golden', 1), -- Normal Tracer Sprays
-  (1, 6, 1, 18, 'Golden', 1),
+  (1, 6, 1, 18, 'Blink', 1), -- Normal Tracer Sprays
+  (1, 6, 1, 18, 'Bomb''s Away!', 1),
+  (1, 6, 1, 18, 'Cavalry''s Here', 1),
+  (1, 6, 1, 18, 'Cheers', 1),
+  (1, 6, 1, 18, 'Cheers, Love', 1),
+  (1, 6, 1, 18, 'Clock''s Tickin''', 1),
+  (1, 6, 1, 18, 'Confident', 1),
+  (1, 6, 1, 18, 'Fighter', 1),
+  (1, 6, 1, 18, 'Icon', 1),
+  (1, 6, 1, 18, 'Kneeling', 1),
+  (1, 6, 1, 18, 'Lena', 1),
+  (1, 6, 1, 18, 'Orange', 1),
+  (1, 6, 1, 18, 'Pew! Pew! Pew!', 1),
+  (1, 6, 1, 18, 'Pistols', 1),
+  (1, 6, 1, 18, 'Portrait', 1),
+  (1, 6, 1, 18, 'Poster', 1),
+  (1, 6, 1, 18, 'Pulse Bomb', 1),
+  (1, 6, 1, 18, 'Ready For Action', 1),
+  (1, 6, 1, 18, 'Salute', 1),
+  (1, 6, 1, 18, 'Shaded', 1),
+  (1, 6, 1, 18, 'Tagged', 1),
+  (1, 6, 1, 18, 'Watcha'' Lookin'' At?', 1),
+  (1, 6, 1, 18, 'Wings', 1),
   (2, 6, 1, 18, 'Cute', 1), -- Achievements Tracer Sprays
   (2, 6, 1, 18, 'Pixel', 1),
-  (6, 6, 1, 18, 'Golden', 4), -- Summer Games Tracer Sprays
+  (6, 6, 1, 18, 'Track', 4), -- Summer Games Tracer Sprays
   (7, 6, 1, 18, 'Trick Or Treat', 7), -- Halloween Terror Tracer Sprays
-  (1, 6, 1, 19, 'Golden', 1), -- Normal Widowmaker Sprays
-  (1, 6, 1, 19, 'Golden', 1),
+  (1, 6, 1, 19, 'Baiser', 1), -- Normal Widowmaker Sprays
+  (1, 6, 1, 19, 'Black Widow', 1),
+  (1, 6, 1, 19, 'Blood', 1),
+  (1, 6, 1, 19, 'Crouch', 1),
+  (1, 6, 1, 19, 'Detected', 1),
+  (1, 6, 1, 19, 'Emblem', 1),
+  (1, 6, 1, 19, 'Gaze', 1),
+  (1, 6, 1, 19, 'Hourglass', 1),
+  (1, 6, 1, 19, 'Icon', 1),
+  (1, 6, 1, 19, 'In My Sights', 1),
+  (1, 6, 1, 19, 'Je Te Vois', 1),
+  (1, 6, 1, 19, 'Kneeling', 1),
+  (1, 6, 1, 19, 'No One Escapes', 1),
+  (1, 6, 1, 19, 'Noire', 1),
+  (1, 6, 1, 19, 'Portrait', 1),
+  (1, 6, 1, 19, 'Scope', 1),
+  (1, 6, 1, 19, 'Sniper', 1),
+  (1, 6, 1, 19, 'Spider', 1),
+  (1, 6, 1, 19, 'Swing', 1),
+  (1, 6, 1, 19, 'Une Balle', 1),
+  (1, 6, 1, 19, 'Veuve', 1),
+  (1, 6, 1, 19, 'Widow', 1),
+  (1, 6, 1, 19, 'Widow''s Kiss', 1),
   (2, 6, 1, 19, 'Cute', 1), -- Achievements Widowmaker Sprays
   (2, 6, 1, 19, 'Pixel', 1),
-  (6, 6, 1, 19, 'Golden', 4), -- Summer Games Widowmaker Sprays
+  (6, 6, 1, 19, 'Gymnastics', 4), -- Summer Games Widowmaker Sprays
   (7, 6, 1, 19, 'Trick Or Treat', 7), -- Halloween Terror Widowmaker Sprays
-  (1, 6, 1, 20, 'Golden', 1), -- Normal Winston Sprays
-  (1, 6, 1, 20, 'Golden', 1),
+  (1, 6, 1, 20, 'Angry', 1), -- Normal Winston Sprays
+  (1, 6, 1, 20, 'Ape Crossing', 1),
+  (1, 6, 1, 20, 'Baby', 1),
+  (1, 6, 1, 20, 'Banana', 1),
+  (1, 6, 1, 20, 'Explorer', 1),
+  (1, 6, 1, 20, 'Fastball', 1),
+  (1, 6, 1, 20, 'Harold', 1),
+  (1, 6, 1, 20, 'Horizon', 1),
+  (1, 6, 1, 20, 'Icon', 1),
+  (1, 6, 1, 20, 'Lexigrams', 1),
+  (1, 6, 1, 20, 'Lightning', 1),
+  (1, 6, 1, 20, 'Mine!', 1),
+  (1, 6, 1, 20, 'PB', 1),
+  (1, 6, 1, 20, 'Primal Rage', 1),
+  (1, 6, 1, 20, 'Q.E.D.', 1),
+  (1, 6, 1, 20, 'Rage', 1),
+  (1, 6, 1, 20, 'Research', 1),
+  (1, 6, 1, 20, 'Roar', 1),
+  (1, 6, 1, 20, 'Science!', 1),
+  (1, 6, 1, 20, 'Serious', 1),
+  (1, 6, 1, 20, 'Swing', 1),
+  (1, 6, 1, 20, 'White', 1),
+  (1, 6, 1, 20, 'Wow', 1),
   (2, 6, 1, 20, 'Cute', 1), -- Achievements Winston Sprays
   (2, 6, 1, 20, 'Pixel', 1),
-  (6, 6, 1, 20, 'Golden', 4), -- Summer Games Winston Sprays
+  (6, 6, 1, 20, 'Volleyball', 4), -- Summer Games Winston Sprays
   (7, 6, 1, 20, 'Trick Or Treat', 7), -- Halloween Terror Winston Sprays
-  (1, 6, 1, 21, 'Golden', 1), -- Normal Zarya Sprays
-  (1, 6, 1, 21, 'Golden', 1),
+  (1, 6, 1, 21, '512', 1), -- Normal Zarya Sprays
+  (1, 6, 1, 21, 'Alexandra', 1),
+  (1, 6, 1, 21, 'Avenger', 1),
+  (1, 6, 1, 21, 'Barrier', 1),
+  (1, 6, 1, 21, 'Bear', 1),
+  (1, 6, 1, 21, 'Cannon', 1),
+  (1, 6, 1, 21, 'Champion', 1),
+  (1, 6, 1, 21, 'Defender', 1),
+  (1, 6, 1, 21, 'Focused', 1),
+  (1, 6, 1, 21, 'For The People', 1),
+  (1, 6, 1, 21, 'Gun Show', 1),
+  (1, 6, 1, 21, 'Icon', 1),
+  (1, 6, 1, 21, 'Lift', 1),
+  (1, 6, 1, 21, 'Pink', 1),
+  (1, 6, 1, 21, 'Pumped', 1),
+  (1, 6, 1, 21, 'Shield', 1),
+  (1, 6, 1, 21, 'Smile', 1),
+  (1, 6, 1, 21, 'Strength', 1),
+  (1, 6, 1, 21, 'Surge', 1),
+  (1, 6, 1, 21, 'Tobelstein', 1),
+  (1, 6, 1, 21, 'We Are Strong', 1),
+  (1, 6, 1, 21, 'Weights', 1),
+  (1, 6, 1, 21, 'Wrestle', 1),
   (2, 6, 1, 21, 'Cute', 1), -- Achievements Zarya Sprays
   (2, 6, 1, 21, 'Pixel', 1),
-  (6, 6, 1, 21, 'Golden', 4), -- Summer Games Zarya Sprays
+  (6, 6, 1, 21, 'Weightlifting', 4), -- Summer Games Zarya Sprays
   (7, 6, 1, 21, 'Trick Or Treat', 7), -- Halloween Terror Zarya Sprays
-  (1, 6, 1, 22, 'Golden', 1), -- Normal Zenyatta Sprays
-  (1, 6, 1, 22, 'Golden', 1),
+  (1, 6, 1, 22, 'Adorable', 1), -- Normal Zenyatta Sprays
+  (1, 6, 1, 22, 'Aura', 1),
+  (1, 6, 1, 22, 'Balance', 1),
+  (1, 6, 1, 22, 'Contemplative', 1),
+  (1, 6, 1, 22, 'Discord', 1),
+  (1, 6, 1, 22, 'Enlightened', 1),
+  (1, 6, 1, 22, 'Fist Bump', 1),
+  (1, 6, 1, 22, 'Flow', 1),
+  (1, 6, 1, 22, 'Foot', 1),
+  (1, 6, 1, 22, 'Graphic', 1),
+  (1, 6, 1, 22, 'Guru', 1),
+  (1, 6, 1, 22, 'Hand', 1),
+  (1, 6, 1, 22, 'Harmony', 1),
+  (1, 6, 1, 22, 'Icon', 1),
+  (1, 6, 1, 22, 'Inner Fire', 1),
+  (1, 6, 1, 22, 'Nine', 1),
+  (1, 6, 1, 22, 'Orb', 1),
+  (1, 6, 1, 22, 'Orbs', 1),
+  (1, 6, 1, 22, 'Peace', 1),
+  (1, 6, 1, 22, 'Taunt', 1),
+  (1, 6, 1, 22, 'Tekhartha', 1),
+  (1, 6, 1, 22, 'Throw', 1),
+  (1, 6, 1, 22, 'Together', 1),
   (2, 6, 1, 22, 'Cute', 1), -- Achievements Zenyatta Sprays
   (2, 6, 1, 22, 'Pixel', 1),
-  (6, 6, 1, 22, 'Golden', 4), -- Summer Games Zenyatta Sprays
+  (6, 6, 1, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Sprays
   (7, 6, 1, 22, 'Trick Or Treat', 7), -- Halloween Terror Zenyatta Sprays
-  (1, 6, 1, 23, 'Golden', 9), -- Normal Sombra Sprays
-  (1, 6, 1, 23, 'Golden', 9),
+  (1, 6, 1, 23, '¿Quién?', 9), -- Normal Sombra Sprays TODO get real upside down ?
+  (1, 6, 1, 23, '5kull', 9),
+  (1, 6, 1, 23, 'Agent', 9),
+  (1, 6, 1, 23, 'Behind You', 9),
+  (1, 6, 1, 23, 'Calavera', 9),
+  (1, 6, 1, 23, 'Deaf-Mute', 9),
+  (1, 6, 1, 23, 'Eyes', 9),
+  (1, 6, 1, 23, 'Hacked', 9),
+  (1, 6, 1, 23, 'Hacked The Moon', 9),
+  (1, 6, 1, 23, 'Hacker', 9),
+  (1, 6, 1, 23, 'Icon', 9),
+  (1, 6, 1, 23, 'Illusive', 9),
+  (1, 6, 1, 23, 'Key', 9),
+  (1, 6, 1, 23, 'Machine Pistol', 9),
+  (1, 6, 1, 23, 'Marionette', 9),
+  (1, 6, 1, 23, 'Neural', 9),
+  (1, 6, 1, 23, 'Power', 9),
+  (1, 6, 1, 23, 'Puzzle', 9),
+  (1, 6, 1, 23, 'Skull', 9),
+  (1, 6, 1, 23, 'Skycode', 9),
+  (1, 6, 1, 23, 'Superior', 9),
+  (1, 6, 1, 23, 'Tagged', 9),
+  (1, 6, 1, 23, 'Translocator', 9),
+  (1, 6, 1, 23, 'Unlocked', 9),
+  (1, 6, 1, 23, 'Virus', 9),
+  (1, 6, 1, 23, 'Web', 9),
   (2, 6, 1, 23, 'Cute', 9), -- Achievements Sombra Sprays
   (2, 6, 1, 23, 'Pixel', 9),
   -- Highlight Intros
@@ -1494,7 +1921,7 @@ VALUES
   (5, 8, 5, 23, 'Golden', 9); -- Golden Sombra Weapons
 
 --TODO double check season 2 competitive start date
--- Double check defaults
+-- TODO Double check defaults
 
 
 CREATE TABLE users (
