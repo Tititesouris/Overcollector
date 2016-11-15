@@ -1,6 +1,8 @@
 {% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
+    {# TODO: Add total of everything #}
+    {# TODO: Add filter by type #}
     {% set settings = SESSION.user.settings %}
     {% set pages = {
     "start": (GET.page ?? 0) * (settings["collection-heroes-per-page"].value ?? 3),

@@ -64,10 +64,10 @@ VALUES
   (3, 'Ana Patch', '2016-07-19', NULL),
   (4, 'Summer Games 2016', '2016-08-02', '2016-08-23'),
   (5, 'Eichenwalde Patch', '2016-08-23', NULL),
-  (6, 'Competitive Season 2', '2016-07-02', '2016-11-24'),
+  (6, 'Competitive Season 2', '2016-07-06', '2016-11-22'),
   (7, 'Halloween Terror 2016', '2016-10-11', '2016-11-01'),
   (8, 'Día De Los Muertos 2016', '2016-11-01', NULL),
-  (9, 'Sombra Patch', '2016-11-15', NULL), -- TODO Cuando es Sombra?
+  (9, 'Sombra Patch', '2016-11-15', NULL),
   (10, 'Competitive Season 3', '2016-12-01', NULL); -- TODO end
 
 INSERT INTO settings (name, description, "default")
@@ -737,107 +737,131 @@ VALUES
   (1, 3, 3, 23, 'Hold On', 9),
   (1, 3, 3, 23, 'Masterpiece', 9),
   -- Victory Poses
+  (NULL, 4, NULL, 1, 'Heroic', 3), -- Default Ana Victory Poses
   (1, 4, 2, 1, 'Mission Complete', 3), -- Normal Ana Victory Poses
   (1, 4, 2, 1, 'Protector', 3),
   (1, 4, 2, 1, 'Seated', 3),
   (7, 4, 2, 1, 'R.I.P.', 7), -- Halloween Terror Ana Victory Poses
+  (NULL, 4, NULL, 2, 'Heroic', 1), -- Default Bastion Victory Poses
   (1, 4, 2, 2, 'Birdwatching', 1), -- Normal Bastion Victory Poses
   (1, 4, 2, 2, 'Pop Up', 1),
   (1, 4, 2, 2, 'Tank', 1),
   (7, 4, 2, 2, 'R.I.P.', 7), -- Halloween Terror Bastion Victory Poses
+  (NULL, 4, NULL, 3, 'Heroic', 1), -- Default D.Va Victory Poses
   (1, 4, 2, 3, 'I Heart You', 1), -- Normal D.Va Victory Poses
   (1, 4, 2, 3, 'Peace', 1),
   (1, 4, 2, 3, 'Sitting', 1),
   (7, 4, 2, 3, 'R.I.P.', 7), -- Halloween Terror D.Va Victory Poses
+  (NULL, 4, NULL, 4, 'Heroic', 1), -- Default Genji Victory Poses
   (1, 4, 2, 4, 'Kneeling', 1), -- Normal Genji Victory Poses
   (1, 4, 2, 4, 'Shuriken', 1),
   (1, 4, 2, 4, 'Sword Stance', 1),
   (7, 4, 2, 4, 'R.I.P.', 7), -- Halloween Terror Genji Victory Poses
+  (NULL, 4, NULL, 5, 'Heroic', 1), -- Default Hanzo Victory Poses
   (1, 4, 2, 5, 'Confident', 1), -- Normal Hanzo Victory Poses
   (1, 4, 2, 5, 'Kneeling', 1),
   (1, 4, 2, 5, 'Over The Shoulder', 1),
   (7, 4, 2, 5, 'R.I.P.', 7), -- Halloween Terror Hanzo Victory Poses
+  (NULL, 4, NULL, 6, 'Heroic', 1), -- Default Junkrat Victory Poses
   (1, 4, 2, 6, 'It''ll Freeze That Way', 1), -- Normal Junkrat Victory Poses
   (1, 4, 2, 6, 'Kneeling', 1),
   (1, 4, 2, 6, 'Nyah Nyah', 1),
   (7, 4, 2, 6, 'R.I.P.', 7), -- Halloween Terror Junkrat Victory Poses
+  (NULL, 4, NULL, 7, 'Heroic', 1), -- Default Lúcio Victory Poses
   (1, 4, 2, 7, 'Confident', 1), -- Normal Lúcio Victory Poses
   (1, 4, 2, 7, 'Grooving', 1),
   (1, 4, 2, 7, 'Ready For Action', 1),
   (7, 4, 2, 7, 'R.I.P.', 7), -- Halloween Terror Lúcio Victory Poses
+  (NULL, 4, NULL, 8, 'Heroic', 1), -- Default McCree Victory Poses
   (1, 4, 2, 8, 'Contemplative', 1), -- Normal McCree Victory Poses
   (1, 4, 2, 8, 'Over The Shoulder', 1),
   (1, 4, 2, 8, 'Take It Easy', 1),
   (7, 4, 2, 8, 'R.I.P.', 7), -- Halloween Terror McCree Victory Poses
+  (NULL, 4, NULL, 9, 'Heroic', 1), -- Default Mei Victory Poses
   (1, 4, 2, 9, 'Casual', 1), -- Normal Mei Victory Poses
   (1, 4, 2, 9, 'Hands On Hips', 1),
   (1, 4, 2, 9, 'Kneeling', 1),
   (6, 4, 2, 9, 'Medal', 4), -- Summer Games Mei Victory Poses
   (7, 4, 2, 9, 'R.I.P.', 7), -- Halloween Terror Mei Victory Poses
+  (NULL, 4, NULL, 10, 'Heroic', 1), -- Default Mercy Victory Poses
   (1, 4, 2, 10, 'Angelic', 1), -- Normal Mercy Victory Poses
   (1, 4, 2, 10, 'Carefree', 1),
   (1, 4, 2, 10, 'Ready For Battle', 1),
   (7, 4, 2, 10, 'R.I.P.', 7), -- Halloween Terror Mercy Victory Poses
+  (NULL, 4, NULL, 11, 'Heroic', 1), -- Default Pharah Victory Poses
   (1, 4, 2, 11, 'Guardian', 1), -- Normal Pharah Victory Poses
   (1, 4, 2, 11, 'Jump Jet', 1),
   (1, 4, 2, 11, 'Kneeling', 1),
   (6, 4, 2, 11, 'Medal', 4), -- Summer Games Pharah Victory Poses
   (7, 4, 2, 11, 'R.I.P.', 7), -- Halloween Terror Pharah Victory Poses
+  (NULL, 4, NULL, 12, 'Heroic', 1), -- Default Reaper Victory Poses
   (1, 4, 2, 12, 'Casual', 1), -- Normal Reaper Victory Poses
   (1, 4, 2, 12, 'Enigmatic', 1),
   (1, 4, 2, 12, 'Menacing', 1),
   (1, 4, 2, 12, 'Medal', 1), -- Summer Games Reaper Victory Poses
   (7, 4, 2, 12, 'R.I.P.', 7), -- Halloween Terror Reaper Victory Poses
+  (NULL, 4, NULL, 13, 'Heroic', 1), -- Default Reinhardt Victory Poses
   (1, 4, 2, 13, 'Confident', 1), -- Normal Reinhardt Victory Poses
   (1, 4, 2, 13, 'Flex', 1),
   (1, 4, 2, 13, 'Legendary', 1),
   (7, 4, 2, 13, 'R.I.P.', 7), -- Halloween Terror Reinhardt Victory Poses
+  (NULL, 4, NULL, 14, 'Heroic', 1), -- Default Roadhog Victory Poses
   (1, 4, 2, 14, 'Pointing To The Sky', 1), -- Normal Roadhog Victory Poses
   (1, 4, 2, 14, 'Thumbs Up', 1),
   (1, 4, 2, 14, 'Tuckered Out', 1),
   (6, 4, 2, 14, 'Medal', 4), -- Summer Games Roadhog Victory Poses
   (7, 4, 2, 14, 'R.I.P.', 7), -- Halloween Terror Roadhog Victory Poses
+  (NULL, 4, NULL, 15, 'Heroic', 1), -- Default Soldier: 76 Victory Poses
   (1, 4, 2, 15, 'Fist Pump', 1), -- Normal Soldier: 76 Victory Poses
   (1, 4, 2, 15, 'Locked And Loaded', 1),
   (1, 4, 2, 15, 'Soldier', 1),
   (6, 4, 2, 15, 'Golf Swing', 4), -- Summer Games Soldier: 76 Victory Poses
   (7, 4, 2, 15, 'R.I.P.', 7), -- Halloween Terror Soldier: 76 Victory Poses
+  (NULL, 4, NULL, 16, 'Heroic', 1), -- Default Symmetra Victory Poses
   (1, 4, 2, 16, 'Balance', 1), -- Normal Symmetra Victory Poses
   (1, 4, 2, 16, 'Creation', 1),
   (1, 4, 2, 16, 'Dance', 1),
   (7, 4, 2, 16, 'R.I.P.', 7), -- Halloween Terror Symmetra Victory Poses
+  (NULL, 4, NULL, 17, 'Heroic', 1), -- Default Torbjörn Victory Poses
   (1, 4, 2, 17, 'Hammer', 1), -- Normal Torbjörn Victory Poses
   (1, 4, 2, 17, 'Sitting Pretty', 1),
   (1, 4, 2, 17, 'Take Five', 1),
   (6, 4, 2, 17, 'Medal', 4), -- Summer Games Torbjörn Victory Poses
   (7, 4, 2, 17, 'R.I.P.', 7), -- Halloween Terror Torbjörn Victory Poses
+  (NULL, 4, NULL, 18, 'Heroic', 1), -- Default Tracer Victory Poses
   (1, 4, 2, 18, 'Over The Shoulder', 1), -- Normal Tracer Victory Poses
   (1, 4, 2, 18, 'Salute', 1),
   (1, 4, 2, 18, 'Sitting', 1),
   (7, 4, 2, 18, 'R.I.P.', 7), -- Halloween Terror Tracer Victory Poses
+  (NULL, 4, NULL, 19, 'Heroic', 1), -- Default Widowmaker Victory Poses
   (1, 4, 2, 19, 'Activating Visor', 1), -- Normal Widowmaker Victory Poses
   (1, 4, 2, 19, 'Gaze', 1),
   (1, 4, 2, 19, 'Over The Shoulder', 1),
   (6, 4, 2, 19, 'Medal', 4), -- Summer Games Widowmaker Victory Poses
   (7, 4, 2, 19, 'R.I.P.', 7), -- Halloween Terror Widowmaker Victory Poses
+  (NULL, 4, NULL, 20, 'Heroic', 1), -- Default Winston Victory Poses
   (1, 4, 2, 20, 'Beast', 1), -- Normal Winston Victory Poses
   (1, 4, 2, 20, 'Glasses', 1),
   (1, 4, 2, 20, 'The Thinker', 1),
   (6, 4, 2, 20, 'Medal', 4), -- Summer Games Winston Victory Poses
   (7, 4, 2, 20, 'R.I.P.', 7), -- Halloween Terror Winston Victory Poses
+  (NULL, 4, NULL, 21, 'Heroic', 1), -- Default Zarya Victory Poses
   (1, 4, 2, 21, 'Casual', 1), -- Normal Zarya Victory Poses
   (1, 4, 2, 21, 'Check Out This Gun', 1),
   (1, 4, 2, 21, 'Flexing', 1),
   (7, 4, 2, 21, 'R.I.P.', 7), -- Halloween Terror Zarya Victory Poses
+  (NULL, 4, NULL, 22, 'Heroic', 1), -- Default Zenyatta Victory Poses
   (1, 4, 2, 22, 'Balance', 1), -- Normal Zenyatta Victory Poses
   (1, 4, 2, 22, 'Harmony', 1),
   (1, 4, 2, 22, 'Peace', 1),
   (6, 4, 2, 22, 'Medals', 4), -- Summer Games Zenyatta Victory Poses
   (7, 4, 2, 22, 'R.I.P.', 7), -- Halloween Terror Zenyatta Victory Poses
+  (NULL, 4, NULL, 23, 'Heroic', 9), -- Default Sombra Victory Poses
   (1, 4, 2, 23, 'Hacked', 9), -- Normal Sombra Victory Poses
   (1, 4, 2, 23, 'Kneeling', 9),
   (1, 4, 2, 23, 'Rising', 9),
   -- Voice Lines
+  (NULL, 5, NULL, 1, 'Justice Delivered', 3), -- Default Ana Voice Lines
   (1, 5, 1, 1, 'Children, Behave', 3), -- Normal Ana Voice Lines
   (1, 5, 1, 1, 'Everyone Dies', 3),
   (1, 5, 1, 1, 'It Takes A Woman To Know It', 3),
@@ -850,6 +874,7 @@ VALUES
   (1, 5, 1, 1, 'You Know Nothing', 3),
   (6, 5, 1, 1, 'Learn From The Pain', 4), -- Summer Games Ana Voice Lines
   (7, 5, 1, 1, 'Are You Scared?', 7), -- Halloween Terror Ana Voice Lines
+  (NULL, 5, NULL, 2, 'Doo-Woo', 1), -- Default Bastion Voice Lines
   (1, 5, 1, 2, 'Beeple', 1), -- Normal Bastion Voice Lines
   (1, 5, 1, 2, 'Boo Boo Doo De Doo', 1),
   (1, 5, 1, 2, 'Bweeeeeeeeeee', 1),
@@ -862,6 +887,7 @@ VALUES
   (1, 5, 1, 2, 'Zwee?', 1),
   (6, 5, 1, 2, 'Whoo-Vweeeeee', 4), -- Summer Games Bastion Voice Lines
   (7, 5, 1, 2, 'W-w-wooooo...?', 7), -- Halloween Terror Bastion Voice Lines
+  (NULL, 5, NULL, 3, 'Love, D.Va', 1), -- Default D.Va Voice Lines
   (1, 5, 1, 3, ';)', 1), -- Normal D.Va Voice Lines
   (1, 5, 1, 3, 'A New Challenger!', 1),
   (1, 5, 1, 3, 'AFK', 1),
@@ -874,6 +900,7 @@ VALUES
   (1, 5, 1, 3, 'No Hacks Required', 1),
   (6, 5, 1, 3, 'I''m #1', 4), -- Summer Games D.Va Voice Lines
   (7, 5, 1, 3, 'Happy Halloween', 7), -- Halloween Terror D.Va Voice Lines
+  (NULL, 5, NULL, 4, 'A Steady Blade', 1), -- Default Genji Voice Lines
   (1, 5, 1, 4, 'Come on!', 1), -- Normal Genji Voice Lines
   (1, 5, 1, 4, 'Damn!', 1),
   (1, 5, 1, 4, 'I Am Prepared!', 1),
@@ -886,6 +913,7 @@ VALUES
   (1, 5, 1, 4, 'You Are Only Human', 1),
   (6, 5, 1, 4, 'I Was Hoping For A Challenge', 4), -- Summer Games Genji Voice Lines
   (7, 5, 1, 4, 'My Halloween Costume?', 7), -- Halloween Terror Genji Voice Lines
+  (NULL, 5, NULL, 5, 'Expect Nothing Less', 1), -- Default Hanzo Voice Lines
   (1, 5, 1, 5, 'Flow Like Water', 1), -- Normal Hanzo Voice Lines
   (1, 5, 1, 5, 'From One Thing...', 1),
   (1, 5, 1, 5, 'Hm...', 1),
@@ -898,6 +926,7 @@ VALUES
   (1, 5, 1, 5, 'Step Into The Dojo', 1),
   (6, 5, 1, 5, 'Ignore All Distractions', 4), -- Summer Games Hanzo Voice Lines
   (7, 5, 1, 5, 'You Are Already Dead', 7), -- Halloween Terror Hanzo Voice Lines
+  (NULL, 5, NULL, 6, 'Tick-Tock-Tick-Tock', 1), -- Default Junkrat Voice Lines
   (1, 5, 1, 6, '...Blow It Up Again', 1), -- Normal Junkrat Voice Lines
   (1, 5, 1, 6, 'Anyone Want Some BBQ?', 1),
   (1, 5, 1, 6, 'Brrring!', 1),
@@ -910,6 +939,7 @@ VALUES
   (1, 5, 1, 6, 'Smile!', 1),
   (6, 5, 1, 6, 'I Give It A 10!', 4), -- Summer Games Junkrat Voice Lines
   (7, 5, 1, 6, 'Happy Halloween', 7), -- Halloween Terror Junkrat Voice Lines
+  (NULL, 5, NULL, 7, 'To The Rhythm', 1), -- Default Lúcio Voice Lines
   (1, 5, 1, 7, 'Can''t Stop, Won''t Stop', 1), -- Normal Lúcio Voice Lines
   (1, 5, 1, 7, 'Hit Me!', 1),
   (1, 5, 1, 7, 'I Could Do This All Day', 1),
@@ -922,6 +952,7 @@ VALUES
   (1, 5, 1, 7, 'You Gotta Believe!', 1),
   (6, 5, 1, 7, 'Be Champions', 4), -- Summer Games Lúcio Voice Lines
   (7, 5, 1, 7, 'Killed It!', 7), -- Halloween Terror Lúcio Voice Lines
+  (NULL, 5, NULL, 8, 'Watch And Learn', 1), -- Default McCree Voice Lines
   (1, 5, 1, 8, 'Ain''t I Killed You Before', 1), -- Normal McCree Voice Lines
   (1, 5, 1, 8, 'Happens To The Best Of Us', 1),
   (1, 5, 1, 8, 'I Tried Being Reasonable', 1),
@@ -934,6 +965,7 @@ VALUES
   (1, 5, 1, 8, 'You Done?', 1),
   (6, 5, 1, 8, 'I Don''t Much Like Losing', 4), -- Summer Games McCree Voice Lines
   (7, 5, 1, 8, 'It''s Your Funeral', 7), -- Halloween Terror McCree Voice Lines
+  (NULL, 5, NULL, 9, 'Hang In There', 1), -- Default Mei Voice Lines
   (1, 5, 1, 9, 'A-Mei-Zing!', 1), -- Normal Mei Voice Lines
   (1, 5, 1, 9, 'Chill Out!', 1),
   (1, 5, 1, 9, 'Fight For Our World', 1),
@@ -946,6 +978,7 @@ VALUES
   (1, 5, 1, 9, 'You Have To Let It Go', 1),
   (6, 5, 1, 9, 'Overcome All Obstacles', 4), -- Summer Games Mei Voice Lines
   (7, 5, 1, 9, 'Scary!', 7), -- Halloween Terror Mei Voice Lines
+  (NULL, 5, NULL, 10, 'I Have My Eye On You', 1), -- Default Mercy Voice Lines
   (1, 5, 1, 10, 'Consultation Fee', 1), -- Normal Mercy Voice Lines
   (1, 5, 1, 10, 'Doctor''s Orders', 1),
   (1, 5, 1, 10, 'How Barbaric', 1),
@@ -958,6 +991,7 @@ VALUES
   (1, 5, 1, 10, 'The Doctor Will See You', 1),
   (6, 5, 1, 10, 'Piece Of Cake', 4), -- Summer Games Mercy Voice Lines
   (7, 5, 1, 10, 'Superstition', 7), -- Halloween Terror Mercy Voice Lines
+  (NULL, 5, NULL, 11, 'Security In My Hands', 1), -- Default Pharah Voice Lines
   (1, 5, 1, 11, 'Aerial Superiority Achieved', 1), -- Normal Pharah Voice Lines
   (1, 5, 1, 11, 'Fly Like An Egyptian', 1),
   (1, 5, 1, 11, 'Flying The Friendly Skies', 1),
@@ -970,6 +1004,7 @@ VALUES
   (1, 5, 1, 11, 'Sorry, But I Need To Jet', 1),
   (6, 5, 1, 11, 'We Are In This Together', 4), -- Summer Games Pharah Voice Lines
   (7, 5, 1, 11, 'Dead Or Alive', 7), -- Halloween Terror Pharah Voice Lines
+  (NULL, 5, NULL, 12, 'What Are You Looking At', 1), -- Default Reaper Voice Lines
   (1, 5, 1, 12, 'Dead Man Walking', 1), -- Normal Reaper Voice Lines
   (1, 5, 1, 12, 'Give Me A Break', 1),
   (1, 5, 1, 12, 'Haven''t I Killed You', 1),
@@ -982,6 +1017,7 @@ VALUES
   (1, 5, 1, 12, 'Was That All?', 1),
   (6, 5, 1, 12, 'It''s In The Refrigerator', 4), -- Summer Games Reaper Voice Lines
   (7, 5, 1, 12, 'I Work The Graveyard Shift', 7), -- Halloween Terror Reaper Voice Lines
+  (NULL, 5, NULL, 13, 'I Salute You', 1), -- Default Reinhardt Voice Lines
   (1, 5, 1, 13, 'Are You Afraid?', 1), -- Normal Reinhardt Voice Lines
   (1, 5, 1, 13, 'Bring Me Another', 1),
   (1, 5, 1, 13, 'Catch Phrase!', 1),
@@ -994,6 +1030,7 @@ VALUES
   (1, 5, 1, 13, 'This Old Dog', 1),
   (1, 5, 1, 13, '100% German Power', 1), -- Summer Games Reinhardt Voice Lines
   (1, 5, 1, 13, 'Smashing', 1), -- Halloween Terror Reinhardt Voice Lines
+  (NULL, 5, NULL, 14, 'The Apocalypse', 1), -- Default Roadhog Voice Lines
   (1, 5, 1, 14, 'Candy From A Baby', 1), -- Normal Roadhog Voice Lines
   (1, 5, 1, 14, 'Got Something To Say?', 1),
   (1, 5, 1, 14, 'Hahaha!', 1),
@@ -1006,6 +1043,7 @@ VALUES
   (1, 5, 1, 14, 'We''re All Animals', 1),
   (1, 5, 1, 14, 'What''s Mine Is Mine', 1), -- Summer Games Roadhog Voice Lines
   (1, 5, 1, 14, 'Want Some Candy?', 1), -- Halloween Terror Roadhog Voice Lines
+  (NULL, 5, NULL, 15, 'I''ve Still Got It', 1), -- Default Soldier: 76 Voice Lines
   (1, 5, 1, 15, 'Get Off My Lawn', 1), -- Normal Soldier: 76 Voice Lines
   (1, 5, 1, 15, 'I Didn''t Start This War...', 1),
   (1, 5, 1, 15, 'I''m An Army Of One', 1),
@@ -1018,6 +1056,7 @@ VALUES
   (1, 5, 1, 15, 'You''re The Other One', 1),
   (1, 5, 1, 15, 'You Want A Medal?', 1), -- Summer Games Soldier: 76 Voice Lines
   (1, 5, 1, 15, 'Knock Knock', 1), -- Halloween Terror Soldier: 76 Voice Lines
+  (NULL, 5, NULL, 16, 'Such A Lack Of Imagination', 1), -- Default Symmetra Voice Lines
   (1, 5, 1, 16, 'Everything By Design', 1), -- Normal Symmetra Voice Lines
   (1, 5, 1, 16, 'Exquisite', 1),
   (1, 5, 1, 16, 'How Unsightly', 1),
@@ -1030,6 +1069,7 @@ VALUES
   (1, 5, 1, 16, 'Why Do You Struggle?', 1),
   (1, 5, 1, 16, 'Hard Work And Dedication', 1), -- Summer Games Symmetra Voice Lines
   (1, 5, 1, 16, 'A Frightening Thought', 1), -- Halloween Terror Symmetra Voice Lines
+  (NULL, 5, NULL, 17, 'Hard Work Pays Off', 1), -- Default Torbjörn Voice Lines
   (1, 5, 1, 17, 'A Chicken Out Of A Feather', 1), -- Normal Torbjörn Voice Lines
   (1, 5, 1, 17, 'Completion Date?', 1),
   (1, 5, 1, 17, 'Don''t Get Caught', 1),
@@ -1042,6 +1082,7 @@ VALUES
   (1, 5, 1, 17, 'Working As Intended', 1),
   (1, 5, 1, 17, 'More Where That Came From', 1), -- Summer Games Torbjörn Voice Lines
   (1, 5, 1, 17, 'If You Build It', 1), -- Halloween Terror Torbjörn Voice Lines
+  (NULL, 5, NULL, 18, 'You Got It', 1), -- Default Tracer Voice Lines
   (1, 5, 1, 18, 'Aw, Rubbish', 1), -- Normal Tracer Voice Lines
   (1, 5, 1, 18, 'Be Right Back!', 1),
   (1, 5, 1, 18, 'Check Me Out', 1),
@@ -1054,6 +1095,7 @@ VALUES
   (1, 5, 1, 18, 'You Need A Time Out', 1),
   (1, 5, 1, 18, 'Eat My Dust', 1), -- Summer Games Tracer Voice Lines
   (1, 5, 1, 18, 'Ooh, Scary!', 1), -- Halloween Terror Tracer Voice Lines
+  (NULL, 5, NULL, 19, 'A Single Death', 1), -- Default Widowmaker Voice Lines
   (1, 5, 1, 19, 'Encore?', 1), -- Normal Widowmaker Voice Lines
   (1, 5, 1, 19, 'Let Them Eat The Cake', 1),
   (1, 5, 1, 19, 'Look For The Woman', 1),
@@ -1066,6 +1108,7 @@ VALUES
   (1, 5, 1, 19, 'What''s An Aimbot?', 1),
   (1, 5, 1, 19, 'I Don''t Miss', 1), -- Summer Games Widowmaker Voice Lines
   (1, 5, 1, 19, 'The Party Is Over', 1), -- Halloween Terror Widowmaker Voice Lines
+  (NULL, 5, NULL, 20, 'Curious', 1), -- Default Winston Voice Linest
   (1, 5, 1, 20, '...Excuse Me', 1), -- Normal Winston Voice Lines
   (1, 5, 1, 20, 'Don''t Get Me Angry', 1),
   (1, 5, 1, 20, 'How Embarrassing!', 1),
@@ -1078,6 +1121,7 @@ VALUES
   (1, 5, 1, 20, 'We Have A Problem', 1),
   (1, 5, 1, 20, 'Playtime''s Over', 1), -- Summer Games Winston Voice Lines
   (1, 5, 1, 20, 'This Is Not A Costume', 1), -- Halloween Terror Winston Voice Lines
+  (NULL, 5, NULL, 21, 'Strong As The Mountain', 1), -- Default Zarya Voice Lines
   (1, 5, 1, 21, 'Get Down, Give Me 20', 1), -- Normal Zarya Voice Lines
   (1, 5, 1, 21, 'I Am Mother Russia', 1),
   (1, 5, 1, 21, 'I Can Bench More Than You', 1),
@@ -1090,6 +1134,7 @@ VALUES
   (1, 5, 1, 21, 'Welcome To The Gun Show', 1),
   (1, 5, 1, 21, 'No Pain, No Gain', 1), -- Summer Games Zarya Voice Lines
   (1, 5, 1, 21, 'Never Forget The Fallen', 1), -- Halloween Terror Zarya Voice Lines
+  (NULL, 5, NULL, 22, 'We Are In Harmony', 1), -- Default Zenyatta Voice Lines
   (1, 5, 1, 22, 'Death Is Whimsical Today', 1), -- Normal Zenyatta Voice Lines
   (1, 5, 1, 22, 'Do I Think?', 1),
   (1, 5, 1, 22, 'Free Your Mind', 1),
@@ -1102,6 +1147,7 @@ VALUES
   (1, 5, 1, 22, 'The Iris Embraces You', 1),
   (1, 5, 1, 22, 'Strive For Improvement', 1), -- Summer Games Zenyatta Voice Lines
   (1, 5, 1, 22, 'Trick Or Treat?', 1), -- Halloween Terror Zenyatta Voice Lines
+  (NULL, 5, NULL, 23, 'Playing Fair', 9), -- Default Sombra Voice Lines
   (1, 5, 1, 23, 'Cool', 9), -- Normal Sombra Voice Lines
   (1, 5, 1, 23, 'Did You Mean To Do That?', 9),
   (1, 5, 1, 23, 'Glitch In The System', 9),
@@ -1779,8 +1825,7 @@ VALUES
   (2, 6, 1, 22, 'Pixel', 1),
   (6, 6, 1, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Sprays
   (7, 6, 1, 22, 'Trick Or Treat', 7), -- Halloween Terror Zenyatta Sprays
-  (1, 6, 1, 23, '¿Quién?', 9), -- Normal Sombra Sprays TODO get real upside down ?
-  (1, 6, 1, 23, '5kull', 9),
+  (1, 6, 1, 23, '5kull', 9), -- Normal Sombra Sprays
   (1, 6, 1, 23, 'Agent', 9),
   (1, 6, 1, 23, 'Behind You', 9),
   (1, 6, 1, 23, 'Calavera', 9),
@@ -1805,109 +1850,156 @@ VALUES
   (1, 6, 1, 23, 'Unlocked', 9),
   (1, 6, 1, 23, 'Virus', 9),
   (1, 6, 1, 23, 'Web', 9),
+  (1, 6, 1, 23, '¿Quién?', 9),
   (2, 6, 1, 23, 'Cute', 9), -- Achievements Sombra Sprays
   (2, 6, 1, 23, 'Pixel', 9),
   -- Highlight Intros
+  (NULL, 7, NULL, 1, 'Heroic', 3), -- Default Ana Highlight Intros
   (1, 7, 3, 1, 'Guardian', 3), -- Normal Ana Highlight Intros
   (1, 7, 3, 1, 'Locked On', 3),
   (1, 7, 3, 1, 'Shh...', 3),
+  (NULL, 7, NULL, 2, 'Heroic', 1), -- Default Bastion Highlight Intros
   (1, 7, 3, 2, 'Bullet Rain', 1), -- Normal Bastion Highlight Intros
   (1, 7, 3, 2, 'Ganymede', 1),
   (1, 7, 3, 2, 'On Guard', 1),
+  (NULL, 7, NULL, 3, 'Heroic', 1), -- Default D.Va Highlight Intros
   (1, 7, 3, 3, 'Eject', 1), -- Normal D.Va Highlight Intros
   (1, 7, 3, 3, 'Lying Around', 1),
   (1, 7, 3, 3, 'Meka Activated', 1),
+  (NULL, 7, NULL, 4, 'Heroic', 1), -- Default Genji Highlight Intros
   (1, 7, 3, 4, 'Shuriken', 1), -- Normal Genji Highlight Intros
   (1, 7, 3, 4, 'Unsheathing The Sword', 1),
   (1, 7, 3, 4, 'Warrior''s Salute', 1),
   (7, 7, 3, 4, 'Pumpkin Carving', 7), -- Halloween Terror Genji Highlight Intros
+  (NULL, 7, NULL, 5, 'Heroic', 1), -- Default Hanzo Highlight Intros
   (1, 7, 3, 5, 'Backflip', 1), -- Normal Hanzo Highlight Intros
   (1, 7, 3, 5, 'My Aim Is True', 1),
   (1, 7, 3, 5, 'Superior', 1),
+  (NULL, 7, NULL, 6, 'Heroic', 1), -- Default Junkrat Highlight Intros
   (1, 7, 3, 6, 'I''m Flying', 1), -- Normal Junkrat Highlight Intros
   (1, 7, 3, 6, 'Rip-Tire', 1),
   (1, 7, 3, 6, 'Unfortunate', 1),
   (6, 7, 3, 6, 'Shotput', 4), -- Summer Games Junkrat Highlight Intros
+  (NULL, 7, NULL, 7, 'Heroic', 1), -- Default Lúcio Highlight Intros
   (1, 7, 3, 7, 'Drop The Beat', 1), -- Normal Lúcio Highlight Intros
   (1, 7, 3, 7, 'Freestyle', 1),
   (1, 7, 3, 7, 'In The Groove', 1),
   (1, 7, 3, 7, 'Bicycle Kick', 1), -- Summer Games Lúcio Highlight Intros
+  (NULL, 7, NULL, 8, 'Heroic', 1), -- Default McCree Highlight Intros
   (1, 7, 3, 8, 'Rolling Into Action', 1), -- Normal McCree Highlight Intros
   (1, 7, 3, 8, 'The Duel', 1),
   (1, 7, 3, 8, 'The Name''s McCree', 1),
+  (NULL, 7, NULL, 9, 'Heroic', 1), -- Default Mei Highlight Intros
   (1, 7, 3, 9, 'Frosty :)', 1), -- Normal Mei Highlight Intros
   (1, 7, 3, 9, 'Going Up!', 1),
   (1, 7, 3, 9, 'Skating Around', 1),
   (7, 7, 3, 9, 'Ice Scream', 7), -- Halloween Terror Mei Highlight Intros
+  (NULL, 7, NULL, 10, 'Heroic', 1), -- Default Mercy Highlight Intros
   (1, 7, 3, 10, 'Battle Angel', 1), -- Normal Mercy Highlight Intros
   (1, 7, 3, 10, 'Guardian Angel', 1),
   (1, 7, 3, 10, 'Heroes Never Die', 1),
+  (NULL, 7, NULL, 11, 'Heroic', 1), -- Default Pharah Highlight Intros
   (1, 7, 3, 11, 'Barrage', 1), -- Normal Pharah Highlight Intros
   (1, 7, 3, 11, 'Mission Complete', 1),
   (1, 7, 3, 11, 'Touchdown', 1),
+  (NULL, 7, NULL, 12, 'Heroic', 1), -- Default Reaper Highlight Intros
   (1, 7, 3, 12, 'Death Blossom', 1), -- Normal Reaper Highlight Intros
   (1, 7, 3, 12, 'Executioner', 1),
   (1, 7, 3, 12, 'Shadow Step', 1),
   (7, 7, 3, 12, 'Eternal Rest', 7), -- Halloween Terror Reaper Highlight Intros
+  (NULL, 7, NULL, 13, 'Heroic', 1), -- Default Reinhardt Highlight Intros
   (1, 7, 3, 13, 'Charge', 1), -- Normal Reinhardt Highlight Intros
   (1, 7, 3, 13, 'Hammer Down', 1),
   (1, 7, 3, 13, 'More Stretching Required', 1),
+  (NULL, 7, NULL, 14, 'Heroic', 1), -- Default Roadhog Highlight Intros
   (1, 7, 3, 14, 'Little Piggy', 1), -- Normal Roadhog Highlight Intros
   (1, 7, 3, 14, 'Say "Cheese"', 1),
   (1, 7, 3, 14, 'Whole Hog', 1),
+  (NULL, 7, NULL, 15, 'Heroic', 1), -- Default Soldier: 76 Highlight Intros
   (1, 7, 3, 15, 'Helix', 1), -- Normal Soldier: 76 Highlight Intros
   (1, 7, 3, 15, 'Looking At You', 1),
   (1, 7, 3, 15, 'Target Rich Environment', 1),
+  (NULL, 7, NULL, 16, 'Heroic', 1), -- Default Symmetra Highlight Intros
   (1, 7, 3, 16, 'Askew', 1), -- Normal Symmetra Highlight Intros
   (1, 7, 3, 16, 'Dance', 1),
   (1, 7, 3, 16, 'My Reality', 1),
+  (NULL, 7, NULL, 17, 'Heroic', 1), -- Default Torbjörn Highlight Intros
   (1, 7, 3, 17, 'In Your Face', 1), -- Normal Torbjörn Highlight Intros
   (1, 7, 3, 17, 'Refreshing', 1),
   (1, 7, 3, 17, 'Ride ''Em', 1),
+  (NULL, 7, NULL, 18, 'Heroic', 1), -- Default Tracer Highlight Intros
   (1, 7, 3, 18, 'Backflip', 1), -- Normal Tracer Highlight Intros
   (1, 7, 3, 18, 'Just In Time', 1),
   (1, 7, 3, 18, 'Serious Business', 1),
   (6, 7, 3, 18, 'Hurdle', 4), -- Summer Games Tracer Highlight Intros
+  (NULL, 7, NULL, 19, 'Heroic', 1), -- Default Widowmaker Highlight Intros
   (1, 7, 3, 19, 'Hanging Around', 1), -- Normal Widowmaker Highlight Intros
   (1, 7, 3, 19, 'I See You...', 1),
   (1, 7, 3, 19, 'Swinging Into Action', 1),
+  (NULL, 7, NULL, 20, 'Heroic', 1), -- Default Winston Highlight Intros
   (1, 7, 3, 20, 'Excuse Me', 1), -- Normal Winston Highlight Intros
   (1, 7, 3, 20, 'Glasses', 1),
   (1, 7, 3, 20, 'Primal Rage', 1),
+  (NULL, 7, NULL, 21, 'Heroic', 1), -- Default Zarya Highlight Intros
   (1, 7, 3, 21, 'Deadlift', 1), -- Normal Zarya Highlight Intros
   (1, 7, 3, 21, 'Maximum Charge', 1),
   (1, 7, 3, 21, 'This Is Strength', 1),
+  (NULL, 7, NULL, 22, 'Heroic', 1), -- Default Zenyatta Highlight Intros
   (1, 7, 3, 22, 'Focused', 1), -- Normal Zenyatta Highlight Intros
   (1, 7, 3, 22, 'Harmony And Discord', 1),
   (1, 7, 3, 22, 'Transcendence', 1),
+  (NULL, 7, NULL, 23, 'Heroic', 9), -- Default Sombra Highlight Intros
   (1, 7, 3, 23, 'Hacking', 9), -- Normal Sombra Highlight Intros
   (1, 7, 3, 23, 'Pulse', 9),
   (1, 7, 3, 23, 'Undetected', 9),
   -- Weapons
+  (NULL, 8, NULL, 1, 'Classic', 3), -- Default Ana Weapons
   (5, 8, 5, 1, 'Golden', 3), -- Golden Ana Weapons
+  (NULL, 8, NULL, 2, 'Classic', 1), -- Default Bastion Weapons
   (5, 8, 5, 2, 'Golden', 2), -- Golden Bastion Weapons
+  (NULL, 8, NULL, 3, 'Classic', 1), -- Default D.Va Weapons
   (5, 8, 5, 3, 'Golden', 2), -- Golden D.Va Weapons
+  (NULL, 8, NULL, 4, 'Classic', 1), -- Default Genji Weapons
   (5, 8, 5, 4, 'Golden', 2), -- Golden Genji Weapons
+  (NULL, 8, NULL, 5, 'Classic', 1), -- Default Hanzo Weapons
   (5, 8, 5, 5, 'Golden', 2), -- Golden Hanzo Weapons
+  (NULL, 8, NULL, 6, 'Classic', 1), -- Default Junkrat Weapons
   (5, 8, 5, 6, 'Golden', 2), -- Golden Junkrat Weapons
+  (NULL, 8, NULL, 7, 'Classic', 1), -- Default Lúcio Weapons
   (5, 8, 5, 7, 'Golden', 2), -- Golden Lúcio Weapons
+  (NULL, 8, NULL, 8, 'Classic', 1), -- Default McCree Weapons
   (5, 8, 5, 8, 'Golden', 2), -- Golden McCree Weapons
+  (NULL, 8, NULL, 9, 'Classic', 1), -- Default Mei Weapons
   (5, 8, 5, 9, 'Golden', 2), -- Golden Mei Weapons
+  (NULL, 8, NULL, 10, 'Classic', 1), -- Default Mercy Weapons
   (5, 8, 5, 10, 'Golden', 2), -- Golden Mercy Weapons
+  (NULL, 8, NULL, 11, 'Classic', 1), -- Default Pharah Weapons
   (5, 8, 5, 11, 'Golden', 2), -- Golden Pharah Weapons
+  (NULL, 8, NULL, 12, 'Classic', 1), -- Default Reaper Weapons
   (5, 8, 5, 12, 'Golden', 2), -- Golden Reaper Weapons
+  (NULL, 8, NULL, 13, 'Classic', 1), -- Default Reinhardt Weapons
   (5, 8, 5, 13, 'Golden', 2), -- Golden Reinhardt Weapons
+  (NULL, 8, NULL, 14, 'Classic', 1), -- Default Roadhog Weapons
   (5, 8, 5, 14, 'Golden', 2), -- Golden Roadhog Weapons
+  (NULL, 8, NULL, 15, 'Classic', 1), -- Default Soldier: 76 Weapons
   (5, 8, 5, 15, 'Golden', 2), -- Golden Soldier: 76 Weapons
+  (NULL, 8, NULL, 16, 'Classic', 1), -- Default Symmetra Weapons
   (5, 8, 5, 16, 'Golden', 2), -- Golden Symmetra Weapons
+  (NULL, 8, NULL, 17, 'Classic', 1), -- Default Torbjörn Weapons
   (5, 8, 5, 17, 'Golden', 2), -- Golden Torbjörn Weapons
+  (NULL, 8, NULL, 18, 'Classic', 1), -- Default Tracer Weapons
   (5, 8, 5, 18, 'Golden', 2), -- Golden Tracer Weapons
+  (NULL, 8, NULL, 19, 'Classic', 1), -- Default Widowmaker Weapons
   (5, 8, 5, 19, 'Golden', 2), -- Golden Widowmaker Weapons
+  (NULL, 8, NULL, 20, 'Classic', 1), -- Default Winston Weapons
   (5, 8, 5, 20, 'Golden', 2), -- Golden Winston Weapons
+  (NULL, 8, NULL, 21, 'Classic', 1), -- Default Zarya Weapons
   (5, 8, 5, 21, 'Golden', 2), -- Golden Zarya Weapons
+  (NULL, 8, NULL, 22, 'Classic', 1), -- Default Zenyatta Weapons
   (5, 8, 5, 22, 'Golden', 2), -- Golden Zenyatta Weapons
+  (NULL, 8, NULL, 23, 'Classic', 9), -- Default Sombra Weapons
   (5, 8, 5, 23, 'Golden', 9); -- Golden Sombra Weapons
 
-
---TODO double check season 2 competitive start date
--- TODO Double check defaults
+--TODO remove
+INSERT INTO users (username, region)
+VALUES ('Tititesouris', 'eu');

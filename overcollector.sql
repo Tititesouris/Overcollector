@@ -1,9 +1,9 @@
-DROP OWNED BY overwatch;
+DROP OWNED BY overcollector;
 DROP TABLE IF EXISTS heroes, categories, types, rarities, events, cosmetics, users, user_cosmetics, settings, user_settings, tokens, wishlist_items;
 DROP FUNCTION IF EXISTS gen_token();
-DROP ROLE IF EXISTS overwatch;
+DROP ROLE IF EXISTS overcollector;
 
-CREATE ROLE overwatch WITH LOGIN PASSWORD 'localpass';
+CREATE ROLE overcollector WITH LOGIN PASSWORD 'localpass';
 
 -- Creates a random unique 32 char hexadecimal string for the tokens table
 CREATE FUNCTION gen_token()
@@ -30,7 +30,7 @@ CREATE TABLE heroes (
   slug TEXT NOT NULL,
   CONSTRAINT pk_heroes PRIMARY KEY (id)
 );
-GRANT SELECT ON TABLE heroes TO overwatch;
+GRANT SELECT ON TABLE heroes TO overcollector;
 
 
 CREATE TABLE categories (
@@ -40,7 +40,7 @@ CREATE TABLE categories (
   slug        TEXT NOT NULL,
   CONSTRAINT pk_categories PRIMARY KEY (id)
 );
-GRANT SELECT ON TABLE categories TO overwatch;
+GRANT SELECT ON TABLE categories TO overcollector;
 
 
 CREATE TABLE types (
@@ -48,7 +48,7 @@ CREATE TABLE types (
   name TEXT NOT NULL,
   CONSTRAINT pk_types PRIMARY KEY (id)
 );
-GRANT SELECT ON TABLE types TO overwatch;
+GRANT SELECT ON TABLE types TO overcollector;
 
 
 CREATE TABLE rarities (
@@ -57,7 +57,7 @@ CREATE TABLE rarities (
   base_price INTEGER NOT NULL,
   CONSTRAINT pk_rarities PRIMARY KEY (id)
 );
-GRANT SELECT ON TABLE rarities TO overwatch;
+GRANT SELECT ON TABLE rarities TO overcollector;
 
 
 CREATE TABLE events (
@@ -67,7 +67,7 @@ CREATE TABLE events (
   "end" DATE,
   CONSTRAINT pk_events PRIMARY KEY (id)
 );
-GRANT SELECT ON TABLE events TO overwatch;
+GRANT SELECT ON TABLE events TO overcollector;
 
 
 CREATE TABLE cosmetics (
@@ -90,7 +90,7 @@ CREATE TABLE cosmetics (
   CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES events (id)
   ON UPDATE CASCADE ON DELETE RESTRICT
 );
-GRANT SELECT ON TABLE cosmetics TO overwatch;
+GRANT SELECT ON TABLE cosmetics TO overcollector;
 
 
 CREATE TABLE users (
@@ -100,7 +100,7 @@ CREATE TABLE users (
   token    TEXT,
   CONSTRAINT pk_users PRIMARY KEY (id)
 );
-GRANT SELECT ON TABLE users TO overwatch;
+GRANT SELECT ON TABLE users TO overcollector;
 
 
 CREATE TABLE user_cosmetics (
@@ -112,7 +112,7 @@ CREATE TABLE user_cosmetics (
   CONSTRAINT fk_cosmetic FOREIGN KEY (cosmetic_id) REFERENCES cosmetics (id)
   ON UPDATE CASCADE ON DELETE RESTRICT
 );
-GRANT SELECT, INSERT, DELETE ON TABLE user_cosmetics TO overwatch;
+GRANT SELECT, INSERT, DELETE ON TABLE user_cosmetics TO overcollector;
 
 
 CREATE TABLE settings (
@@ -122,7 +122,7 @@ CREATE TABLE settings (
   "default"   TEXT,
   CONSTRAINT pk_settings PRIMARY KEY (id)
 );
-GRANT SELECT ON TABLE settings TO overwatch;
+GRANT SELECT ON TABLE settings TO overcollector;
 
 
 CREATE TABLE user_settings (
@@ -135,7 +135,7 @@ CREATE TABLE user_settings (
   CONSTRAINT fk_setting FOREIGN KEY (setting_id) REFERENCES settings (id)
   ON UPDATE CASCADE ON DELETE RESTRICT
 );
-GRANT SELECT, INSERT, UPDATE ON TABLE user_settings TO overwatch;
+GRANT SELECT, INSERT, UPDATE ON TABLE user_settings TO overcollector;
 
 
 CREATE TABLE tokens (
@@ -144,7 +144,7 @@ CREATE TABLE tokens (
   expires_at TIMESTAMP NOT NULL                 DEFAULT (now() AT TIME ZONE 'UTC') + INTERVAL '5 minutes',
   CONSTRAINT pk_tokens PRIMARY KEY (token)
 );
-GRANT SELECT, INSERT, DELETE ON TABLE tokens TO overwatch;
+GRANT SELECT, INSERT, DELETE ON TABLE tokens TO overcollector;
 
 
 CREATE TABLE wishlist_items (
@@ -157,4 +157,4 @@ CREATE TABLE wishlist_items (
   CONSTRAINT fk_cosmetic FOREIGN KEY (cosmetic_id) REFERENCES cosmetics (id)
   ON UPDATE CASCADE ON DELETE RESTRICT
 );
-GRANT SELECT, INSERT, DELETE ON TABLE wishlist_items TO overwatch;
+GRANT SELECT, INSERT, DELETE ON TABLE wishlist_items TO overcollector;
