@@ -36,7 +36,7 @@ class Cosmetic implements JsonSerializable
     public static function createCosmetic($id, $category, $type, $rarity, $hero, $name, $event)
     {
         if (!array_key_exists($id, self::$cosmetics)) {
-            self::$cosmetics[$id] = new Cosmetic($id, $category, $type, $rarity, $hero, $name, $event);
+            self::$cosmetics[$id] = new self($id, $category, $type, $rarity, $hero, $name, $event);
         }
         return self::$cosmetics[$id];
     }

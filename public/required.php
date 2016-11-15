@@ -5,9 +5,9 @@ session_start();
 $config = parse_ini_file(__DIR__ . "/../overcollector.ini", true);
 $debug = $config["config"]["debug"];
 
+ini_set("display_errors", $debug);
+ini_set("display_startup_errors", $debug);
 if ($debug) {
-    ini_set("display_errors", true);
-    ini_set("display_startup_errors", true);
     error_reporting(E_ALL);
 }
 
@@ -15,15 +15,15 @@ require_once(__DIR__ . "/functions.php");
 
 use Overcollector\Dao\UsersTable;
 
+$_SESSION["needrefresh"] = false;
 if (!isUserLoggedIn()) {
-    $_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
-    $_SESSION["needrefresh"] = true;
+    //$_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
+    //$_SESSION["needrefresh"] = true;
 }
 if ($_SESSION["needrefresh"]) {
     updateSession();
 }
-
-//echo '<pre>' . var_export(SESSION, true) . '</pre>';
+//echo '<pre>' . var_export($_SESSION, true) . '</pre>';
 
 
 // Twig

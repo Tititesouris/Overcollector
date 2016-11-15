@@ -9,6 +9,12 @@ class CosmeticsTable extends Table
 
     private static $instance;
 
+    private $fetchCosmeticById = "
+SELECT id, category_id, type_id, rarity_id, hero_id, name, event_id
+FROM cosmetics
+WHERE id = $1;
+";
+
     private $fetchAllCosmeticsByUserId = "
 SELECT cosmetics.id, category_id, type_id, rarity_id, hero_id, cosmetics.name, event_id
 FROM cosmetics
@@ -131,6 +137,7 @@ ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, category
     protected function __construct()
     {
         parent::__construct();
+        pg_prepare($this->handler, "fetchCosmeticById", $this->fetchCosmeticById);
         pg_prepare($this->handler, "fetchAllCosmeticsByUserId", $this->fetchAllCosmeticsByUserId);
         pg_prepare($this->handler, "fetchCosmeticsByUserId", $this->fetchCosmeticsByUserId);
         pg_prepare($this->handler, "fetchAllOwnedCosmeticsByUserId", $this->fetchAllOwnedCosmeticsByUserId);
@@ -156,6 +163,15 @@ ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, category
             $row["name"],
             EventsTable::getInstance()->getEventById(intval($row["event_id"]))
         );
+    }
+
+    public function getCosmeticById($id)
+    {
+        $response = pg_execute($this->handler, "fetchCosmeticById", array($id));
+        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
+            return self::parseCosmetic($row);
+        }
+        return null;
     }
 
     public function getAllCosmeticsByUserIdSortByHeroesAndType($userId)
