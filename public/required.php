@@ -17,8 +17,8 @@ use Overcollector\Dao\UsersTable;
 
 $_SESSION["needrefresh"] = false;
 if (!isUserLoggedIn()) {
-    $_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
-    $_SESSION["needrefresh"] = true;
+    //$_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
+    //$_SESSION["needrefresh"] = true;
 }
 if ($_SESSION["needrefresh"]) {
     updateSession();

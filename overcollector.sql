@@ -89,16 +89,16 @@ CREATE TABLE cosmetics (
   CONSTRAINT fk_hero FOREIGN KEY (hero_id) REFERENCES heroes (id)
   ON UPDATE CASCADE ON DELETE RESTRICT,
   CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES events (id)
-  ON UPDATE CASCADE ON DELETE RESTRICT
+  ON UPDATE CASCADE ON DELETE RESTRICT,
+  CONSTRAINT unique_cosmetic UNIQUE (category_id, type_id, rarity_id, hero_id, name)
 );
 GRANT SELECT ON TABLE cosmetics TO overcollector;
 
 
 CREATE TABLE users (
-  id       SERIAL,
-  username TEXT    NOT NULL,
-  region   CHAR(2) NOT NULL,
-  token    TEXT,
+  id        SERIAL,
+  battletag TEXT    NOT NULL,
+  battleid  INTEGER NOT NULL,
   CONSTRAINT pk_users PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE users TO overcollector;

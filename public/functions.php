@@ -1,4 +1,48 @@
 <?php
+$config = parse_ini_file(__DIR__ . "/../overcollector.ini", true);
+$debug = $config["config"]["debug"];
+$localhost = $config["config"]["localhost"];
+
+function sendPost($url, $params, $login = null, $password = null)
+{
+    global $debug, $localhost;
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/json"));
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, !$localhost);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+    if ($login !== null) {
+        curl_setopt($ch, CURLOPT_USERPWD, $login . ":" . $password);
+    }
+    $response = curl_exec($ch);
+    if ($debug) {
+        if ($errno = curl_errno($ch)) {
+            $error_message = curl_strerror($errno);
+            echo "cURL error ({$errno}): {$error_message}";
+        }
+    }
+    return $response;
+}
+
+function sendGet($url, $params)
+{
+    global $debug, $localhost;
+    $ch = curl_init(($params !== null) ? $url . "?" . http_build_query($params) : $url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/json"));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, !$localhost);
+    $response = curl_exec($ch);
+    if ($debug) {
+        if ($errno = curl_errno($ch)) {
+            $error_message = curl_strerror($errno);
+            echo "cURL error ({$errno}): {$error_message}";
+        }
+    }
+    return $response;
+}
+
 function isUserLoggedIn()
 {
     return isset($_SESSION["user"]);
