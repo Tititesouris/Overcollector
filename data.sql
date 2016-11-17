@@ -38,16 +38,16 @@ VALUES
   (8, 'BlizzCon', 'Obtainable by purchasing a BlizzCon ticket.', 'blizzcon'),
   (9, 'Blizzard', 'Obtainable by playing other Blizzard games.', 'blizzard');
 
-INSERT INTO types (id, name)
+INSERT INTO types (id, name, slug)
 VALUES
-  (1, 'Player Icon'),
-  (2, 'Skin'),
-  (3, 'Emote'),
-  (4, 'Victory Pose'),
-  (5, 'Voice Line'),
-  (6, 'Spray'),
-  (7, 'Highlight Intro'),
-  (8, 'Weapon');
+  (1, 'Player Icon', 'playericon'),
+  (2, 'Skin', 'skin'),
+  (3, 'Emote', 'emote'),
+  (4, 'Victory Pose', 'victorypose'),
+  (5, 'Voice Line', 'voiceline'),
+  (6, 'Spray', 'spray'),
+  (7, 'Highlight Intro', 'highlightintro'),
+  (8, 'Weapon', 'weapon');
 
 INSERT INTO rarities (id, name, base_price)
 VALUES
@@ -110,7 +110,15 @@ VALUES
   ('collection-show-category-blizzard', 'Show Blizzard cosmetics in the collection', 'true'),
   ('collection-show-category-originsedition', 'Show Origins Edition cosmetics in the collection', 'true'),
   ('collection-show-category-preorder', 'Show Preorder cosmetics in the collection', 'true'),
-  ('collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection', 'true');
+  ('collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection', 'true'),
+  ('collection-show-type-playericon', 'Show Player Icon cosmetics in the collection', 'true'),
+  ('collection-show-type-skin', 'Show Skin cosmetics in the collection', 'true'),
+  ('collection-show-type-emote', 'Show Emote cosmetics in the collection', 'true'),
+  ('collection-show-type-victorypose', 'Show Victory Pose cosmetics in the collection', 'true'),
+  ('collection-show-type-voiceline', 'Show Voice Line cosmetics in the collection', 'true'),
+  ('collection-show-type-spray', 'Show Spray cosmetics in the collection', 'true'),
+  ('collection-show-type-highlightintro', 'Show Highlight Intro cosmetics in the collection', 'true'),
+  ('collection-show-type-weapon', 'Show Weapon cosmetics in the collection', 'true');
 
 INSERT INTO cosmetics (category_id, type_id, rarity_id, hero_id, name, event_id)
 VALUES

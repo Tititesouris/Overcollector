@@ -22,6 +22,8 @@ FROM cosmetics
     ON cosmetics.hero_id = heroes.id
   LEFT JOIN categories
     ON cosmetics.category_id = categories.id
+  LEFT JOIN types
+    ON cosmetics.type_id = types.id
   LEFT JOIN settings
     ON settings.name IN (
     CASE WHEN cosmetics.hero_id IS NULL
@@ -31,7 +33,8 @@ FROM cosmetics
     CASE WHEN cosmetics.category_id IS NULL
       THEN
         'collection-show-category-default'
-    ELSE 'collection-show-category-' || categories.slug END
+    ELSE 'collection-show-category-' || categories.slug END,
+    'collection-show-type-' || types.slug
   )
   LEFT JOIN user_settings
     ON settings.id = user_settings.setting_id
@@ -44,7 +47,7 @@ WHERE (
         OR (user_settings.value IS NOT NULL AND user_settings.value = 'true')
       )
 GROUP BY cosmetics.id, heroes.name
-HAVING COUNT(*) > 1
+HAVING COUNT(*) > 2
 ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, category_id, cosmetics.name, event_id;
 ";
 
@@ -55,6 +58,8 @@ FROM cosmetics
     ON cosmetics.hero_id = heroes.id
   LEFT JOIN categories
     ON cosmetics.category_id = categories.id
+  LEFT JOIN types
+    ON cosmetics.type_id = types.id
   LEFT JOIN settings
     ON settings.name IN (
     CASE WHEN cosmetics.hero_id IS NULL
@@ -65,6 +70,7 @@ FROM cosmetics
       THEN
         'collection-show-category-default'
     ELSE 'collection-show-category-' || categories.slug END,
+    'collection-show-type-' || types.slug,
     'collection-show-owned-cosmetics'
   )
   LEFT JOIN user_settings
@@ -86,7 +92,7 @@ WHERE (
         )
       )
 GROUP BY cosmetics.id, heroes.name
-HAVING COUNT(*) > 2
+HAVING COUNT(*) > 3
 ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, category_id, cosmetics.name, event_id;
 ";
 
@@ -108,6 +114,8 @@ FROM cosmetics
     ON cosmetics.hero_id = heroes.id
   LEFT JOIN categories
     ON cosmetics.category_id = categories.id
+  LEFT JOIN types
+    ON cosmetics.type_id = types.id
   LEFT JOIN settings
     ON settings.name IN (
     CASE WHEN cosmetics.hero_id IS NULL
@@ -117,7 +125,8 @@ FROM cosmetics
     CASE WHEN cosmetics.category_id IS NULL
       THEN
         'collection-show-category-default'
-    ELSE 'collection-show-category-' || categories.slug END
+    ELSE 'collection-show-category-' || categories.slug END,
+    'collection-show-type-' || types.slug
   )
   LEFT JOIN user_settings
     ON settings.id = user_settings.setting_id
@@ -130,7 +139,7 @@ WHERE (
         OR (user_settings.value IS NOT NULL AND user_settings.value = 'true')
       )
 GROUP BY cosmetics.id, heroes.name
-HAVING COUNT(*) > 1
+HAVING COUNT(*) > 2
 ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, category_id, cosmetics.name, event_id;
 ";
 

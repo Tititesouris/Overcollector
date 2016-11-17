@@ -10,13 +10,13 @@ class TypesTable extends Table
     private static $instance;
 
     private $fetchAllTypes = "
-SELECT id, name
+SELECT id, name, slug
 FROM types
 ORDER BY id;
 ";
 
     private $fetchTypeById = "
-SELECT id, name
+SELECT id, name, slug
 FROM types
 WHERE id = $1;
 ";
@@ -40,7 +40,8 @@ WHERE id = $1;
     {
         return Type::createType(
             intval($row["id"]),
-            $row["name"]
+            $row["name"],
+            $row["slug"]
         );
     }
 

@@ -46,6 +46,7 @@ GRANT SELECT ON TABLE categories TO overcollector;
 CREATE TABLE types (
   id   INTEGER,
   name TEXT NOT NULL,
+  slug TEXT NOT NULL,
   CONSTRAINT pk_types PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE types TO overcollector;

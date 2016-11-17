@@ -1,8 +1,6 @@
 {% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
-    {# TODO: Add total of everything #}
-    {# TODO: Add filter by type #}
     {% set settings = SESSION.user.settings %}
     {% set pages = {
     "start": (GET.page ?? 0) * (settings["collection-heroes-per-page"].value ?? 3),
@@ -10,11 +8,12 @@
     } %}
     {% set heroStats = {} %}
     {% set categoryStats = {} %}
-    {% set categoryStats = {} %}
+    {% set typeStats = {} %}
+    {% set totalStats = {} %}
     {% for hero, types in SESSION.allcosmetics %}
         {% set heroOwned = 0 %}
         {% set heroTotal = 0 %}
-        {% set typesStats = {} %}
+        {% set heroTypeStats = {} %}
         {% for type, cosmetics in types %}
             {% set typeTotal = cosmetics|length %}
             {% set typeOwned = 0 %}
@@ -25,18 +24,21 @@
                 {% endif %}
                 {% set categoryStats = categoryStats|merge({("category-" ~ (cosmetic.category.id ?? 0)): {"owned": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].owned ?? 0, "total": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].total ?? 0 + 1}}) %}
             {% endfor %}
-            {% set typesStats = typesStats|merge({("type-" ~ type): {"owned": typeOwned, "total": typeTotal}}) %}
+            {% set heroTypeStats = heroTypeStats|merge({("type-" ~ type): {"owned": typeOwned, "total": typeTotal}}) %}
+            {% set typeStats = typeStats|merge({("type-" ~ type): {"owned": typeStats["type-"~type].owned ?? 0 + typeOwned, "total": typeStats["type-"~type].total ?? 0 + typeTotal}}) %}
             {% set heroOwned = heroOwned + typeOwned %}
             {% set heroTotal = heroTotal + typeTotal %}
         {% endfor %}
-        {% set heroStats = heroStats|merge({("hero-" ~ hero): {"owned": heroOwned, "total": heroTotal, "types": typesStats}}) %}
+        {% set heroStats = heroStats|merge({("hero-" ~ hero): {"owned": heroOwned, "total": heroTotal, "types": heroTypeStats}}) %}
+        {% set totalStats = {"owned": totalStats.owned ?? 0 + heroOwned, "total": totalStats.total ?? 0 + heroTotal} %}
     {% endfor %}
     <div class="mdl-grid">
         <div id="cosmetics-menu" class="mdl-cell mdl-cell--3-col">
             <ul class="demo-list-icon mdl-list mdl-shadow--2dp">
                 <li class="cosmetics-menu--update mdl-list__item">
                     <span class="mdl-list__item-primary-content">
-                        <button class="cosmetics-menu--update-refresh mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled>
+                        <button class="cosmetics-menu--update-refresh mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                disabled>
                             Refresh
                         </button>
                         <button id="show-dialog"
@@ -68,9 +70,17 @@
                     </span>
                 </li>
                 <hr/>
-                <li class="mdl-list__item">
+                {% set ratio = totalStats.total is defined ? (totalStats.owned ?? 0 / totalStats.total) : 1 %}
+                <li class="cosmetics-menu--item mdl-list__item mdl-list__item--two-line"
+                    style="background-color: {{ ratio|colorgradient("rgba") }};">
                     <span class="mdl-list__item-primary-content mdl-typography--font-bold">
-                        Show Owned
+                        <img class="cosmetics-menu--item--image mdl-list__item-avatar"
+                             src="img/collection/heroes/allheroes.png"/>
+                        <span class="cosmetics-menu--item--text">Show Owned</span>
+                        <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
+                            {{ (ratio * 100)|round(2, 'floor') }}% ({{ totalStats.owned ?? 0 }}
+                            / {{ totalStats.total ?? 0 }})
+                        </span>
                     </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-show-owned">
@@ -79,14 +89,14 @@
                         </label>
                     </span>
                 </li>
-                <hr/>
                 {% set heroStat = heroStats["hero-0"] is defined ? heroStats["hero-0"] : null %}
                 {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
                     style="background-color: {{ ratio|colorgradient("rgba") }};">
                     <span class="mdl-list__item-primary-content">
                         <a href="#allheroes">
-                            <img class="cosmetics-menu--item--image mdl-list__item-avatar" src="img/collection/heroes/allheroes.png"/>
+                            <img class="cosmetics-menu--item--image mdl-list__item-avatar"
+                                 src="img/collection/heroes/allheroes.png"/>
                             <span class="cosmetics-menu--item--text">All Heroes</span>
                         </a>
                         <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
@@ -109,7 +119,8 @@
                         style="background-color: {{ ratio|colorgradient("rgba") }};">
                         <span class="mdl-list__item-primary-content">
                             <a href="#{{ hero.slug }}">
-                                <img class="cosmetics-menu--item--image mdl-list__item-avatar" src="img/collection/heroes/{{ hero.slug }}.png"/>
+                                <img class="cosmetics-menu--item--image mdl-list__item-avatar"
+                                     src="img/collection/heroes/{{ hero.slug }}.png"/>
                                 <span class="cosmetics-menu--item--text">{{ hero.name }}</span>
                             </a>
                             <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
@@ -134,7 +145,8 @@
                 <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
                     style="background-color: {{ ratio|colorgradient("rgba") }};">
                     <span class="mdl-list__item-primary-content">
-                        <img class="cosmetics-menu--item--image mdl-list__item-avatar" src="img/collection/categories/default.png"/>
+                        <img class="cosmetics-menu--item--image mdl-list__item-avatar"
+                             src="img/collection/categories/default.png"/>
                         <span class="cosmetics-menu--item--text">Default</span>
                         <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
                             {{ (ratio * 100)|round(2, "floor") }}% ({{ categoryStat.owned ?? 0 }}
@@ -159,7 +171,8 @@
                     <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
                         style="background-color: {{ ratio|colorgradient("rgba") }};">
                         <span class="mdl-list__item-primary-content">
-                            <img class="cosmetics-menu--item--image mdl-list__item-avatar" src="img/collection/categories/{{ category.slug }}.png"/>
+                            <img class="cosmetics-menu--item--image mdl-list__item-avatar"
+                                 src="img/collection/categories/{{ category.slug }}.png"/>
                             <span class="cosmetics-menu--item--text">{{ category.name }}</span>
                             <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
                                 {{ (ratio * 100)|round(2, "floor") }}% ({{ categoryStat.owned ?? 0 }}
@@ -182,6 +195,52 @@
                         </div>
                     </li>
                 {% endfor %}
+
+
+
+
+
+
+
+
+
+
+                <hr/>
+                {% for type in SESSION.types %}
+                    {% set typeStat = typeStats["type-"~type.id] is defined ? typeStats["type-"~type.id] : null %}
+                    {% set ratio = typeStat != null ? (typeStat.owned / typeStat.total) : 1 %}
+                    <li class="cosmetics-menu--item cosmetics-menu--item-type mdl-list__item mdl-list__item--two-line"
+                        style="background-color: {{ ratio|colorgradient("rgba") }};">
+                        <span class="mdl-list__item-primary-content">
+                            <img class="cosmetics-menu--item--image mdl-list__item-avatar"
+                                 src="img/collection/types/{{ type.slug }}.png"/>
+                            <span class="cosmetics-menu--item--text">{{ type.name }}</span>
+                            <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
+                                {{ (ratio * 100)|round(2, "floor") }}% ({{ typeStat.owned ?? 0 }}
+                                /{{ typeStat.total ?? 0 }})
+                            </span>
+                        </span>
+                        <span id="cosmetics-menu--type-{{ type.slug }}"
+                              class="mdl-list__item-secondary-action">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                   for="type-checkbox-{{ type.slug }}">
+                                <input type="checkbox" id="type-checkbox-{{ type.slug }}"
+                                       class="setting-input mdl-checkbox__input"
+                                       data-setting="collection-show-type-{{ type.slug }}"
+                                        {{ settings["collection-show-type-" ~ type.slug].value ?? true ? "checked" }}/>
+                            </label>
+                        </span>
+                    </li>
+                {% endfor %}
+
+
+
+
+
+
+
+
+
             </ul>
         </div>
         <div class="mdl-cell mdl-cell--9-col-desktop">

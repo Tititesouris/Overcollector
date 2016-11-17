@@ -1,28 +1,38 @@
 ; Configuration
 [config]
 
+; Display PHP warnings, Twig errors and other debugging tools
 debug = true
 
+; Only false on the production server
 localhost = true
 
 ; PostgreSQL Database
 [database]
 
+; URI of the database
 host = "localhost"
 
+; Port to connect to
 port = 5432
 
+; Name of the database to connect to
 database = "overcollector"
 
+; User to connect to the database with
 user = "overcollector"
 
+; Password for that user
 password = ""
 
 ; Battle.net
 [battlenet]
 
+; Application public key/client id
 key = ""
 
+; Application private secret
 secret = ""
 
+; Return URI. Must be the same as the one specified on the Battle.net application
 uri = "http://localhost/"
