@@ -1,0 +1,28 @@
+; Configuration
+[config]
+
+debug = true
+
+localhost = true
+
+; PostgreSQL Database
+[database]
+
+host = "localhost"
+
+port = 5432
+
+database = "overcollector"
+
+user = "overcollector"
+
+password = ""
+
+; Battle.net
+[battlenet]
+
+key = ""
+
+secret = ""
+
+uri = "http://localhost/"
