@@ -2007,7 +2007,3 @@ VALUES
   (5, 8, 5, 22, 'Golden', 2), -- Golden Zenyatta Weapons
   (NULL, 8, NULL, 23, 'Classic', 9), -- Default Sombra Weapons
   (5, 8, 5, 23, 'Golden', 9); -- Golden Sombra Weapons
-
---TODO remove
-INSERT INTO users (username, region)
-VALUES ('Tititesouris', 'eu');

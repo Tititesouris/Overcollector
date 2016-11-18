@@ -8,35 +8,65 @@ use \Overcollector\Dao\TokensTable;
 use \Overcollector\Dao\UsersTable;
 
 if (!isUserLoggedIn()) {
-    if (isset($_GET["state"]) && isset($_GET["code"])) {
-        if (TokensTable::getInstance()->useAccessToken($_GET["state"]) !== null) {
-            var_dump($_GET);
-            $response = sendPost("https://eu.battle.net/oauth/token", [//TODO check right region
-                "grant_type" => "authorization_code",
-                "code" => $_GET["code"],
-                "redirect_uri" => $battlenet["uri"]
-            ], $battlenet["key"], $battlenet["secret"]);
-            var_dump($response);
-            if ($response) {
-                $responseJson = json_decode($response, true);
-                if (!array_key_exists("error", $responseJson) && array_key_exists("access_token", $responseJson)) {
-                    $response = sendGet("https://eu.api.battle.net/account/user", [//TODO check region
-                        "access_token" => $responseJson["access_token"]
-                    ]);
-                    var_dump($response);
+    if (isset($_SESSION["region"])) {
+        if (isset($_GET["state"]) && isset($_GET["code"])) {
+            if (TokensTable::getInstance()->useAccessToken($_GET["state"]) !== null) {
+                if ($_SESSION["region"] !== "CN") {
+                    $url = "https://" . $_SESSION["region"] . ".battle.net/oauth/token";
+                } else {
+                    $url = "https://www.battlenet.com.cn/oauth/token";
+                }
+                $response = sendPost($url, [
+                    "grant_type" => "authorization_code",
+                    "code" => $_GET["code"],
+                    "redirect_uri" => $battlenet["uri"]
+                ], $battlenet["key"], $battlenet["secret"]);
+                if ($response) {
+                    $responseJson = json_decode($response, true);
+                    if (!array_key_exists("error", $responseJson) && array_key_exists("access_token", $responseJson)) {
+                        if ($_SESSION["region"] !== "CN") {
+                            $url = "https://" . $_SESSION["region"] . ".api.battle.net/account/user";
+                        } else {
+                            $url = "https://api.battlenet.com.cn/account/user";
+                        }
+                        $response = sendGet($url, [
+                            "access_token" => $responseJson["access_token"]
+                        ]);
+                        if ($response) {
+                            $responseJson = json_decode($response, true);
+                            if (array_key_exists("id", $responseJson) && array_key_exists("battletag", $responseJson)) {
+                                $user = UsersTable::getInstance()->getUserByBattleid($responseJson["id"]);
+                                if ($user === null) {
+                                    $user = UsersTable::getInstance()->addUser($responseJson["id"], $responseJson["battletag"]);
+                                }
+                                if ($user !== null) {
+                                    $_SESSION["user"] = $user;
+                                }
+                                else {
+                                    echo "Error: Couldn't create user account.";
+                                }
+                            }
+                        }
+                    }
                 }
             }
-        }
-    } else if (isset($_GET["region"]) && in_array($_GET["region"], ["eu", "us", "kr", "tw", "cn"])) {
-        if ($_GET["region"] !== "cn") {
-            $url = "https://" . $_GET["region"] . ".battle.net/oauth/authorize";
         } else {
-            $url = "https://www.battlenet.com.cn/oauth/authorize";
+            if ($_SESSION["region"] !== "CN") {
+                $url = "https://" . $_SESSION["region"] . ".battle.net/oauth/authorize";
+            } else {
+                $url = "https://www.battlenet.com.cn/oauth/authorize";
+            }
+            $token = TokensTable::getInstance()->createAccessToken();
+            if ($token !== null) {
+                header("Location: " . $url . "?client_id=" . $battlenet["key"] . "&redirect_uri=" . $battlenet["uri"] . "&state=" . $token->getToken() . "&response_type=code");
+                die();
+            }
         }
-        $token = TokensTable::getInstance()->createAccessToken();
-        if ($token !== null) {
-            header("Location: " . $url . "?client_id=" . $battlenet["key"] . "&redirect_uri=" . $battlenet["uri"] . "&state=" . $token->getToken() . "&response_type=code");
-            die();
-        }
+    } else if (isset($_GET["region"]) && in_array(strtoupper($_GET["region"]), ["EU", "US", "KR", "TW", "CN", "SEA"])) {
+        $_SESSION["region"] = strtoupper($_GET["region"]) !== "SEA" ? strtoupper($_GET["region"]) : "US";
+        header("Location: ./login.php");
+        die();
+    } else {
+        echo "Error: Invalid region.";
     }
 }

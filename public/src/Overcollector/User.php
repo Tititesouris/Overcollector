@@ -7,29 +7,26 @@ class User implements JsonSerializable
 {
     private $id;
 
-    private $username;
+    private $battleid;
 
-    private $region;
-
-    private $token;
+    private $battletag;
 
     private $cosmetics;
 
     private $settings;
 
-    public function __construct($id, $username, $region, $token, $cosmetics, $settings)
+    public function __construct($id, $battleid, $battletag, $cosmetics, $settings)
     {
         $this->id = $id;
-        $this->username = $username;
-        $this->region = $region;
-        $this->token = $token;
+        $this->battleid = $battleid;
+        $this->battletag = $battletag;
         $this->cosmetics = $cosmetics;
         $this->settings = $settings;
     }
 
-    public static function createUser($id, $username, $region, $token, $cosmetics, $settings)
+    public static function createUser($id, $battleid, $battletag, $cosmetics, $settings)
     {
-        return new self($id, $username, $region, $token, $cosmetics, $settings);
+        return new self($id, $battleid, $battletag, $cosmetics, $settings);
     }
 
     public function getId()
@@ -37,19 +34,14 @@ class User implements JsonSerializable
         return $this->id;
     }
 
-    public function getUsername()
+    public function getBattleid()
     {
-        return $this->username;
+        return $this->battleid;
     }
 
-    public function getRegion()
+    public function getBattletag()
     {
-        return $this->region;
-    }
-
-    public function getToken()
-    {
-        return $this->token;
+        return $this->battletag;
     }
 
     public function getCosmetics($heroId)
@@ -93,9 +85,8 @@ class User implements JsonSerializable
     {
         return [
             "id" => $this->id,
-            "username" => $this->username,
-            "region" => $this->region,
-            "token" => $this->token
+            "battleid" => $this->battleid,
+            "battletag" => $this->battletag
         ];
     }
 

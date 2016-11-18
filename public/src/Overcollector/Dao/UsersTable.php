@@ -8,11 +8,17 @@ class UsersTable extends Table
 
     private static $instance;
 
-    private $fetchUserByName = "
-SELECT id, username, region, token
+    private $fetchUserByBattleid = "
+SELECT id, battleid, battletag
 FROM users
-WHERE username = $1
-;";
+WHERE battleid = $1;
+";
+
+    private $addUser = "
+INSERT INTO users (battleid, battletag)
+VALUES ($1, $2)
+RETURNING id, battleid, battletag;
+";
 
     private $addCosmetic = "
 INSERT INTO user_cosmetics (user_id, cosmetic_id)
@@ -36,7 +42,8 @@ WHERE user_id = $1;
     protected function __construct()
     {
         parent::__construct();
-        pg_prepare($this->handler, "fetchUserByName", $this->fetchUserByName);
+        pg_prepare($this->handler, "fetchUserByBattleid", $this->fetchUserByBattleid);
+        pg_prepare($this->handler, "addUser", $this->addUser);
         pg_prepare($this->handler, "addCosmetic", $this->addCosmetic);
         pg_prepare($this->handler, "removeCosmetic", $this->removeCosmetic);
         pg_prepare($this->handler, "removeCosmeticsByUserId", $this->removeCosmeticsByUserId);
@@ -54,17 +61,25 @@ WHERE user_id = $1;
     {
         return User::createUser(
             intval($row["id"]),
-            $row["username"],
-            $row["region"],
-            $row["token"],
+            $row["battleid"],
+            $row["battletag"],
             CosmeticsTable::getInstance()->getOwnedCosmeticsByUserId(intval($row["id"])),
             SettingsTable::getInstance()->getUserSettings(intval($row["id"]))
         );
     }
 
-    public function getUserByName($name)
+    public function getUserByBattleid($battleid)
     {
-        $response = pg_execute($this->handler, "fetchUserByName", array($name));
+        $response = pg_execute($this->handler, "fetchUserByBattleid", array($battleid));
+        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
+            return $this->parseUser($row);
+        }
+        return null;
+    }
+
+    public function addUser($battleid, $battletag)
+    {
+        $response = pg_execute($this->handler, "addUser", array($battleid, $battletag));
         if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
             return $this->parseUser($row);
         }

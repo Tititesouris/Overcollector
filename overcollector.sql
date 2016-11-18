@@ -97,8 +97,8 @@ GRANT SELECT ON TABLE cosmetics TO overcollector;
 
 CREATE TABLE users (
   id        SERIAL,
-  battletag TEXT    NOT NULL,
   battleid  INTEGER NOT NULL,
+  battletag TEXT    NOT NULL,
   CONSTRAINT pk_users PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE users TO overcollector;
