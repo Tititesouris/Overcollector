@@ -41,8 +41,10 @@ if (!isUserLoggedIn()) {
                                 }
                                 if ($user !== null) {
                                     $_SESSION["user"] = $user;
-                                }
-                                else {
+                                    $_SESSION["needrefresh"] = true;
+                                    header("Location: ./");
+                                    die();
+                                } else {
                                     echo "Error: Couldn't create user account.";
                                 }
                             }

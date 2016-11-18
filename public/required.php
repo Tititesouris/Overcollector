@@ -13,14 +13,7 @@ if ($debug) {
 
 require_once(__DIR__ . "/functions.php");
 
-use Overcollector\Dao\UsersTable;
-
-$_SESSION["needrefresh"] = false;
-if (!isUserLoggedIn()) {
-    //$_SESSION["user"] = UsersTable::getInstance()->getUserByName("Tititesouris");
-    //$_SESSION["needrefresh"] = true;
-}
-if ($_SESSION["needrefresh"]) {
+if (isset($_SESSION["needrefresh"]) && $_SESSION["needrefresh"]) {
     updateSession();
 }
 //echo '<pre>' . var_export($_SESSION, true) . '</pre>';

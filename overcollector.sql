@@ -72,7 +72,7 @@ GRANT SELECT ON TABLE events TO overcollector;
 
 
 CREATE TABLE cosmetics (
-  id          SERIAL,
+  id          INTEGER,
   category_id INTEGER,
   type_id     INTEGER NOT NULL,
   rarity_id   INTEGER,
@@ -101,7 +101,7 @@ CREATE TABLE users (
   battletag TEXT    NOT NULL,
   CONSTRAINT pk_users PRIMARY KEY (id)
 );
-GRANT SELECT ON TABLE users TO overcollector;
+GRANT SELECT, INSERT ON TABLE users TO overcollector;
 
 
 CREATE TABLE user_cosmetics (
@@ -159,3 +159,6 @@ CREATE TABLE wishlist_items (
   ON UPDATE CASCADE ON DELETE RESTRICT
 );
 GRANT SELECT, INSERT, DELETE ON TABLE wishlist_items TO overcollector;
+
+
+GRANT USAGE ON ALL SEQUENCES IN SCHEMA public TO overcollector;
