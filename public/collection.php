@@ -1,4 +1,8 @@
 <?php
 require_once("required.php");
-
-echo $twig->render("collection.twig");
+if (isUserLoggedIn()) {
+    echo $twig->render("collection.twig");
+}
+else {
+    header("Location: ./login.php");
+}

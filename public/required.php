@@ -1,6 +1,5 @@
 <?php
 require_once(__DIR__ . "/../vendor/autoload.php");
-session_start();
 
 $config = parse_ini_file(__DIR__ . "/../overcollector.ini", true);
 $debug = $config["config"]["debug"];
@@ -11,13 +10,13 @@ if ($debug) {
     error_reporting(E_ALL);
 }
 
+session_start();
+
 require_once(__DIR__ . "/functions.php");
 
 if (isset($_SESSION["needrefresh"]) && $_SESSION["needrefresh"]) {
     updateSession();
 }
-//echo '<pre>' . var_export($_SESSION, true) . '</pre>';
-
 
 // Twig
 $loader = new Twig_Loader_Filesystem(__DIR__ . "/templates");
