@@ -1,7 +1,7 @@
 {% macro cosmetic(cosmetic, owned) %}
     <div class="cosmetic cosmetic-rarity-{{ cosmetic.rarity is not null ? cosmetic.rarity.name|lower : "common" }}">
         <span class="cosmetic--image">
-            <img src="img/collection/cosmetics/placeholder.png"/>
+            <img src="img/collection/cosmetics/{{ cosmetic.id }}.png"/>
         </span>
         <span class="cosmetic--checkbox">
             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"

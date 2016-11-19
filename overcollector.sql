@@ -1,9 +1,6 @@
 DROP OWNED BY overcollector;
 DROP TABLE IF EXISTS heroes, categories, types, rarities, events, cosmetics, users, user_cosmetics, settings, user_settings, tokens, wishlist_items;
 DROP FUNCTION IF EXISTS gen_token();
-DROP ROLE IF EXISTS overcollector;
-
-CREATE ROLE overcollector WITH LOGIN PASSWORD 'localpass';
 
 -- Creates a random unique 32 char hexadecimal string for the tokens table
 CREATE FUNCTION gen_token()

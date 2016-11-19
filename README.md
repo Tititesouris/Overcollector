@@ -13,6 +13,7 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Improve design
 
 #### To Do
+- Add favicon & logo
 - Make FAQ
 - Statistics about credits (worth of collection and missing)
 - Statistics about probability in lootboxes
@@ -36,11 +37,12 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Clone your forked version of this repository
 - In the topmost directory of the repository, run `composer install`
 - Create a database called `overcollector`
-- In the database run the file `overcollector.sql` to create the database structure and `data.sql` to fill the database with data.
+- Create a role called `overcollector` with a password of your choice
+- In the database run the file `overcollector.sql` to create the database structure and `data.sql` to fill the database with data
 
 #### Configuring
-- Make a copy of `overcollector.example` and rename it `overcollector.ini`. Never share this file, it will contain all the sensitive information about the application.
-- Edit `overcollector.ini` appropriately
+- Make a copy of `overcollector.example` and rename it `overcollector.ini`. Never share this file, it will contain all the sensitive information about the application
+- Edit `overcollector.ini`: Set the Battle.net callback uri to go to the login page
 - Make sure you can work locally on https (ignore browser warning about self-signed certificate)
 
 #### Working
