@@ -69,6 +69,10 @@ if (!isUserLoggedIn()) {
         header("Location: ./login.php");
         die();
     } else {
-        echo "Error: Invalid region.";
+        echo $twig->render("login.twig");
     }
+}
+else {
+    header("Location: ./");
+    die();
 }

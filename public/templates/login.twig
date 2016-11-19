@@ -1,0 +1,22 @@
+{% import "cosmetic.twig" as cosmeticMacro %}
+{% extends "page.twig" %}
+{% block body %}
+    <div class="mdl-layout__content" style="width: 100%; padding: 1rem; margin: auto;">
+        <h1 class="mdl-typography--title">Login with Battle.net</h1>
+        <form method="get">
+            <label for="region">Pick your region</label>
+            <br/>
+            <select id="region" name="region">
+                <option value="US">North America</option>
+                <option value="EU">Europe</option>
+                <option value="KR">South Korea</option>
+                <option value="TW">Taiwan</option>
+                <option value="CN">China</option>
+                <option value="SEA">South East Asia</option>
+                <option value="US">Other</option>
+            </select>
+            <br/><br/>
+            <input type="submit" value="Login" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
+        </form>
+    </div>
+{% endblock %}

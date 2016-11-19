@@ -26,7 +26,8 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 
 #### Prerequisites
 - [Composer](https://getcomposer.org/doc/00-intro.md)
-- [PostgreSQL 9.6](https://www.postgresql.org/download/)
+- [PostgreSQL 9.5 or higher](https://www.postgresql.org/download/)
+- PHP 5.6 or higher
 - [A Battle.net application](https://dev.battle.net/)
 - An HTTPS server (such as Apache or Nginx)
 
@@ -49,4 +50,4 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Come up with something. To avoid wasting your time, [create an issue](https://github.com/Tititesouris/Overcollector/issues) first explaining what you want to do and wait for approval.
 - Try to limit the size of commits (1 feature/fix per commit is ideal)
 - Make a pull request for every commit
-- Unsure about anything: [contact me](mailto:dev@overcollector.com)
+- Unsure about anything: [contact me](mailto:dev@overcollector.com?subject=[Dev] )
