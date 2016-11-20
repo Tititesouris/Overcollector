@@ -35,10 +35,7 @@ if (!isUserLoggedIn()) {
                         if ($response) {
                             $responseJson = json_decode($response, true);
                             if (array_key_exists("id", $responseJson) && array_key_exists("battletag", $responseJson)) {
-                                $user = UsersTable::getInstance()->getUserByBattleid($responseJson["id"]);
-                                if ($user === null) {
-                                    $user = UsersTable::getInstance()->addUser($responseJson["id"], $responseJson["battletag"]);
-                                }
+                                $user = UsersTable::getInstance()->getUserByBattleid($responseJson["id"], $responseJson["battletag"]);
                                 if ($user !== null) {
                                     $_SESSION["user"] = $user;
                                     $_SESSION["needrefresh"] = true;
@@ -71,8 +68,7 @@ if (!isUserLoggedIn()) {
     } else {
         echo $twig->render("login.twig");
     }
-}
-else {
+} else {
     header("Location: ./");
     die();
 }

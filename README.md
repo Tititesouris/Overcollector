@@ -13,6 +13,7 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Improve design
 
 #### To Do
+- Change import dialog to work cross browser
 - Add favicon & logo
 - Make FAQ
 - Statistics about credits (worth of collection and missing)

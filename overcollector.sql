@@ -95,10 +95,11 @@ GRANT SELECT ON TABLE cosmetics TO overcollector;
 CREATE TABLE users (
   id        SERIAL,
   battleid  INTEGER NOT NULL,
-  battletag TEXT    NOT NULL,
-  CONSTRAINT pk_users PRIMARY KEY (id)
+  battletag TEXT,
+  CONSTRAINT pk_users PRIMARY KEY (id),
+  CONSTRAINT unique_battleid UNIQUE (battleid)
 );
-GRANT SELECT, INSERT ON TABLE users TO overcollector;
+GRANT SELECT, INSERT, UPDATE ON TABLE users TO overcollector;
 
 
 CREATE TABLE user_cosmetics (

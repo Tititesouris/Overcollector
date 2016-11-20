@@ -10,9 +10,8 @@
                        class="mdl-checkbox__input" {{ owned ? "checked" }} {{ cosmetic.category is null ? "disabled" }}/>
             </label>
         </span>
-        <span class="cosmetic--name">{{ cosmetic.name }}</span><span style="font-size: 0.5rem;">{{ cosmetic.event.name }}</span>
+        <span class="cosmetic--name">{{ cosmetic.name }}</span>
         <span class="cosmetic--category">
-            <span style="font-size: 0.5rem;">{{ cosmetic.category.name ?? null }}</span>
         {% if cosmetic.category is not null and cosmetic.category.id != 1 %}
             <img src="img/collection/categories/{{ cosmetic.category.slug }}.png"/>
         {% endif %}

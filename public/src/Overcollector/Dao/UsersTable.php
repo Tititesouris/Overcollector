@@ -8,15 +8,11 @@ class UsersTable extends Table
 
     private static $instance;
 
-    private $fetchUserByBattleid = "
-SELECT id, battleid, battletag
-FROM users
-WHERE battleid = $1;
-";
-
-    private $addUser = "
+    private $addOrFetchUserByBattleid = "
 INSERT INTO users (battleid, battletag)
 VALUES ($1, $2)
+ON CONFLICT ON CONSTRAINT unique_battleid
+DO UPDATE SET battletag = EXCLUDED.battletag
 RETURNING id, battleid, battletag;
 ";
 
@@ -42,8 +38,7 @@ WHERE user_id = $1;
     protected function __construct()
     {
         parent::__construct();
-        pg_prepare($this->handler, "fetchUserByBattleid", $this->fetchUserByBattleid);
-        pg_prepare($this->handler, "addUser", $this->addUser);
+        pg_prepare($this->handler, "addOrFetchUserByBattleid", $this->addOrFetchUserByBattleid);
         pg_prepare($this->handler, "addCosmetic", $this->addCosmetic);
         pg_prepare($this->handler, "removeCosmetic", $this->removeCosmetic);
         pg_prepare($this->handler, "removeCosmeticsByUserId", $this->removeCosmeticsByUserId);
@@ -68,18 +63,9 @@ WHERE user_id = $1;
         );
     }
 
-    public function getUserByBattleid($battleid)
+    public function getUserByBattleid($battleid, $battletag)
     {
-        $response = pg_execute($this->handler, "fetchUserByBattleid", array($battleid));
-        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
-            return $this->parseUser($row);
-        }
-        return null;
-    }
-
-    public function addUser($battleid, $battletag)
-    {
-        $response = pg_execute($this->handler, "addUser", array($battleid, $battletag));
+        $response = pg_execute($this->handler, "addOrFetchUserByBattleid", array($battleid, $battletag));
         if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
             return $this->parseUser($row);
         }
