@@ -37,14 +37,15 @@
             <ul class="demo-list-icon mdl-list mdl-shadow--2dp">
                 <li class="cosmetics-menu--update mdl-list__item">
                     <span class="mdl-list__item-primary-content">
-                        <button class="cosmetics-menu--update-refresh mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        <button class="cosmetics-menu--update-refresh mdl-button mdl-js-button mdl-button--icon mdl-color--light-blue-A200"
                                 disabled>
-                            Refresh
+                            <i class="material-icons">refresh</i>
                         </button>
-                        <button id="show-dialog"
-                                class="cosmetics-menu--update-import mdl-button mdl-js-button mdl-button--raised">
-                            Import
+                        <button id="import-btn"
+                                class="cosmetics-menu--update-import mdl-button mdl-js-button mdl-button--icon mdl-color-text--orange-700">
+                            <i class="material-icons">file_download</i>
                         </button>
+                        <label for="import-btn">Import</label>
                         <dialog id="import-collection--dialog" class="mdl-dialog">
                             <h4 class="mdl-dialog__title">Import</h4>
                             <div class="mdl-dialog__content">
@@ -64,9 +65,11 @@
                                 <button type="button" class="mdl-button mdl-button--raised close">Cancel</button>
                             </div>
                         </dialog>
-                        <button class="cosmetics-menu--update-export mdl-button mdl-js-button mdl-button--raised">
-                            Export
+                        <button id="export-btn"
+                                class="cosmetics-menu--update-export mdl-button mdl-js-button mdl-button--icon mdl-color-text--green">
+                            <i class="material-icons">file_upload</i>
                         </button>
+                        <label for="export-btn">Export</label>
                     </span>
                 </li>
                 <hr/>

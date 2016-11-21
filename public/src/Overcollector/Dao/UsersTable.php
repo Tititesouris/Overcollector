@@ -29,7 +29,7 @@ RETURNING cosmetic_id;
     private $removeCosmetic = "
 DELETE FROM user_cosmetics
 WHERE user_id = $1 AND cosmetic_id = $2
-RETURNING cosmetic_id;
+RETURNING TRUE;
 ";
 
     private $removeCosmeticsByUserId = "

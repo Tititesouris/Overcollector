@@ -29,13 +29,7 @@ a {
 }
 
 #cosmetics-menu .cosmetics-menu--update button {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-}
-
-#cosmetics-menu .cosmetics-menu--update button:not(:first-child) {
-    margin-left: 0.75rem;
-    background-color: #ffffff;
+    margin: 0 0.25rem 0 0.5rem;
 }
 
 #cosmetics-menu .cosmetics-menu--item {
