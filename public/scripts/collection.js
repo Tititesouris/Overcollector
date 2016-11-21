@@ -62,7 +62,6 @@ $(function () {
     // Cosmetics
     $("#cosmetics-table").find(".cosmetic--checkbox input[type='checkbox']").change(function () {
         saveCosmetic($(this).data("cosmetic-id"), $(this).prop("checked"), function (data) {
-            console.log(data);
             if (data) {
                 cosmeticsMenu.find("button.cosmetics-menu--update-refresh").prop("disabled", false);
             }
