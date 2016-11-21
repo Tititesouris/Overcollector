@@ -134,7 +134,7 @@ CREATE TABLE user_settings (
   CONSTRAINT fk_setting FOREIGN KEY (setting_id) REFERENCES settings (id)
   ON UPDATE CASCADE ON DELETE RESTRICT
 );
-GRANT SELECT, INSERT, UPDATE ON TABLE user_settings TO overcollector;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE user_settings TO overcollector;
 
 
 CREATE TABLE tokens (

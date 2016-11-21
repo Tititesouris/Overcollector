@@ -28,8 +28,7 @@ RETURNING cosmetic_id;
 
     private $removeCosmetic = "
 DELETE FROM user_cosmetics
-WHERE user_id = $1 AND cosmetic_id = $2
-RETURNING TRUE;
+WHERE user_id = $1 AND cosmetic_id = $2;
 ";
 
     private $removeCosmeticsByUserId = "
@@ -74,14 +73,14 @@ WHERE user_id = $1;
         return null;
     }
 
-    public function updateUserCosmetic($userId, $cosmetic, $owned)
+    public function updateUserCosmetic($userId, $cosmeticId, $owned)
     {
         if ($owned) {
-            $response = pg_execute($this->handler, "addCosmetic", array($userId, $cosmetic));
+            $response = pg_execute($this->handler, "addCosmetic", array($userId, $cosmeticId));
         } else {
-            $response = pg_execute($this->handler, "removeCosmetic", array($userId, $cosmetic));
+            $response = pg_execute($this->handler, "removeCosmetic", array($userId, $cosmeticId));
         }
-        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
+        if ($response !== false) {
             return true;
         }
         return false;

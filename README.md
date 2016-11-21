@@ -13,16 +13,14 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Improve design
 
 #### To Do
-- Fix removing cosmetic from collection
 - Change import dialog to work cross browser
-- Add favicon & logo
 - Make FAQ
 - Statistics about credits (worth of collection and missing)
 - Statistics about probability in lootboxes
-- Achievements tracker
-- Event optimisers
 - User profiles
+- Event optimisers
 - Optimise DAO to avoid useless database calls
+- Achievements tracker
 
 
 ## How to contribute
@@ -54,4 +52,4 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Come up with something. To avoid wasting your time, [create an issue](https://github.com/Tititesouris/Overcollector/issues) first explaining what you want to do and wait for approval.
 - Try to limit the size of commits (1 feature/fix per commit is ideal)
 - Make a pull request for every commit
-- Unsure about anything: [contact me](mailto:dev@overcollector.com?subject=[Dev] )
+- Unsure about anything: [contact me](mailto:support@overcollector.com?subject=[Dev] )
