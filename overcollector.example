@@ -35,4 +35,4 @@ key = ""
 secret = ""
 
 ; Return URI. Must be the same as the one specified on the Battle.net application
-uri = "http://localhost/"
+uri = "https://localhost/Overcollector/public/login.php"

@@ -18,7 +18,9 @@ RETURNING id, battleid, battletag;
 
     private $addCosmetic = "
 INSERT INTO user_cosmetics (user_id, cosmetic_id)
-VALUES ($1, $2)
+SELECT $1, $2
+FROM cosmetics
+WHERE id = $2 AND category_id IS NOT NULL
 ON CONFLICT ON CONSTRAINT pk_user_cosmetics
 DO NOTHING
 RETURNING cosmetic_id;
