@@ -310,7 +310,7 @@ VALUES
   (185, 1, 1, 1, 21, 'Zarya', 1),
   (186, 6, 1, 1, 21, 'Weightlifting', 4), -- Summer Games Zarya Player Icons
   (187, 1, 1, 1, 22, 'Harmony', 1), -- Normal Zenyatta Player Icons
-  (188, 1, 1, 1, 22, 'Meditation Barrier', 1),
+  (188, 1, 1, 1, 22, 'Meditation', 1),
   (189, 1, 1, 1, 22, 'Zenyatta', 1),
   (190, 6, 1, 1, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Player Icons
   (191, 1, 1, 1, 23, 'Hacker', 9), -- Normal Sombra Player Icons
@@ -1305,7 +1305,7 @@ VALUES
   (1177, 1, 6, 1, 3, 'Icon', 1),
   (1178, 1, 6, 1, 3, 'Light Gun', 1),
   (1179, 1, 6, 1, 3, 'Love D.Va', 1),
-  (1180, 1, 6, 1, 3, 'Meka', 1),
+  (1180, 1, 6, 1, 3, 'MEKA', 1),
   (1181, 1, 6, 1, 3, 'Nano Cola', 1),
   (1182, 1, 6, 1, 3, 'Photo', 1),
   (1183, 1, 6, 1, 3, 'Pixel Bunny', 1),
