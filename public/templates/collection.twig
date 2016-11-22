@@ -99,7 +99,7 @@
                              src="img/collection/heroes/allheroes.png"/>
                         <span class="cosmetics-menu--item--text">Show Owned</span>
                         <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
-                            {{ (ratio * 100)|round(2, 'floor') }}% ({{ totalStats.owned ?? 0 }}
+                            {{ (ratio * 100)|round(2, "floor") }}% ({{ totalStats.owned ?? 0 }}
                             / {{ totalStats.total ?? 0 }})
                         </span>
                     </span>
@@ -121,7 +121,7 @@
                             <span class="cosmetics-menu--item--text">All Heroes</span>
                         </a>
                         <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
-                            {{ (ratio * 100)|round(2, 'floor') }}% ({{ heroStat.owned ?? 0 }}
+                            {{ (ratio * 100)|round(2, "floor") }}% ({{ heroStat.owned ?? 0 }}
                             / {{ heroStat.total ?? 0 }})
                         </span>
                     </span>
@@ -260,7 +260,7 @@
                                 </a>
                             </td>
                             <td>
-                                {{ (ratio * 100)|round(2, 'floor') }}%
+                                {{ (ratio * 100)|round(2, "floor") }}%
                                 ({{ heroStats["hero-"~hero].owned }} / {{ heroStats["hero-"~hero].total }})
                             </td>
                         </tr>
@@ -272,7 +272,7 @@
                                     {{ SESSION.types[type].name }}s
                                 </td>
                                 <td>
-                                    {{ (ratio * 100)|round(2, 'floor') }}%
+                                    {{ (ratio * 100)|round(2, "floor") }}%
                                     ({{ heroStats["hero-"~hero].types["type-"~type].owned }}
                                     / {{ heroStats["hero-"~hero].types["type-"~type].total }})
                                 </td>

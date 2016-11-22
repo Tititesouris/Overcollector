@@ -33,7 +33,10 @@ WHERE id = $1;
 INSERT INTO user_settings (user_id, setting_id, value)
 SELECT $1, id, $3
 FROM settings
-WHERE name = $2
+WHERE name = $2 AND (
+  (\"default\" IN ('true', 'false') AND $3 IN ('true', 'false'))
+  OR (\"default\" ~ '^-?[0-9]+$' AND $3 ~ '^-?[0-9]+$' AND $3::INTEGER BETWEEN min::INTEGER AND max::INTEGER)
+)
 ON CONFLICT ON CONSTRAINT pk_user_settings
 DO UPDATE SET value = $3
 RETURNING setting_id;

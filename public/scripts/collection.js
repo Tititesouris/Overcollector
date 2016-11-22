@@ -1,9 +1,9 @@
 $(function () {
-    'use strict';
+    "use strict";
 
     var cosmeticsMenu = $("#cosmetics-menu");
 
-    var importDialog = document.querySelector('#import-collection--dialog');
+    var importDialog = document.querySelector("#import-collection--dialog");
     if (!importDialog.showModal) {
         dialogPolyfill.registerDialog(importDialog);
     }

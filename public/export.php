@@ -4,8 +4,8 @@ require_once("required.php");
 use Overcollector\Dao\CosmeticsTable;
 
 if (isUserLoggedIn()) {
-    header('Content-disposition: attachment; filename=export.json');
-    header('Content-type: application/json');
+    header("Content-disposition: attachment; filename=export.json");
+    header("Content-type: application/json");
     $export = [
         "version" => "0.1",
         "cosmetics" => CosmeticsTable::getInstance()->getAllOwnedCosmeticsByUserId($_SESSION["user"]->getId())

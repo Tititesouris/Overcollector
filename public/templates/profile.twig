@@ -1,6 +1,7 @@
 {% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
+    {% set settings = SESSION.user.settings %}
     <div class="mdl-layout__content" style="width: 100%; padding: 1rem; margin: auto;">
         <h1 class="mdl-typography--title">Settings</h1>
         <ul id="profile-settings" class="mdl-list mdl-shadow--2dp">
@@ -8,23 +9,24 @@
                 {% if setting.id in [1, 2, 3, 4] %}
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
-                            {{ setting.description }}
+                            {{ setting.description }}{{ setting.min != null ? " (" ~ setting.min ~ " - " ~ setting.max ~ ")" }}
                         </span>
                         <span class="mdl-list__item-secondary-action">
                             {% if setting.default in ["true", "false"] %}
                                 <label class="setting boolean-setting mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                                       for="setting-checkbox-{{ setting.id }}">
-                                    <input type="checkbox" id="setting-checkbox-{{ setting.id }}"
+                                       for="setting-checkbox-{{ setting.name }}">
+                                    <input type="checkbox" id="setting-checkbox-{{ setting.name }}"
+                                           data-setting="{{ setting.name }}"
                                            class="setting-input mdl-checkbox__input" {{ settings[setting.name].value ?? setting.default ? "checked" }}/>
                                 </label>
                             {% else %}
                                 <span class="setting integer-setting mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="number" min="{{ setting.min }}"
-                                           max="{{ setting.max }}" pattern="[1-9]+"
-                                           id="setting-checkbox-{{ setting.id }}"
+                                           max="{{ setting.max }}" pattern="-?[0-9]+"
+                                           id="setting-checkbox-{{ setting.name }}" data-setting="{{ setting.name }}"
                                            value="{{ settings[setting.name].value ?? setting.default }}">
                                     <label class="mdl-textfield__label"
-                                           for="setting-checkbox-{{ setting.id }}">Integer</label>
+                                           for="setting-checkbox-{{ setting.name }}">Integer</label>
                                     <span class="mdl-textfield__error">Invalid input!</span>
                                 </span>
                             {% endif %}
@@ -34,8 +36,9 @@
             {% endfor %}
         </ul>
         <br/>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        <button id="profile-save-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
             Save Changes
         </button>
     </div>
+    <script defer src="scripts/profile.js"></script>
 {% endblock %}
