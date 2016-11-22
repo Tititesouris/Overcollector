@@ -236,7 +236,7 @@ VALUES
   (111, 1, 1, 1, 4, 'God Of War', 1),
   (112, 1, 1, 1, 4, 'Nin', 1),
   (113, 6, 1, 1, 4, 'Fencing', 4), -- Summer Games Genji Player Icons
-  (114, 8, 1, 1, 4, 'Oni', 9), -- Blizzard Genji Player Icons
+  (114, 9, 1, 1, 4, 'Oni', 9), -- Blizzard Genji Player Icons
   (115, 1, 1, 1, 5, 'Hanzo', 1), -- Normal Hanzo Player Icons
   (116, 1, 1, 1, 5, 'Shimada', 1),
   (117, 1, 1, 1, 5, 'Storm', 1),

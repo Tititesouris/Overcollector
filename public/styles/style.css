@@ -28,8 +28,13 @@ a {
     height: 100%;
 }
 
-#cosmetics-menu .cosmetics-menu--update button {
-    margin: 0 0.25rem 0 0.5rem;
+#cosmetics-menu .cosmetics-menu--btn {
+    margin-left: 0.5rem;
+    display: inline;
+}
+
+#cosmetics-menu .cosmetics-menu--btn a {
+    padding: 0 0.5rem;
 }
 
 #cosmetics-menu .cosmetics-menu--item {

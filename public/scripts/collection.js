@@ -9,12 +9,12 @@ $(function () {
     }
 
     // Refresh button
-    cosmeticsMenu.find("button.cosmetics-menu--update-refresh").click(function () {
+    cosmeticsMenu.find("button.cosmetics-menu--refresh").click(function () {
         location.reload();
     });
 
     // Import button
-    cosmeticsMenu.find("button.cosmetics-menu--update-import").click(function () {
+    cosmeticsMenu.find("button.cosmetics-menu--import").click(function () {
         importDialog.showModal();
     });
 
@@ -40,7 +40,7 @@ $(function () {
     });
 
     // Export button
-    cosmeticsMenu.find("button.cosmetics-menu--update-export").click(function () {
+    cosmeticsMenu.find("button.cosmetics-menu--export").click(function () {
         window.open("export.php", "_blank");
     });
 
@@ -48,7 +48,7 @@ $(function () {
     cosmeticsMenu.find("input[type=checkbox].setting-input").change(function () {
         saveSetting($(this).data("setting"), $(this).prop("checked"), function (data) {
             if (data) {
-                cosmeticsMenu.find("button.cosmetics-menu--update-refresh").prop("disabled", false);
+                cosmeticsMenu.find("button.cosmetics-menu--refresh").prop("disabled", false);
             }
             else {
                 document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
@@ -63,7 +63,7 @@ $(function () {
     $("#cosmetics-table").find(".cosmetic--checkbox input[type='checkbox']").change(function () {
         saveCosmetic($(this).data("cosmetic-id"), $(this).prop("checked"), function (data) {
             if (data) {
-                cosmeticsMenu.find("button.cosmetics-menu--update-refresh").prop("disabled", false);
+                cosmeticsMenu.find("button.cosmetics-menu--refresh").prop("disabled", false);
             }
             else {
                 document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
