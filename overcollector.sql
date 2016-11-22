@@ -119,6 +119,8 @@ CREATE TABLE settings (
   name        TEXT UNIQUE NOT NULL,
   description TEXT        NOT NULL,
   "default"   TEXT,
+  min         TEXT,
+  max         TEXT,
   CONSTRAINT pk_settings PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE settings TO overcollector;

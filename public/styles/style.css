@@ -110,3 +110,16 @@ a {
     width: 30px;
     height: 30px;
 }
+
+#profile-settings {
+    width: 60%;
+}
+
+#profile-settings .integer-setting {
+    padding: 0;
+    width: 60px;
+}
+
+#profile-settings .integer-setting input {
+    text-align: right;
+}

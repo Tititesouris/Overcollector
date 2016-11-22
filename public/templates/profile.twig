@@ -1,0 +1,41 @@
+{% import "cosmetic.twig" as cosmeticMacro %}
+{% extends "page.twig" %}
+{% block body %}
+    <div class="mdl-layout__content" style="width: 100%; padding: 1rem; margin: auto;">
+        <h1 class="mdl-typography--title">Settings</h1>
+        <ul id="profile-settings" class="mdl-list mdl-shadow--2dp">
+            {% for setting in SESSION.settings %}
+                {% if setting.id in [1, 2, 3, 4] %}
+                    <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                            {{ setting.description }}
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                            {% if setting.default in ["true", "false"] %}
+                                <label class="setting boolean-setting mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                       for="setting-checkbox-{{ setting.id }}">
+                                    <input type="checkbox" id="setting-checkbox-{{ setting.id }}"
+                                           class="setting-input mdl-checkbox__input" {{ settings[setting.name].value ?? setting.default ? "checked" }}/>
+                                </label>
+                            {% else %}
+                                <span class="setting integer-setting mdl-textfield mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="number" min="{{ setting.min }}"
+                                           max="{{ setting.max }}" pattern="[1-9]+"
+                                           id="setting-checkbox-{{ setting.id }}"
+                                           value="{{ settings[setting.name].value ?? setting.default }}">
+                                    <label class="mdl-textfield__label"
+                                           for="setting-checkbox-{{ setting.id }}">Integer</label>
+                                    <span class="mdl-textfield__error">Invalid input!</span>
+                                </span>
+                            {% endif %}
+                        </span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <br/>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+            Save Changes
+        </button>
+    </div>
+{% endblock %}

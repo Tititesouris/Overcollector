@@ -3,11 +3,17 @@
 namespace Overcollector\Dao;
 
 
+use Overcollector\Setting;
 use Overcollector\UserSetting;
 
 class SettingsTable extends Table
 {
     private static $instance;
+
+    private $fetchSettings = "
+SELECT id, name, description, \"default\", min, max
+FROM settings;
+";
 
     private $fetchUserSettings = "
 SELECT id, name, description, value
@@ -36,6 +42,7 @@ RETURNING setting_id;
     protected function __construct()
     {
         parent::__construct();
+        pg_prepare($this->handler, "fetchSettings", $this->fetchSettings);
         pg_prepare($this->handler, "fetchUserSettings", $this->fetchUserSettings);
         pg_prepare($this->handler, "fetchUserSetting", $this->fetchUserSetting);
         pg_prepare($this->handler, "updateUserSetting", $this->updateUserSetting);
@@ -51,6 +58,18 @@ RETURNING setting_id;
 
     private static function parseSetting($row)
     {
+        return Setting::createSetting(
+            intval($row["id"]),
+            $row["name"],
+            $row["description"],
+            $row["default"],
+            $row["min"],
+            $row["max"]
+        );
+    }
+
+    private static function parseUserSetting($row)
+    {
         return UserSetting::createUserSetting(
             intval($row["id"]),
             $row["name"],
@@ -59,13 +78,27 @@ RETURNING setting_id;
         );
     }
 
+    public function getAllSettings()
+    {
+        $response = pg_execute($this->handler, "fetchSettings", array());
+        if ($response !== false) {
+            $settings = [];
+            while (($row = pg_fetch_assoc($response)) !== false) {
+                $setting = $this->parseSetting($row);
+                $settings[$setting->getId()] = $setting;
+            }
+            return $settings;
+        }
+        return [];
+    }
+
     public function getUserSettings($userId)
     {
         $response = pg_execute($this->handler, "fetchUserSettings", array($userId));
         if ($response !== false) {
             $settings = [];
             while (($row = pg_fetch_assoc($response)) !== false) {
-                $setting = $this->parseSetting($row);
+                $setting = $this->parseUserSetting($row);
                 $settings[$setting->getName()] = $setting;
             }
             return $settings;
@@ -79,7 +112,7 @@ RETURNING setting_id;
         if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
             $response = pg_execute($this->handler, "fetchUserSetting", array($row["setting_id"]));
             if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
-                return $this->parseSetting($row);
+                return $this->parseUserSetting($row);
             }
         }
         return null;
