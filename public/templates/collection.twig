@@ -93,7 +93,7 @@
                 <hr/>
                 {% set ratio = totalStats.total is defined ? (totalStats.owned ?? 0 / totalStats.total) : 1 %}
                 <li class="cosmetics-menu--item mdl-list__item mdl-list__item--two-line"
-                    style="background-color: {{ ratio|colorgradient("rgba") }};">
+                        {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content mdl-typography--font-bold">
                         <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                              src="img/collection/heroes/allheroes.png"/>
@@ -113,7 +113,7 @@
                 {% set heroStat = heroStats["hero-0"] is defined ? heroStats["hero-0"] : null %}
                 {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
-                    style="background-color: {{ ratio|colorgradient("rgba") }};">
+                        {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content">
                         <a href="#allheroes">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
@@ -137,7 +137,7 @@
                     {% set heroStat = heroStats["hero-"~hero.id] is defined ? heroStats["hero-"~hero.id] : null %}
                     {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
-                        style="background-color: {{ ratio|colorgradient("rgba") }};">
+                            {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <a href="#{{ hero.slug }}">
                                 <img class="cosmetics-menu--item--image mdl-list__item-avatar"
@@ -164,7 +164,7 @@
                 {% set categoryStat = categoryStats["category-0"] is defined ? categoryStats["category-0"] : null %}
                 {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
-                    style="background-color: {{ ratio|colorgradient("rgba") }};">
+                        {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content">
                         <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                              src="img/collection/categories/default.png"/>
@@ -190,7 +190,7 @@
                     {% set categoryStat = categoryStats["category-"~category.id] is defined ? categoryStats["category-"~category.id] : null %}
                     {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
-                        style="background-color: {{ ratio|colorgradient("rgba") }};">
+                            {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/categories/{{ category.slug }}.png"/>
@@ -221,7 +221,7 @@
                     {% set typeStat = typeStats["type-"~type.id] is defined ? typeStats["type-"~type.id] : null %}
                     {% set ratio = typeStat != null ? (typeStat.owned / typeStat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-type mdl-list__item mdl-list__item--two-line"
-                        style="background-color: {{ ratio|colorgradient("rgba") }};">
+                            {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/types/{{ type.slug }}.png"/>
@@ -252,7 +252,7 @@
                         {% set ratio = heroStats["hero-"~hero].owned / heroStats["hero-"~hero].total %}
                         <tbody class="cosmetics-table--body">
                         <tr class="cosmetics-table--hero"
-                            style="background-color: {{ ratio|colorgradient("rgba") }};">
+                                {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                             <td colspan="{{ settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}"
                                 class="mdl-typography--headline mdl-data-table__cell--non-numeric">
                                 <a name="{{ hero > 0 ? SESSION.heroes[hero].slug : "allheroes" }}">
@@ -267,7 +267,7 @@
                         {% for type, cosmetics in types %}
                             {% set ratio = heroStats["hero-"~hero].types["type-"~type].owned / heroStats["hero-"~hero].types["type-"~type].total %}
                             <tr class="cosmetics-table--type"
-                                style="background-color: {{ ratio|colorgradient("rgba") }};">
+                                    {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                                 <td colspan="{{ settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}">
                                     {{ SESSION.types[type].name }}s
                                 </td>
