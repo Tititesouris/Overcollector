@@ -21,16 +21,16 @@
             {% for cosmetic in cosmetics %}
                 {% if SESSION.user.hasCosmetic(cosmetic.id) %}
                     {% set typeOwned = typeOwned + 1 %}
-                    {% set categoryStats = categoryStats|merge({("category-" ~ (cosmetic.category.id ?? 0)): {"owned": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].owned ?? 0 + 1, "total": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].total ?? 0}}) %}
+                    {% set categoryStats = categoryStats|pushObj(cosmetic.category.id ?? 0, {"owned": categoryStats[cosmetic.category.id ?? 0].owned ?? 0 + 1, "total": categoryStats[cosmetic.category.id ?? 0].total ?? 0}) %}
                 {% endif %}
-                {% set categoryStats = categoryStats|merge({("category-" ~ (cosmetic.category.id ?? 0)): {"owned": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].owned ?? 0, "total": categoryStats["category-" ~ (cosmetic.category.id ?? 0)].total ?? 0 + 1}}) %}
+                {% set categoryStats = categoryStats|pushObj(cosmetic.category.id ?? 0, {"owned": categoryStats[cosmetic.category.id ?? 0].owned ?? 0, "total": categoryStats[cosmetic.category.id ?? 0].total ?? 0 + 1}) %}
             {% endfor %}
-            {% set heroTypeStats = heroTypeStats|merge({("type-" ~ type): {"owned": typeOwned, "total": typeTotal}}) %}
-            {% set typeStats = typeStats|merge({("type-" ~ type): {"owned": typeStats["type-"~type].owned ?? 0 + typeOwned, "total": typeStats["type-"~type].total ?? 0 + typeTotal}}) %}
+            {% set heroTypeStats = heroTypeStats|pushObj(type, {"owned": typeOwned, "total": typeTotal}) %}
+            {% set typeStats = typeStats|pushObj(type, {"owned": typeStats[type].owned ?? 0 + typeOwned, "total": typeStats[type].total ?? 0 + typeTotal}) %}
             {% set heroOwned = heroOwned + typeOwned %}
             {% set heroTotal = heroTotal + typeTotal %}
         {% endfor %}
-        {% set heroStats = heroStats|merge({("hero-" ~ hero): {"owned": heroOwned, "total": heroTotal, "types": heroTypeStats}}) %}
+        {% set heroStats = heroStats|pushObj(hero, {"owned": heroOwned, "total": heroTotal, "types": heroTypeStats}) %}
         {% set totalStats = {"owned": totalStats.owned ?? 0 + heroOwned, "total": totalStats.total ?? 0 + heroTotal} %}
     {% endfor %}
     <div class="mdl-grid">
@@ -111,7 +111,7 @@
                         </label>
                     </span>
                 </li>
-                {% set heroStat = heroStats["hero-0"] is defined ? heroStats["hero-0"] : null %}
+                {% set heroStat = heroStats[0] is defined ? heroStats[0] : null %}
                 {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
                         {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"] %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
@@ -135,7 +135,7 @@
                     </span>
                 </li>
                 {% for hero in SESSION.heroes %}
-                    {% set heroStat = heroStats["hero-"~hero.id] is defined ? heroStats["hero-"~hero.id] : null %}
+                    {% set heroStat = heroStats[hero.id] is defined ? heroStats[hero.id] : null %}
                     {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
                             {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
@@ -162,7 +162,7 @@
                     </li>
                 {% endfor %}
                 <hr/>
-                {% set categoryStat = categoryStats["category-0"] is defined ? categoryStats["category-0"] : null %}
+                {% set categoryStat = categoryStats[0] is defined ? categoryStats[0] : null %}
                 {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
                         {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
@@ -188,7 +188,7 @@
                     </div>
                 </li>
                 {% for category in SESSION.categories %}
-                    {% set categoryStat = categoryStats["category-"~category.id] is defined ? categoryStats["category-"~category.id] : null %}
+                    {% set categoryStat = categoryStats[category.id] is defined ? categoryStats[category.id] : null %}
                     {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
                             {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
@@ -219,7 +219,7 @@
                 {% endfor %}
                 <hr/>
                 {% for type in SESSION.types %}
-                    {% set typeStat = typeStats["type-"~type.id] is defined ? typeStats["type-"~type.id] : null %}
+                    {% set typeStat = typeStats[type.id] is defined ? typeStats[type.id] : null %}
                     {% set ratio = typeStat != null ? (typeStat.owned / typeStat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-type mdl-list__item mdl-list__item--two-line"
                             {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
@@ -250,7 +250,7 @@
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 {% for hero, types in SESSION.cosmetics %}
                     {% if pages.start <= loop.index0 and loop.index0 < pages.end %}
-                        {% set ratio = heroStats["hero-"~hero].owned / heroStats["hero-"~hero].total %}
+                        {% set ratio = heroStats[hero].owned / heroStats[hero].total %}
                         <tbody class="cosmetics-table--body">
                         <tr class="cosmetics-table--hero"
                                 {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
@@ -262,11 +262,11 @@
                             </td>
                             <td>
                                 {{ (ratio * 100)|round(2, "floor") }}%
-                                ({{ heroStats["hero-"~hero].owned }} / {{ heroStats["hero-"~hero].total }})
+                                ({{ heroStats[hero].owned }} / {{ heroStats[hero].total }})
                             </td>
                         </tr>
                         {% for type, cosmetics in types %}
-                            {% set ratio = heroStats["hero-"~hero].types["type-"~type].owned / heroStats["hero-"~hero].types["type-"~type].total %}
+                            {% set ratio = heroStats[hero].types[type].owned / heroStats[hero].types[type].total %}
                             <tr class="cosmetics-table--type"
                                     {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                                 <td colspan="{{ userSettings["collection-cosmetics-per-row"].value ?? allSettings["collection-cosmetics-per-row"].default - 1 }}">
@@ -274,8 +274,8 @@
                                 </td>
                                 <td>
                                     {{ (ratio * 100)|round(2, "floor") }}%
-                                    ({{ heroStats["hero-"~hero].types["type-"~type].owned }}
-                                    / {{ heroStats["hero-"~hero].types["type-"~type].total }})
+                                    ({{ heroStats[hero].types[type].owned }}
+                                    / {{ heroStats[hero].types[type].total }})
                                 </td>
                             </tr>
                             {% for row in cosmetics|batch(userSettings["collection-cosmetics-per-row"].value ?? allSettings["collection-cosmetics-per-row"].default) %}
