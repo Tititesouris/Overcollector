@@ -7,6 +7,7 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Get statistics about owned cosmetics
 
 #### Work In Progress
+- Statistics about credits (worth of collection and missing)₡
 - Adding images for Player Icons and Sprays
 - Wishlists
 - Improve README
@@ -17,9 +18,9 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Fix display of buttons in collection on smaller screens
 - "Open a Lootbox" page where you can quickly input a couple new items
 - BUG: Only on prod server, sometimes no cosmetics at all appear (trying to replicate)
+- On prod server only, figure out how to keep sessions open longer
 - Change import dialog to work cross browser
 - Make FAQ
-- Statistics about credits (worth of collection and missing)₡
 - Statistics about probability in lootboxes
 - User profiles
 - Event optimisers

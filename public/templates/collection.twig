@@ -31,7 +31,7 @@
             {% set heroTotal = heroTotal + typeTotal %}
         {% endfor %}
         {% set heroStats = heroStats|pushObj(hero, {"owned": heroOwned, "total": heroTotal, "types": heroTypeStats}) %}
-        {% set totalStats = {"owned": totalStats.owned ?? 0 + heroOwned, "total": totalStats.total ?? 0 + heroTotal} %}
+        {% set totalStats = {"owned": totalStats.owned ?? 0 + heroOwned, "total": totalStats.total ?? 0 + heroTotal, "ownedCredits": 5000, "totalCredits": 7800} %}
     {% endfor %}
     <div class="mdl-grid">
         <div id="cosmetics-menu" class="mdl-cell mdl-cell--3-col">
@@ -100,8 +100,14 @@
                              src="img/collection/heroes/allheroes.png"/>
                         <span class="cosmetics-menu--item--text">Show Owned</span>
                         <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
-                            {{ (ratio * 100)|round(2, "floor") }}% ({{ totalStats.owned ?? 0 }}
-                            / {{ totalStats.total ?? 0 }})
+                            <span class="cosmetics-menu--item--stats-completion">
+                                {{ (ratio * 100)|round(2, "floor") }}%
+                                ({{ totalStats.owned ?? 0 }} / {{ totalStats.total ?? 0 }})
+                            </span><br/>
+                            <span class="cosmetics-menu--item--stats-credits">
+                                ₡{{ totalStats.totalCredits ?? 0 - totalStats.ownedCredits ?? 0 }}
+                                (₡{{ totalStats.ownedCredits ?? 0 }} / ₡{{ totalStats.totalCredits ?? 0 }})
+                            </span>
                         </span>
                     </span>
                     <span class="mdl-list__item-secondary-action">

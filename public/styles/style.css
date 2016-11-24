@@ -24,10 +24,6 @@ a {
     padding: 0;
 }
 
-#cosmetics-menu li {
-    height: 100%;
-}
-
 #cosmetics-menu .cosmetics-menu--btn {
     margin-left: 0.5rem;
     display: inline;
