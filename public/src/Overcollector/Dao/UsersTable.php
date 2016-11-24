@@ -95,8 +95,8 @@ WHERE user_id = $1;
             return false;
         }
         $inserted = 0;
-        foreach ($cosmetics as $cosmetic) {
-            $response = pg_execute($this->handler, "addCosmetic", array($userId, $cosmetic));
+        foreach ($cosmetics as $cosmeticId) {
+            $response = pg_execute($this->handler, "addCosmetic", array($userId, $cosmeticId));
             if ($response === false || ($row = pg_fetch_assoc($response)) === false) {
                 pg_query("ROLLBACK") or die("Transaction rollback failed\n");
                 return false;
