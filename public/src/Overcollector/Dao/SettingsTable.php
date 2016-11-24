@@ -88,7 +88,7 @@ RETURNING setting_id;
             $settings = [];
             while (($row = pg_fetch_assoc($response)) !== false) {
                 $setting = $this->parseSetting($row);
-                $settings[$setting->getId()] = $setting;
+                $settings[$setting->getName()] = $setting;
             }
             return $settings;
         }

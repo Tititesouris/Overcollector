@@ -1,10 +1,11 @@
 {% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
-    {% set settings = SESSION.user.settings %}
+    {% set allSettings = SESSION.settings %}
+    {% set userSettings = SESSION.user.settings %}
     {% set pages = {
-    "start": (GET.page ?? 0) * (settings["collection-heroes-per-page"].value ?? 3),
-    "end": (GET.page ?? 0 + 1) * (settings["collection-heroes-per-page"].value ?? 3)
+    "start": (GET.page ?? 0) * (userSettings["collection-heroes-per-page"].value ?? allSettings["collection-heroes-per-page"].default),
+    "end": (GET.page ?? 0 + 1) * (userSettings["collection-heroes-per-page"].value ?? allSettings["collection-heroes-per-page"].default)
     } %}
     {% set heroStats = {} %}
     {% set categoryStats = {} %}
@@ -93,7 +94,7 @@
                 <hr/>
                 {% set ratio = totalStats.total is defined ? (totalStats.owned ?? 0 / totalStats.total) : 1 %}
                 <li class="cosmetics-menu--item mdl-list__item mdl-list__item--two-line"
-                        {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                        {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content mdl-typography--font-bold">
                         <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                              src="img/collection/heroes/allheroes.png"/>
@@ -106,14 +107,14 @@
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-show-owned">
                             <input type="checkbox" id="switch-show-owned" class="setting-input mdl-switch__input"
-                                   data-setting="collection-show-owned-cosmetics" {{ settings["collection-show-owned-cosmetics"].value ?? true ? "checked" }}>
+                                   data-setting="collection-show-owned-cosmetics" {{ userSettings["collection-show-owned-cosmetics"].value ?? allSettings["collection-show-owned-cosmetics"].default ? "checked" }}>
                         </label>
                     </span>
                 </li>
                 {% set heroStat = heroStats["hero-0"] is defined ? heroStats["hero-0"] : null %}
                 {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
-                        {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                        {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"] %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content">
                         <a href="#allheroes">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
@@ -129,7 +130,7 @@
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hero-checkbox-allheroes">
                             <input type="checkbox" id="hero-checkbox-allheroes"
                                    class="setting-input mdl-checkbox__input"
-                                   data-setting="collection-show-hero-allheroes" {{ settings["collection-show-hero-allheroes"].value ?? true ? "checked" }}/>
+                                   data-setting="collection-show-hero-allheroes" {{ userSettings["collection-show-hero-allheroes"].value ?? allSettings["collection-show-hero-allheroes"].default ? "checked" }}/>
                         </label>
                     </span>
                 </li>
@@ -137,7 +138,7 @@
                     {% set heroStat = heroStats["hero-"~hero.id] is defined ? heroStats["hero-"~hero.id] : null %}
                     {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
-                            {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <a href="#{{ hero.slug }}">
                                 <img class="cosmetics-menu--item--image mdl-list__item-avatar"
@@ -155,7 +156,7 @@
                                 <input type="checkbox" id="hero-checkbox-{{ hero.slug }}"
                                        class="setting-input mdl-checkbox__input"
                                        data-setting="collection-show-hero-{{ hero.slug }}"
-                                        {{ settings["collection-show-hero-" ~ hero.slug].value ?? true ? "checked" }}/>
+                                        {{ userSettings["collection-show-hero-" ~ hero.slug].value ?? allSettings["collection-show-hero-" ~ hero.slug].default ? "checked" }}/>
                             </label>
                         </span>
                     </li>
@@ -164,7 +165,7 @@
                 {% set categoryStat = categoryStats["category-0"] is defined ? categoryStats["category-0"] : null %}
                 {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
-                        {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                        {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content">
                         <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                              src="img/collection/categories/default.png"/>
@@ -179,7 +180,7 @@
                                for="category-checkbox-default">
                             <input type="checkbox" id="category-checkbox-default"
                                    class="setting-input mdl-checkbox__input"
-                                   data-setting="collection-show-category-default" {{ settings["collection-show-category-default"].value ?? true ? "checked" }}/>
+                                   data-setting="collection-show-category-default" {{ userSettings["collection-show-category-default"].value ?? allSettings["collection-show-category-default"].default ? "checked" }}/>
                         </label>
                     </span>
                     <div class="mdl-tooltip" data-mdl-for="cosmetics-menu--category-default">
@@ -190,7 +191,7 @@
                     {% set categoryStat = categoryStats["category-"~category.id] is defined ? categoryStats["category-"~category.id] : null %}
                     {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
-                            {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/categories/{{ category.slug }}.png"/>
@@ -207,7 +208,7 @@
                                 <input type="checkbox" id="category-checkbox-{{ category.slug }}"
                                        class="setting-input mdl-checkbox__input"
                                        data-setting="collection-show-category-{{ category.slug }}"
-                                        {{ settings["collection-show-category-" ~ category.slug].value ?? true ? "checked" }}/>
+                                        {{ userSettings["collection-show-category-" ~ category.slug].value ?? allSettings["collection-show-category-" ~ category.slug].default ? "checked" }}/>
                             </label>
                         </span>
                         <div class="mdl-tooltip"
@@ -221,7 +222,7 @@
                     {% set typeStat = typeStats["type-"~type.id] is defined ? typeStats["type-"~type.id] : null %}
                     {% set ratio = typeStat != null ? (typeStat.owned / typeStat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-type mdl-list__item mdl-list__item--two-line"
-                            {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/types/{{ type.slug }}.png"/>
@@ -238,7 +239,7 @@
                                 <input type="checkbox" id="type-checkbox-{{ type.slug }}"
                                        class="setting-input mdl-checkbox__input"
                                        data-setting="collection-show-type-{{ type.slug }}"
-                                        {{ settings["collection-show-type-" ~ type.slug].value ?? true ? "checked" }}/>
+                                        {{ userSettings["collection-show-type-" ~ type.slug].value ?? allSettings["collection-show-type-" ~ type.slug].default ? "checked" }}/>
                             </label>
                         </span>
                     </li>
@@ -252,8 +253,8 @@
                         {% set ratio = heroStats["hero-"~hero].owned / heroStats["hero-"~hero].total %}
                         <tbody class="cosmetics-table--body">
                         <tr class="cosmetics-table--hero"
-                                {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
-                            <td colspan="{{ settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}"
+                                {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            <td colspan="{{ userSettings["collection-cosmetics-per-row"].value ?? allSettings["collection-cosmetics-per-row"].default - 1 }}"
                                 class="mdl-typography--headline mdl-data-table__cell--non-numeric">
                                 <a name="{{ hero > 0 ? SESSION.heroes[hero].slug : "allheroes" }}">
                                     {{ hero > 0 ? SESSION.heroes[hero].name : "All Heroes" }}
@@ -267,8 +268,8 @@
                         {% for type, cosmetics in types %}
                             {% set ratio = heroStats["hero-"~hero].types["type-"~type].owned / heroStats["hero-"~hero].types["type-"~type].total %}
                             <tr class="cosmetics-table--type"
-                                    {% if settings["collection-show-colors"].value ?? true %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
-                                <td colspan="{{ settings["collection-cosmetics-per-row"].value ?? 3 - 1 }}">
+                                    {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                                <td colspan="{{ userSettings["collection-cosmetics-per-row"].value ?? allSettings["collection-cosmetics-per-row"].default - 1 }}">
                                     {{ SESSION.types[type].name }}s
                                 </td>
                                 <td>
@@ -277,7 +278,7 @@
                                     / {{ heroStats["hero-"~hero].types["type-"~type].total }})
                                 </td>
                             </tr>
-                            {% for row in cosmetics|batch(settings["collection-cosmetics-per-row"].value ?? 3) %}
+                            {% for row in cosmetics|batch(userSettings["collection-cosmetics-per-row"].value ?? allSettings["collection-cosmetics-per-row"].default) %}
                                 <tr>
                                     {% for cosmetic in row %}
                                         <td class="cosmetics-table--category category-{{ cosmetic.category is not null ? cosmetic.category.id : 0 }}">

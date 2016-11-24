@@ -1,7 +1,7 @@
 {% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
-    {% set settings = SESSION.user.settings %}
+    {% set userSettings = SESSION.user.settings %}
     <div class="mdl-layout__content" style="width: 100%; padding: 1rem; margin: auto;">
         <h1 class="mdl-typography--title">Settings</h1>
         <ul id="profile-settings" class="mdl-list mdl-shadow--2dp">
@@ -17,14 +17,14 @@
                                        for="setting-checkbox-{{ setting.name }}">
                                     <input type="checkbox" id="setting-checkbox-{{ setting.name }}"
                                            data-setting="{{ setting.name }}"
-                                           class="setting-input mdl-checkbox__input" {{ settings[setting.name].value ?? setting.default ? "checked" }}/>
+                                           class="setting-input mdl-checkbox__input" {{ userSettings[setting.name].value ?? setting.default ? "checked" }}/>
                                 </label>
                             {% else %}
                                 <span class="setting integer-setting mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="number" min="{{ setting.min }}"
                                            max="{{ setting.max }}" pattern="-?[0-9]+"
                                            id="setting-checkbox-{{ setting.name }}" data-setting="{{ setting.name }}"
-                                           value="{{ settings[setting.name].value ?? setting.default }}">
+                                           value="{{ userSettings[setting.name].value ?? setting.default }}">
                                     <label class="mdl-textfield__label"
                                            for="setting-checkbox-{{ setting.name }}">Integer</label>
                                     <span class="mdl-textfield__error">Invalid input!</span>
