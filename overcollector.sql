@@ -31,10 +31,11 @@ GRANT SELECT ON TABLE heroes TO overcollector;
 
 
 CREATE TABLE categories (
-  id          INTEGER,
-  name        TEXT NOT NULL,
-  description TEXT NOT NULL,
-  slug        TEXT NOT NULL,
+  id               INTEGER,
+  name             TEXT    NOT NULL,
+  description      TEXT    NOT NULL,
+  price_multiplier NUMERIC NOT NULL,
+  slug             TEXT    NOT NULL,
   CONSTRAINT pk_categories PRIMARY KEY (id)
 );
 GRANT SELECT ON TABLE categories TO overcollector;

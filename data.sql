@@ -24,19 +24,19 @@ VALUES
   (22, 'Zenyatta', 'zenyatta'),
   (23, 'Sombra', 'sombra');
 
-INSERT INTO categories (id, name, description, slug)
+INSERT INTO categories (id, name, description, price_multiplier, slug)
 VALUES
-  (1, 'Normal', 'Obtainable by opening normal Loot Boxes or by spending the normal amount of credits.', 'normal'),
-  (2, 'Achievements', 'Obtainable by completing achievements.', 'achievements'),
-  (3, 'Origins Edition', 'Obtainable by buying the Origins Edition of Overwatch.', 'originsedition'),
-  (4, 'Preorder', 'Obtainable by preodering Overwatch.', 'preorder'),
-  (5, 'Competitive', 'Obtainable by spending competitive points.', 'competitive'),
-  (6, 'Summer Games', 'Obtainable by opening Summer Games Loot Boxes.', 'summergames'),
+  (1, 'Normal', 'Obtainable by opening normal Loot Boxes or by spending the normal amount of credits.', 1, 'normal'),
+  (2, 'Achievements', 'Obtainable by completing achievements.', 0, 'achievements'),
+  (3, 'Origins Edition', 'Obtainable by buying the Origins Edition of Overwatch.', 0, 'originsedition'),
+  (4, 'Preorder', 'Obtainable by preodering Overwatch.', 0, 'preorder'),
+  (5, 'Competitive', 'Obtainable by spending competitive points.', 0, 'competitive'),
+  (6, 'Summer Games', 'Obtainable by opening Summer Games Loot Boxes.', 3, 'summergames'),
   (7, 'Halloween Terror',
    'Obtainable by opening Halloween Loot Boxes or by spending 3 times the normal amount of credits during the Halloween Terror event.',
-   'halloweenterror'),
-  (8, 'BlizzCon', 'Obtainable by purchasing a BlizzCon ticket.', 'blizzcon'),
-  (9, 'Blizzard', 'Obtainable by playing other Blizzard games.', 'blizzard');
+   3, 'halloweenterror'),
+  (8, 'BlizzCon', 'Obtainable by purchasing a BlizzCon ticket.', 0, 'blizzcon'),
+  (9, 'Blizzard', 'Obtainable by playing other Blizzard games.', 0, 'blizzard');
 
 INSERT INTO types (id, name, slug)
 VALUES
@@ -101,7 +101,7 @@ VALUES
   ('collection-show-hero-winston', 'Show cosmetics for Winston in the collection', 'true', NULL, NULL),
   ('collection-show-hero-zarya', 'Show cosmetics for Zarya in the collection', 'true', NULL, NULL),
   ('collection-show-hero-zenyatta', 'Show cosmetics for Zenyatta in the collection', 'true', NULL, NULL),
-  ('collection-show-category-default', 'Show Default cosmetics in the collection', 'true', NULL, NULL),
+  ('collection-show-category-default', 'Show Default cosmetics in the collection', 'false', NULL, NULL),
   ('collection-show-category-normal', 'Show Normal cosmetics in the collection', 'true', NULL, NULL),
   ('collection-show-category-achievements', 'Show Achievements cosmetics in the collection', 'true', NULL, NULL),
   ('collection-show-category-competitive', 'Show Competitive cosmetics in the collection', 'true', NULL, NULL),
