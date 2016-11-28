@@ -8,6 +8,7 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 
 #### Work In Progress
 - Adding images for Player Icons and Sprays
+- User profiles
 - Wishlists
 - Improve README
 - Improve Welcome page
@@ -22,8 +23,8 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Change import dialog to work cross browser
 - Make FAQ
 - Statistics about probability in lootboxes
-- User profiles
 - Event optimisers
+- Search in collection
 - Optimise DAO to avoid useless database calls
 - Achievements tracker
 

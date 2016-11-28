@@ -101,7 +101,7 @@ VALUES
   ('collection-show-hero-winston', 'Show cosmetics for Winston in the collection', 'true', NULL, NULL),
   ('collection-show-hero-zarya', 'Show cosmetics for Zarya in the collection', 'true', NULL, NULL),
   ('collection-show-hero-zenyatta', 'Show cosmetics for Zenyatta in the collection', 'true', NULL, NULL),
-  ('collection-show-category-default', 'Show Default cosmetics in the collection', 'false', NULL, NULL),
+  ('collection-show-category-default', 'Show Default cosmetics in the collection', 'true', NULL, NULL),
   ('collection-show-category-normal', 'Show Normal cosmetics in the collection', 'true', NULL, NULL),
   ('collection-show-category-achievements', 'Show Achievements cosmetics in the collection', 'true', NULL, NULL),
   ('collection-show-category-competitive', 'Show Competitive cosmetics in the collection', 'true', NULL, NULL),
