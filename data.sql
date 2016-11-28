@@ -126,196 +126,196 @@ VALUES
   (1, NULL, 1, NULL, NULL, 'Overwatch Dark', 1), -- Default All Heroes Player Icons
   (2, NULL, 1, NULL, NULL, 'Overwatch Light', 1),
   (3, NULL, 1, NULL, NULL, 'You Are Not Prepared', 3),
-  (4, 1, 1, 1, NULL, '16-Bit Hero', 1), -- Normal All Heroes Player Icons
-  (5, 1, 1, 1, NULL, 'Anubis', 1),
-  (6, 1, 1, 1, NULL, 'Bao', 1),
-  (7, 1, 1, 1, NULL, 'Barbarian', 1),
-  (8, 1, 1, 1, NULL, 'Capsule', 1),
-  (9, 1, 1, 1, NULL, 'Cheers', 1),
-  (10, 1, 1, 1, NULL, 'Colossus', 1),
-  (11, 1, 1, 1, NULL, 'Credit', 1),
-  (12, 1, 1, 1, NULL, 'Crusader', 1),
-  (13, 1, 1, 1, NULL, 'Dark Lady', 1),
-  (14, 1, 1, 1, NULL, 'Demolition', 1),
-  (15, 1, 1, 1, NULL, 'Demon Hunter', 1),
-  (16, 1, 1, 1, NULL, 'Dominion', 1),
-  (17, 1, 1, 1, NULL, 'Elephant', 1),
-  (18, 1, 1, 1, NULL, 'For The Alliance', 1),
-  (19, 1, 1, 1, NULL, 'For The Horde', 1),
-  (20, 1, 1, 1, NULL, 'From Beyond The Moon', 1),
-  (21, 1, 1, 1, NULL, 'Garrosh', 1),
-  (22, 1, 1, 1, NULL, 'Happy Squid', 1),
-  (23, 1, 1, 1, NULL, 'Hearthstone', 1),
-  (24, 1, 1, 1, NULL, 'Hierarch', 1),
-  (25, 1, 1, 1, NULL, 'Jaina', 1),
-  (26, 1, 1, 1, NULL, 'Jim', 1),
-  (27, 1, 1, 1, NULL, 'Kofi Aromo', 1),
-  (28, 1, 1, 1, NULL, 'Lich King', 1),
-  (29, 1, 1, 1, NULL, 'Loot Box', 1),
-  (30, 1, 1, 1, NULL, 'Lord Of Candy', 1),
-  (31, 1, 1, 1, NULL, 'Lord Of Terror', 1),
-  (32, 1, 1, 1, NULL, 'Los Muertos', 1),
-  (33, 1, 1, 1, NULL, 'Mama Pig''s', 1),
-  (34, 1, 1, 1, NULL, 'Mariachi', 1),
-  (35, 1, 1, 1, NULL, 'Mech', 1),
-  (36, 1, 1, 1, NULL, 'Monk', 1),
-  (37, 1, 1, 1, NULL, 'Nexus', 1),
-  (38, 1, 1, 1, NULL, 'Pachimari', 1),
-  (39, 1, 1, 1, NULL, 'Pharaoh', 1),
-  (40, 1, 1, 1, NULL, 'Protoss', 1),
-  (41, 1, 1, 1, NULL, 'Queen Of Blades', 1),
-  (42, 1, 1, 1, NULL, 'Ramen', 1),
-  (43, 1, 1, 1, NULL, 'Rhino', 1),
-  (44, 1, 1, 1, NULL, 'Rikimaru', 1),
-  (45, 1, 1, 1, NULL, 'Route 66', 1),
-  (46, 1, 1, 1, NULL, 'Sakura', 1),
-  (47, 1, 1, 1, NULL, 'Scooter', 1),
-  (48, 1, 1, 1, NULL, 'Siege Mode', 1),
-  (49, 1, 1, 1, NULL, 'Six-Gun Killer', 1),
-  (50, 1, 1, 1, NULL, 'Svyatogor', 1),
-  (51, 1, 1, 1, NULL, 'Terran', 1),
-  (52, 1, 1, 1, NULL, 'Totem', 1),
-  (53, 1, 1, 1, NULL, 'Training Bot', 1),
-  (54, 1, 1, 1, NULL, 'Varian', 1),
-  (55, 1, 1, 1, NULL, 'Vivi', 1),
-  (56, 1, 1, 1, NULL, 'Witch Doctor', 1),
-  (57, 1, 1, 1, NULL, 'Wizard', 1),
-  (58, 1, 1, 1, NULL, 'Zerg', 1),
-  (59, 5, 1, 1, NULL, 'Season 1 Competitor', 2), -- Competitive All Heroes Player Icons
-  (60, 5, 1, 1, NULL, 'Season 1 Hero', 2),
-  (61, 5, 1, 1, NULL, 'Season 2 Competitor', 6),
-  (62, 5, 1, 1, NULL, 'Season 2 Hero', 6),
-  (63, 5, 1, 1, NULL, 'Season 3 Competitor', 10),
-  (64, 5, 1, 1, NULL, 'Season 3 Hero', 10),
-  (65, 5, 1, 1, NULL, 'Top 500', 2),
-  (66, 6, 1, 1, NULL, 'Australia', 4), -- Summer Games All Heroes Player Icons
-  (67, 6, 1, 1, NULL, 'Brazil', 4),
-  (68, 6, 1, 1, NULL, 'China', 4),
-  (69, 6, 1, 1, NULL, 'Egypt', 4),
-  (70, 6, 1, 1, NULL, 'France', 4),
-  (71, 6, 1, 1, NULL, 'Germany', 4),
-  (72, 6, 1, 1, NULL, 'Greece', 4),
-  (73, 6, 1, 1, NULL, 'Japan', 4),
-  (74, 6, 1, 1, NULL, 'Mexico', 4),
-  (75, 6, 1, 1, NULL, 'Nepal', 4),
-  (76, 6, 1, 1, NULL, 'Numbani', 4),
-  (77, 6, 1, 1, NULL, 'Russia', 4),
-  (78, 6, 1, 1, NULL, 'South Korea', 4),
-  (79, 6, 1, 1, NULL, 'Summer Games 2016', 4),
-  (80, 6, 1, 1, NULL, 'Sweden', 4),
-  (81, 6, 1, 1, NULL, 'Switzerland', 4),
-  (82, 6, 1, 1, NULL, 'United Kingdom', 4),
-  (83, 6, 1, 1, NULL, 'United States Of America', 4),
-  (84, 7, 1, 1, NULL, '...Never Die', 7), -- Halloween Terror All Heroes Player Icons
-  (85, 7, 1, 1, NULL, 'Bewitching', 7),
-  (86, 7, 1, 1, NULL, 'Calavera', 7),
-  (87, 7, 1, 1, NULL, 'Candle', 7),
-  (88, 7, 1, 1, NULL, 'Eyeball', 7),
-  (89, 7, 1, 1, NULL, 'Ghostymari', 7),
-  (90, 7, 1, 1, NULL, 'Halloween Terror 2016', 7),
-  (91, 7, 1, 1, NULL, 'Spider', 7),
-  (92, 7, 1, 1, NULL, 'Superstition', 7),
-  (93, 7, 1, 1, NULL, 'Tombstone', 7),
-  (94, 7, 1, 1, NULL, 'Vampachimari', 7),
-  (95, 7, 1, 1, NULL, 'Witch''s Brew', 7),
-  (96, 7, 1, 1, NULL, 'Witch''s Hat', 7),
-  (97, 7, 1, 1, NULL, 'Wolf', 7),
-  (98, 1, 1, 1, 1, 'Ana', 3), -- Normal Ana Player Icons
-  (99, 1, 1, 1, 1, 'Watcher', 3),
-  (100, 1, 1, 1, 1, 'Wedjat', 3),
-  (101, 6, 1, 1, 1, 'Shooting', 4), -- Summer Games Ana Player Icons
-  (102, 1, 1, 1, 2, 'Bastion', 1), -- Normal Bastion Player Icons
-  (103, 1, 1, 1, 2, 'Ganymede', 1),
-  (104, 1, 1, 1, 2, 'Tank Crossing', 1),
-  (105, 6, 1, 1, 2, 'Boxing', 4), -- Summer Games Bastion Player Icons
-  (106, 1, 1, 1, 3, 'D.Va', 1), -- Normal D.Va Player Icons
-  (107, 1, 1, 1, 3, 'Bunny', 1),
-  (108, 1, 1, 1, 3, 'Charm', 1),
-  (109, 6, 1, 1, 3, 'Cycling', 4), -- Summer Games D.Va Player Icons
-  (110, 1, 1, 1, 4, 'Genji', 1), -- Normal Genji Player Icons
-  (111, 1, 1, 1, 4, 'God Of War', 1),
-  (112, 1, 1, 1, 4, 'Nin', 1),
-  (113, 6, 1, 1, 4, 'Fencing', 4), -- Summer Games Genji Player Icons
-  (114, 9, 1, 1, 4, 'Oni', 9), -- Blizzard Genji Player Icons
-  (115, 1, 1, 1, 5, 'Hanzo', 1), -- Normal Hanzo Player Icons
-  (116, 1, 1, 1, 5, 'Shimada', 1),
-  (117, 1, 1, 1, 5, 'Storm', 1),
-  (118, 6, 1, 1, 5, 'Archery', 4), -- Summer Games Hanzo Player Icons
-  (119, 1, 1, 1, 6, 'Ahhhh!', 1), -- Normal Junkrat Player Icons
-  (120, 1, 1, 1, 6, 'Have A Nice Day!', 1),
-  (121, 1, 1, 1, 6, 'Junkrat', 1),
-  (122, 6, 1, 1, 6, 'Tennis', 4), -- Summer Games Junkrat Player Icons
-  (123, 7, 1, 1, 6, 'The Doctor', 7), -- Halloween Terror Junkrat Player Icons
-  (124, 1, 1, 1, 7, 'Frog', 1), -- Normal Lúcio Player Icons
-  (125, 1, 1, 1, 7, 'Kambô', 1),
-  (126, 1, 1, 1, 7, 'Lúcio', 1),
-  (127, 6, 1, 1, 7, 'Football', 4), -- Summer Games Lúcio Player Icons
-  (128, 1, 1, 1, 8, 'Badge', 1), -- Normal McCree Player Icons
-  (129, 1, 1, 1, 8, 'Deadeye', 1),
-  (130, 1, 1, 1, 8, 'McCree', 1),
-  (131, 6, 1, 1, 8, 'Equestrian', 4), -- Summer Games McCree Player Icons
-  (132, 1, 1, 1, 9, 'Hairpin', 1), -- Normal Mei Player Icons
-  (133, 1, 1, 1, 9, 'Mei', 1),
-  (134, 1, 1, 1, 9, 'Snowball', 1),
-  (135, 6, 1, 1, 9, 'Table Tennis', 4), -- Summer Games Mei Player Icons
-  (136, 1, 1, 1, 10, 'Guardian Angel', 1), -- Normal Mercy Player Icons
-  (137, 1, 1, 1, 10, 'Mercy', 1),
-  (138, 1, 1, 1, 10, 'Valkyrie', 1),
-  (139, 6, 1, 1, 10, 'Badminton', 4), -- Summer Games Mercy Player Icons
-  (140, 7, 1, 1, 10, 'The Witch', 7), -- Halloween Terror Mercy Player Icons
-  (141, 1, 1, 1, 11, 'Pharah', 1), -- Normal Pharah Player Icons
-  (142, 1, 1, 1, 11, 'Raptora', 1),
-  (143, 1, 1, 1, 11, 'Wadjet', 1),
-  (144, 6, 1, 1, 11, 'Basketball', 4), -- Summer Games Pharah Player Icons
-  (145, 1, 1, 1, 12, 'Emblem', 1), -- Normal Reaper Player Icons
-  (146, 1, 1, 1, 12, 'Reaper', 1),
-  (147, 1, 1, 1, 12, 'Soul Globe', 1),
-  (148, 6, 1, 1, 12, 'BMX', 4), -- Summer Games Reaper Player Icons
-  (149, 7, 1, 1, 12, 'The Reaper', 7), -- Halloween Terror Reaper Player Icons
-  (150, 1, 1, 1, 13, 'Lionhardt', 1), -- Normal Reinhardt Player Icons
-  (151, 1, 1, 1, 13, 'Reinhardt', 1),
-  (152, 1, 1, 1, 13, 'Scar', 1),
-  (153, 6, 1, 1, 13, 'Wrestling', 4), -- Summer Games Reinhardt Player Icons
-  (154, 1, 1, 1, 14, 'Hook', 1), -- Normal Roadhog Player Icons
-  (155, 1, 1, 1, 14, 'Piggy', 1),
-  (156, 1, 1, 1, 14, 'Roadhog', 1),
-  (157, 6, 1, 1, 14, 'Diving', 4), -- Summer Games Roadhog Player Icons
-  (158, 7, 1, 1, 14, 'The Monster', 7), -- Halloween Terror Roadhog Player Icons
-  (159, 1, 1, 1, 15, '76', 1), -- Normal Soldier: 76 Player Icons
-  (160, 1, 1, 1, 15, 'Soldier: 76', 1),
-  (161, 1, 1, 1, 15, 'Strike-Commander', 1),
-  (162, 6, 1, 1, 15, 'Golf', 4), -- Summer Games Soldier: 76 Player Icons
-  (163, 1, 1, 1, 16, 'Sentry', 1), -- Normal Symmetra Player Icons
-  (164, 1, 1, 1, 16, 'Symmetra', 1),
-  (165, 1, 1, 1, 16, 'Vishkar', 1),
-  (166, 6, 1, 1, 16, 'Rythmic Gymnastics', 4), -- Summer Games Symmetra Player Icons
-  (167, 1, 1, 1, 17, 'Forge', 1), -- Normal Torbjörn Player Icons
-  (168, 1, 1, 1, 17, 'Gears', 1),
-  (169, 1, 1, 1, 17, 'Torbjörn', 1),
-  (170, 6, 1, 1, 17, 'Water Polo', 4), -- Summer Games Torbjörn Player Icons
-  (171, 1, 1, 1, 18, 'Patch', 1), -- Normal Tracer Player Icons
-  (172, 1, 1, 1, 18, 'Pulse Bomb', 1),
-  (173, 1, 1, 1, 18, 'Tracer', 1),
-  (174, 6, 1, 1, 18, 'Track', 4), -- Summer Games Tracer Player Icons
-  (175, 1, 1, 1, 19, 'Baiser', 1), -- Normal Widowmaker Player Icons
-  (176, 1, 1, 1, 19, 'Grappling Hook', 1),
-  (177, 1, 1, 1, 19, 'Widowmaker', 1),
-  (178, 6, 1, 1, 19, 'Gymnastics', 4), -- Summer Games Widowmaker Player Icons
-  (179, 1, 1, 1, 20, 'Lunar Ops', 1), -- Normal Winston Player Icons
-  (180, 1, 1, 1, 20, 'Peanut Butter', 1),
-  (181, 1, 1, 1, 20, 'Winston', 1),
-  (182, 6, 1, 1, 20, 'Volleyball', 4), -- Summer Games Winston Player Icons
-  (183, 1, 1, 1, 21, '512', 1), -- Normal Zarya Player Icons
-  (184, 1, 1, 1, 21, 'Particle Barrier', 1),
-  (185, 1, 1, 1, 21, 'Zarya', 1),
-  (186, 6, 1, 1, 21, 'Weightlifting', 4), -- Summer Games Zarya Player Icons
-  (187, 1, 1, 1, 22, 'Harmony', 1), -- Normal Zenyatta Player Icons
-  (188, 1, 1, 1, 22, 'Meditation', 1),
-  (189, 1, 1, 1, 22, 'Zenyatta', 1),
-  (190, 6, 1, 1, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Player Icons
-  (191, 1, 1, 1, 23, 'Hacker', 9), -- Normal Sombra Player Icons
-  (192, 1, 1, 1, 23, 'Skull', 9),
-  (193, 1, 1, 1, 23, 'Sombra', 9),
+  (4, 1, 1, 2, NULL, '16-Bit Hero', 1), -- Normal All Heroes Player Icons
+  (5, 1, 1, 2, NULL, 'Anubis', 1),
+  (6, 1, 1, 2, NULL, 'Bao', 1),
+  (7, 1, 1, 2, NULL, 'Barbarian', 1),
+  (8, 1, 1, 2, NULL, 'Capsule', 1),
+  (9, 1, 1, 2, NULL, 'Cheers', 1),
+  (10, 1, 1, 2, NULL, 'Colossus', 1),
+  (11, 1, 1, 2, NULL, 'Credit', 1),
+  (12, 1, 1, 2, NULL, 'Crusader', 1),
+  (13, 1, 1, 2, NULL, 'Dark Lady', 1),
+  (14, 1, 1, 2, NULL, 'Demolition', 1),
+  (15, 1, 1, 2, NULL, 'Demon Hunter', 1),
+  (16, 1, 1, 2, NULL, 'Dominion', 1),
+  (17, 1, 1, 2, NULL, 'Elephant', 1),
+  (18, 1, 1, 2, NULL, 'For The Alliance', 1),
+  (19, 1, 1, 2, NULL, 'For The Horde', 1),
+  (20, 1, 1, 2, NULL, 'From Beyond The Moon', 1),
+  (21, 1, 1, 2, NULL, 'Garrosh', 1),
+  (22, 1, 1, 2, NULL, 'Happy Squid', 1),
+  (23, 1, 1, 2, NULL, 'Hearthstone', 1),
+  (24, 1, 1, 2, NULL, 'Hierarch', 1),
+  (25, 1, 1, 2, NULL, 'Jaina', 1),
+  (26, 1, 1, 2, NULL, 'Jim', 1),
+  (27, 1, 1, 2, NULL, 'Kofi Aromo', 1),
+  (28, 1, 1, 2, NULL, 'Lich King', 1),
+  (29, 1, 1, 2, NULL, 'Loot Box', 1),
+  (30, 1, 1, 2, NULL, 'Lord Of Candy', 1),
+  (31, 1, 1, 2, NULL, 'Lord Of Terror', 1),
+  (32, 1, 1, 2, NULL, 'Los Muertos', 1),
+  (33, 1, 1, 2, NULL, 'Mama Pig''s', 1),
+  (34, 1, 1, 2, NULL, 'Mariachi', 1),
+  (35, 1, 1, 2, NULL, 'Mech', 1),
+  (36, 1, 1, 2, NULL, 'Monk', 1),
+  (37, 1, 1, 2, NULL, 'Nexus', 1),
+  (38, 1, 1, 2, NULL, 'Pachimari', 1),
+  (39, 1, 1, 2, NULL, 'Pharaoh', 1),
+  (40, 1, 1, 2, NULL, 'Protoss', 1),
+  (41, 1, 1, 2, NULL, 'Queen Of Blades', 1),
+  (42, 1, 1, 2, NULL, 'Ramen', 1),
+  (43, 1, 1, 2, NULL, 'Rhino', 1),
+  (44, 1, 1, 2, NULL, 'Rikimaru', 1),
+  (45, 1, 1, 2, NULL, 'Route 66', 1),
+  (46, 1, 1, 2, NULL, 'Sakura', 1),
+  (47, 1, 1, 2, NULL, 'Scooter', 1),
+  (48, 1, 1, 2, NULL, 'Siege Mode', 1),
+  (49, 1, 1, 2, NULL, 'Six-Gun Killer', 1),
+  (50, 1, 1, 2, NULL, 'Svyatogor', 1),
+  (51, 1, 1, 2, NULL, 'Terran', 1),
+  (52, 1, 1, 2, NULL, 'Totem', 1),
+  (53, 1, 1, 2, NULL, 'Training Bot', 1),
+  (54, 1, 1, 2, NULL, 'Varian', 1),
+  (55, 1, 1, 2, NULL, 'Vivi', 1),
+  (56, 1, 1, 2, NULL, 'Witch Doctor', 1),
+  (57, 1, 1, 2, NULL, 'Wizard', 1),
+  (58, 1, 1, 2, NULL, 'Zerg', 1),
+  (59, 5, 1, 2, NULL, 'Season 1 Competitor', 2), -- Competitive All Heroes Player Icons
+  (60, 5, 1, 2, NULL, 'Season 1 Hero', 2),
+  (61, 5, 1, 2, NULL, 'Season 2 Competitor', 6),
+  (62, 5, 1, 2, NULL, 'Season 2 Hero', 6),
+  (63, 5, 1, 2, NULL, 'Season 3 Competitor', 10),
+  (64, 5, 1, 2, NULL, 'Season 3 Hero', 10),
+  (65, 5, 1, 2, NULL, 'Top 500', 2),
+  (66, 6, 1, 2, NULL, 'Australia', 4), -- Summer Games All Heroes Player Icons
+  (67, 6, 1, 2, NULL, 'Brazil', 4),
+  (68, 6, 1, 2, NULL, 'China', 4),
+  (69, 6, 1, 2, NULL, 'Egypt', 4),
+  (70, 6, 1, 2, NULL, 'France', 4),
+  (71, 6, 1, 2, NULL, 'Germany', 4),
+  (72, 6, 1, 2, NULL, 'Greece', 4),
+  (73, 6, 1, 2, NULL, 'Japan', 4),
+  (74, 6, 1, 2, NULL, 'Mexico', 4),
+  (75, 6, 1, 2, NULL, 'Nepal', 4),
+  (76, 6, 1, 2, NULL, 'Numbani', 4),
+  (77, 6, 1, 2, NULL, 'Russia', 4),
+  (78, 6, 1, 2, NULL, 'South Korea', 4),
+  (79, 6, 1, 2, NULL, 'Summer Games 2016', 4),
+  (80, 6, 1, 2, NULL, 'Sweden', 4),
+  (81, 6, 1, 2, NULL, 'Switzerland', 4),
+  (82, 6, 1, 2, NULL, 'United Kingdom', 4),
+  (83, 6, 1, 2, NULL, 'United States Of America', 4),
+  (84, 7, 1, 2, NULL, '...Never Die', 7), -- Halloween Terror All Heroes Player Icons
+  (85, 7, 1, 2, NULL, 'Bewitching', 7),
+  (86, 7, 1, 2, NULL, 'Calavera', 7),
+  (87, 7, 1, 2, NULL, 'Candle', 7),
+  (88, 7, 1, 2, NULL, 'Eyeball', 7),
+  (89, 7, 1, 2, NULL, 'Ghostymari', 7),
+  (90, 7, 1, 2, NULL, 'Halloween Terror 2016', 7),
+  (91, 7, 1, 2, NULL, 'Spider', 7),
+  (92, 7, 1, 2, NULL, 'Superstition', 7),
+  (93, 7, 1, 2, NULL, 'Tombstone', 7),
+  (94, 7, 1, 2, NULL, 'Vampachimari', 7),
+  (95, 7, 1, 2, NULL, 'Witch''s Brew', 7),
+  (96, 7, 1, 2, NULL, 'Witch''s Hat', 7),
+  (97, 7, 1, 2, NULL, 'Wolf', 7),
+  (98, 1, 1, 2, 1, 'Ana', 3), -- Normal Ana Player Icons
+  (99, 1, 1, 2, 1, 'Watcher', 3),
+  (100, 1, 1, 2, 1, 'Wedjat', 3),
+  (101, 6, 1, 2, 1, 'Shooting', 4), -- Summer Games Ana Player Icons
+  (102, 1, 1, 2, 2, 'Bastion', 1), -- Normal Bastion Player Icons
+  (103, 1, 1, 2, 2, 'Ganymede', 1),
+  (104, 1, 1, 2, 2, 'Tank Crossing', 1),
+  (105, 6, 1, 2, 2, 'Boxing', 4), -- Summer Games Bastion Player Icons
+  (106, 1, 1, 2, 3, 'D.Va', 1), -- Normal D.Va Player Icons
+  (107, 1, 1, 2, 3, 'Bunny', 1),
+  (108, 1, 1, 2, 3, 'Charm', 1),
+  (109, 6, 1, 2, 3, 'Cycling', 4), -- Summer Games D.Va Player Icons
+  (110, 1, 1, 2, 4, 'Genji', 1), -- Normal Genji Player Icons
+  (111, 1, 1, 2, 4, 'God Of War', 1),
+  (112, 1, 1, 2, 4, 'Nin', 1),
+  (113, 6, 1, 2, 4, 'Fencing', 4), -- Summer Games Genji Player Icons
+  (114, 9, 1, 2, 4, 'Oni', 9), -- Blizzard Genji Player Icons
+  (115, 1, 1, 2, 5, 'Hanzo', 1), -- Normal Hanzo Player Icons
+  (116, 1, 1, 2, 5, 'Shimada', 1),
+  (117, 1, 1, 2, 5, 'Storm', 1),
+  (118, 6, 1, 2, 5, 'Archery', 4), -- Summer Games Hanzo Player Icons
+  (119, 1, 1, 2, 6, 'Ahhhh!', 1), -- Normal Junkrat Player Icons
+  (120, 1, 1, 2, 6, 'Have A Nice Day!', 1),
+  (121, 1, 1, 2, 6, 'Junkrat', 1),
+  (122, 6, 1, 2, 6, 'Tennis', 4), -- Summer Games Junkrat Player Icons
+  (123, 7, 1, 2, 6, 'The Doctor', 7), -- Halloween Terror Junkrat Player Icons
+  (124, 1, 1, 2, 7, 'Frog', 1), -- Normal Lúcio Player Icons
+  (125, 1, 1, 2, 7, 'Kambô', 1),
+  (126, 1, 1, 2, 7, 'Lúcio', 1),
+  (127, 6, 1, 2, 7, 'Football', 4), -- Summer Games Lúcio Player Icons
+  (128, 1, 1, 2, 8, 'Badge', 1), -- Normal McCree Player Icons
+  (129, 1, 1, 2, 8, 'Deadeye', 1),
+  (130, 1, 1, 2, 8, 'McCree', 1),
+  (131, 6, 1, 2, 8, 'Equestrian', 4), -- Summer Games McCree Player Icons
+  (132, 1, 1, 2, 9, 'Hairpin', 1), -- Normal Mei Player Icons
+  (133, 1, 1, 2, 9, 'Mei', 1),
+  (134, 1, 1, 2, 9, 'Snowball', 1),
+  (135, 6, 1, 2, 9, 'Table Tennis', 4), -- Summer Games Mei Player Icons
+  (136, 1, 1, 2, 10, 'Guardian Angel', 1), -- Normal Mercy Player Icons
+  (137, 1, 1, 2, 10, 'Mercy', 1),
+  (138, 1, 1, 2, 10, 'Valkyrie', 1),
+  (139, 6, 1, 2, 10, 'Badminton', 4), -- Summer Games Mercy Player Icons
+  (140, 7, 1, 2, 10, 'The Witch', 7), -- Halloween Terror Mercy Player Icons
+  (141, 1, 1, 2, 11, 'Pharah', 1), -- Normal Pharah Player Icons
+  (142, 1, 1, 2, 11, 'Raptora', 1),
+  (143, 1, 1, 2, 11, 'Wadjet', 1),
+  (144, 6, 1, 2, 11, 'Basketball', 4), -- Summer Games Pharah Player Icons
+  (145, 1, 1, 2, 12, 'Emblem', 1), -- Normal Reaper Player Icons
+  (146, 1, 1, 2, 12, 'Reaper', 1),
+  (147, 1, 1, 2, 12, 'Soul Globe', 1),
+  (148, 6, 1, 2, 12, 'BMX', 4), -- Summer Games Reaper Player Icons
+  (149, 7, 1, 2, 12, 'The Reaper', 7), -- Halloween Terror Reaper Player Icons
+  (150, 1, 1, 2, 13, 'Lionhardt', 1), -- Normal Reinhardt Player Icons
+  (151, 1, 1, 2, 13, 'Reinhardt', 1),
+  (152, 1, 1, 2, 13, 'Scar', 1),
+  (153, 6, 1, 2, 13, 'Wrestling', 4), -- Summer Games Reinhardt Player Icons
+  (154, 1, 1, 2, 14, 'Hook', 1), -- Normal Roadhog Player Icons
+  (155, 1, 1, 2, 14, 'Piggy', 1),
+  (156, 1, 1, 2, 14, 'Roadhog', 1),
+  (157, 6, 1, 2, 14, 'Diving', 4), -- Summer Games Roadhog Player Icons
+  (158, 7, 1, 2, 14, 'The Monster', 7), -- Halloween Terror Roadhog Player Icons
+  (159, 1, 1, 2, 15, '76', 1), -- Normal Soldier: 76 Player Icons
+  (160, 1, 1, 2, 15, 'Soldier: 76', 1),
+  (161, 1, 1, 2, 15, 'Strike-Commander', 1),
+  (162, 6, 1, 2, 15, 'Golf', 4), -- Summer Games Soldier: 76 Player Icons
+  (163, 1, 1, 2, 16, 'Sentry', 1), -- Normal Symmetra Player Icons
+  (164, 1, 1, 2, 16, 'Symmetra', 1),
+  (165, 1, 1, 2, 16, 'Vishkar', 1),
+  (166, 6, 1, 2, 16, 'Rythmic Gymnastics', 4), -- Summer Games Symmetra Player Icons
+  (167, 1, 1, 2, 17, 'Forge', 1), -- Normal Torbjörn Player Icons
+  (168, 1, 1, 2, 17, 'Gears', 1),
+  (169, 1, 1, 2, 17, 'Torbjörn', 1),
+  (170, 6, 1, 2, 17, 'Water Polo', 4), -- Summer Games Torbjörn Player Icons
+  (171, 1, 1, 2, 18, 'Patch', 1), -- Normal Tracer Player Icons
+  (172, 1, 1, 2, 18, 'Pulse Bomb', 1),
+  (173, 1, 1, 2, 18, 'Tracer', 1),
+  (174, 6, 1, 2, 18, 'Track', 4), -- Summer Games Tracer Player Icons
+  (175, 1, 1, 2, 19, 'Baiser', 1), -- Normal Widowmaker Player Icons
+  (176, 1, 1, 2, 19, 'Grappling Hook', 1),
+  (177, 1, 1, 2, 19, 'Widowmaker', 1),
+  (178, 6, 1, 2, 19, 'Gymnastics', 4), -- Summer Games Widowmaker Player Icons
+  (179, 1, 1, 2, 20, 'Lunar Ops', 1), -- Normal Winston Player Icons
+  (180, 1, 1, 2, 20, 'Peanut Butter', 1),
+  (181, 1, 1, 2, 20, 'Winston', 1),
+  (182, 6, 1, 2, 20, 'Volleyball', 4), -- Summer Games Winston Player Icons
+  (183, 1, 1, 2, 21, '512', 1), -- Normal Zarya Player Icons
+  (184, 1, 1, 2, 21, 'Particle Barrier', 1),
+  (185, 1, 1, 2, 21, 'Zarya', 1),
+  (186, 6, 1, 2, 21, 'Weightlifting', 4), -- Summer Games Zarya Player Icons
+  (187, 1, 1, 2, 22, 'Harmony', 1), -- Normal Zenyatta Player Icons
+  (188, 1, 1, 2, 22, 'Meditation', 1),
+  (189, 1, 1, 2, 22, 'Zenyatta', 1),
+  (190, 6, 1, 2, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Player Icons
+  (191, 1, 1, 2, 23, 'Hacker', 9), -- Normal Sombra Player Icons
+  (192, 1, 1, 2, 23, 'Skull', 9),
+  (193, 1, 1, 2, 23, 'Sombra', 9),
   (194, NULL, 2, NULL, 1, 'Classic', 3), -- Default Ana Skins
   (195, 1, 2, 2, 1, 'Citrine', 3), -- Normal Ana Skins
   (196, 1, 2, 2, 1, 'Garnet', 3),

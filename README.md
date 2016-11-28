@@ -15,6 +15,7 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Improve design
 
 #### To Do
+- Compare collections
 - Button "Go to top of the page" in collection
 - Fix display of buttons in collection on smaller screens
 - "Open a Lootbox" page where you can quickly input a couple new items
