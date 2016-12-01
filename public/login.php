@@ -65,6 +65,16 @@ if (!isUserLoggedIn()) {
         $_SESSION["region"] = strtoupper($_GET["region"]) !== "SEA" ? strtoupper($_GET["region"]) : "US";
         header("Location: ./login.php");
         die();
+    } else if (isset($_GET["debug"])) {
+        $user = UsersTable::getInstance()->getUserByBattleid(12345, "Debug#12345");
+        if ($user !== null) {
+            $_SESSION["user"] = $user;
+            $_SESSION["needrefresh"] = true;
+            header("Location: ./");
+            die();
+        } else {
+            echo "Error: Couldn't create user account.";
+        }
     } else {
         echo $twig->render("login.twig");
     }

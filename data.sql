@@ -152,8 +152,8 @@ VALUES
   (27, 1, 1, 2, NULL, 'Kofi Aromo', 1),
   (28, 1, 1, 2, NULL, 'Lich King', 1),
   (29, 1, 1, 2, NULL, 'Loot Box', 1),
-  (30, 1, 1, 2, NULL, 'Lord Of Candy', 1),
-  (31, 1, 1, 2, NULL, 'Lord Of Terror', 1),
+  (30, 1, 1, 2, NULL, 'Lord of Candy', 1),
+  (31, 1, 1, 2, NULL, 'Lord of Terror', 1),
   (32, 1, 1, 2, NULL, 'Los Muertos', 1),
   (33, 1, 1, 2, NULL, 'Mama Pig''s', 1),
   (34, 1, 1, 2, NULL, 'Mariachi', 1),
@@ -163,7 +163,7 @@ VALUES
   (38, 1, 1, 2, NULL, 'Pachimari', 1),
   (39, 1, 1, 2, NULL, 'Pharaoh', 1),
   (40, 1, 1, 2, NULL, 'Protoss', 1),
-  (41, 1, 1, 2, NULL, 'Queen Of Blades', 1),
+  (41, 1, 1, 2, NULL, 'Queen of Blades', 1),
   (42, 1, 1, 2, NULL, 'Ramen', 1),
   (43, 1, 1, 2, NULL, 'Rhino', 1),
   (44, 1, 1, 2, NULL, 'Rikimaru', 1),
@@ -205,7 +205,7 @@ VALUES
   (80, 6, 1, 2, NULL, 'Sweden', 4),
   (81, 6, 1, 2, NULL, 'Switzerland', 4),
   (82, 6, 1, 2, NULL, 'United Kingdom', 4),
-  (83, 6, 1, 2, NULL, 'United States Of America', 4),
+  (83, 6, 1, 2, NULL, 'United States of America', 4),
   (84, 7, 1, 2, NULL, '...Never Die', 7), -- Halloween Terror All Heroes Player Icons
   (85, 7, 1, 2, NULL, 'Bewitching', 7),
   (86, 7, 1, 2, NULL, 'Calavera', 7),
@@ -233,7 +233,7 @@ VALUES
   (108, 1, 1, 2, 3, 'Charm', 1),
   (109, 6, 1, 2, 3, 'Cycling', 4), -- Summer Games D.Va Player Icons
   (110, 1, 1, 2, 4, 'Genji', 1), -- Normal Genji Player Icons
-  (111, 1, 1, 2, 4, 'God Of War', 1),
+  (111, 1, 1, 2, 4, 'God of War', 1),
   (112, 1, 1, 2, 4, 'Nin', 1),
   (113, 6, 1, 2, 4, 'Fencing', 4), -- Summer Games Genji Player Icons
   (114, 9, 1, 2, 4, 'Oni', 9), -- Blizzard Genji Player Icons
@@ -542,7 +542,7 @@ VALUES
   (417, 1, 2, 4, 18, 'Ultraviolet', 1),
   (418, 3, 2, 4, 18, 'Slipstream', 1), -- Origins Edition Tracer Skins
   (419, 6, 2, 4, 18, 'Sprinter', 4), -- Summer Games Tracer Skins
-  (420, 6, 2, 4, 18, 'Track And Field', 4),
+  (420, 6, 2, 4, 18, 'Track and Field', 4),
   (421, NULL, 2, NULL, 19, 'Classic', 1), -- Default Widowmaker Skins
   (422, 1, 2, 2, 19, 'Ciel', 1), -- Normal Widowmaker Skins
   (423, 1, 2, 2, 19, 'Nuit', 1),
@@ -557,7 +557,7 @@ VALUES
   (432, 4, 2, 4, 19, 'Noire', 1), -- Preorder Widowmaker Skins
   (433, 6, 2, 3, 19, 'Tricolore', 4), -- Summer Games Widowmaker Skins
   (434, NULL, 2, NULL, 20, 'Classic', 1), -- Default Winston Skins
-  (435, 1, 2, 2, 20, 'Atmosphere', 1), -- Normal Winston Skins
+  (435, 1, 2, 2, 20, 'atmosphere', 1), -- Normal Winston Skins
   (436, 1, 2, 2, 20, 'Banana', 1),
   (437, 1, 2, 2, 20, 'Forest', 1),
   (438, 1, 2, 2, 20, 'Red Planet', 1),
@@ -653,7 +653,7 @@ VALUES
   (528, 1, 3, 3, 8, 'Hat Tip', 1),
   (529, 1, 3, 3, 8, 'Joker', 5),
   (530, 1, 3, 3, 8, 'Spit', 1),
-  (531, 1, 3, 3, 8, 'Take A Load Off', 5),
+  (531, 1, 3, 3, 8, 'Take A Load off', 5),
   (532, NULL, 3, NULL, 9, 'Heroic', 1), -- Default Mei Emotes
   (533, 1, 3, 3, 9, 'Companion', 1), -- Normal Mei Emotes
   (534, 1, 3, 3, 9, 'Giggle', 5),
@@ -695,7 +695,7 @@ VALUES
   (570, 1, 3, 3, 15, 'Amused', 5), -- Normal Soldier: 76 Emotes
   (571, 1, 3, 3, 15, 'Fist', 1),
   (572, 1, 3, 3, 15, 'I See You', 1),
-  (573, 1, 3, 3, 15, 'Locked And Loaded', 1),
+  (573, 1, 3, 3, 15, 'Locked and Loaded', 1),
   (574, 1, 3, 3, 15, 'Take A Knee', 5),
   (575, NULL, 3, NULL, 16, 'Heroic', 1), -- Default Symmetra Emotes
   (576, 1, 3, 3, 16, 'Clap', 1), -- Normal Symmetra Emotes
@@ -716,7 +716,7 @@ VALUES
   (591, 1, 3, 3, 18, 'Sitting Around...', 5),
   (592, 1, 3, 3, 18, 'Spin', 1),
   (593, NULL, 3, NULL, 19, 'Heroic', 1), -- Default Widowmaker Emotes
-  (594, 1, 3, 3, 19, 'At Rest', 5), -- Normal Widowmaker Emotes
+  (594, 1, 3, 3, 19, 'at Rest', 5), -- Normal Widowmaker Emotes
   (595, 1, 3, 3, 19, 'Curtain Call', 1),
   (596, 1, 3, 3, 19, 'Delighted', 5),
   (597, 1, 3, 3, 19, 'Shot Dead', 1),
@@ -737,7 +737,7 @@ VALUES
   (612, NULL, 3, NULL, 22, 'Heroic', 1), -- Default Zenyatta Emotes
   (613, 1, 3, 3, 22, 'Focusing', 1), -- Normal Zenyatta Emotes
   (614, 1, 3, 3, 22, 'Meditate', 1),
-  (615, 1, 3, 3, 22, 'Round Of Applause', 1),
+  (615, 1, 3, 3, 22, 'Round of Applause', 1),
   (616, 1, 3, 3, 22, 'Taunt', 5),
   (617, 1, 3, 3, 22, 'Tickled', 5),
   (618, NULL, 3, NULL, 23, 'Heroic', 9), -- Default Sombra Emotes
@@ -821,7 +821,7 @@ VALUES
   (695, 7, 4, 2, 14, 'R.I.P.', 7), -- Halloween Terror Roadhog Victory Poses
   (696, NULL, 4, NULL, 15, 'Heroic', 1), -- Default Soldier: 76 Victory Poses
   (697, 1, 4, 2, 15, 'Fist Pump', 1), -- Normal Soldier: 76 Victory Poses
-  (698, 1, 4, 2, 15, 'Locked And Loaded', 1),
+  (698, 1, 4, 2, 15, 'Locked and Loaded', 1),
   (699, 1, 4, 2, 15, 'Soldier', 1),
   (700, 6, 4, 2, 15, 'Golf Swing', 4), -- Summer Games Soldier: 76 Victory Poses
   (701, 7, 4, 2, 15, 'R.I.P.', 7), -- Halloween Terror Soldier: 76 Victory Poses
@@ -951,7 +951,7 @@ VALUES
   (824, 1, 5, 1, 7, 'Can''t Stop, Won''t Stop', 1), -- Normal Lúcio Voice Lines
   (825, 1, 5, 1, 7, 'Hit Me!', 1),
   (826, 1, 5, 1, 7, 'I Could Do This All Day', 1),
-  (827, 1, 5, 1, 7, 'I''m On Top Of The World', 1),
+  (827, 1, 5, 1, 7, 'I''m On Top of The World', 1),
   (828, 1, 5, 1, 7, 'Jackpot!', 1),
   (829, 1, 5, 1, 7, 'Not Hearing That Noise', 1),
   (830, 1, 5, 1, 7, 'Oh, Yeah!', 1),
@@ -960,16 +960,16 @@ VALUES
   (833, 1, 5, 1, 7, 'You Gotta Believe!', 1),
   (834, 6, 5, 1, 7, 'Be Champions', 4), -- Summer Games Lúcio Voice Lines
   (835, 7, 5, 1, 7, 'Killed It!', 7), -- Halloween Terror Lúcio Voice Lines
-  (836, NULL, 5, NULL, 8, 'Watch And Learn', 1), -- Default McCree Voice Lines
+  (836, NULL, 5, NULL, 8, 'Watch and Learn', 1), -- Default McCree Voice Lines
   (837, 1, 5, 1, 8, 'Ain''t I Killed You Before', 1), -- Normal McCree Voice Lines
-  (838, 1, 5, 1, 8, 'Happens To The Best Of Us', 1),
+  (838, 1, 5, 1, 8, 'Happens To The Best of Us', 1),
   (839, 1, 5, 1, 8, 'I Tried Being Reasonable', 1),
   (840, 1, 5, 1, 8, 'I''m In The Quick...', 1),
   (841, 1, 5, 1, 8, 'I''m Your Huckleberry', 1),
   (842, 1, 5, 1, 8, 'I''ve Got A Bullet...', 1),
   (843, 1, 5, 1, 8, 'Reach For The Sky', 1),
   (844, 1, 5, 1, 8, 'Sure As Hell Ain''t Ugly', 1),
-  (845, 1, 5, 1, 8, 'Wanted: Dead Or Alive', 1),
+  (845, 1, 5, 1, 8, 'Wanted: Dead or Alive', 1),
   (846, 1, 5, 1, 8, 'You Done?', 1),
   (847, 6, 5, 1, 8, 'I Don''t Much Like Losing', 4), -- Summer Games McCree Voice Lines
   (848, 7, 5, 1, 8, 'It''s Your Funeral', 7), -- Halloween Terror McCree Voice Lines
@@ -992,12 +992,12 @@ VALUES
   (865, 1, 5, 1, 10, 'How Barbaric', 1),
   (866, 1, 5, 1, 10, 'Miracle Worker', 1),
   (867, 1, 5, 1, 10, 'Need A Second Opinion?', 1),
-  (868, 1, 5, 1, 10, 'On A Scale Of 1-10', 1),
+  (868, 1, 5, 1, 10, 'On A Scale of 1-10', 1),
   (869, 1, 5, 1, 10, 'Super!', 1),
   (870, 1, 5, 1, 10, 'Take Two', 1),
   (871, 1, 5, 1, 10, 'The Doctor Is In', 1),
   (872, 1, 5, 1, 10, 'The Doctor Will See You', 1),
-  (873, 6, 5, 1, 10, 'Piece Of Cake', 4), -- Summer Games Mercy Voice Lines
+  (873, 6, 5, 1, 10, 'Piece of Cake', 4), -- Summer Games Mercy Voice Lines
   (874, 7, 5, 1, 10, 'Superstition', 7), -- Halloween Terror Mercy Voice Lines
   (875, NULL, 5, NULL, 11, 'Security In My Hands', 1), -- Default Pharah Voice Lines
   (876, 1, 5, 1, 11, 'Aerial Superiority Achieved', 1), -- Normal Pharah Voice Lines
@@ -1011,8 +1011,8 @@ VALUES
   (884, 1, 5, 1, 11, 'Shot Down', 1),
   (885, 1, 5, 1, 11, 'Sorry, But I Need To Jet', 1),
   (886, 6, 5, 1, 11, 'We Are In This Together', 4), -- Summer Games Pharah Voice Lines
-  (887, 7, 5, 1, 11, 'Dead Or Alive', 7), -- Halloween Terror Pharah Voice Lines
-  (888, NULL, 5, NULL, 12, 'What Are You Looking At', 1), -- Default Reaper Voice Lines
+  (887, 7, 5, 1, 11, 'Dead or Alive', 7), -- Halloween Terror Pharah Voice Lines
+  (888, NULL, 5, NULL, 12, 'What Are You Looking at', 1), -- Default Reaper Voice Lines
   (889, 1, 5, 1, 12, 'Dead Man Walking', 1), -- Normal Reaper Voice Lines
   (890, 1, 5, 1, 12, 'Give Me A Break', 1),
   (891, 1, 5, 1, 12, 'Haven''t I Killed You', 1),
@@ -1032,7 +1032,7 @@ VALUES
   (905, 1, 5, 1, 13, 'Crusader Online', 1),
   (906, 1, 5, 1, 13, 'Crushing Machine', 1),
   (907, 1, 5, 1, 13, 'German Engineering', 1),
-  (908, 1, 5, 1, 13, 'Honor And Glory', 1),
+  (908, 1, 5, 1, 13, 'Honor and Glory', 1),
   (909, 1, 5, 1, 13, 'Respect Your Elders', 1),
   (910, 1, 5, 1, 13, 'Show You How It''s Done', 1),
   (911, 1, 5, 1, 13, 'This Old Dog', 1),
@@ -1042,29 +1042,29 @@ VALUES
   (915, 1, 5, 1, 14, 'Candy From A Baby', 1), -- Normal Roadhog Voice Lines
   (916, 1, 5, 1, 14, 'Got Something To Say?', 1),
   (917, 1, 5, 1, 14, 'Hahaha!', 1),
-  (918, 1, 5, 1, 14, 'Hook, Line, And Sinker', 1),
+  (918, 1, 5, 1, 14, 'Hook, Line, and Sinker', 1),
   (919, 1, 5, 1, 14, 'Life Is Pain, So Is Death', 1),
-  (920, 1, 5, 1, 14, 'Piece Of Cake', 1),
-  (921, 1, 5, 1, 14, 'Push Off', 1),
+  (920, 1, 5, 1, 14, 'Piece of Cake', 1),
+  (921, 1, 5, 1, 14, 'Push off', 1),
   (922, 1, 5, 1, 14, 'Say "Bacon..."', 1),
   (923, 1, 5, 1, 14, 'Violence Is The Answer', 1),
   (924, 1, 5, 1, 14, 'We''re All Animals', 1),
   (925, 1, 5, 1, 14, 'What''s Mine Is Mine', 1), -- Summer Games Roadhog Voice Lines
   (926, 1, 5, 1, 14, 'Want Some Candy?', 1), -- Halloween Terror Roadhog Voice Lines
   (927, NULL, 5, NULL, 15, 'I''ve Still Got It', 1), -- Default Soldier: 76 Voice Lines
-  (928, 1, 5, 1, 15, 'Get Off My Lawn', 1), -- Normal Soldier: 76 Voice Lines
+  (928, 1, 5, 1, 15, 'Get off My Lawn', 1), -- Normal Soldier: 76 Voice Lines
   (929, 1, 5, 1, 15, 'I Didn''t Start This War...', 1),
-  (930, 1, 5, 1, 15, 'I''m An Army Of One', 1),
+  (930, 1, 5, 1, 15, 'I''m An Army of One', 1),
   (931, 1, 5, 1, 15, 'Not On My Watch', 1),
   (932, 1, 5, 1, 15, 'Old Soldiers', 1),
   (933, 1, 5, 1, 15, 'Smells Like Victory', 1),
   (934, 1, 5, 1, 15, 'That''s "Sir" To You', 1),
-  (935, 1, 5, 1, 15, 'What Are You Lookin'' At?', 1),
+  (935, 1, 5, 1, 15, 'What Are You Lookin'' at?', 1),
   (936, 1, 5, 1, 15, 'You Didn''t Make The Cut', 1),
   (937, 1, 5, 1, 15, 'You''re The Other One', 1),
   (938, 1, 5, 1, 15, 'You Want A Medal?', 1), -- Summer Games Soldier: 76 Voice Lines
   (939, 1, 5, 1, 15, 'Knock Knock', 1), -- Halloween Terror Soldier: 76 Voice Lines
-  (940, NULL, 5, NULL, 16, 'Such A Lack Of Imagination', 1), -- Default Symmetra Voice Lines
+  (940, NULL, 5, NULL, 16, 'Such A Lack of Imagination', 1), -- Default Symmetra Voice Lines
   (941, 1, 5, 1, 16, 'Everything By Design', 1), -- Normal Symmetra Voice Lines
   (942, 1, 5, 1, 16, 'Exquisite', 1),
   (943, 1, 5, 1, 16, 'How Unsightly', 1),
@@ -1075,10 +1075,10 @@ VALUES
   (948, 1, 5, 1, 16, 'Put You In Your Place', 1),
   (949, 1, 5, 1, 16, 'Welcome To My Reality', 1),
   (950, 1, 5, 1, 16, 'Why Do You Struggle?', 1),
-  (951, 1, 5, 1, 16, 'Hard Work And Dedication', 1), -- Summer Games Symmetra Voice Lines
+  (951, 1, 5, 1, 16, 'Hard Work and Dedication', 1), -- Summer Games Symmetra Voice Lines
   (952, 1, 5, 1, 16, 'A Frightening Thought', 1), -- Halloween Terror Symmetra Voice Lines
-  (953, NULL, 5, NULL, 17, 'Hard Work Pays Off', 1), -- Default Torbjörn Voice Lines
-  (954, 1, 5, 1, 17, 'A Chicken Out Of A Feather', 1), -- Normal Torbjörn Voice Lines
+  (953, NULL, 5, NULL, 17, 'Hard Work Pays off', 1), -- Default Torbjörn Voice Lines
+  (954, 1, 5, 1, 17, 'A Chicken Out of A Feather', 1), -- Normal Torbjörn Voice Lines
   (955, 1, 5, 1, 17, 'Completion Date?', 1),
   (956, 1, 5, 1, 17, 'Don''t Get Caught', 1),
   (957, 1, 5, 1, 17, 'Engineers', 1),
@@ -1125,7 +1125,7 @@ VALUES
   (998, 1, 5, 1, 20, 'No Monkey Business', 1),
   (999, 1, 5, 1, 20, 'Peanut Butter?', 1),
   (1000, 1, 5, 1, 20, 'Sorry About That!', 1),
-  (1001, 1, 5, 1, 20, 'The Power Of Science!', 1),
+  (1001, 1, 5, 1, 20, 'The Power of Science!', 1),
   (1002, 1, 5, 1, 20, 'We Have A Problem', 1),
   (1003, 1, 5, 1, 20, 'Playtime''s Over', 1), -- Summer Games Winston Voice Lines
   (1004, 1, 5, 1, 20, 'This Is Not A Costume', 1), -- Halloween Terror Winston Voice Lines
@@ -1150,11 +1150,11 @@ VALUES
   (1023, 1, 5, 1, 22, 'I Dreamt I Was A Butterfly', 1),
   (1024, 1, 5, 1, 22, 'I Think, Therefore I Am', 1),
   (1025, 1, 5, 1, 22, 'I Will Not Juggle', 1),
-  (1026, 1, 5, 1, 22, 'Ones And Zeroes', 1),
-  (1027, 1, 5, 1, 22, 'Peace And Blessings', 1),
+  (1026, 1, 5, 1, 22, 'Ones and Zeroes', 1),
+  (1027, 1, 5, 1, 22, 'Peace and Blessings', 1),
   (1028, 1, 5, 1, 22, 'The Iris Embraces You', 1),
   (1029, 1, 5, 1, 22, 'Strive For Improvement', 1), -- Summer Games Zenyatta Voice Lines
-  (1030, 1, 5, 1, 22, 'Trick Or Treat?', 1), -- Halloween Terror Zenyatta Voice Lines
+  (1030, 1, 5, 1, 22, 'Trick or Treat?', 1), -- Halloween Terror Zenyatta Voice Lines
   (1031, NULL, 5, NULL, 23, 'Playing Fair', 9), -- Default Sombra Voice Lines
   (1032, 1, 5, 1, 23, 'Cool', 9), -- Normal Sombra Voice Lines
   (1033, 1, 5, 1, 23, 'Did You Mean To Do That?', 9),
@@ -1203,15 +1203,15 @@ VALUES
   (1075, 2, 6, 1, NULL, 'Halloween Special', 7),
   (1076, 2, 6, 1, NULL, 'Jail', 1),
   (1077, 2, 6, 1, NULL, 'Junkenstein''s Revenge', 7),
-  (1078, 2, 6, 1, NULL, 'Man And Omnic', 1),
+  (1078, 2, 6, 1, NULL, 'Man and Omnic', 1),
   (1079, 2, 6, 1, NULL, 'Oops', 1),
-  (1080, 2, 6, 1, NULL, 'Out Of My Way', 1),
+  (1080, 2, 6, 1, NULL, 'Out of My Way', 1),
   (1081, 2, 6, 1, NULL, 'Piñata', 1),
   (1082, 2, 6, 1, NULL, 'Red O', 1),
   (1083, 2, 6, 1, NULL, 'Red X', 1),
   (1084, 2, 6, 1, NULL, 'Respect', 1),
   (1085, 2, 6, 1, NULL, 'Rise', 1),
-  (1086, 2, 6, 1, NULL, 'Rise Of The Zomnics', 7),
+  (1086, 2, 6, 1, NULL, 'Rise of The Zomnics', 7),
   (1087, 2, 6, 1, NULL, 'Sorry', 1),
   (1088, 2, 6, 1, NULL, 'Tea Time', 1),
   (1089, 2, 6, 1, NULL, 'Thanks', 1),
@@ -1235,7 +1235,7 @@ VALUES
   (1107, 7, 6, 1, NULL, 'Halloween Terror', 7),
   (1108, 7, 6, 1, NULL, 'Junkenstein''s Revenge', 7),
   (1109, 7, 6, 1, NULL, 'Pumpkins', 7),
-  (1110, 7, 6, 1, NULL, 'Rise Of The Zomnics', 7),
+  (1110, 7, 6, 1, NULL, 'Rise of The Zomnics', 7),
   (1111, 7, 6, 1, NULL, 'The Reapening', 7),
   (1112, 7, 6, 1, NULL, 'Witch''s Brew', 7),
   (1113, 1, 6, 1, 1, 'Action', 3), -- Normal Ana Sprays
@@ -1264,7 +1264,7 @@ VALUES
   (1136, 2, 6, 1, 1, 'Cute', 3), -- Achievements Ana Sprays
   (1137, 2, 6, 1, 1, 'Pixel', 3),
   (1138, 6, 6, 1, 1, 'Shooting', 4), -- Summer Games Ana Sprays
-  (1139, 7, 6, 1, 1, 'Trick Or Treat', 7), -- Halloween Terror Ana Sprays
+  (1139, 7, 6, 1, 1, 'Trick or Treat', 7), -- Halloween Terror Ana Sprays
   (1140, 1, 6, 1, 2, 'Action', 1), -- Normal Bastion Sprays
   (1141, 1, 6, 1, 2, 'Bird', 1),
   (1142, 1, 6, 1, 2, 'Birdwatchers', 1),
@@ -1274,7 +1274,7 @@ VALUES
   (1146, 1, 6, 1, 2, 'Crisis', 1),
   (1147, 1, 6, 1, 2, 'Curious', 1),
   (1148, 1, 6, 1, 2, 'E54', 1),
-  (1149, 1, 6, 1, 2, 'Fire At Will', 1),
+  (1149, 1, 6, 1, 2, 'Fire at Will', 1),
   (1150, 1, 6, 1, 2, 'Flight', 1),
   (1151, 1, 6, 1, 2, 'Flower Power', 1),
   (1152, 1, 6, 1, 2, 'Ganymede', 1),
@@ -1287,11 +1287,11 @@ VALUES
   (1159, 1, 6, 1, 2, 'Recovery', 1),
   (1160, 1, 6, 1, 2, 'Retro', 1),
   (1161, 1, 6, 1, 2, 'Sprout', 1),
-  (1162, 1, 6, 1, 2, 'Wood And Stone', 1),
+  (1162, 1, 6, 1, 2, 'Wood and Stone', 1),
   (1163, 2, 6, 1, 2, 'Cute', 1), -- Achievements Bastion Sprays
   (1164, 2, 6, 1, 2, 'Pixel', 1),
   (1165, 6, 6, 1, 2, 'Boxing', 4), -- Summer Games Bastion Sprays
-  (1166, 7, 6, 1, 2, 'Trick Or Treat', 7), -- Halloween Terror Bastion Sprays
+  (1166, 7, 6, 1, 2, 'Trick or Treat', 7), -- Halloween Terror Bastion Sprays
   (1167, 1, 6, 1, 3, 'B.ny', 1), -- Normal D.Va Sprays
   (1168, 1, 6, 1, 3, 'Bang', 1),
   (1169, 1, 6, 1, 3, 'Bubble', 1),
@@ -1313,18 +1313,18 @@ VALUES
   (1185, 1, 6, 1, 3, 'Salt', 1),
   (1186, 1, 6, 1, 3, 'Star', 1),
   (1187, 1, 6, 1, 3, 'Unload', 1),
-  (1188, 1, 6, 1, 3, 'Walk Of Fame', 1),
+  (1188, 1, 6, 1, 3, 'Walk of Fame', 1),
   (1189, 1, 6, 1, 3, 'Watching', 1),
   (1190, 2, 6, 1, 3, 'Cute', 1), -- Achievements D.Va Sprays
   (1191, 2, 6, 1, 3, 'Pixel', 1),
   (1192, 6, 6, 1, 3, 'Cycling', 4), -- Summer Games D.Va Sprays
-  (1193, 7, 6, 1, 3, 'Trick Or Treat', 7), -- Halloween Terror D.Va Sprays
+  (1193, 7, 6, 1, 3, 'Trick or Treat', 7), -- Halloween Terror D.Va Sprays
   (1194, 1, 6, 1, 4, 'Assassin', 1), -- Normal Genji Sprays
   (1195, 1, 6, 1, 4, 'Dragon', 1),
   (1196, 1, 6, 1, 4, 'Dragonblade', 1),
   (1197, 1, 6, 1, 4, 'Draw', 1),
   (1198, 1, 6, 1, 4, 'Fully Loaded', 1),
-  (1199, 1, 6, 1, 4, 'God Of War', 1),
+  (1199, 1, 6, 1, 4, 'God of War', 1),
   (1200, 1, 6, 1, 4, 'Green Ninja', 1),
   (1201, 1, 6, 1, 4, 'Icon', 1),
   (1202, 1, 6, 1, 4, 'Kaze No Gotoku', 1),
@@ -1346,7 +1346,7 @@ VALUES
   (1218, 2, 6, 1, 4, 'Pixel', 1),
   (1219, 6, 6, 1, 4, 'Fencing', 4), -- Summer Games Genji Sprays
   (1220, 9, 6, 1, 4, 'Oni', 9), -- Blizzard Genji Sprays
-  (1221, 7, 6, 1, 4, 'Trick Or Treat', 7), -- Halloween Terror Genji Sprays
+  (1221, 7, 6, 1, 4, 'Trick or Treat', 7), -- Halloween Terror Genji Sprays
   (1222, 1, 6, 1, 5, 'Archer', 1), -- Normal Hanzo Sprays
   (1223, 1, 6, 1, 5, 'Challenge', 1),
   (1224, 1, 6, 1, 5, 'Cloud', 1),
@@ -1373,8 +1373,8 @@ VALUES
   (1245, 2, 6, 1, 5, 'Cute', 1), -- Achievements Hanzo Sprays
   (1246, 2, 6, 1, 5, 'Pixel', 1),
   (1247, 6, 6, 1, 5, 'Archery', 4), -- Summer Games Hanzo Sprays
-  (1248, 7, 6, 1, 5, 'Trick Or Treat', 7), -- Halloween Terror Hanzo Sprays
-  (1249, 1, 6, 1, 6, 'Ahhhh!', 1), -- Normal Junkrat Sprays
+  (1248, 7, 6, 1, 5, 'Trick or Treat', 7), -- Halloween Terror Hanzo Sprays
+  (1249, 1, 6, 1, 6, 'AHHHH!', 1), -- Normal Junkrat Sprays
   (1250, 1, 6, 1, 6, 'Bang Bang', 1),
   (1251, 1, 6, 1, 6, 'Crazy', 1),
   (1252, 1, 6, 1, 6, 'Fireball', 1),
@@ -1400,7 +1400,7 @@ VALUES
   (1272, 2, 6, 1, 6, 'Cute', 1), -- Achievements Junkrat Sprays
   (1273, 2, 6, 1, 6, 'Pixel', 1),
   (1274, 6, 6, 1, 6, 'Tennis', 4), -- Summer Games Junkrat Sprays
-  (1275, 7, 6, 1, 6, 'Trick Or Treat', 7), -- Halloween Terror Junkrat Sprays
+  (1275, 7, 6, 1, 6, 'Trick or Treat', 7), -- Halloween Terror Junkrat Sprays
   (1276, 1, 6, 1, 7, 'Acelerar', 1), -- Normal Lúcio Sprays
   (1277, 1, 6, 1, 7, 'Baixo', 1),
   (1278, 1, 6, 1, 7, 'Bass', 1),
@@ -1422,12 +1422,12 @@ VALUES
   (1294, 1, 6, 1, 7, 'Triplo', 1),
   (1295, 1, 6, 1, 7, 'Under Control', 1),
   (1296, 1, 6, 1, 7, 'Vinyl', 1),
-  (1297, 1, 6, 1, 7, 'Walk Of Fame', 1),
+  (1297, 1, 6, 1, 7, 'Walk of Fame', 1),
   (1298, 1, 6, 1, 7, 'Wave', 1),
   (1299, 2, 6, 1, 7, 'Cute', 1), -- Achievements Lúcio Sprays
   (1300, 2, 6, 1, 7, 'Pixel', 1),
   (1301, 6, 6, 1, 7, 'Football', 4), -- Summer Games Lúcio Sprays
-  (1302, 7, 6, 1, 7, 'Trick Or Treat', 7), -- Halloween Terror Lúcio Sprays
+  (1302, 7, 6, 1, 7, 'Trick or Treat', 7), -- Halloween Terror Lúcio Sprays
   (1303, 1, 6, 1, 8, 'Badge', 1), -- Normal McCree Sprays
   (1304, 1, 6, 1, 8, 'BAMF', 1),
   (1305, 1, 6, 1, 8, 'Bang!', 1),
@@ -1454,7 +1454,7 @@ VALUES
   (1326, 2, 6, 1, 8, 'Cute', 1), -- Achievements McCree Sprays
   (1327, 2, 6, 1, 8, 'Pixel', 1),
   (1328, 6, 6, 1, 8, 'Equestrian', 4), -- Summer Games McCree Sprays
-  (1329, 7, 6, 1, 8, 'Trick Or Treat', 7), -- Halloween Terror McCree Sprays
+  (1329, 7, 6, 1, 8, 'Trick or Treat', 7), -- Halloween Terror McCree Sprays
   (1330, 1, 6, 1, 9, '^_^', 1), -- Normal Mei Sprays
   (1331, 1, 6, 1, 9, '>_<', 1),
   (1332, 1, 6, 1, 9, 'Beat The Heat', 1),
@@ -1481,7 +1481,7 @@ VALUES
   (1353, 2, 6, 1, 9, 'Cute', 1), -- Achievements Mei Sprays
   (1354, 2, 6, 1, 9, 'Pixel', 1),
   (1355, 6, 6, 1, 9, 'Table Tennis', 4), -- Summer Games Mei Sprays
-  (1356, 7, 6, 1, 9, 'Trick Or Treat', 7), -- Halloween Terror Mei Sprays
+  (1356, 7, 6, 1, 9, 'Trick or Treat', 7), -- Halloween Terror Mei Sprays
   (1357, 1, 6, 1, 10, 'Arrow', 1), -- Normal Mercy Sprays
   (1358, 1, 6, 1, 10, 'Bandage', 1),
   (1359, 1, 6, 1, 10, 'Battle Ready', 1),
@@ -1508,7 +1508,7 @@ VALUES
   (1380, 2, 6, 1, 10, 'Cute', 1), -- Achievements Mercy Sprays
   (1381, 2, 6, 1, 10, 'Pixel', 1),
   (1382, 6, 6, 1, 10, 'Badminton', 4), -- Summer Games Mercy Sprays
-  (1383, 7, 6, 1, 10, 'Trick Or Treat', 7), -- Halloween Terror Mercy Sprays
+  (1383, 7, 6, 1, 10, 'Trick or Treat', 7), -- Halloween Terror Mercy Sprays
   (1384, 1, 6, 1, 11, 'Aerial Superiority', 1), -- Normal Pharah Sprays
   (1385, 1, 6, 1, 11, 'Amari', 1),
   (1386, 1, 6, 1, 11, 'Ana', 1),
@@ -1535,7 +1535,7 @@ VALUES
   (1407, 2, 6, 1, 11, 'Cute', 1), -- Achievements Pharah Sprays
   (1408, 2, 6, 1, 11, 'Pixel', 1),
   (1409, 6, 6, 1, 11, 'Basketball', 4), -- Summer Games Pharah Sprays
-  (1410, 7, 6, 1, 11, 'Trick Or Treat', 7), -- Halloween Terror Pharah Sprays
+  (1410, 7, 6, 1, 11, 'Trick or Treat', 7), -- Halloween Terror Pharah Sprays
   (1411, 1, 6, 1, 12, 'Blackwatch', 1), -- Normal Reaper Sprays
   (1412, 1, 6, 1, 12, 'Blossom', 1),
   (1413, 1, 6, 1, 12, 'Cloaked', 1),
@@ -1562,7 +1562,7 @@ VALUES
   (1434, 2, 6, 1, 12, 'Cute', 1), -- Achievements Reaper Sprays
   (1435, 2, 6, 1, 12, 'Pixel', 1),
   (1436, 6, 6, 1, 12, 'BMX', 4), -- Summer Games Reaper Sprays
-  (1437, 7, 6, 1, 12, 'Trick Or Treat', 7), -- Halloween Terror Reaper Sprays
+  (1437, 7, 6, 1, 12, 'Trick or Treat', 7), -- Halloween Terror Reaper Sprays
   (1438, 1, 6, 1, 13, 'Barrier', 1), -- Normal Reinhardt Sprays
   (1439, 1, 6, 1, 13, 'Charge', 1),
   (1440, 1, 6, 1, 13, 'Cracks', 1),
@@ -1589,7 +1589,7 @@ VALUES
   (1461, 2, 6, 1, 13, 'Cute', 1), -- Achievements Reinhardt Sprays
   (1462, 2, 6, 1, 13, 'Pixel', 1),
   (1463, 6, 6, 1, 13, 'Wrestling', 4), -- Summer Games Reinhardt Sprays
-  (1464, 7, 6, 1, 13, 'Trick Or Treat', 7), -- Halloween Terror Reinhardt Sprays
+  (1464, 7, 6, 1, 13, 'Trick or Treat', 7), -- Halloween Terror Reinhardt Sprays
   (1465, 1, 6, 1, 14, 'Breathin''', 1), -- Normal Roadhog Sprays
   (1466, 1, 6, 1, 14, 'Deep Thoughts', 1),
   (1467, 1, 6, 1, 14, 'Emblem', 1),
@@ -1616,7 +1616,7 @@ VALUES
   (1488, 2, 6, 1, 14, 'Cute', 1), -- Achievements Roadhog Sprays
   (1489, 2, 6, 1, 14, 'Pixel', 1),
   (1490, 6, 6, 1, 14, 'Diving', 4), -- Summer Games Roadhog Sprays
-  (1491, 7, 6, 1, 14, 'Trick Or Treat', 7), -- Halloween Terror Roadhog Sprays
+  (1491, 7, 6, 1, 14, 'Trick or Treat', 7), -- Halloween Terror Roadhog Sprays
   (1492, 1, 6, 1, 15, '76', 1), -- Normal Soldier: 76 Sprays
   (1493, 1, 6, 1, 15, 'All Soldiers', 1),
   (1494, 1, 6, 1, 15, 'American Hero', 1),
@@ -1643,7 +1643,7 @@ VALUES
   (1515, 2, 6, 1, 15, 'Cute', 1), -- Achievements Soldier: 76 Sprays
   (1516, 2, 6, 1, 15, 'Pixel', 1),
   (1517, 6, 6, 1, 15, 'Golf', 4), -- Summer Games Soldier: 76 Sprays
-  (1518, 7, 6, 1, 15, 'Trick Or Treat', 7), -- Halloween Terror Soldier: 76 Sprays
+  (1518, 7, 6, 1, 15, 'Trick or Treat', 7), -- Halloween Terror Soldier: 76 Sprays
   (1519, 1, 6, 1, 16, 'Agent', 1), -- Normal Symmetra Sprays
   (1520, 1, 6, 1, 16, 'Architect', 1),
   (1521, 1, 6, 1, 16, 'Behold', 1),
@@ -1670,7 +1670,7 @@ VALUES
   (1542, 2, 6, 1, 16, 'Cute', 1), -- Achievements Symmetra Sprays
   (1543, 2, 6, 1, 16, 'Pixel', 1),
   (1544, 6, 6, 1, 16, 'Rythmic', 4), -- Summer Games Symmetra Sprays
-  (1545, 7, 6, 1, 16, 'Trick Or Treat', 7), -- Halloween Terror Symmetra Sprays
+  (1545, 7, 6, 1, 16, 'Trick or Treat', 7), -- Halloween Terror Symmetra Sprays
   (1546, 1, 6, 1, 17, 'Armor', 1), -- Normal Torbjörn Sprays
   (1547, 1, 6, 1, 17, 'Beard', 1),
   (1548, 1, 6, 1, 17, 'Catch A Ride', 1),
@@ -1697,7 +1697,7 @@ VALUES
   (1569, 2, 6, 1, 17, 'Cute', 1), -- Achievements Torbjörn Sprays
   (1570, 2, 6, 1, 17, 'Pixel', 1),
   (1571, 6, 6, 1, 17, 'Water Polo', 4), -- Summer Games Torbjörn Sprays
-  (1572, 7, 6, 1, 17, 'Trick Or Treat', 7), -- Halloween Terror Torbjörn Sprays
+  (1572, 7, 6, 1, 17, 'Trick or Treat', 7), -- Halloween Terror Torbjörn Sprays
   (1573, 1, 6, 1, 18, 'Blink', 1), -- Normal Tracer Sprays
   (1574, 1, 6, 1, 18, 'Bomb''s Away!', 1),
   (1575, 1, 6, 1, 18, 'Cavalry''s Here', 1),
@@ -1719,12 +1719,12 @@ VALUES
   (1591, 1, 6, 1, 18, 'Salute', 1),
   (1592, 1, 6, 1, 18, 'Shaded', 1),
   (1593, 1, 6, 1, 18, 'Tagged', 1),
-  (1594, 1, 6, 1, 18, 'Watcha'' Lookin'' At?', 1),
+  (1594, 1, 6, 1, 18, 'Watcha'' Lookin'' at?', 1),
   (1595, 1, 6, 1, 18, 'Wings', 1),
   (1596, 2, 6, 1, 18, 'Cute', 1), -- Achievements Tracer Sprays
   (1597, 2, 6, 1, 18, 'Pixel', 1),
   (1598, 6, 6, 1, 18, 'Track', 4), -- Summer Games Tracer Sprays
-  (1599, 7, 6, 1, 18, 'Trick Or Treat', 7), -- Halloween Terror Tracer Sprays
+  (1599, 7, 6, 1, 18, 'Trick or Treat', 7), -- Halloween Terror Tracer Sprays
   (1600, 1, 6, 1, 19, 'Baiser', 1), -- Normal Widowmaker Sprays
   (1601, 1, 6, 1, 19, 'Black Widow', 1),
   (1602, 1, 6, 1, 19, 'Blood', 1),
@@ -1751,7 +1751,7 @@ VALUES
   (1623, 2, 6, 1, 19, 'Cute', 1), -- Achievements Widowmaker Sprays
   (1624, 2, 6, 1, 19, 'Pixel', 1),
   (1625, 6, 6, 1, 19, 'Gymnastics', 4), -- Summer Games Widowmaker Sprays
-  (1626, 7, 6, 1, 19, 'Trick Or Treat', 7), -- Halloween Terror Widowmaker Sprays
+  (1626, 7, 6, 1, 19, 'Trick or Treat', 7), -- Halloween Terror Widowmaker Sprays
   (1627, 1, 6, 1, 20, 'Angry', 1), -- Normal Winston Sprays
   (1628, 1, 6, 1, 20, 'Ape Crossing', 1),
   (1629, 1, 6, 1, 20, 'Baby', 1),
@@ -1778,7 +1778,7 @@ VALUES
   (1650, 2, 6, 1, 20, 'Cute', 1), -- Achievements Winston Sprays
   (1651, 2, 6, 1, 20, 'Pixel', 1),
   (1652, 6, 6, 1, 20, 'Volleyball', 4), -- Summer Games Winston Sprays
-  (1653, 7, 6, 1, 20, 'Trick Or Treat', 7), -- Halloween Terror Winston Sprays
+  (1653, 7, 6, 1, 20, 'Trick or Treat', 7), -- Halloween Terror Winston Sprays
   (1654, 1, 6, 1, 21, '512', 1), -- Normal Zarya Sprays
   (1655, 1, 6, 1, 21, 'Alexandra', 1),
   (1656, 1, 6, 1, 21, 'Avenger', 1),
@@ -1805,7 +1805,7 @@ VALUES
   (1677, 2, 6, 1, 21, 'Cute', 1), -- Achievements Zarya Sprays
   (1678, 2, 6, 1, 21, 'Pixel', 1),
   (1679, 6, 6, 1, 21, 'Weightlifting', 4), -- Summer Games Zarya Sprays
-  (1680, 7, 6, 1, 21, 'Trick Or Treat', 7), -- Halloween Terror Zarya Sprays
+  (1680, 7, 6, 1, 21, 'Trick or Treat', 7), -- Halloween Terror Zarya Sprays
   (1681, 1, 6, 1, 22, 'Adorable', 1), -- Normal Zenyatta Sprays
   (1682, 1, 6, 1, 22, 'Aura', 1),
   (1683, 1, 6, 1, 22, 'Balance', 1),
@@ -1832,7 +1832,7 @@ VALUES
   (1704, 2, 6, 1, 22, 'Cute', 1), -- Achievements Zenyatta Sprays
   (1705, 2, 6, 1, 22, 'Pixel', 1),
   (1706, 6, 6, 1, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Sprays
-  (1707, 7, 6, 1, 22, 'Trick Or Treat', 7), -- Halloween Terror Zenyatta Sprays
+  (1707, 7, 6, 1, 22, 'Trick or Treat', 7), -- Halloween Terror Zenyatta Sprays
   (1708, 1, 6, 1, 23, '5kull', 9), -- Normal Sombra Sprays
   (1709, 1, 6, 1, 23, 'Agent', 9),
   (1710, 1, 6, 1, 23, 'Behind You', 9),
@@ -1925,7 +1925,7 @@ VALUES
   (1796, 1, 7, 3, 14, 'Whole Hog', 1),
   (1797, NULL, 7, NULL, 15, 'Heroic', 1), -- Default Soldier: 76 Highlight Intros
   (1798, 1, 7, 3, 15, 'Helix', 1), -- Normal Soldier: 76 Highlight Intros
-  (1799, 1, 7, 3, 15, 'Looking At You', 1),
+  (1799, 1, 7, 3, 15, 'Looking at You', 1),
   (1800, 1, 7, 3, 15, 'Target Rich Environment', 1),
   (1801, NULL, 7, NULL, 16, 'Heroic', 1), -- Default Symmetra Highlight Intros
   (1802, 1, 7, 3, 16, 'Askew', 1), -- Normal Symmetra Highlight Intros
@@ -1954,7 +1954,7 @@ VALUES
   (1825, 1, 7, 3, 21, 'This Is Strength', 1),
   (1826, NULL, 7, NULL, 22, 'Heroic', 1), -- Default Zenyatta Highlight Intros
   (1827, 1, 7, 3, 22, 'Focused', 1), -- Normal Zenyatta Highlight Intros
-  (1828, 1, 7, 3, 22, 'Harmony And Discord', 1),
+  (1828, 1, 7, 3, 22, 'Harmony and Discord', 1),
   (1829, 1, 7, 3, 22, 'Transcendence', 1),
   (1830, NULL, 7, NULL, 23, 'Heroic', 9), -- Default Sombra Highlight Intros
   (1831, 1, 7, 3, 23, 'Hacking', 9), -- Normal Sombra Highlight Intros
