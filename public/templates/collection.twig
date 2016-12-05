@@ -1,69 +1,97 @@
 {% import "cosmetic.twig" as cosmeticMacro %}
 {% extends "page.twig" %}
 {% block body %}
-    {% set allSettings = SESSION.settings %}
-    {% set userSettings = SESSION.user.settings %}
-    {% set pages = {
-    "start": (GET.page ?? 0) * (userSettings["collection-heroes-per-page"].value ?? allSettings["collection-heroes-per-page"].default),
-    "end": (GET.page ?? 0 + 1) * (userSettings["collection-heroes-per-page"].value ?? allSettings["collection-heroes-per-page"].default)
+    {% set HEROES = SESSION.heroes %}
+    {% set CATEGORIES = SESSION.categories %}
+    {% set TYPES = SESSION.types %}
+    {% set COSMETICS = SESSION.cosmetics %}
+    {% set SETTINGS = SESSION.settings %}
+    {% set USER = SESSION.user %}
+    {% set USERCOSMETICS = USER.cosmetics %}
+    {% set USERSETTINGS = USER.settings %}
+    {% set FILTEREDCOSMETICS = USER.filterCosmeticsByUserSettings(COSMETICS) %}
+    {% set FILTEREDUSERCOSMETICS = USER.filterCosmeticsByUserSettings(USERCOSMETICS) %}
+    {% set PAGES = {
+    "current": GET.page ?? 0,
+    "start": (GET.page ?? 0) * (USERSETTINGS["collection-heroes-per-page"].value ?? SETTINGS["collection-heroes-per-page"].default),
+    "end": (GET.page ?? 0 + 1) * (USERSETTINGS["collection-heroes-per-page"].value ?? SETTINGS["collection-heroes-per-page"].default)
     } %}
+    {% set owned = 0 %}
+    {% set total = 0 %}
+    {% set ownedCredits = 0 %}
+    {% set totalCredits = 0 %}
     {% set heroStats = {} %}
     {% set categoryStats = {} %}
     {% set typeStats = {} %}
-    {% set totalStats = {} %}
-    {% for hero, types in SESSION.allcosmetics %}
-        {% set heroTypeStats = {} %}
-        {% for type, cosmetics in types %}
-            {% set typeTotal = cosmetics|length %}
-            {% for cosmetic in cosmetics %}
-                {% if SESSION.user.hasCosmetic(cosmetic.id) %}
-                    {% set categoryStats = categoryStats|pushObj(cosmetic.category.id ?? 0, {
-                    "owned": categoryStats[cosmetic.category.id ?? 0].owned ?? 0 + 1,
-                    "total": categoryStats[cosmetic.category.id ?? 0].total ?? 0,
-                    "ownedCredits": cosmetic.type.id != 1 ? categoryStats[cosmetic.category.id ?? 0].ownedCredits ?? 0 + cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0 : 0,
-                    "totalCredits": cosmetic.type.id != 1 ? categoryStats[cosmetic.category.id ?? 0].totalCredits ?? 0 : 0
-                    }) %}
-                    {% set heroTypeStats = heroTypeStats|pushObj(type, {
-                    "owned": heroTypeStats[type].owned ?? 0 + 1,
-                    "total": heroTypeStats[type].total ?? 0,
-                    "ownedCredits": cosmetic.type.id != 1 ? heroTypeStats[type].ownedCredits ?? 0 + cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0 : 0,
-                    "totalCredits": cosmetic.type.id != 1 ? heroTypeStats[type].totalCredits ?? 0 : 0
-                    }) %}
-                {% endif %}
-                {% set categoryStats = categoryStats|pushObj(cosmetic.category.id ?? 0, {
-                "owned": categoryStats[cosmetic.category.id ?? 0].owned ?? 0,
-                "total": categoryStats[cosmetic.category.id ?? 0].total ?? 0 + 1,
-                "ownedCredits": cosmetic.type.id != 1 ? categoryStats[cosmetic.category.id ?? 0].ownedCredits ?? 0 : 0,
-                "totalCredits": cosmetic.type.id != 1 ? categoryStats[cosmetic.category.id ?? 0].totalCredits ?? 0 + cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0 : 0
-                }) %}
-                {% set heroTypeStats = heroTypeStats|pushObj(type, {
-                "owned": heroTypeStats[type].owned ?? 0,
-                "total": heroTypeStats[type].total ?? 0 + 1,
-                "ownedCredits": cosmetic.type.id != 1 ? heroTypeStats[type].ownedCredits ?? 0 : 0,
-                "totalCredits": cosmetic.type.id != 1 ? heroTypeStats[type].totalCredits ?? 0 + cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0 : 0
-                }) %}
-            {% endfor %}
-            {% set typeStats = typeStats|pushObj(type, {
-            "owned": typeStats[type].owned ?? 0 + heroTypeStats[type].owned,
-            "total": typeStats[type].total ?? 0 + heroTypeStats[type].total,
-            "ownedCredits": typeStats[type].ownedCredits ?? 0 + heroTypeStats[type].ownedCredits,
-            "totalCredits": typeStats[type].totalCredits ?? 0 + heroTypeStats[type].totalCredits
+    {% set heroTypeStats = {} %}
+    {% for id, cosmetic in FILTEREDCOSMETICS %}
+        {% set total = total + 1 %}
+        {% set heroStats = heroStats|pushObj(cosmetic.hero.id ?? 0, {
+        "owned": heroStats[cosmetic.hero.id ?? 0].owned ?? 0,
+        "total": heroStats[cosmetic.hero.id ?? 0].total ?? 0 + 1,
+        "ownedCredits": heroStats[cosmetic.hero.id ?? 0].ownedCredits ?? 0,
+        "totalCredits": heroStats[cosmetic.hero.id ?? 0].totalCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0)
+        }) %}
+        {% set categoryStats = categoryStats|pushObj(cosmetic.category.id ?? 0, {
+        "owned": categoryStats[cosmetic.category.id ?? 0].owned ?? 0,
+        "total": categoryStats[cosmetic.category.id ?? 0].total ?? 0 + 1,
+        "ownedCredits": categoryStats[cosmetic.category.id ?? 0].ownedCredits ?? 0,
+        "totalCredits": categoryStats[cosmetic.category.id ?? 0].totalCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0)
+        }) %}
+        {% set typeStats = typeStats|pushObj(cosmetic.type.id, {
+        "owned": typeStats[cosmetic.type.id].owned ?? 0,
+        "total": typeStats[cosmetic.type.id].total ?? 0 + 1,
+        "ownedCredits": typeStats[cosmetic.type.id].ownedCredits ?? 0,
+        "totalCredits": typeStats[cosmetic.type.id].totalCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0)
+        }) %}
+        {% set heroTypeStats = heroTypeStats|pushObj(cosmetic.hero.id ?? 0,
+        (heroTypeStats[cosmetic.hero.id ?? 0] ?? {})|pushObj(cosmetic.type.id, {
+        "owned": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].owned ?? 0,
+        "total": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].total ?? 0 + 1,
+        "ownedCredits": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].ownedCredits ?? 0,
+        "totalCredits": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].totalCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0)
+        })
+        ) %}
+        {% if USER.hasCosmetic(cosmetic.id) %}
+            {% set owned = owned + 1 %}
+            {% set heroStats = heroStats|pushObj(cosmetic.hero.id ?? 0, {
+            "owned": heroStats[cosmetic.hero.id ?? 0].owned ?? 0 + 1,
+            "total": heroStats[cosmetic.hero.id ?? 0].total ?? 0,
+            "ownedCredits": heroStats[cosmetic.hero.id ?? 0].ownedCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0),
+            "totalCredits": heroStats[cosmetic.hero.id ?? 0].totalCredits ?? 0
             }) %}
-            {% set heroStats = heroStats|pushObj(hero, {
-            "owned": heroStats[hero].owned ?? 0 + heroTypeStats[type].owned,
-            "total": heroStats[hero].total ?? 0 + heroTypeStats[type].total,
-            "ownedCredits": heroStats[hero].ownedCredits ?? 0 + heroTypeStats[type].ownedCredits,
-            "totalCredits": heroStats[hero].totalCredits ?? 0 + heroTypeStats[type].totalCredits,
-            "types": heroTypeStats
+            {% set categoryStats = categoryStats|pushObj(cosmetic.category.id ?? 0, {
+            "owned": categoryStats[cosmetic.category.id ?? 0].owned ?? 0 + 1,
+            "total": categoryStats[cosmetic.category.id ?? 0].total ?? 0,
+            "ownedCredits": categoryStats[cosmetic.category.id ?? 0].ownedCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0),
+            "totalCredits": categoryStats[cosmetic.category.id ?? 0].totalCredits ?? 0
             }) %}
-        {% endfor %}
-        {% set totalStats = {
-        "owned": totalStats.owned ?? 0 + heroStats[hero].owned,
-        "total": totalStats.total ?? 0 + heroStats[hero].total,
-        "ownedCredits": totalStats.ownedCredits ?? 0 + heroStats[hero].ownedCredits,
-        "totalCredits": totalStats.totalCredits ?? 0 + heroStats[hero].totalCredits
-        } %}
+            {% set typeStats = typeStats|pushObj(cosmetic.type.id, {
+            "owned": typeStats[cosmetic.type.id].owned ?? 0 + 1,
+            "total": typeStats[cosmetic.type.id].total ?? 0,
+            "ownedCredits": typeStats[cosmetic.type.id].ownedCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0),
+            "totalCredits": typeStats[cosmetic.type.id].totalCredits ?? 0
+            }) %}
+            {% set heroTypeStats = heroTypeStats|pushObj(cosmetic.hero.id ?? 0,
+            (heroTypeStats[cosmetic.hero.id ?? 0] ?? {})|pushObj(cosmetic.type.id, {
+            "owned": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].owned ?? 0 + 1,
+            "total": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].total ?? 0,
+            "ownedCredits": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].ownedCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0),
+            "totalCredits": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].totalCredits ?? 0
+            })
+            ) %}
+        {% endif %}
     {% endfor %}
+    {% set STATS = {
+    "owned": owned,
+    "total": total,
+    "ownedCredits": ownedCredits,
+    "totalCredits": totalCredits,
+    "heroes": heroStats,
+    "categories": categoryStats,
+    "types": typeStats,
+    "heroesTypes": heroTypeStats,
+    } %}
     <div class="mdl-grid">
         <div id="cosmetics-menu" class="mdl-cell mdl-cell--3-col">
             <ul class="demo-list-icon mdl-list mdl-shadow--2dp">
@@ -107,15 +135,15 @@
                             <label for="export-btn">Export</label>
                         </span>
                         <span class="cosmetics-menu--btn">
-                            {% set canPrev = pages.start > 0 %}
+                            {% set canPrev = PAGES.start > 0 %}
                             <a id="prev-page-btn"
-                               {% if canPrev %}href="./collection.php?page={{ GET.page ?? 0 - 1 }}"{% endif %}
+                               {% if canPrev %}href="./collection.php?page={{ PAGES.current - 1 }}"{% endif %}
                                class="cosmetics-menu--btn mdl-button mdl-js-button mdl-button--icon" {{ not canPrev ? "disabled" }}>
                                 <i class="material-icons">navigate_before</i>
                             </a>
-                            {% set canNext = pages.end < heroStats|length %}
+                            {% set canNext = PAGES.end < STATS.heroes|length %}
                             <a id="next-page-btn"
-                               {% if canNext %}href="./collection.php?page={{ GET.page ?? 0 + 1 }}"{% endif %}
+                               {% if canNext %}href="./collection.php?page={{ PAGES.current + 1 }}"{% endif %}
                                class="cosmetics-menu--btn mdl-button mdl-js-button mdl-button--icon is-disabled" {{ not canNext ? "disabled" }}>
                                 <i class="material-icons">navigate_next</i>
                             </a>
@@ -123,49 +151,49 @@
                     </span>
                 </li>
                 <hr/>
-                {% set ratio = totalStats.total is defined ? (totalStats.owned ?? 0 / totalStats.total) : 1 %}
+                {% set ratio = STATS.total > 0 ? (STATS.owned / STATS.total) : 1 %}
                 <li class="cosmetics-menu--item mdl-list__item mdl-list__item--two-line"
-                        {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                        {% if USERSETTINGS["collection-show-colors"].value ?? SETTINGS["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content mdl-typography--font-bold">
                         <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                              src="img/collection/heroes/allheroes.png"/>
                         <span class="cosmetics-menu--item--text">Show Owned</span>
-                        <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
-                            <span class="cosmetics-menu--item--stats-completion">
+                        <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                            <span class="cosmetics-menu--item--STATS-completion">
                                 {{ (ratio * 100)|round(2, "floor") }}%
-                                ({{ totalStats.owned ?? 0 }} / {{ totalStats.total ?? 0 }})
+                                ({{ STATS.owned }} / {{ STATS.total }})
                             </span><br/>
-                            <span class="cosmetics-menu--item--stats-credits">
-                                ₡{{ totalStats.totalCredits ?? 0 - totalStats.ownedCredits ?? 0 }}
-                                (₡{{ totalStats.ownedCredits ?? 0 }} / ₡{{ totalStats.totalCredits ?? 0 }})
+                            <span class="cosmetics-menu--item--STATS-credits">
+                                ₡{{ STATS.totalCredits - STATS.ownedCredits }}
+                                (₡{{ STATS.ownedCredits }} / ₡{{ STATS.totalCredits }})
                             </span>
                         </span>
                     </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-show-owned">
                             <input type="checkbox" id="switch-show-owned" class="setting-input mdl-switch__input"
-                                   data-setting="collection-show-owned-cosmetics" {{ userSettings["collection-show-owned-cosmetics"].value ?? allSettings["collection-show-owned-cosmetics"].default ? "checked" }}>
+                                   data-setting="collection-show-owned-cosmetics" {{ USERSETTINGS["collection-show-owned-cosmetics"].value ?? SETTINGS["collection-show-owned-cosmetics"].default ? "checked" }}>
                         </label>
                     </span>
                 </li>
-                {% set heroStat = heroStats[0] is defined ? heroStats[0] : null %}
-                {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
+                {% set stat = STATS.heroes[0] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
+                {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
-                        {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"] %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                        {% if USERSETTINGS["collection-show-colors"].value ?? SETTINGS["collection-show-colors"] %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content">
                         <a href="#allheroes">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/heroes/allheroes.png"/>
                             <span class="cosmetics-menu--item--text">All Heroes</span>
                         </a>
-                        <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
-                            <span class="cosmetics-menu--item--stats-completion">
+                        <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                            <span class="cosmetics-menu--item--STATS-completion">
                                 {{ (ratio * 100)|round(2, "floor") }}%
-                                ({{ heroStat.owned ?? 0 }} / {{ heroStat.total ?? 0 }})
+                                ({{ stat.owned }} / {{ stat.total }})
                             </span><br/>
-                            <span class="cosmetics-menu--item--stats-credits">
-                                ₡{{ heroStat.totalCredits ?? 0 - heroStat.ownedCredits ?? 0 }}
-                                (₡{{ heroStat.ownedCredits ?? 0 }} / ₡{{ heroStat.totalCredits ?? 0 }})
+                            <span class="cosmetics-menu--item--STATS-credits">
+                                ₡{{ stat.totalCredits - stat.ownedCredits }}
+                                (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
                             </span>
                         </span>
                     </span>
@@ -173,29 +201,29 @@
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hero-checkbox-allheroes">
                             <input type="checkbox" id="hero-checkbox-allheroes"
                                    class="setting-input mdl-checkbox__input"
-                                   data-setting="collection-show-hero-allheroes" {{ userSettings["collection-show-hero-allheroes"].value ?? allSettings["collection-show-hero-allheroes"].default ? "checked" }}/>
+                                   data-setting="collection-show-hero-allheroes" {{ USERSETTINGS["collection-show-hero-allheroes"].value ?? SETTINGS["collection-show-hero-allheroes"].default ? "checked" }}/>
                         </label>
                     </span>
                 </li>
-                {% for hero in SESSION.heroes %}
-                    {% set heroStat = heroStats[hero.id] is defined ? heroStats[hero.id] : null %}
-                    {% set ratio = heroStat != null ? (heroStat.owned / heroStat.total) : 1 %}
+                {% for hero in HEROES %}
+                    {% set stat = STATS.heroes[hero.id] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
+                    {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
-                            {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            {% if USERSETTINGS["collection-show-colors"].value ?? SETTINGS["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <a href="#{{ hero.slug }}">
                                 <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                      src="img/collection/heroes/{{ hero.slug }}.png"/>
                                 <span class="cosmetics-menu--item--text">{{ hero.name }}</span>
                             </a>
-                            <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
-                                <span class="cosmetics-menu--item--stats-completion">
+                            <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                                <span class="cosmetics-menu--item--STATS-completion">
                                     {{ (ratio * 100)|round(2, "floor") }}%
-                                    ({{ heroStat.owned ?? 0 }} / {{ heroStat.total ?? 0 }})
+                                    ({{ stat.owned }} / {{ stat.total }})
                                 </span><br/>
-                                <span class="cosmetics-menu--item--stats-credits">
-                                    ₡{{ heroStat.totalCredits ?? 0 - heroStat.ownedCredits ?? 0 }}
-                                    (₡{{ heroStat.ownedCredits ?? 0 }} / ₡{{ heroStat.totalCredits ?? 0 }})
+                                <span class="cosmetics-menu--item--STATS-credits">
+                                    ₡{{ stat.totalCredits - stat.ownedCredits }}
+                                    (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
                                 </span>
                             </span>
                         </span>
@@ -205,24 +233,24 @@
                                 <input type="checkbox" id="hero-checkbox-{{ hero.slug }}"
                                        class="setting-input mdl-checkbox__input"
                                        data-setting="collection-show-hero-{{ hero.slug }}"
-                                        {{ userSettings["collection-show-hero-" ~ hero.slug].value ?? allSettings["collection-show-hero-" ~ hero.slug].default ? "checked" }}/>
+                                        {{ USERSETTINGS["collection-show-hero-" ~ hero.slug].value ?? SETTINGS["collection-show-hero-" ~ hero.slug].default ? "checked" }}/>
                             </label>
                         </span>
                     </li>
                 {% endfor %}
                 <hr/>
-                {% set categoryStat = categoryStats[0] is defined ? categoryStats[0] : null %}
-                {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
+                {% set stat = STATS.categories[0] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
+                {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
-                        {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                        {% if USERSETTINGS["collection-show-colors"].value ?? SETTINGS["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content">
                         <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                              src="img/collection/categories/default.png"/>
                         <span class="cosmetics-menu--item--text">Default</span>
-                        <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
-                            <span class="cosmetics-menu--item--stats-completion">
+                        <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                            <span class="cosmetics-menu--item--STATS-completion">
                                 {{ (ratio * 100)|round(2, "floor") }}%
-                                ({{ categoryStat.owned ?? 0 }} /{{ categoryStat.total ?? 0 }})
+                                ({{ stat.owned }} /{{ stat.total }})
                             </span>
                         </span>
                     </span>
@@ -231,30 +259,30 @@
                                for="category-checkbox-default">
                             <input type="checkbox" id="category-checkbox-default"
                                    class="setting-input mdl-checkbox__input"
-                                   data-setting="collection-show-category-default" {{ userSettings["collection-show-category-default"].value ?? allSettings["collection-show-category-default"].default ? "checked" }}/>
+                                   data-setting="collection-show-category-default" {{ USERSETTINGS["collection-show-category-default"].value ?? SETTINGS["collection-show-category-default"].default ? "checked" }}/>
                         </label>
                     </span>
                     <div class="mdl-tooltip" data-mdl-for="cosmetics-menu--category-default">
                         Obtained by default
                     </div>
                 </li>
-                {% for category in SESSION.categories %}
-                    {% set categoryStat = categoryStats[category.id] is defined ? categoryStats[category.id] : null %}
-                    {% set ratio = categoryStat != null ? (categoryStat.owned / categoryStat.total) : 1 %}
+                {% for category in CATEGORIES %}
+                    {% set stat = STATS.categories[category.id] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
+                    {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
-                            {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            {% if USERSETTINGS["collection-show-colors"].value ?? SETTINGS["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/categories/{{ category.slug }}.png"/>
                             <span class="cosmetics-menu--item--text">{{ category.name }}</span>
-                            <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
-                                <span class="cosmetics-menu--item--stats-completion">
+                            <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                                <span class="cosmetics-menu--item--STATS-completion">
                                     {{ (ratio * 100)|round(2, "floor") }}%
-                                    ({{ categoryStat.owned ?? 0 }} /{{ categoryStat.total ?? 0 }})
+                                    ({{ stat.owned }} / {{ stat.total }})
                                 </span><br/>
-                                <span class="cosmetics-menu--item--stats-credits">
-                                    ₡{{ categoryStat.totalCredits ?? 0 - categoryStat.ownedCredits ?? 0 }}
-                                    (₡{{ categoryStat.ownedCredits ?? 0 }} / ₡{{ categoryStat.totalCredits ?? 0 }})
+                                <span class="cosmetics-menu--item--STATS-credits">
+                                    ₡{{ stat.totalCredits - stat.ownedCredits }}
+                                    (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
                                 </span>
                             </span>
                         </span>
@@ -265,7 +293,7 @@
                                 <input type="checkbox" id="category-checkbox-{{ category.slug }}"
                                        class="setting-input mdl-checkbox__input"
                                        data-setting="collection-show-category-{{ category.slug }}"
-                                        {{ userSettings["collection-show-category-" ~ category.slug].value ?? allSettings["collection-show-category-" ~ category.slug].default ? "checked" }}/>
+                                        {{ USERSETTINGS["collection-show-category-" ~ category.slug].value ?? SETTINGS["collection-show-category-" ~ category.slug].default ? "checked" }}/>
                             </label>
                         </span>
                         <div class="mdl-tooltip"
@@ -275,24 +303,26 @@
                     </li>
                 {% endfor %}
                 <hr/>
-                {% for type in SESSION.types %}
-                    {% set typeStat = typeStats[type.id] is defined ? typeStats[type.id] : null %}
-                    {% set ratio = typeStat != null ? (typeStat.owned / typeStat.total) : 1 %}
+                {% for type in TYPES %}
+                    {% set stat = STATS.types[type.id] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
+                    {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-type mdl-list__item mdl-list__item--two-line"
-                            {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            {% if USERSETTINGS["collection-show-colors"].value ?? SETTINGS["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/types/{{ type.slug }}.png"/>
                             <span class="cosmetics-menu--item--text">{{ type.name }}</span>
-                            <span class="mdl-list__item-sub-title cosmetics-menu--item--stats">
-                                <span class="cosmetics-menu--item--stats-completion">
+                            <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                                <span class="cosmetics-menu--item--STATS-completion">
                                     {{ (ratio * 100)|round(2, "floor") }}%
-                                    ({{ typeStat.owned ?? 0 }} /{{ typeStat.total ?? 0 }})
+                                    ({{ stat.owned }} /{{ stat.total }})
                                 </span><br/>
-                                <span class="cosmetics-menu--item--stats-credits">
-                                    ₡{{ typeStat.totalCredits ?? 0 - typeStat.ownedCredits ?? 0 }}
-                                    (₡{{ typeStat.ownedCredits ?? 0 }} / ₡{{ typeStat.totalCredits ?? 0 }})
-                                </span>
+                                {% if type.slug not in ["playericon", "weapon"] %}
+                                    <span class="cosmetics-menu--item--STATS-credits">
+                                        ₡{{ stat.totalCredits - stat.ownedCredits }}
+                                        (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
+                                    </span>
+                                {% endif %}
                             </span>
                         </span>
                         <span id="cosmetics-menu--type-{{ type.slug }}"
@@ -302,7 +332,7 @@
                                 <input type="checkbox" id="type-checkbox-{{ type.slug }}"
                                        class="setting-input mdl-checkbox__input"
                                        data-setting="collection-show-type-{{ type.slug }}"
-                                        {{ userSettings["collection-show-type-" ~ type.slug].value ?? allSettings["collection-show-type-" ~ type.slug].default ? "checked" }}/>
+                                        {{ USERSETTINGS["collection-show-type-" ~ type.slug].value ?? SETTINGS["collection-show-type-" ~ type.slug].default ? "checked" }}/>
                             </label>
                         </span>
                     </li>
@@ -311,45 +341,45 @@
         </div>
         <div class="mdl-cell mdl-cell--9-col-desktop">
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                {% for hero, types in SESSION.cosmetics %}
-                    {% if pages.start <= loop.index0 and loop.index0 < pages.end %}
-                        {% set ratio = heroStats[hero].owned / heroStats[hero].total %}
+                {% for heroId, types in USER.sortCosmeticsByHeroesAndTypes(FILTEREDCOSMETICS) %}
+                    {% if PAGES.start <= loop.index0 and loop.index0 < PAGES.end %}
+                        {% set ratio = STATS.heroes[heroId].owned / STATS.heroes[heroId].total %}
                         <tbody class="cosmetics-table--body">
                         <tr class="cosmetics-table--hero"
-                                {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                                {% if USERSETTINGS["collection-show-colors"].value ?? SETTINGS["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                             <td class="mdl-typography--headline mdl-data-table__cell--non-numeric">
-                                <a name="{{ hero > 0 ? SESSION.heroes[hero].slug : "allheroes" }}">
-                                    {{ hero > 0 ? SESSION.heroes[hero].name : "All Heroes" }}
+                                <a name="{{ heroId > 0 ? HEROES[heroId].slug : "allheroes" }}">
+                                    {{ heroId > 0 ? HEROES[heroId].name : "All Heroes" }}
                                 </a>
                             </td>
-                            <td colspan="{{ userSettings["collection-cosmetics-per-row"].value ?? allSettings["collection-cosmetics-per-row"].default - 1 }}">
+                            <td colspan="{{ USERSETTINGS["collection-cosmetics-per-row"].value ?? SETTINGS["collection-cosmetics-per-row"].default - 1 }}">
                                 {{ (ratio * 100)|round(2, "floor") }}%
-                                ({{ heroStats[hero].owned }} / {{ heroStats[hero].total }})
-                                ₡{{ heroStats[hero].totalCredits ?? 0 - heroStats[hero].ownedCredits ?? 0 }}
-                                (₡{{ heroStats[hero].ownedCredits ?? 0 }} / ₡{{ heroStats[hero].totalCredits ?? 0 }})
+                                ({{ STATS.heroes[heroId].owned }} / {{ STATS.heroes[heroId].total }})
+                                ₡{{ STATS.heroes[heroId].totalCredits - STATS.heroes[heroId].ownedCredits }}
+                                (₡{{ STATS.heroes[heroId].ownedCredits }} / ₡{{ STATS.heroes[heroId].totalCredits }})
                             </td>
                         </tr>
-                        {% for type, cosmetics in types %}
-                            {% set ratio = heroStats[hero].types[type].owned / heroStats[hero].types[type].total %}
+                        {% for typeId, cosmetics in types %}
+                            {% set ratio = STATS.heroesTypes[heroId][typeId].owned / STATS.heroesTypes[heroId][typeId].total %}
                             <tr class="cosmetics-table--type"
-                                    {% if userSettings["collection-show-colors"].value ?? allSettings["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                                    {% if USERSETTINGS["collection-show-colors"].value ?? SETTINGS["collection-show-colors"].default %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                                 <td>
-                                    {{ SESSION.types[type].name }}s
+                                    {{ TYPES[typeId].name }}s
                                 </td>
-                                <td colspan="{{ userSettings["collection-cosmetics-per-row"].value ?? allSettings["collection-cosmetics-per-row"].default - 1 }}">
+                                <td colspan="{{ USERSETTINGS["collection-cosmetics-per-row"].value ?? SETTINGS["collection-cosmetics-per-row"].default - 1 }}">
                                     {{ (ratio * 100)|round(2, "floor") }}%
-                                    ({{ heroStats[hero].types[type].owned }}
-                                    / {{ heroStats[hero].types[type].total }})
-                                    ₡{{ heroStats[hero].types[type].totalCredits ?? 0 - heroStats[hero].types[type].ownedCredits ?? 0 }}
-                                    (₡{{ heroStats[hero].types[type].ownedCredits ?? 0 }} /
-                                    ₡{{ heroStats[hero].types[type].totalCredits ?? 0 }})
+                                    ({{ STATS.heroesTypes[heroId][typeId].owned }}
+                                    / {{ STATS.heroesTypes[heroId][typeId].total }})
+                                    ₡{{ STATS.heroesTypes[heroId][typeId].totalCredits ?? 0 - STATS.heroesTypes[heroId][typeId].ownedCredits ?? 0 }}
+                                    (₡{{ STATS.heroesTypes[heroId][typeId].ownedCredits ?? 0 }} /
+                                    ₡{{ STATS.heroesTypes[heroId][typeId].totalCredits ?? 0 }})
                                 </td>
                             </tr>
-                            {% for row in cosmetics|batch(userSettings["collection-cosmetics-per-row"].value ?? allSettings["collection-cosmetics-per-row"].default) %}
+                            {% for row in cosmetics|batch(USERSETTINGS["collection-cosmetics-per-row"].value ?? SETTINGS["collection-cosmetics-per-row"].default) %}
                                 <tr>
                                     {% for cosmetic in row %}
                                         <td class="cosmetics-table--category category-{{ cosmetic.category is not null ? cosmetic.category.id : 0 }}">
-                                            {{ cosmeticMacro.cosmetic(cosmetic, SESSION.user.hasCosmetic(cosmetic.id)) }}
+                                            {{ cosmeticMacro.cosmetic(cosmetic, USER.hasCosmetic(cosmetic.id)) }}
                                         </td>
                                     {% endfor %}
                                 </tr>

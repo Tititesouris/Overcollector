@@ -44,17 +44,68 @@ class User implements JsonSerializable
         return $this->battletag;
     }
 
-    public function getCosmetics($heroId)
+    /**
+     * Returns every cosmetic owned by the user
+     */
+    public function getCosmetics()
     {
-        $cosmetics = [];
-        foreach ($this->cosmetics as $cosmetic) {
-            if (($cosmetic->getHero() === null && $heroId === 0) ||
-                ($cosmetic->getHero() !== null && $cosmetic->getHero()->getId() === $heroId)
-            ) {
-                $cosmetics[] = $cosmetic;
-            }
+        return $this->cosmetics;
+    }
+
+    /**
+     * Returns the cosmetics provided sorted by heroes
+     */
+    public function sortCosmeticsByHeroes($cosmetics)
+    {
+        $heroes = [];
+        foreach ($cosmetics as $cosmetic) {
+            $heroes[$cosmetic->getHero() !== null ? $cosmetic->getHero()->getId() : 0][] = $cosmetic;
         }
-        return $cosmetics;
+        return $heroes;
+    }
+
+    /**
+     * Returns the cosmetics provided sorted by categories
+     */
+    public function sortCosmeticsByCategories($cosmetics)
+    {
+        $categories = [];
+        foreach ($cosmetics as $cosmetic) {
+            $categories[$cosmetic->getCategory() !== null ? $cosmetic->getCategory()->getId() : 0][] = $cosmetic;
+        }
+        return $categories;
+    }
+
+    /**
+     * Returns the cosmetics provided sorted by types
+     */
+    public function sortCosmeticsByTypes($cosmetics)
+    {
+        $types = [];
+        foreach ($cosmetics as $cosmetic) {
+            $types[$cosmetic->getType()->getId()][] = $cosmetic;
+        }
+        return $types;
+    }
+
+    /**
+     * Returns the cosmetics provided sorted by heroes and types
+     */
+    public function sortCosmeticsByHeroesAndTypes($cosmetics)
+    {
+        $heroes = [];
+        foreach ($cosmetics as $cosmetic) {
+            $heroes[$cosmetic->getHero() !== null ? $cosmetic->getHero()->getId() : "0"][$cosmetic->getType()->getId()][] = $cosmetic;
+        }
+        return $heroes;
+    }
+
+    /**
+     * Filters the list of cosmetics provided and returns every cosmetic matching the user's settings
+     */
+    public function filterCosmeticsByUserSettings($cosmetics)
+    {
+        return $cosmetics;//TODO
     }
 
     public function setCosmetics($cosmetics)

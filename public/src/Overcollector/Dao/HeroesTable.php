@@ -17,8 +17,8 @@ ORDER BY name;
     private $fetchHeroById = "
 SELECT id, name, slug
 FROM heroes
-WHERE id = $1
-;";
+WHERE id = $1;
+";
 
     protected function __construct()
     {
