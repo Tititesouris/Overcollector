@@ -40,12 +40,30 @@ WHERE user_id = $1 OR cosmetics.category_id IS NULL
 ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, ordering, cosmetics.name, event_id;
 ";
 
+    private $addUserCosmetic = "
+INSERT INTO user_cosmetics (user_id, cosmetic_id)
+SELECT $1, $2
+FROM cosmetics
+WHERE id = $2 AND category_id IS NOT NULL
+ON CONFLICT ON CONSTRAINT pk_user_cosmetics
+DO NOTHING
+RETURNING cosmetic_id;
+";
+
+    private $removeUserCosmetic = "
+DELETE FROM user_cosmetics
+WHERE user_id = $1 AND cosmetic_id = $2
+RETURNING cosmetic_id;
+";
+
     protected function __construct()
     {
         parent::__construct();
         pg_prepare($this->handler, "fetchCosmetics", $this->fetchCosmetics);
         pg_prepare($this->handler, "fetchCosmeticById", $this->fetchCosmeticById);
         pg_prepare($this->handler, "fetchOwnedCosmeticsByUserId", $this->fetchOwnedCosmeticsByUserId);
+        pg_prepare($this->handler, "addUserCosmetic", $this->addUserCosmetic);
+        pg_prepare($this->handler, "removeUserCosmetic", $this->removeUserCosmetic);
     }
 
     public static function getInstance()
@@ -75,7 +93,8 @@ ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, ordering
         if ($response !== false) {
             $cosmetics = [];
             while (($row = pg_fetch_assoc($response)) !== false) {
-                $cosmetics[] = $this->parseCosmetic($row);
+                $cosmetic = $this->parseCosmetic($row);
+                $cosmetics[$cosmetic->getId()] = $cosmetic;
             }
             return $cosmetics;
         }
@@ -86,7 +105,7 @@ ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, ordering
     {
         $response = pg_execute($this->handler, "fetchCosmeticById", array($id));
         if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
-            return self::parseCosmetic($row);
+            return $this->parseCosmetic($row);
         }
         return null;
     }
@@ -97,11 +116,28 @@ ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, ordering
         if ($response !== false) {
             $cosmetics = [];
             while (($row = pg_fetch_assoc($response)) !== false) {
-                $cosmetics[] = $this->parseCosmetic($row);
+                $cosmetic = $this->parseCosmetic($row);
+                $cosmetics[$cosmetic->getId()] = $cosmetic;
             }
             return $cosmetics;
         }
         return [];
+    }
+
+    public function updateUserCosmetic($userId, $cosmeticId, $owned)
+    {
+        if ($owned) {
+            $response = pg_execute($this->handler, "addUserCosmetic", array($userId, $cosmeticId));
+            if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
+                return $this->getCosmeticById($row["cosmetic_id"]);
+            }
+        } else {
+            $response = pg_execute($this->handler, "removeUserCosmetic", array($userId, $cosmeticId));
+            if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
+                return $row["cosmetic_id"];
+            }
+        }
+        return null;
     }
 
 }

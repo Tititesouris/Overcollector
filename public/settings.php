@@ -8,7 +8,6 @@ if (isUserLoggedIn()) {
         $setting = SettingsTable::getInstance()->setUserSetting($_SESSION["user"]->getId(), $_POST["setting"], $_POST["value"]);
         if ($setting !== null) {
             $_SESSION["user"]->setSetting($setting);
-            $_SESSION["needrefresh"] = true;
             echo true;
         }
         echo false;

@@ -61,8 +61,8 @@ use Overcollector\Dao\CosmeticsTable;
 
 function updateSession()
 {
-    if (isUserLoggedIn()) {
-        //$_SESSION["needrefresh"] = false;
+    if ($_SESSION["refreshalldata"]) {
+        $_SESSION["refreshalldata"] = false;
         $_SESSION["heroes"] = HeroesTable::getInstance()->getAllHeroesSortById();
         $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesSortById();
         $_SESSION["types"] = TypesTable::getInstance()->getAllTypesSortById();

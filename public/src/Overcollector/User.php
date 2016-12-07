@@ -71,7 +71,7 @@ class User implements JsonSerializable
     {
         $categories = [];
         foreach ($cosmetics as $cosmetic) {
-            $categories[$cosmetic->getCategory() !== null ? $cosmetic->getCategory()->getId() : 0][] = $cosmetic;
+            $categories[$cosmetic->getCategory() !== null ? $cosmetic->getCategory()->getId() : 0][$cosmetic->getId()] = $cosmetic;
         }
         return $categories;
     }
@@ -83,7 +83,7 @@ class User implements JsonSerializable
     {
         $types = [];
         foreach ($cosmetics as $cosmetic) {
-            $types[$cosmetic->getType()->getId()][] = $cosmetic;
+            $types[$cosmetic->getType()->getId()][$cosmetic->getId()] = $cosmetic;
         }
         return $types;
     }
@@ -95,7 +95,7 @@ class User implements JsonSerializable
     {
         $heroes = [];
         foreach ($cosmetics as $cosmetic) {
-            $heroes[$cosmetic->getHero() !== null ? $cosmetic->getHero()->getId() : "0"][$cosmetic->getType()->getId()][] = $cosmetic;
+            $heroes[$cosmetic->getHero() !== null ? $cosmetic->getHero()->getId() : "0"][$cosmetic->getType()->getId()][$cosmetic->getId()] = $cosmetic;
         }
         return $heroes;
     }
@@ -114,7 +114,7 @@ class User implements JsonSerializable
                     if ($this->settings["collection-show-category-" . $categorySlug]->getValue()) {
                         $typeSlug = $cosmetic->getType()->getSlug();
                         if ($this->settings["collection-show-type-" . $typeSlug]->getValue()) {
-                            $filtered[] = $cosmetic;
+                            $filtered[$cosmetic->getId()] = $cosmetic;
                         }
                     }
                 }
@@ -130,11 +130,17 @@ class User implements JsonSerializable
 
     public function hasCosmetic($id)
     {
-        foreach ($this->cosmetics as $cosmetic) {
-            if ($cosmetic->getId() === $id)
-                return true;
-        }
-        return false;
+        return array_key_exists($id, $this->cosmetics);
+    }
+
+    public function addCosmetic($cosmetic)
+    {
+        $this->cosmetics[$cosmetic->getId()] = $cosmetic;
+    }
+
+    public function removeCosmetic($id)
+    {
+        unset($this->cosmetics[$id]);
     }
 
     public function getSettings()

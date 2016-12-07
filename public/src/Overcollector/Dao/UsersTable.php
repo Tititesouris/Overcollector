@@ -16,21 +16,6 @@ DO UPDATE SET battletag = EXCLUDED.battletag
 RETURNING id, battleid, battletag;
 ";
 
-    private $addCosmetic = "
-INSERT INTO user_cosmetics (user_id, cosmetic_id)
-SELECT $1, $2
-FROM cosmetics
-WHERE id = $2 AND category_id IS NOT NULL
-ON CONFLICT ON CONSTRAINT pk_user_cosmetics
-DO NOTHING
-RETURNING cosmetic_id;
-";
-
-    private $removeCosmetic = "
-DELETE FROM user_cosmetics
-WHERE user_id = $1 AND cosmetic_id = $2;
-";
-
     private $removeCosmeticsByUserId = "
 DELETE FROM user_cosmetics
 WHERE user_id = $1;
@@ -40,8 +25,6 @@ WHERE user_id = $1;
     {
         parent::__construct();
         pg_prepare($this->handler, "addOrFetchUserByBattleid", $this->addOrFetchUserByBattleid);
-        pg_prepare($this->handler, "addCosmetic", $this->addCosmetic);
-        pg_prepare($this->handler, "removeCosmetic", $this->removeCosmetic);
         pg_prepare($this->handler, "removeCosmeticsByUserId", $this->removeCosmeticsByUserId);
     }
 
@@ -71,19 +54,6 @@ WHERE user_id = $1;
             return $this->parseUser($row);
         }
         return null;
-    }
-
-    public function updateUserCosmetic($userId, $cosmeticId, $owned)
-    {
-        if ($owned) {
-            $response = pg_execute($this->handler, "addCosmetic", array($userId, $cosmeticId));
-        } else {
-            $response = pg_execute($this->handler, "removeCosmetic", array($userId, $cosmeticId));
-        }
-        if ($response !== false) {
-            return true;
-        }
-        return false;
     }
 
     public function updateAllCosmetics($userId, $cosmetics)

@@ -8,16 +8,14 @@ if (isUserLoggedIn()) {
         $data = json_decode($_POST["data"], true);
         if ($data) {
             $cosmetics = [];
-            if ($data["version"] === "0.1") {
-                foreach ($data["cosmetics"] as $cosmetic) {
-                    $cosmetics[] = $cosmetic["id"];
-                }
-            } else if ($data["version"] === "0.11") {
-                $cosmetics = $data["cosmetics"];
+            switch ($data["version"]) {
+                case "1.0":
+                    $cosmetics = $data["cosmetics"];
+                    break;
             }
             if (count($cosmetics) > 0) {
                 if (UsersTable::getInstance()->updateAllCosmetics($_SESSION["user"]->getId(), $cosmetics)) {
-                    $_SESSION["needrefresh"] = true;
+                    $_SESSION["refreshalldata"] = true;
                     echo true;
                 }
             }

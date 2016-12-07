@@ -38,7 +38,7 @@ if (!isUserLoggedIn()) {
                                 $user = UsersTable::getInstance()->getUserByBattleid($responseJson["id"], $responseJson["battletag"]);
                                 if ($user !== null) {
                                     $_SESSION["user"] = $user;
-                                    $_SESSION["needrefresh"] = true;
+                                    $_SESSION["refreshalldata"] = true;
                                     header("Location: ./");
                                     die();
                                 } else {
@@ -65,11 +65,11 @@ if (!isUserLoggedIn()) {
         $_SESSION["region"] = strtoupper($_GET["region"]) !== "SEA" ? strtoupper($_GET["region"]) : "US";
         header("Location: ./login.php");
         die();
-    } else if (isset($_GET["debug"])) {
+    } else if ($config["config"]["debug"] && isset($_GET["debug"])) {
         $user = UsersTable::getInstance()->getUserByBattleid(12345, "Debug#12345");
         if ($user !== null) {
             $_SESSION["user"] = $user;
-            $_SESSION["needrefresh"] = true;
+            $_SESSION["refreshalldata"] = true;
             header("Location: ./");
             die();
         } else {
