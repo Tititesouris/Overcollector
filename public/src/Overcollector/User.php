@@ -105,7 +105,22 @@ class User implements JsonSerializable
      */
     public function filterCosmeticsByUserSettings($cosmetics)
     {
-        return $cosmetics;//TODO
+        $filtered = [];
+        foreach ($cosmetics as $cosmetic) {
+            if ($this->settings["collection-show-owned-cosmetics"]->getValue() || !$this->hasCosmetic($cosmetic->getId())) {
+                $heroSlug = $cosmetic->getHero() !== null ? $cosmetic->getHero()->getSlug() : "allheroes";
+                if ($this->settings["collection-show-hero-" . $heroSlug]->getValue()) {
+                    $categorySlug = $cosmetic->getCategory() !== null ? $cosmetic->getCategory()->getSlug() : "default";
+                    if ($this->settings["collection-show-category-" . $categorySlug]->getValue()) {
+                        $typeSlug = $cosmetic->getType()->getSlug();
+                        if ($this->settings["collection-show-type-" . $typeSlug]->getValue()) {
+                            $filtered[] = $cosmetic;
+                        }
+                    }
+                }
+            }
+        }
+        return $filtered;
     }
 
     public function setCosmetics($cosmetics)

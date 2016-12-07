@@ -119,7 +119,7 @@ CREATE TABLE settings (
   id          SERIAL,
   name        TEXT UNIQUE NOT NULL,
   description TEXT        NOT NULL,
-  "default"   TEXT,
+  "default"   TEXT        NOT NULL,
   min         TEXT,
   max         TEXT,
   CONSTRAINT pk_settings PRIMARY KEY (id)

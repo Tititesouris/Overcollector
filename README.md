@@ -8,28 +8,30 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 
 #### Work In Progress
 - BUG: Only on prod server, sometimes no cosmetics at all appear
-- Adding images for Player Icons and Sprays
-- Wishlists
+- Adding images for Dia de los Muertos and menu icons
+- Adding data for Christmas event
 - Improve README
 - Improve Welcome page
 - Improve design
 
 #### To Do
+- On prod server only, figure out how to keep sessions open longer
+- "Open a Lootbox" page where you can quickly input a couple new items
+- Change import dialog to work cross browser
 - Add settings for sort by "heroes", "heroes and types", "types", "categories", etc
 - Add setting for "group all player icons together"
-- Compare collections
-- Improve user profiles
+- Optimise DAO to avoid useless database calls
 - Button "Go to top of the page" in collection
 - Fix display of buttons in collection on smaller screens
-- "Open a Lootbox" page where you can quickly input a couple new items
-- On prod server only, figure out how to keep sessions open longer
-- Change import dialog to work cross browser
+- Improve user profiles
 - Make FAQ
+- Search in collection
+- Wishlists
 - Statistics about probability in lootboxes
 - Event optimisers
-- Search in collection
-- Optimise DAO to avoid useless database calls
 - Achievements tracker
+- Recreate competitive gif sprays
+- Compare collections
 
 
 ## How to contribute

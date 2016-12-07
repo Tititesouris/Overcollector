@@ -16,10 +16,14 @@ FROM settings;
 ";
 
     private $fetchUserSettings = "
-SELECT id, name, description, value
-FROM settings INNER JOIN user_settings
+SELECT id, name, description, COALESCE(value, \"default\") AS value
+FROM settings LEFT JOIN (
+    SELECT value, setting_id
+    FROM user_settings
+    WHERE user_id = $1
+  ) AS user_settings
   ON settings.id = user_settings.setting_id
-WHERE user_id = $1;
+ORDER BY id;
 ";
 
     private $fetchUserSetting = "
