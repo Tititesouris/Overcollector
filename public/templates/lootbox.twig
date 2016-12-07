@@ -1,0 +1,62 @@
+{% extends "page.twig" %}
+{% block body %}
+    {% set HEROES = SESSION.heroes %}
+    {% set TYPES = SESSION.types %}
+    {% set COSMETICS = SESSION.cosmetics %}
+    {% set USER = SESSION.user %}
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col">
+            <h1 class="mdl-typography--title">Open a Loot Box</h1>
+            <p>
+                Open a Loot Box and select the new cosmetics found in it.<br/>
+                If you got a duplicate, simply check the "duplicate" checkbox.
+            </p>
+        </div>
+    </div>
+    <div class="mdl-grid">
+        {% for i in 0..3 %}
+            <div class="mdl-cell mdl-cell--3-col">
+
+                <label for="duplicate-{{ i }}">Duplicate</label>
+                <input id="duplicate-{{ i }}" type="checkbox" class="duplicate-checkbox" data-lootbox="{{ i }}"><br/>
+
+                <label for="hero-{{ i }}">Hero</label>
+                <select id="hero-{{ i }}" class="hero-select" data-lootbox="{{ i }}">
+                    <option value="0">All Heroes</option>
+                    {% for hero in HEROES %}
+                        <option value="{{ hero.id }}">{{ hero.name }}</option>
+                    {% endfor %}
+                </select><br/>
+
+                <label for="type-{{ i }}">Type</label>
+                <select id="type-{{ i }}" class="type-select" data-lootbox="{{ i }}">
+                    {% for type in TYPES %}
+                        <option value="{{ type.id }}">{{ type.name }}</option>
+                    {% endfor %}
+                </select><br/>
+
+                <label for="cosmetic-{{ i }}">Cosmetic</label>
+                <select id="cosmetic-{{ i }}" class="cosmetic-select" data-lootbox="{{ i }}">
+                    <option value="-1" disabled style="display: none"></option>
+                    {% for cosmetic in COSMETICS %}
+                        {% if not USER.hasCosmetic(cosmetic.id) and cosmetic.category is not null %}
+                            <option value="{{ cosmetic.id }}" data-hero="{{ cosmetic.hero.id ?? 0 }}"
+                                    data-type="{{ cosmetic.type.id }}"{% if cosmetic.type.id != 1 or cosmetic.hero is not null %} style="display: none"{% endif %}>
+                                {{ cosmetic.name }}
+                            </option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+
+            </div>
+        {% endfor %}
+    </div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col">
+            <button id="open-lootbox-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                Save New Cosmetics
+            </button>
+        </div>
+    </div>
+    <script defer src="scripts/lootbox.js"></script>
+{% endblock %}

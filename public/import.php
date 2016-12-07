@@ -1,7 +1,7 @@
 <?php
 require_once("required.php");
 
-use Overcollector\Dao\UsersTable;
+use Overcollector\Dao\CosmeticsTable;
 
 if (isUserLoggedIn()) {
     if (isset($_POST["data"])) {
@@ -14,7 +14,7 @@ if (isUserLoggedIn()) {
                     break;
             }
             if (count($cosmetics) > 0) {
-                if (UsersTable::getInstance()->updateAllCosmetics($_SESSION["user"]->getId(), $cosmetics)) {
+                if (CosmeticsTable::getInstance()->setUserCosmetics($_SESSION["user"]->getId(), $cosmetics)) {
                     $_SESSION["refreshalldata"] = true;
                     echo true;
                 }

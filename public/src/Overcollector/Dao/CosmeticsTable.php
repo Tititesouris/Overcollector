@@ -42,7 +42,7 @@ ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, ordering
 
     private $addUserCosmetic = "
 INSERT INTO user_cosmetics (user_id, cosmetic_id)
-SELECT $1, $2
+SELECT $1, id
 FROM cosmetics
 WHERE id = $2 AND category_id IS NOT NULL
 ON CONFLICT ON CONSTRAINT pk_user_cosmetics
@@ -56,6 +56,21 @@ WHERE user_id = $1 AND cosmetic_id = $2
 RETURNING cosmetic_id;
 ";
 
+    private $removeCosmeticsByUserId = "
+DELETE FROM user_cosmetics
+WHERE user_id = $1;
+";
+
+    private $addUserCosmetics = "
+INSERT INTO user_cosmetics (user_id, cosmetic_id)
+SELECT $1, id
+FROM cosmetics
+WHERE id = ANY($2::INTEGER[]) AND category_id IS NOT NULL
+ON CONFLICT ON CONSTRAINT pk_user_cosmetics
+DO NOTHING
+RETURNING cosmetic_id;
+";
+
     protected function __construct()
     {
         parent::__construct();
@@ -64,6 +79,8 @@ RETURNING cosmetic_id;
         pg_prepare($this->handler, "fetchOwnedCosmeticsByUserId", $this->fetchOwnedCosmeticsByUserId);
         pg_prepare($this->handler, "addUserCosmetic", $this->addUserCosmetic);
         pg_prepare($this->handler, "removeUserCosmetic", $this->removeUserCosmetic);
+        pg_prepare($this->handler, "removeCosmeticsByUserId", $this->removeCosmeticsByUserId);
+        pg_prepare($this->handler, "addUserCosmetics", $this->addUserCosmetics);
     }
 
     public static function getInstance()
@@ -138,6 +155,43 @@ RETURNING cosmetic_id;
             }
         }
         return null;
+    }
+
+    public function addUserCosmetics($userId, $cosmeticIds)
+    {
+        $response = pg_execute($this->handler, "addUserCosmetics", array($userId, "{" . implode(", ", $cosmeticIds) . "}"));
+        if ($response !== false) {
+            $cosmetics = [];
+            while (($row = pg_fetch_assoc($response)) !== false) {
+                $cosmetics[] = $this->getCosmeticById($row["cosmetic_id"]);
+            }
+            return $cosmetics;
+        }
+        return null;
+    }
+
+    public function setUserCosmetics($userId, $cosmetics)
+    {
+        pg_query("BEGIN") or die("Could not start transaction\n");
+        $response = pg_execute($this->handler, "removeCosmeticsByUserId", array($userId));
+        if ($response === false) {
+            pg_query("ROLLBACK") or die("Transaction rollback failed\n");
+            return false;
+        }
+        $inserted = 0;
+        foreach ($cosmetics as $cosmeticId) {
+            $response = pg_execute($this->handler, "addCosmetic", array($userId, $cosmeticId));
+            if ($response === false || ($row = pg_fetch_assoc($response)) === false) {
+                pg_query("ROLLBACK") or die("Transaction rollback failed\n");
+                return false;
+            }
+            $inserted++;
+        }
+        if ($inserted != count($cosmetics)) {
+            pg_query("ROLLBACK") or die("Transaction rollback failed\n");
+        }
+        pg_query("COMMIT") or die("Transaction commit failed\n");
+        return true;
     }
 
 }

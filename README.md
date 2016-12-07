@@ -10,13 +10,15 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 #### Work In Progress
 - Adding images for Dia de los Muertos and menu icons
 - Adding data for Christmas event
+- Improve lootbox page
+- Don't show types for all heroes on lootbox page
+- Only show items for current event on lootbox page
 - Improve README
 - Improve Welcome page
 - Improve design
 
 #### To Do
 - On prod server only, figure out how to keep sessions open longer
-- "Open a Lootbox" page where you can quickly input a couple new items
 - Change import dialog to work cross browser
 - Add settings for sort by "heroes", "heroes and types", "types", "categories", etc
 - Add setting for "group all player icons together"

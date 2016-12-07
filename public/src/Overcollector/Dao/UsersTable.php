@@ -16,16 +16,10 @@ DO UPDATE SET battletag = EXCLUDED.battletag
 RETURNING id, battleid, battletag;
 ";
 
-    private $removeCosmeticsByUserId = "
-DELETE FROM user_cosmetics
-WHERE user_id = $1;
-";
-
     protected function __construct()
     {
         parent::__construct();
         pg_prepare($this->handler, "addOrFetchUserByBattleid", $this->addOrFetchUserByBattleid);
-        pg_prepare($this->handler, "removeCosmeticsByUserId", $this->removeCosmeticsByUserId);
     }
 
     public static function getInstance()
@@ -54,30 +48,6 @@ WHERE user_id = $1;
             return $this->parseUser($row);
         }
         return null;
-    }
-
-    public function updateAllCosmetics($userId, $cosmetics)
-    {
-        pg_query("BEGIN") or die("Could not start transaction\n");
-        $response = pg_execute($this->handler, "removeCosmeticsByUserId", array($userId));
-        if ($response === false) {
-            pg_query("ROLLBACK") or die("Transaction rollback failed\n");
-            return false;
-        }
-        $inserted = 0;
-        foreach ($cosmetics as $cosmeticId) {
-            $response = pg_execute($this->handler, "addCosmetic", array($userId, $cosmeticId));
-            if ($response === false || ($row = pg_fetch_assoc($response)) === false) {
-                pg_query("ROLLBACK") or die("Transaction rollback failed\n");
-                return false;
-            }
-            $inserted++;
-        }
-        if ($inserted != count($cosmetics)) {
-            pg_query("ROLLBACK") or die("Transaction rollback failed\n");
-        }
-        pg_query("COMMIT") or die("Transaction commit failed\n");
-        return true;
     }
 
 }
