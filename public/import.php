@@ -15,7 +15,7 @@ if (isUserLoggedIn()) {
             }
             if (count($cosmetics) > 0) {
                 if (CosmeticsTable::getInstance()->setUserCosmetics($_SESSION["user"]->getId(), $cosmetics)) {
-                    $_SESSION["refreshalldata"] = true;
+                    $_SESSION["refreshuser"] = true;
                     echo true;
                 }
             }

@@ -10,14 +10,8 @@ class CosmeticsTable extends Table
     private static $instance;
 
     private $fetchCosmetics = "
-SELECT cosmetics.id, cosmetics.category_id, type_id, rarity_id, hero_id, cosmetics.name, event_id
-FROM cosmetics
-LEFT JOIN heroes
-  ON cosmetics.hero_id = heroes.id
-LEFT JOIN
-  (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (3, 7), (4, 8), (8, 9)) AS orders(category_id, ordering)
-    ON cosmetics.category_id = orders.category_id
-ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, ordering, cosmetics.name, event_id;
+SELECT id, category_id, type_id, rarity_id, hero_id, name, event_id
+FROM cosmetics;
 ";
 
     private $fetchCosmeticById = "
@@ -31,13 +25,7 @@ SELECT cosmetics.id, cosmetics.category_id, type_id, rarity_id, hero_id, cosmeti
 FROM cosmetics
   LEFT JOIN user_cosmetics
     ON cosmetics.id = user_cosmetics.cosmetic_id OR cosmetics.category_id IS NULL
-  LEFT JOIN heroes
-    ON cosmetics.hero_id = heroes.id
-  LEFT JOIN
-  (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (3, 7), (4, 8), (8, 9)) AS orders(category_id, ordering)
-    ON cosmetics.category_id = orders.category_id
-WHERE user_id = $1 OR cosmetics.category_id IS NULL
-ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, ordering, cosmetics.name, event_id;
+WHERE user_id = $1 OR cosmetics.category_id IS NULL;
 ";
 
     private $addUserCosmetic = "

@@ -15,7 +15,8 @@ session_start();
 require_once(__DIR__ . "/functions.php");
 
 if (isUserLoggedIn()) {
-    updateSession();
+    updateGlobalSession();
+    updateUserSession();
 }
 
 // Twig

@@ -3,6 +3,12 @@ $config = parse_ini_file(__DIR__ . "/../overcollector.ini", true);
 $debug = $config["config"]["debug"];
 $localhost = $config["config"]["localhost"];
 
+use Overcollector\Dao\HeroesTable;
+use Overcollector\Dao\CategoriesTable;
+use Overcollector\Dao\TypesTable;
+use Overcollector\Dao\SettingsTable;
+use Overcollector\Dao\CosmeticsTable;
+
 function sendPost($url, $params, $login = null, $password = null)
 {
     global $debug, $localhost;
@@ -53,22 +59,24 @@ function stupidBoolVal($boolean)
     return $boolean ? "true" : "false";
 }
 
-use Overcollector\Dao\HeroesTable;
-use Overcollector\Dao\CategoriesTable;
-use Overcollector\Dao\TypesTable;
-use Overcollector\Dao\SettingsTable;
-use Overcollector\Dao\CosmeticsTable;
-
-function updateSession()
+function updateGlobalSession()
 {
-    if ($_SESSION["refreshalldata"]) {
-        $_SESSION["refreshalldata"] = false;
+    if (isset($_SESSION["refreshglobal"]) && $_SESSION["refreshglobal"]) {
+        $_SESSION["refreshglobal"] = false;
         $_SESSION["heroes"] = HeroesTable::getInstance()->getAllHeroesSortById();
         $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesSortById();
         $_SESSION["types"] = TypesTable::getInstance()->getAllTypesSortById();
         $_SESSION["settings"] = SettingsTable::getInstance()->getAllSettings();
         $_SESSION["cosmetics"] = CosmeticsTable::getInstance()->getCosmetics();
+    }
+}
+
+function updateUserSession()
+{
+    if (isset($_SESSION["refreshuser"]) && $_SESSION["refreshuser"]) {
+        $_SESSION["refreshuser"] = false;
         $_SESSION["user"]->setCosmetics(CosmeticsTable::getInstance()->getOwnedCosmeticsByUserId($_SESSION["user"]->getId()));
+        $_SESSION["user"]->setSettings(SettingsTable::getInstance()->getUserSettings($_SESSION["user"]->getId()));
         return true;
     }
     return false;
