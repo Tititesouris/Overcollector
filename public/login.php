@@ -38,7 +38,7 @@ if (!isUserLoggedIn()) {
                                 $user = UsersTable::getInstance()->getUserByBattleid($responseJson["id"], $responseJson["battletag"]);
                                 if ($user !== null) {
                                     $_SESSION["user"] = $user;
-                                    $_SESSION["updateglobal"] = true;
+                                    $_SESSION["refreshglobal"] = true;
                                     header("Location: ./");
                                     die();
                                 } else {
@@ -69,7 +69,7 @@ if (!isUserLoggedIn()) {
         $user = UsersTable::getInstance()->getUserByBattleid(123, "Debug#12345");
         if ($user !== null) {
             $_SESSION["user"] = $user;
-            $_SESSION["updateglobal"] = true;
+            $_SESSION["refreshglobal"] = true;
             header("Location: ./");
             die();
         } else {
