@@ -4,7 +4,8 @@ require_once("required.php");
 use Overcollector\Services\UserCosmeticsService;
 
 if (isUserLoggedIn()) {
-    header("Content-disposition: attachment; filename=export.json");
+    $date = getdate();
+    header("Content-disposition: attachment; filename=Overcollector-".$date["year"]."-".$date["mon"]."-".$date["mday"].".json");
     header("Content-type: application/json");
     $cosmetics = UserCosmeticsService::getUserCosmeticsByUserId($_SESSION["user"]->getId());
     $cosmeticIds = [];
