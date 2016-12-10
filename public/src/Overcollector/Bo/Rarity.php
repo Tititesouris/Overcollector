@@ -1,13 +1,11 @@
 <?php
 
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 use JsonSerializable;
 
 class Rarity implements JsonSerializable
 {
-
-    private static $rarities = array();
 
     private $id;
 
@@ -15,19 +13,11 @@ class Rarity implements JsonSerializable
 
     private $basePrice;
 
-    private function __construct($id, $name, $basePrice)
+    public function __construct($id, $name, $basePrice)
     {
         $this->id = $id;
         $this->name = $name;
         $this->basePrice = $basePrice;
-    }
-
-    public static function createRarity($id, $name, $basePrice)
-    {
-        if (!array_key_exists($id, self::$rarities)) {
-            self::$rarities[$id] = new Rarity($id, $name, $basePrice);
-        }
-        return self::$rarities[$id];
     }
 
     public function getId()

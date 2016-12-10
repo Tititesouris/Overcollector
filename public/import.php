@@ -1,7 +1,8 @@
 <?php
 require_once("required.php");
 
-use Overcollector\Dao\CosmeticsTable;
+use Overcollector\Services\UserCosmeticsService;
+header('HTTP/1.1 201 Created');
 
 if (isUserLoggedIn()) {
     if (isset($_POST["data"])) {
@@ -14,12 +15,13 @@ if (isUserLoggedIn()) {
                     break;
             }
             if (count($cosmetics) > 0) {
-                if (CosmeticsTable::getInstance()->setUserCosmetics($_SESSION["user"]->getId(), $cosmetics)) {
-                    $_SESSION["refreshuser"] = true;
-                    echo true;
+                if (UserCosmeticsService::setUserCosmeticsByUserId($_SESSION["user"]->getId(), $cosmetics)) {
+                    $_SESSION["user"]->setCosmetics(UserCosmeticsService::getUserCosmeticsByUserId($_SESSION["user"]->getId()));
+                    echo "true";
+                    die();
                 }
             }
         }
     }
 }
-echo false;
+echo "false";

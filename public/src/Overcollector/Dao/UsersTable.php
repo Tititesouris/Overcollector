@@ -1,8 +1,6 @@
 <?php
 namespace Overcollector\Dao;
 
-use Overcollector\User;
-
 class UsersTable extends Table
 {
 
@@ -30,22 +28,11 @@ RETURNING id, battleid, battletag;
         return self::$instance;
     }
 
-    private static function parseUser($row)
-    {
-        return User::createUser(
-            intval($row["id"]),
-            $row["battleid"],
-            $row["battletag"],
-            CosmeticsTable::getInstance()->getOwnedCosmeticsByUserId(intval($row["id"])),
-            SettingsTable::getInstance()->getUserSettings(intval($row["id"]))
-        );
-    }
-
     public function getUserByBattleid($battleid, $battletag)
     {
-        $response = pg_execute($this->handler, "addOrFetchUserByBattleid", array($battleid, $battletag));
-        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
-            return $this->parseUser($row);
+        $response = pg_execute($this->handler, "addOrFetchUserByBattleid", [$battleid, $battletag]);
+        if ($response !== false && ($user = pg_fetch_assoc($response)) !== false) {
+            return $user;
         }
         return null;
     }

@@ -2,7 +2,6 @@
 
 namespace Overcollector\Dao;
 
-use Overcollector\Token;
 
 class TokensTable extends Table
 {
@@ -36,30 +35,21 @@ RETURNING token, created_at, expires_at;
         return self::$instance;
     }
 
-    private static function parseToken($row)
-    {
-        return Token::createToken(
-            $row["token"],
-            $row["created_at"],
-            $row["expires_at"]
-        );
-    }
-
 
     public function createAccessToken($seconds = 300)
     {
-        $response = pg_execute($this->handler, "createToken", array($seconds));
-        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
-            return self::parseToken($row);
+        $response = pg_execute($this->handler, "createToken", [$seconds]);
+        if ($response !== false && ($token = pg_fetch_assoc($response)) !== false) {
+            return $token;
         }
         return null;
     }
 
     public function useAccessToken($token)
     {
-        $response = pg_execute($this->handler, "useToken", array($token));
-        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
-            return self::parseToken($row);
+        $response = pg_execute($this->handler, "useToken", [$token]);
+        if ($response !== false && ($token = pg_fetch_assoc($response)) !== false) {
+            return $token;
         }
         return null;
     }

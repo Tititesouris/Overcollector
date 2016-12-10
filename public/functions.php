@@ -3,17 +3,21 @@ $config = parse_ini_file(__DIR__ . "/../overcollector.ini", true);
 $debug = $config["config"]["debug"];
 $localhost = $config["config"]["localhost"];
 
-use Overcollector\Dao\HeroesTable;
-use Overcollector\Dao\CategoriesTable;
-use Overcollector\Dao\TypesTable;
-use Overcollector\Dao\SettingsTable;
-use Overcollector\Dao\CosmeticsTable;
+use \Overcollector\Services\CategoriesService;
+use \Overcollector\Services\TypesService;
+use \Overcollector\Services\RaritiesService;
+use \Overcollector\Services\HeroesService;
+use \Overcollector\Services\EventsService;
+use \Overcollector\Services\CosmeticsService;
+use \Overcollector\Services\SettingsService;
+use \Overcollector\Services\UserCosmeticsService;
+use \Overcollector\Services\UserSettingsService;
 
 function sendPost($url, $params, $login = null, $password = null)
 {
     global $debug, $localhost;
     $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/json"));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ["Accept: application/json"]);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, !$localhost);
@@ -36,7 +40,7 @@ function sendGet($url, $params)
 {
     global $debug, $localhost;
     $ch = curl_init(($params !== null) ? $url . "?" . http_build_query($params) : $url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/json"));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ["Accept: application/json"]);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, !$localhost);
     $response = curl_exec($ch);
@@ -63,11 +67,13 @@ function updateGlobalSession()
 {
     if (isset($_SESSION["refreshglobal"]) && $_SESSION["refreshglobal"]) {
         $_SESSION["refreshglobal"] = false;
-        $_SESSION["heroes"] = HeroesTable::getInstance()->getAllHeroesSortById();
-        $_SESSION["categories"] = CategoriesTable::getInstance()->getAllCategoriesSortById();
-        $_SESSION["types"] = TypesTable::getInstance()->getAllTypesSortById();
-        $_SESSION["settings"] = SettingsTable::getInstance()->getAllSettings();
-        $_SESSION["cosmetics"] = CosmeticsTable::getInstance()->getCosmetics();
+        $_SESSION["categories"] = CategoriesService::getCategories();
+        $_SESSION["types"] = TypesService::getTypes();
+        $_SESSION["rarities"] = RaritiesService::getRarities();
+        $_SESSION["heroes"] = HeroesService::getHeroes();
+        $_SESSION["events"] = EventsService::getEvents();
+        $_SESSION["cosmetics"] = CosmeticsService::getCosmetics();
+        $_SESSION["settings"] = SettingsService::getSettings();
     }
 }
 
@@ -75,8 +81,8 @@ function updateUserSession()
 {
     if (isset($_SESSION["refreshuser"]) && $_SESSION["refreshuser"]) {
         $_SESSION["refreshuser"] = false;
-        $_SESSION["user"]->setCosmetics(CosmeticsTable::getInstance()->getOwnedCosmeticsByUserId($_SESSION["user"]->getId()));
-        $_SESSION["user"]->setSettings(SettingsTable::getInstance()->getUserSettings($_SESSION["user"]->getId()));
+        $_SESSION["user"]->setCosmetics(UserCosmeticsService::getUserCosmeticsByUserId($_SESSION["user"]->getId()));
+        $_SESSION["user"]->setSettings(UserSettingsService::getUserSettingsByUserIdSortedByName($_SESSION["user"]->getId()));
         return true;
     }
     return false;

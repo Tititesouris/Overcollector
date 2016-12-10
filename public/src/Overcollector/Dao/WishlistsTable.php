@@ -3,8 +3,6 @@
 namespace Overcollector\Dao;
 
 
-use Overcollector\WishlistItem;
-
 class WishlistsTable extends Table
 {
 
@@ -30,21 +28,13 @@ WHERE user_id = $1;
         return self::$instance;
     }
 
-    private static function parseWishlistItem($row)
-    {
-        return WishlistItem::createWishlistItem(
-            CosmeticsTable::getInstance()->getCosmeticById($row["cosmetic_id"]),
-            boolval($row["favorite"])
-        );
-    }
-
     public function getWishlistByUserId($userId)
     {
-        $response = pg_execute($this->handler, "fetchWishlistByUserId", array($userId));
+        $response = pg_execute($this->handler, "fetchWishlistByUserId", [$userId]);
         if ($response !== false) {
             $items = [];
-            while (($row = pg_fetch_assoc($response)) !== false) {
-                $items[] = $this->parseWishlistItem($row);
+            while (($wishlistItem = pg_fetch_assoc($response)) !== false) {
+                $items[] = $wishlistItem;
             }
             return $items;
         }

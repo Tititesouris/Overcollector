@@ -1,13 +1,13 @@
 <?php
 
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 use JsonSerializable;
 
 class UserSetting implements JsonSerializable
 {
 
-    private $id;
+    private $settingId;
 
     private $name;
 
@@ -15,31 +15,17 @@ class UserSetting implements JsonSerializable
 
     private $value;
 
-    private function __construct($id, $name, $description, $value)
+    public function __construct($settingId, $name, $description, $value)
     {
-        $this->id = $id;
+        $this->settingId = $settingId;
         $this->name = $name;
         $this->description = $description;
         $this->value = $value;
     }
 
-    public static function createUserSetting($id, $name, $description, $value)
+    public function getSettingId()
     {
-        return new self($id, $name, $description, self::parseValue($value));
-    }
-
-    private static function parseValue($value)
-    {
-        if ($value === "true")
-            return true;
-        if ($value === "false")
-            return false;
-        return intval($value);
-    }
-
-    public function getId()
-    {
-        return $this->id;
+        return $this->settingId;
     }
 
     public function getName()
@@ -60,7 +46,7 @@ class UserSetting implements JsonSerializable
     function jsonSerialize()
     {
         return [
-            "id" => $this->id,
+            "setting_id" => $this->settingId,
             "name" => $this->name,
             "description" => $this->description,
             "value" => $this->value

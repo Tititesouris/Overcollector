@@ -3,7 +3,7 @@ $(function () {
 
     $("#profile-save-btn").click(function () {
         $("#profile-settings").find(".setting input").each(function () {
-            var setting = $(this).data("setting");
+            var setting = parseInt($(this).data("setting-id"));
             var value = $(this).val() === "on" ? $(this).prop("checked") : $(this).val();
             saveSetting(
                 setting,

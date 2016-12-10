@@ -1,6 +1,6 @@
 <?php
 
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 use JsonSerializable;
 
@@ -27,20 +27,6 @@ class Setting implements JsonSerializable
         $this->default = $default;
         $this->min = $min;
         $this->max = $max;
-    }
-
-    public static function createSetting($id, $name, $description, $default, $min, $max)
-    {
-        return new self($id, $name, $description, self::parseValue($default), self::parseValue($min), self::parseValue($max));
-    }
-
-    private static function parseValue($value)
-    {
-        if ($value === "true")
-            return true;
-        if ($value === "false")
-            return false;
-        return intval($value);
     }
 
     public function getId()

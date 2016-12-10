@@ -1,12 +1,10 @@
 <?php
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 use JsonSerializable;
 
 class Cosmetic implements JsonSerializable
 {
-
-    private static $cosmetics = array();
 
     private $id;
 
@@ -22,7 +20,7 @@ class Cosmetic implements JsonSerializable
 
     private $event;
 
-    private function __construct($id, $category, $type, $rarity, $hero, $name, $event)
+    public function __construct($id, $category, $type, $rarity, $hero, $name, $event)
     {
         $this->id = $id;
         $this->category = $category;
@@ -31,14 +29,6 @@ class Cosmetic implements JsonSerializable
         $this->hero = $hero;
         $this->name = $name;
         $this->event = $event;
-    }
-
-    public static function createCosmetic($id, $category, $type, $rarity, $hero, $name, $event)
-    {
-        if (!array_key_exists($id, self::$cosmetics)) {
-            self::$cosmetics[$id] = new self($id, $category, $type, $rarity, $hero, $name, $event);
-        }
-        return self::$cosmetics[$id];
     }
 
     public function getId()

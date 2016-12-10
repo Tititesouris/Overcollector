@@ -1,5 +1,5 @@
 <?php
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 use JsonSerializable;
 
@@ -22,11 +22,6 @@ class User implements JsonSerializable
         $this->battletag = $battletag;
         $this->cosmetics = $cosmetics;
         $this->settings = $settings;
-    }
-
-    public static function createUser($id, $battleid, $battletag, $cosmetics, $settings)
-    {
-        return new self($id, $battleid, $battletag, $cosmetics, $settings);
     }
 
     public function getId()
@@ -123,14 +118,9 @@ class User implements JsonSerializable
         return $filtered;
     }
 
-    public function setCosmetics($cosmetics)
-    {
-        $this->cosmetics = $cosmetics;
-    }
-
     public function hasCosmetic($id)
     {
-        return array_key_exists($id, $this->cosmetics);
+        return isset($this->cosmetics[$id]);
     }
 
     public function addCosmetic($cosmetic)
@@ -143,14 +133,24 @@ class User implements JsonSerializable
         unset($this->cosmetics[$id]);
     }
 
+    public function setCosmetics($cosmetics)
+    {
+        $this->cosmetics = $cosmetics;
+    }
+
     public function getSettings()
     {
         return $this->settings;
     }
 
-    public function setSetting(UserSetting $setting)
+    public function addSetting($setting)
     {
         $this->settings[$setting->getName()] = $setting;
+    }
+
+    public function setSettings($settings)
+    {
+        $this->settings = $settings;
     }
 
     public function jsonSerialize()

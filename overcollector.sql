@@ -116,9 +116,10 @@ GRANT SELECT, INSERT, DELETE ON TABLE user_cosmetics TO overcollector;
 
 
 CREATE TABLE settings (
-  id          SERIAL,
+  id          INTEGER,
   name        TEXT UNIQUE NOT NULL,
   description TEXT        NOT NULL,
+  type        TEXT        NOT NULL,
   "default"   TEXT        NOT NULL,
   min         TEXT,
   max         TEXT,

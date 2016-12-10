@@ -1,14 +1,12 @@
 <?php
 namespace Overcollector\Dao;
 
-use Overcollector\Hero;
-
 class HeroesTable extends Table
 {
 
     private static $instance;
 
-    private $fetchAllHeroes = "
+    private $fetchHeroes = "
 SELECT id, name, slug
 FROM heroes
 ORDER BY name;
@@ -23,7 +21,7 @@ WHERE id = $1;
     protected function __construct()
     {
         parent::__construct();
-        pg_prepare($this->handler, "fetchAllHeroes", $this->fetchAllHeroes);
+        pg_prepare($this->handler, "fetchHeroes", $this->fetchHeroes);
         pg_prepare($this->handler, "fetchHeroById", $this->fetchHeroById);
     }
 
@@ -35,49 +33,26 @@ WHERE id = $1;
         return self::$instance;
     }
 
-    private static function parseHero($row)
+    public function getHeroes()
     {
-        return Hero::createHero(
-            intval($row["id"]),
-            $row["name"],
-            $row["slug"]
-        );
-    }
-
-    public function getAllHeroes()
-    {
-        $response = pg_execute($this->handler, "fetchAllHeroes", array());
+        $response = pg_execute($this->handler, "fetchHeroes", []);
         if ($response !== false) {
             $heroes = [];
-            while (($row = pg_fetch_assoc($response)) !== false) {
-                $heroes[] = $this->parseHero($row);
+            while (($hero = pg_fetch_assoc($response)) !== false) {
+                $heroes[] = $hero;
             }
             return $heroes;
-        }
-        return [];
-    }
-
-    public function getHeroById($id)
-    {
-        $response = pg_execute($this->handler, "fetchHeroById", array($id));
-        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
-            return $this->parseHero($row);
         }
         return null;
     }
 
-    public function getAllHeroesSortById()
+    public function getHeroById($id)
     {
-        $response = pg_execute($this->handler, "fetchAllHeroes", array());
-        if ($response !== false) {
-            $heroes = [];
-            while (($row = pg_fetch_assoc($response)) !== false) {
-                $hero = $this->parseHero($row);
-                $heroes[$hero->getId()] = $hero;
-            }
-            return $heroes;
+        $response = pg_execute($this->handler, "fetchHeroById", [$id]);
+        if ($response !== false && ($hero = pg_fetch_assoc($response)) !== false) {
+            return $hero;
         }
-        return [];
+        return null;
     }
 
 }

@@ -1,13 +1,12 @@
 <?php
 
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 use JsonSerializable;
 
 
 class Event implements JsonSerializable
 {
-    private static $events = array();
 
     private $id;
 
@@ -23,14 +22,6 @@ class Event implements JsonSerializable
         $this->name = $name;
         $this->start = $start;
         $this->end = $end;
-    }
-
-    public static function createEvent($id, $name, $start, $end)
-    {
-        if (!array_key_exists($id, self::$events)) {
-            self::$events[$id] = new Event($id, $name, $start, $end);
-        }
-        return self::$events[$id];
     }
 
     public function getId()

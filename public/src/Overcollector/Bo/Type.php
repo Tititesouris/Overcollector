@@ -1,13 +1,11 @@
 <?php
 
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 use JsonSerializable;
 
 class Type implements JsonSerializable
 {
-
-    private static $types = array();
 
     private $id;
 
@@ -15,19 +13,11 @@ class Type implements JsonSerializable
 
     private $slug;
 
-    private function __construct($id, $name, $slug)
+    public function __construct($id, $name, $slug)
     {
         $this->id = $id;
         $this->name = $name;
         $this->slug = $slug;
-    }
-
-    public static function createType($id, $name, $slug)
-    {
-        if (!array_key_exists($id, self::$types)) {
-            self::$types[$id] = new Type($id, $name, $slug);
-        }
-        return self::$types[$id];
     }
 
     public function getId()

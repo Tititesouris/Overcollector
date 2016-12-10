@@ -16,14 +16,14 @@
                                 <label class="setting boolean-setting mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
                                        for="setting-checkbox-{{ setting.name }}">
                                     <input type="checkbox" id="setting-checkbox-{{ setting.name }}"
-                                           data-setting="{{ setting.name }}"
+                                           data-setting-id="{{ setting.id }}"
                                            class="setting-input mdl-checkbox__input" {{ userSettings[setting.name].value ?? setting.default ? "checked" }}/>
                                 </label>
                             {% else %}
                                 <span class="setting integer-setting mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="number" min="{{ setting.min }}"
                                            max="{{ setting.max }}" pattern="-?[0-9]+"
-                                           id="setting-checkbox-{{ setting.name }}" data-setting="{{ setting.name }}"
+                                           id="setting-checkbox-{{ setting.name }}" data-setting-id="{{ setting.id }}"
                                            value="{{ userSettings[setting.name].value ?? setting.default }}">
                                     <label class="mdl-textfield__label"
                                            for="setting-checkbox-{{ setting.name }}">Integer</label>

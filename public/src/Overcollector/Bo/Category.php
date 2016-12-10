@@ -1,13 +1,11 @@
 <?php
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 
 use JsonSerializable;
 
 class Category implements JsonSerializable
 {
-
-    private static $categories = array();
 
     private $id;
 
@@ -26,14 +24,6 @@ class Category implements JsonSerializable
         $this->description = $description;
         $this->priceMultiplier = $priceMultiplier;
         $this->slug = $slug;
-    }
-
-    public static function createCategory($id, $name, $description, $priceMultiplier, $slug)
-    {
-        if (!array_key_exists($id, self::$categories)) {
-            self::$categories[$id] = new Category($id, $name, $description, $priceMultiplier, $slug);
-        }
-        return self::$categories[$id];
     }
 
     public function getId()
@@ -68,7 +58,7 @@ class Category implements JsonSerializable
             "name" => $this->name,
             "description" => $this->description,
             "price_multiplier" => $this->priceMultiplier,
-            "short" => $this->slug
+            "slug" => $this->slug
         ];
     }
 

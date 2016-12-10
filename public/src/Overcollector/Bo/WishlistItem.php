@@ -1,6 +1,6 @@
 <?php
 
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 
 use JsonSerializable;
@@ -16,11 +16,6 @@ class WishlistItem implements JsonSerializable
     {
         $this->cosmetic = $cosmetic;
         $this->favorite = $favorite;
-    }
-
-    public static function createWishlistItem($cosmetic, $favorite)
-    {
-        return new self($cosmetic, $favorite);
     }
 
     function jsonSerialize()

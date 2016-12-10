@@ -18,6 +18,8 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Improve design
 
 #### To Do
+- Revert DAO so that we only query when missing information
+- Refactor settings add "type"
 - On prod server only, figure out how to keep sessions open longer
 - Find a way to store constants in a way that avoids making huge sessions on log in
 - Change import dialog to work cross browser

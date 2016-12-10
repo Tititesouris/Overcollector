@@ -40,7 +40,7 @@ $(function () {
         if (cosmetics.length > 0) {
             addCosmetics(cosmetics, function (data) {
                 console.log(data);
-                if (data) {
+                if (data == "true") {
                     document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
                         message: "Cosmetics saved!"
                     });

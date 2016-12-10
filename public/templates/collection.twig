@@ -172,7 +172,7 @@
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-show-owned">
                             <input type="checkbox" id="switch-show-owned" class="setting-input mdl-switch__input"
-                                   data-setting="collection-show-owned-cosmetics" {{ USERSETTINGS["collection-show-owned-cosmetics"].value ? "checked" }}>
+                                   data-setting-id="{{ USERSETTINGS["collection-show-owned-cosmetics"].settingId }}" {{ USERSETTINGS["collection-show-owned-cosmetics"].value ? "checked" }}>
                         </label>
                     </span>
                 </li>
@@ -201,7 +201,7 @@
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hero-checkbox-allheroes">
                             <input type="checkbox" id="hero-checkbox-allheroes"
                                    class="setting-input mdl-checkbox__input"
-                                   data-setting="collection-show-hero-allheroes" {{ USERSETTINGS["collection-show-hero-allheroes"].value ? "checked" }}/>
+                                   data-setting-id="{{ USERSETTINGS["collection-show-hero-allheroes"].settingId }}" {{ USERSETTINGS["collection-show-hero-allheroes"].value ? "checked" }}/>
                         </label>
                     </span>
                 </li>
@@ -232,7 +232,7 @@
                                    for="hero-checkbox-{{ hero.slug }}">
                                 <input type="checkbox" id="hero-checkbox-{{ hero.slug }}"
                                        class="setting-input mdl-checkbox__input"
-                                       data-setting="collection-show-hero-{{ hero.slug }}"
+                                       data-setting-id="{{ USERSETTINGS["collection-show-hero-" ~ hero.slug].settingId }}"
                                         {{ USERSETTINGS["collection-show-hero-" ~ hero.slug].value ? "checked" }}/>
                             </label>
                         </span>
@@ -259,7 +259,7 @@
                                for="category-checkbox-default">
                             <input type="checkbox" id="category-checkbox-default"
                                    class="setting-input mdl-checkbox__input"
-                                   data-setting="collection-show-category-default" {{ USERSETTINGS["collection-show-category-default"].value ? "checked" }}/>
+                                   data-setting-id="{{ USERSETTINGS["collection-show-category-default"].settingId }}" {{ USERSETTINGS["collection-show-category-default"].value ? "checked" }}/>
                         </label>
                     </span>
                     <div class="mdl-tooltip" data-mdl-for="cosmetics-menu--category-default">
@@ -292,7 +292,7 @@
                                    for="category-checkbox-{{ category.slug }}">
                                 <input type="checkbox" id="category-checkbox-{{ category.slug }}"
                                        class="setting-input mdl-checkbox__input"
-                                       data-setting="collection-show-category-{{ category.slug }}"
+                                       data-setting-id="{{ USERSETTINGS["collection-show-category-" ~ category.slug].settingId }}"
                                         {{ USERSETTINGS["collection-show-category-" ~ category.slug].value ? "checked" }}/>
                             </label>
                         </span>
@@ -331,7 +331,7 @@
                                    for="type-checkbox-{{ type.slug }}">
                                 <input type="checkbox" id="type-checkbox-{{ type.slug }}"
                                        class="setting-input mdl-checkbox__input"
-                                       data-setting="collection-show-type-{{ type.slug }}"
+                                       data-setting-id="{{ USERSETTINGS["collection-show-type-" ~ type.slug].settingId }}"
                                         {{ USERSETTINGS["collection-show-type-" ~ type.slug].value ? "checked" }}/>
                             </label>
                         </span>

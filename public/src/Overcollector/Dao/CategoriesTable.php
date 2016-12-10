@@ -3,17 +3,15 @@
 namespace Overcollector\Dao;
 
 
-use Overcollector\Category;
-
 class CategoriesTable extends Table
 {
 
     private static $instance;
 
-    private $fetchAllCategories = "
+    private $fetchCategories = "
 SELECT id, name, description, price_multiplier, slug
 FROM categories INNER JOIN
-  (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (3, 7), (4, 8), (8, 9)) AS orders(category_id, ordering)
+  (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (10, 7), (3, 7), (4, 9), (8, 10)) AS orders(category_id, ordering)
     ON category_id = categories.id
 ORDER BY ordering;
 ";
@@ -27,7 +25,7 @@ WHERE id = $1;
     protected function __construct()
     {
         parent::__construct();
-        pg_prepare($this->handler, "fetchAllCategories", $this->fetchAllCategories);
+        pg_prepare($this->handler, "fetchCategories", $this->fetchCategories);
         pg_prepare($this->handler, "fetchCategoryById", $this->fetchCategoryById);
     }
 
@@ -39,38 +37,26 @@ WHERE id = $1;
         return self::$instance;
     }
 
-    private static function parseCategory($row)
+    public function getCategories()
     {
-        return Category::createCategory(
-            intval($row["id"]),
-            $row["name"],
-            $row["description"],
-            $row["price_multiplier"],
-            $row["slug"]
-        );
-    }
-
-    public function getCategoryById($id)
-    {
-        $response = pg_execute($this->handler, "fetchCategoryById", array($id));
-        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
-            return $this->parseCategory($row);
+        $response = pg_execute($this->handler, "fetchCategories", []);
+        if ($response !== false) {
+            $categories = [];
+            while (($category = pg_fetch_assoc($response)) !== false) {
+                $categories[] = $category;
+            }
+            return $categories;
         }
         return null;
     }
 
-    public function getAllCategoriesSortById()
+    public function getCategoryById($id)
     {
-        $response = pg_execute($this->handler, "fetchAllCategories", array());
-        if ($response !== false) {
-            $categories = [];
-            while (($row = pg_fetch_assoc($response)) !== false) {
-                $category = $this->parseCategory($row);
-                $categories[$category->getId()] = $category;
-            }
-            return $categories;
+        $response = pg_execute($this->handler, "fetchCategoryById", [$id]);
+        if ($response !== false && ($category = pg_fetch_assoc($response)) !== false) {
+            return $category;
         }
-        return [];
+        return null;
     }
 
 }

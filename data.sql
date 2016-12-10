@@ -39,7 +39,7 @@ VALUES
   (9, 'Blizzard', 'Obtainable by playing other Blizzard games.', 0, 'blizzard'),
   (10, 'Christmas???',
    'Obtainable by opening ??? Loot Boxes or by spending 3 times the normal amount of credits during the ???? event.', 0,
-   '???'); --TODO name
+   'christmas'); --TODO name
 
 INSERT INTO types (id, name, slug)
 VALUES
@@ -74,55 +74,56 @@ VALUES
   (10, 'Competitive Season 3', '2016-12-01', NULL), -- TODO end
   (11, 'Christmas???', '2016-12-13', NULL); -- TODO name
 
-INSERT INTO settings (name, description, "default", min, max)
+INSERT INTO settings (id, name, description, type, "default", min, max)
 VALUES
-  ('collection-show-images', 'Show images in the collection', 'true', NULL, NULL),
-  ('collection-show-colors', 'Show the completion progress with colors in the collection', 'true', NULL, NULL),
-  ('collection-heroes-per-page', 'Number of heroes to display per page in the collection', '3', '1', '50'),
-  ('collection-cosmetics-per-row', 'Number of cosmetics to display per row in the collection', '3', '1', '10'),
-  ('collection-show-owned-cosmetics', 'Show owned cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-allheroes', 'Show cosmetics for All Heroes in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-ana', 'Show cosmetics for Ana in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-bastion', 'Show cosmetics for Bastion in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-dva', 'Show cosmetics for D.Va in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-genji', 'Show cosmetics for Genji in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-hanzo', 'Show cosmetics for Hanzo in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-junkrat', 'Show cosmetics for Junkrat in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-lucio', 'Show cosmetics for Lúcio in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-mccree', 'Show cosmetics for McCree in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-mei', 'Show cosmetics for Mei in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-mercy', 'Show cosmetics for Mercy in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-pharah', 'Show cosmetics for Pharah in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-reaper', 'Show cosmetics for Reaper in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-reinhardt', 'Show cosmetics for Reinhardt in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-roadhog', 'Show cosmetics for Roadhog in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-soldier76', 'Show cosmetics for Soldier: 76 in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-sombra', 'Show cosmetics for Sombra in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-symmetra', 'Show cosmetics for Symmetra in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-torbjorn', 'Show cosmetics for Torbjörn in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-tracer', 'Show cosmetics for Tracer in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-widowmaker', 'Show cosmetics for Widowmaker in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-winston', 'Show cosmetics for Winston in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-zarya', 'Show cosmetics for Zarya in the collection', 'true', NULL, NULL),
-  ('collection-show-hero-zenyatta', 'Show cosmetics for Zenyatta in the collection', 'true', NULL, NULL),
-  ('collection-show-category-default', 'Show Default cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-category-normal', 'Show Normal cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-category-achievements', 'Show Achievements cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-category-competitive', 'Show Competitive cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-category-summergames', 'Show Summer Games cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-category-halloweenterror', 'Show Halloween Terror cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-category-blizzard', 'Show Blizzard cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-category-originsedition', 'Show Origins Edition cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-category-preorder', 'Show Preorder cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-type-playericon', 'Show Player Icon cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-type-skin', 'Show Skin cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-type-emote', 'Show Emote cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-type-victorypose', 'Show Victory Pose cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-type-voiceline', 'Show Voice Line cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-type-spray', 'Show Spray cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-type-highlightintro', 'Show Highlight Intro cosmetics in the collection', 'true', NULL, NULL),
-  ('collection-show-type-weapon', 'Show Weapon cosmetics in the collection', 'true', NULL, NULL);
+  (1, 'collection-show-images', 'Show images in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (2, 'collection-show-colors', 'Show the completion progress with colors in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (3, 'collection-heroes-per-page', 'Number of heroes to display per page in the collection', 'INTEGER', '3', '1', '50'),
+  (4, 'collection-cosmetics-per-row', 'Number of cosmetics to display per row in the collection', 'INTEGER', '3', '1', '10'),
+  (5, 'collection-show-owned-cosmetics', 'Show owned cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (6, 'collection-show-hero-allheroes', 'Show cosmetics for All Heroes in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (7, 'collection-show-hero-ana', 'Show cosmetics for Ana in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (8, 'collection-show-hero-bastion', 'Show cosmetics for Bastion in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (9, 'collection-show-hero-dva', 'Show cosmetics for D.Va in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (10, 'collection-show-hero-genji', 'Show cosmetics for Genji in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (11, 'collection-show-hero-hanzo', 'Show cosmetics for Hanzo in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (12, 'collection-show-hero-junkrat', 'Show cosmetics for Junkrat in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (13, 'collection-show-hero-lucio', 'Show cosmetics for Lúcio in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (14, 'collection-show-hero-mccree', 'Show cosmetics for McCree in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (15, 'collection-show-hero-mei', 'Show cosmetics for Mei in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (16, 'collection-show-hero-mercy', 'Show cosmetics for Mercy in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (17, 'collection-show-hero-pharah', 'Show cosmetics for Pharah in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (18, 'collection-show-hero-reaper', 'Show cosmetics for Reaper in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (19, 'collection-show-hero-reinhardt', 'Show cosmetics for Reinhardt in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (20, 'collection-show-hero-roadhog', 'Show cosmetics for Roadhog in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (21, 'collection-show-hero-soldier76', 'Show cosmetics for Soldier: 76 in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (22, 'collection-show-hero-sombra', 'Show cosmetics for Sombra in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (23, 'collection-show-hero-symmetra', 'Show cosmetics for Symmetra in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (24, 'collection-show-hero-torbjorn', 'Show cosmetics for Torbjörn in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (25, 'collection-show-hero-tracer', 'Show cosmetics for Tracer in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (26, 'collection-show-hero-widowmaker', 'Show cosmetics for Widowmaker in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (27, 'collection-show-hero-winston', 'Show cosmetics for Winston in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (28, 'collection-show-hero-zarya', 'Show cosmetics for Zarya in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (29, 'collection-show-hero-zenyatta', 'Show cosmetics for Zenyatta in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (30, 'collection-show-category-default', 'Show Default cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (31, 'collection-show-category-normal', 'Show Normal cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (32, 'collection-show-category-achievements', 'Show Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (33, 'collection-show-category-competitive', 'Show Competitive cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (34, 'collection-show-category-summergames', 'Show Summer Games cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (35, 'collection-show-category-halloweenterror', 'Show Halloween Terror cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (36, 'collection-show-category-blizzard', 'Show Blizzard cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (37, 'collection-show-category-originsedition', 'Show Origins Edition cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (38, 'collection-show-category-preorder', 'Show Preorder cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (39, 'collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (48, 'collection-show-category-christmas', 'Show Christmas cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (40, 'collection-show-type-playericon', 'Show Player Icon cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (41, 'collection-show-type-skin', 'Show Skin cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (42, 'collection-show-type-emote', 'Show Emote cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (43, 'collection-show-type-victorypose', 'Show Victory Pose cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (44, 'collection-show-type-voiceline', 'Show Voice Line cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (45, 'collection-show-type-spray', 'Show Spray cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (46, 'collection-show-type-highlightintro', 'Show Highlight Intro cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (47, 'collection-show-type-weapon', 'Show Weapon cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL);
 
 INSERT INTO cosmetics (id, category_id, type_id, rarity_id, hero_id, name, event_id)
 VALUES
@@ -382,7 +383,7 @@ VALUES
   (253, 1, 2, 4, 5, 'Okami', 1),
   (254, 1, 2, 4, 5, 'Young Hanzo', 1),
   (255, 1, 2, 4, 5, 'Young Master', 1),
-  (256, 6, 2, 3, 5, 'Demon', 4), -- Summer Games Hanzo Skins
+  (256, 7, 2, 3, 5, 'Demon', 7), -- Halloween Terror Hanzo Skins
   (257, NULL, 2, NULL, 6, 'Classic', 1), -- Default Junkrat Skins
   (258, 1, 2, 2, 6, 'Bleached', 1), -- Normal Junkrat Skins
   (259, 1, 2, 2, 6, 'Drowned', 1),
@@ -456,7 +457,7 @@ VALUES
   (327, 1, 2, 4, 11, 'Raptorion', 1),
   (328, 1, 2, 4, 11, 'Thunderbird', 1),
   (329, 3, 2, 4, 11, 'Security Chief', 1), -- Origins Edition Pharah Skins
-  (330, 6, 2, 3, 11, 'Possessed', 7), -- Halloween Terror Pharah Skins
+  (330, 7, 2, 3, 11, 'Possessed', 7), -- Halloween Terror Pharah Skins
   (331, NULL, 2, NULL, 12, 'Classic', 1), -- Default Reaper Skins
   (332, 1, 2, 2, 12, 'Blood', 1), -- Normal Reaper Skins
   (333, 1, 2, 2, 12, 'Midnight', 1),
@@ -810,7 +811,7 @@ VALUES
   (680, 1, 4, 2, 12, 'Casual', 1), -- Normal Reaper Victory Poses
   (681, 1, 4, 2, 12, 'Enigmatic', 1),
   (682, 1, 4, 2, 12, 'Menacing', 1),
-  (683, 1, 4, 2, 12, 'Medal', 1), -- Summer Games Reaper Victory Poses
+  (683, 6, 4, 2, 12, 'Medal', 4), -- Summer Games Reaper Victory Poses
   (684, 7, 4, 2, 12, 'R.I.P.', 7), -- Halloween Terror Reaper Victory Poses
   (685, NULL, 4, NULL, 13, 'Heroic', 1), -- Default Reinhardt Victory Poses
   (686, 1, 4, 2, 13, 'Confident', 1), -- Normal Reinhardt Victory Poses
@@ -955,7 +956,7 @@ VALUES
   (824, 1, 5, 1, 7, 'Can''t Stop, Won''t Stop', 1), -- Normal Lúcio Voice Lines
   (825, 1, 5, 1, 7, 'Hit Me!', 1),
   (826, 1, 5, 1, 7, 'I Could Do This All Day', 1),
-  (827, 1, 5, 1, 7, 'I''m On Top of the World', 1),
+  (827, 1, 5, 1, 7, 'I''m on Top of the World', 1),
   (828, 1, 5, 1, 7, 'Jackpot!', 1),
   (829, 1, 5, 1, 7, 'Not Hearing That Noise', 1),
   (830, 1, 5, 1, 7, 'Oh, Yeah!', 1),
@@ -1040,8 +1041,8 @@ VALUES
   (909, 1, 5, 1, 13, 'Respect Your Elders', 1),
   (910, 1, 5, 1, 13, 'Show You How It''s Done', 1),
   (911, 1, 5, 1, 13, 'This Old Dog', 1),
-  (912, 1, 5, 1, 13, '100% German Power', 1), -- Summer Games Reinhardt Voice Lines
-  (913, 1, 5, 1, 13, 'Smashing', 1), -- Halloween Terror Reinhardt Voice Lines
+  (912, 6, 5, 1, 13, '100% German Power', 4), -- Summer Games Reinhardt Voice Lines
+  (913, 7, 5, 1, 13, 'Smashing', 7), -- Halloween Terror Reinhardt Voice Lines
   (914, NULL, 5, NULL, 14, 'The Apocalypse', 1), -- Default Roadhog Voice Lines
   (915, 1, 5, 1, 14, 'Candy From a Baby', 1), -- Normal Roadhog Voice Lines
   (916, 1, 5, 1, 14, 'Got Something to Say?', 1),
@@ -1053,8 +1054,8 @@ VALUES
   (922, 1, 5, 1, 14, 'Say "Bacon..."', 1),
   (923, 1, 5, 1, 14, 'Violence Is the Answer', 1),
   (924, 1, 5, 1, 14, 'We''re All Animals', 1),
-  (925, 1, 5, 1, 14, 'What''s Mine Is Mine', 1), -- Summer Games Roadhog Voice Lines
-  (926, 1, 5, 1, 14, 'Want Some Candy?', 1), -- Halloween Terror Roadhog Voice Lines
+  (925, 6, 5, 1, 14, 'What''s Mine Is Mine', 4), -- Summer Games Roadhog Voice Lines
+  (926, 7, 5, 1, 14, 'Want Some Candy?', 7), -- Halloween Terror Roadhog Voice Lines
   (927, NULL, 5, NULL, 15, 'I''ve Still Got It', 1), -- Default Soldier: 76 Voice Lines
   (928, 1, 5, 1, 15, 'Get off My Lawn', 1), -- Normal Soldier: 76 Voice Lines
   (929, 1, 5, 1, 15, 'I Didn''t Start This War...', 1),
@@ -1066,8 +1067,8 @@ VALUES
   (935, 1, 5, 1, 15, 'What Are You Lookin'' at?', 1),
   (936, 1, 5, 1, 15, 'You Didn''t Make the Cut', 1),
   (937, 1, 5, 1, 15, 'You''re the Other One', 1),
-  (938, 1, 5, 1, 15, 'You Want a Medal?', 1), -- Summer Games Soldier: 76 Voice Lines
-  (939, 1, 5, 1, 15, 'Knock Knock', 1), -- Halloween Terror Soldier: 76 Voice Lines
+  (938, 6, 5, 1, 15, 'You Want a Medal?', 4), -- Summer Games Soldier: 76 Voice Lines
+  (939, 7, 5, 1, 15, 'Knock Knock', 7), -- Halloween Terror Soldier: 76 Voice Lines
   (940, NULL, 5, NULL, 16, 'Such a Lack of Imagination', 1), -- Default Symmetra Voice Lines
   (941, 1, 5, 1, 16, 'Everything By Design', 1), -- Normal Symmetra Voice Lines
   (942, 1, 5, 1, 16, 'Exquisite', 1),
@@ -1079,8 +1080,8 @@ VALUES
   (948, 1, 5, 1, 16, 'Put You in Your Place', 1),
   (949, 1, 5, 1, 16, 'Welcome to My Reality', 1),
   (950, 1, 5, 1, 16, 'Why Do You Struggle?', 1),
-  (951, 1, 5, 1, 16, 'Hard Work and Dedication', 1), -- Summer Games Symmetra Voice Lines
-  (952, 1, 5, 1, 16, 'A Frightening Thought', 1), -- Halloween Terror Symmetra Voice Lines
+  (951, 6, 5, 1, 16, 'Hard Work and Dedication', 4), -- Summer Games Symmetra Voice Lines
+  (952, 7, 5, 1, 16, 'A Frightening Thought', 7), -- Halloween Terror Symmetra Voice Lines
   (953, NULL, 5, NULL, 17, 'Hard Work Pays off', 1), -- Default Torbjörn Voice Lines
   (954, 1, 5, 1, 17, 'A Chicken Out of a Feather', 1), -- Normal Torbjörn Voice Lines
   (955, 1, 5, 1, 17, 'Completion Date?', 1),
@@ -1092,8 +1093,8 @@ VALUES
   (961, 1, 5, 1, 17, 'Let''s Not Buy the Pig', 1),
   (962, 1, 5, 1, 17, 'Some Assembly Required', 1),
   (963, 1, 5, 1, 17, 'Working As Intended', 1),
-  (964, 1, 5, 1, 17, 'More Where That Came From', 1), -- Summer Games Torbjörn Voice Lines
-  (965, 1, 5, 1, 17, 'If You Build It', 1), -- Halloween Terror Torbjörn Voice Lines
+  (964, 6, 5, 1, 17, 'More Where That Came From', 4), -- Summer Games Torbjörn Voice Lines
+  (965, 7, 5, 1, 17, 'If You Build It', 7), -- Halloween Terror Torbjörn Voice Lines
   (966, NULL, 5, NULL, 18, 'You Got It', 1), -- Default Tracer Voice Lines
   (967, 1, 5, 1, 18, 'Aw, Rubbish', 1), -- Normal Tracer Voice Lines
   (968, 1, 5, 1, 18, 'Be Right Back!', 1),
@@ -1105,8 +1106,8 @@ VALUES
   (974, 1, 5, 1, 18, 'The World Needs Heroes', 1),
   (975, 1, 5, 1, 18, 'Under Control', 1),
   (976, 1, 5, 1, 18, 'You Need a Time Out', 1),
-  (977, 1, 5, 1, 18, 'Eat My Dust', 1), -- Summer Games Tracer Voice Lines
-  (978, 1, 5, 1, 18, 'Ooh, Scary!', 1), -- Halloween Terror Tracer Voice Lines
+  (977, 6, 5, 1, 18, 'Eat My Dust', 4), -- Summer Games Tracer Voice Lines
+  (978, 7, 5, 1, 18, 'Ooh, Scary!', 7), -- Halloween Terror Tracer Voice Lines
   (979, NULL, 5, NULL, 19, 'A Single Death', 1), -- Default Widowmaker Voice Lines
   (980, 1, 5, 1, 19, 'Encore?', 1), -- Normal Widowmaker Voice Lines
   (981, 1, 5, 1, 19, 'Let Them Eat the Cake', 1),
@@ -1118,8 +1119,8 @@ VALUES
   (987, 1, 5, 1, 19, 'That''s How It Is', 1),
   (988, 1, 5, 1, 19, 'To Life, to Death', 1),
   (989, 1, 5, 1, 19, 'What''s An Aimbot?', 1),
-  (990, 1, 5, 1, 19, 'I Don''t Miss', 1), -- Summer Games Widowmaker Voice Lines
-  (991, 1, 5, 1, 19, 'The Party Is Over', 1), -- Halloween Terror Widowmaker Voice Lines
+  (990, 6, 5, 1, 19, 'I Don''t Miss', 4), -- Summer Games Widowmaker Voice Lines
+  (991, 7, 5, 1, 19, 'The Party Is Over', 7), -- Halloween Terror Widowmaker Voice Lines
   (992, NULL, 5, NULL, 20, 'Curious', 1), -- Default Winston Voice Linest
   (993, 1, 5, 1, 20, '...Excuse Me', 1), -- Normal Winston Voice Lines
   (994, 1, 5, 1, 20, 'Don''t Get Me Angry', 1),
@@ -1131,8 +1132,8 @@ VALUES
   (1000, 1, 5, 1, 20, 'Sorry About That!', 1),
   (1001, 1, 5, 1, 20, 'The Power of Science!', 1),
   (1002, 1, 5, 1, 20, 'We Have a Problem', 1),
-  (1003, 1, 5, 1, 20, 'Playtime''s Over', 1), -- Summer Games Winston Voice Lines
-  (1004, 1, 5, 1, 20, 'This Is Not a Costume', 1), -- Halloween Terror Winston Voice Lines
+  (1003, 6, 5, 1, 20, 'Playtime''s Over', 4), -- Summer Games Winston Voice Lines
+  (1004, 7, 5, 1, 20, 'This Is Not a Costume', 7), -- Halloween Terror Winston Voice Lines
   (1005, NULL, 5, NULL, 21, 'Strong As the Mountain', 1), -- Default Zarya Voice Lines
   (1006, 1, 5, 1, 21, 'Get Down, Give Me 20', 1), -- Normal Zarya Voice Lines
   (1007, 1, 5, 1, 21, 'I Am Mother Russia', 1),
@@ -1144,8 +1145,8 @@ VALUES
   (1013, 1, 5, 1, 21, 'Siberian Bear', 1),
   (1014, 1, 5, 1, 21, 'Together We Are Strong', 1),
   (1015, 1, 5, 1, 21, 'Welcome to the Gun Show', 1),
-  (1016, 1, 5, 1, 21, 'No Pain, No Gain', 1), -- Summer Games Zarya Voice Lines
-  (1017, 1, 5, 1, 21, 'Never Forget the Fallen', 1), -- Halloween Terror Zarya Voice Lines
+  (1016, 6, 5, 1, 21, 'No Pain, No Gain', 4), -- Summer Games Zarya Voice Lines
+  (1017, 7, 5, 1, 21, 'Never Forget the Fallen', 7), -- Halloween Terror Zarya Voice Lines
   (1018, NULL, 5, NULL, 22, 'We Are in Harmony', 1), -- Default Zenyatta Voice Lines
   (1019, 1, 5, 1, 22, 'Death Is Whimsical Today', 1), -- Normal Zenyatta Voice Lines
   (1020, 1, 5, 1, 22, 'Do I Think?', 1),
@@ -1157,8 +1158,8 @@ VALUES
   (1026, 1, 5, 1, 22, 'Ones and Zeroes', 1),
   (1027, 1, 5, 1, 22, 'Peace and Blessings', 1),
   (1028, 1, 5, 1, 22, 'The Iris Embraces You', 1),
-  (1029, 1, 5, 1, 22, 'Strive for Improvement', 1), -- Summer Games Zenyatta Voice Lines
-  (1030, 1, 5, 1, 22, 'Trick or Treat?', 1), -- Halloween Terror Zenyatta Voice Lines
+  (1029, 6, 5, 1, 22, 'Strive for Improvement', 4), -- Summer Games Zenyatta Voice Lines
+  (1030, 7, 5, 1, 22, 'Trick or Treat?', 7), -- Halloween Terror Zenyatta Voice Lines
   (1031, NULL, 5, NULL, 23, 'Playing Fair', 9), -- Default Sombra Voice Lines
   (1880, 1, 5, 1, 23, 'Boop', 9), -- Normal Sombra Voice Lines
   (1032, 1, 5, 1, 23, 'Cool', 9),

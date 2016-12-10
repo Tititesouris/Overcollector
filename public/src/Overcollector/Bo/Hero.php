@@ -1,13 +1,12 @@
 <?php
 
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 use JsonSerializable;
 
 
 class Hero implements JsonSerializable
 {
-    private static $heroes = array();
 
     private $id;
 
@@ -15,19 +14,11 @@ class Hero implements JsonSerializable
 
     private $slug;
 
-    private function __construct($id, $name, $slug)
+    public function __construct($id, $name, $slug)
     {
         $this->id = $id;
         $this->name = $name;
         $this->slug = $slug;
-    }
-
-    public static function createHero($id, $name, $slug)
-    {
-        if (!array_key_exists($id, self::$heroes)) {
-            self::$heroes[$id] = new Hero($id, $name, $slug);
-        }
-        return self::$heroes[$id];
     }
 
     public function getId()

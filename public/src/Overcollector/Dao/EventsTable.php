@@ -2,15 +2,13 @@
 
 namespace Overcollector\Dao;
 
-use Overcollector\Event;
-
 
 class EventsTable extends Table
 {
 
     private static $instance;
 
-    private $fetchAllEvents = "
+    private $fetchEvents = "
 SELECT id, name, start, \"end\"
 FROM events
 ORDER BY name;
@@ -25,7 +23,7 @@ WHERE id = $1;
     protected function __construct()
     {
         parent::__construct();
-        pg_prepare($this->handler, "fetchAllEvents", $this->fetchAllEvents);
+        pg_prepare($this->handler, "fetchEvents", $this->fetchEvents);
         pg_prepare($this->handler, "fetchEventById", $this->fetchEventById);
     }
 
@@ -37,34 +35,24 @@ WHERE id = $1;
         return self::$instance;
     }
 
-    private static function parseEvent($row)
+    public function getEvents()
     {
-        return Event::createEvent(
-            intval($row["id"]),
-            $row["name"],
-            $row["start"],
-            $row["end"]
-        );
-    }
-
-    public function getAllEvents()
-    {
-        $response = pg_execute($this->handler, "fetchAllEvents", array());
+        $response = pg_execute($this->handler, "fetchEvents", []);
         if ($response !== false) {
             $events = [];
-            while (($row = pg_fetch_assoc($response)) !== false) {
-                $events[] = $this->parseEvent($row);
+            while (($event = pg_fetch_assoc($response)) !== false) {
+                $events[] = $event;
             }
             return $events;
         }
-        return [];
+        return null;
     }
 
     public function getEventById($id)
     {
-        $response = pg_execute($this->handler, "fetchEventById", array($id));
-        if ($response !== false && ($row = pg_fetch_assoc($response)) !== false) {
-            return $this->parseEvent($row);
+        $response = pg_execute($this->handler, "fetchEventById", [$id]);
+        if ($response !== false && ($event = pg_fetch_assoc($response)) !== false) {
+            return $event;
         }
         return null;
     }

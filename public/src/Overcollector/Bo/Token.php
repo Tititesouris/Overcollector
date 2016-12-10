@@ -1,6 +1,6 @@
 <?php
 
-namespace Overcollector;
+namespace Overcollector\Bo;
 
 use JsonSerializable;
 
@@ -18,11 +18,6 @@ class Token implements JsonSerializable
         $this->token = $token;
         $this->createdAt = $createdAt;
         $this->expiresAt = $expiresAt;
-    }
-
-    public static function createToken($token, $createdAt, $expiresAt)
-    {
-        return new Token($token, $createdAt, $expiresAt);
     }
 
     public function getToken()

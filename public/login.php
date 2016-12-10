@@ -4,13 +4,13 @@ require_once(__DIR__ . "/required.php");
 $config = parse_ini_file(__DIR__ . "/../overcollector.ini", true);
 $battlenet = $config["battlenet"];
 
-use \Overcollector\Dao\TokensTable;
-use \Overcollector\Dao\UsersTable;
+use \Overcollector\Services\TokensService;
+use \Overcollector\Services\UsersService;
 
 if (!isUserLoggedIn()) {
     if (isset($_SESSION["region"])) {
         if (isset($_GET["state"]) && isset($_GET["code"])) {
-            if (TokensTable::getInstance()->useAccessToken($_GET["state"]) !== null) {
+            if (TokensService::useAccessToken($_GET["state"]) !== null) {
                 if ($_SESSION["region"] !== "CN") {
                     $url = "https://" . $_SESSION["region"] . ".battle.net/oauth/token";
                 } else {
@@ -23,7 +23,7 @@ if (!isUserLoggedIn()) {
                 ], $battlenet["key"], $battlenet["secret"]);
                 if ($response) {
                     $responseJson = json_decode($response, true);
-                    if (!array_key_exists("error", $responseJson) && array_key_exists("access_token", $responseJson)) {
+                    if (!isset($responseJson["error"]) && isset($responseJson["access_token"])) {
                         if ($_SESSION["region"] !== "CN") {
                             $url = "https://" . $_SESSION["region"] . ".api.battle.net/account/user";
                         } else {
@@ -34,11 +34,11 @@ if (!isUserLoggedIn()) {
                         ]);
                         if ($response) {
                             $responseJson = json_decode($response, true);
-                            if (array_key_exists("id", $responseJson) && array_key_exists("battletag", $responseJson)) {
-                                $user = UsersTable::getInstance()->getUserByBattleid($responseJson["id"], $responseJson["battletag"]);
+                            if (isset($responseJson["id"]) && array_key_exists("battletag", $responseJson)) {
+                                $user = UsersService::addOrGetUser($responseJson["id"], $responseJson["battletag"]);
                                 if ($user !== null) {
                                     $_SESSION["user"] = $user;
-                                    $_SESSION["refreshglobal"] = true;
+                                    $_SESSION["refreshuser"] = true;
                                     header("Location: ./");
                                     die();
                                 } else {
@@ -55,7 +55,7 @@ if (!isUserLoggedIn()) {
             } else {
                 $url = "https://www.battlenet.com.cn/oauth/authorize";
             }
-            $token = TokensTable::getInstance()->createAccessToken();
+            $token = TokensService::createAccessToken();
             if ($token !== null) {
                 header("Location: " . $url . "?client_id=" . $battlenet["key"] . "&redirect_uri=" . $battlenet["uri"] . "&state=" . $token->getToken() . "&response_type=code");
                 die();
@@ -66,10 +66,10 @@ if (!isUserLoggedIn()) {
         header("Location: ./login.php");
         die();
     } else if ($config["config"]["debug"] && isset($_GET["debug"])) {
-        $user = UsersTable::getInstance()->getUserByBattleid(123, "Debug#12345");
+        $user = UsersService::addOrGetUser(123, "Debug#12345");
         if ($user !== null) {
             $_SESSION["user"] = $user;
-            $_SESSION["refreshglobal"] = true;
+            $_SESSION["refreshuser"] = true;
             header("Location: ./");
             die();
         } else {
