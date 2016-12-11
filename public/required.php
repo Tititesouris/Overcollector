@@ -4,11 +4,24 @@ require_once(__DIR__ . "/../vendor/autoload.php");
 
 $config = parse_ini_file(__DIR__ . "/../overcollector.ini", true);
 $debug = $config["config"]["debug"];
+$maintenance = $config["config"]["maintenance"];
 
 ini_set("display_errors", $debug);
 ini_set("display_startup_errors", $debug);
 if ($debug) {
     error_reporting(E_ALL);
+}
+
+// Twig
+$loader = new Twig_Loader_Filesystem(__DIR__ . "/templates");
+$twig = new Twig_Environment($loader, [
+    "debug" => $debug,
+    "strict_variables" => $debug
+]);
+
+if ($maintenance) {
+    echo $twig->render("maintenance.twig");
+    die();
 }
 
 session_start();
@@ -23,12 +36,6 @@ if (isUserLoggedIn()) {
     updateUserSession();
 }
 
-// Twig
-$loader = new Twig_Loader_Filesystem(__DIR__ . "/templates");
-$twig = new Twig_Environment($loader, [
-    "debug" => $debug,
-    "strict_variables" => $debug
-]);
 $twig->addExtension(new Twig_Extension_Debug());
 $twig->addFilter(new Twig_SimpleFilter("pushObj", function ($object, $key, $value) {
     $object[$key] = $value;

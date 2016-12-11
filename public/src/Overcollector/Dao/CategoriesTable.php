@@ -11,7 +11,7 @@ class CategoriesTable extends Table
     private $fetchCategories = "
 SELECT id, name, description, price_multiplier, slug
 FROM categories INNER JOIN
-  (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (10, 7), (3, 7), (4, 9), (8, 10)) AS orders(category_id, ordering)
+  (VALUES (1, 1), (2, 2), (5, 3), (6, 4), (7, 5), (9, 6), (10, 7), (3, 8), (4, 9), (8, 10)) AS orders(category_id, ordering)
     ON category_id = categories.id
 ORDER BY ordering;
 ";

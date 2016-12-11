@@ -1,11 +1,14 @@
 ; Configuration
 [config]
 
-; Display PHP warnings, Twig errors and other debugging tools
+; Display PHP warnings, Twig errors and other debugging tools. Error messages may get in the way and break things.
 debug = true
 
 ; Only false on the production server
 localhost = true
+
+; Limit the access to the website during updates to prevent loss of data and other compatibility issues.
+maintenance = false
 
 ; PostgreSQL Database
 [database]
