@@ -13,17 +13,20 @@ class Setting implements JsonSerializable
 
     private $description;
 
+    private $type;
+
     private $default;
 
     private $min;
 
     private $max;
 
-    public function __construct($id, $name, $description, $default, $min, $max)
+    public function __construct($id, $name, $description, $type, $default, $min, $max)
     {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
+        $this->type = $type;
         $this->default = $default;
         $this->min = $min;
         $this->max = $max;
@@ -42,6 +45,11 @@ class Setting implements JsonSerializable
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 
     public function getDefault()
@@ -65,7 +73,8 @@ class Setting implements JsonSerializable
             "id" => $this->id,
             "name" => $this->name,
             "description" => $this->description,
-            "dedault" => $this->default,
+            "type" => $this->type,
+            "default" => $this->default,
             "min" => $this->min,
             "max" => $this->max
         ];

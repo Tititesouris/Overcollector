@@ -1,6 +1,7 @@
 <?php
 require_once("required.php");
 
+use Overcollector\Services\CosmeticsService;
 use Overcollector\Services\UserCosmeticsService;
 
 if (isUserLoggedIn()) {
@@ -15,7 +16,7 @@ if (isUserLoggedIn()) {
         if ($_POST["owned"] === "true") {
             $result = UserCosmeticsService::addUserCosmetic($_SESSION["user"]->getId(), $_POST["cosmetic"]);
             if ($result) {
-                $_SESSION["user"]->addCosmetic($_POST["cosmetic"]);
+                $_SESSION["user"]->addCosmetic(CosmeticsService::getCosmeticById($_POST["cosmetic"]));
                 echo "true";
                 die();
             }

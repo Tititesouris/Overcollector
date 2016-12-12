@@ -90,7 +90,11 @@ class User implements JsonSerializable
     {
         $heroes = [];
         foreach ($cosmetics as $cosmetic) {
-            $heroes[$cosmetic->getHero() !== null ? $cosmetic->getHero()->getId() : "0"][$cosmetic->getType()->getId()][$cosmetic->getId()] = $cosmetic;
+            if ($cosmetic->getType()->getId() === 1 && $this->settings["collection-show-all-playericons-in-allheroes"]->getValue()) {
+                $heroes[0][1][$cosmetic->getId()] = $cosmetic;
+            } else {
+                $heroes[$cosmetic->getHero() !== null ? $cosmetic->getHero()->getId() : 0][$cosmetic->getType()->getId()][$cosmetic->getId()] = $cosmetic;
+            }
         }
         return $heroes;
     }
@@ -98,11 +102,11 @@ class User implements JsonSerializable
     /**
      * Filters the list of cosmetics provided and returns every cosmetic matching the user's settings
      */
-    public function filterCosmeticsByUserSettings($cosmetics)
+    public function filterCosmeticsByUserSettings($cosmetics, $ignoreShowOwned = false)
     {
         $filtered = [];
         foreach ($cosmetics as $cosmetic) {
-            if ($this->settings["collection-show-owned-cosmetics"]->getValue() || !$this->hasCosmetic($cosmetic->getId())) {
+            if ($ignoreShowOwned || $this->settings["collection-show-owned-cosmetics"]->getValue() || !$this->hasCosmetic($cosmetic->getId())) {
                 $heroSlug = $cosmetic->getHero() !== null ? $cosmetic->getHero()->getSlug() : "allheroes";
                 if ($this->settings["collection-show-hero-" . $heroSlug]->getValue()) {
                     $categorySlug = $cosmetic->getCategory() !== null ? $cosmetic->getCategory()->getSlug() : "default";

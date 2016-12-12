@@ -6,20 +6,20 @@
         <h1 class="mdl-typography--title">Settings</h1>
         <ul id="profile-settings" class="mdl-list mdl-shadow--2dp">
             {% for setting in SESSION.settings %}
-                {% if setting.id in [1, 2, 3, 4] %}
+                {% if setting.id in [1, 2, 3, 4, 49, 5] %}
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             {{ setting.description }}{{ setting.min != null ? " (" ~ setting.min ~ " - " ~ setting.max ~ ")" }}
                         </span>
                         <span class="mdl-list__item-secondary-action">
-                            {% if setting.default in ["true", "false"] %}
+                            {% if setting.type == "BOOLEAN" %}
                                 <label class="setting boolean-setting mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
                                        for="setting-checkbox-{{ setting.name }}">
                                     <input type="checkbox" id="setting-checkbox-{{ setting.name }}"
                                            data-setting-id="{{ setting.id }}"
                                            class="setting-input mdl-checkbox__input" {{ userSettings[setting.name].value ?? setting.default ? "checked" }}/>
                                 </label>
-                            {% else %}
+                            {% elseif setting.type == "INTEGER" %}
                                 <span class="setting integer-setting mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="number" min="{{ setting.min }}"
                                            max="{{ setting.max }}" pattern="-?[0-9]+"

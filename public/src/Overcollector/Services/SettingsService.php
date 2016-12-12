@@ -23,9 +23,10 @@ class SettingsService
                 intval($setting["id"]),
                 $setting["name"],
                 $setting["description"],
-                self::parseValue($setting["default"]),
-                self::parseValue($setting["min"]),
-                self::parseValue($setting["max"])
+                $setting["type"],
+                self::parseValue($setting["default"], $setting["type"]),
+                self::parseValue($setting["min"], $setting["type"]),
+                self::parseValue($setting["max"], $setting["type"])
             );
             self::$settings[$setting->getId()] = $setting;
             self::$settingsSortedByName[$setting->getName()] = $setting;
@@ -44,9 +45,10 @@ class SettingsService
                     intval($setting["id"]),
                     $setting["name"],
                     $setting["description"],
-                    self::parseValue($setting["default"]),
-                    self::parseValue($setting["min"]),
-                    self::parseValue($setting["max"])
+                    $setting["type"],
+                    self::parseValue($setting["default"], $setting["type"]),
+                    self::parseValue($setting["min"], $setting["type"]),
+                    self::parseValue($setting["max"], $setting["type"])
                 );
                 self::$settings[$setting->getId()] = $setting;
                 self::$settingsSortedByName[$setting->getName()] = $setting;
@@ -61,13 +63,16 @@ class SettingsService
         return self::$settingsSortedByName;
     }
 
-    private static function parseValue($value)
+    private static function parseValue($value, $type)
     {
-        if ($value === "true")
-            return true;
-        if ($value === "false")
-            return false;
-        return intval($value);
+        switch ($type) {
+            case "BOOLEAN":
+                return $value === "true";
+            case "INTEGER":
+                return intval($value);
+            default:
+                return $value;
+        }
     }
 
 }

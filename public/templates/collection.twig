@@ -24,13 +24,19 @@
     {% set categoryStats = {} %}
     {% set typeStats = {} %}
     {% set heroTypeStats = {} %}
-    {% for id, cosmetic in FILTEREDCOSMETICS %}
+    {% for id, cosmetic in USER.filterCosmeticsByUserSettings(COSMETICS, true) %}
         {% set total = total + 1 %}
-        {% set heroStats = heroStats|pushObj(cosmetic.hero.id ?? 0, {
-        "owned": heroStats[cosmetic.hero.id ?? 0].owned ?? 0,
-        "total": heroStats[cosmetic.hero.id ?? 0].total ?? 0 + 1,
-        "ownedCredits": heroStats[cosmetic.hero.id ?? 0].ownedCredits ?? 0,
-        "totalCredits": heroStats[cosmetic.hero.id ?? 0].totalCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0)
+        {# Group player icons together if the setting is enabled #}
+        {% if (cosmetic.type.id == 1 and USERSETTINGS["collection-show-all-playericons-in-allheroes"].value) %}
+            {% set heroId = 0 %}
+        {% else %}
+            {% set heroId = cosmetic.hero.id ?? 0 %}
+        {% endif %}
+        {% set heroStats = heroStats|pushObj(heroId, {
+        "owned": heroStats[heroId].owned ?? 0,
+        "total": heroStats[heroId].total ?? 0 + 1,
+        "ownedCredits": heroStats[heroId].ownedCredits ?? 0,
+        "totalCredits": heroStats[heroId].totalCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0)
         }) %}
         {% set categoryStats = categoryStats|pushObj(cosmetic.category.id ?? 0, {
         "owned": categoryStats[cosmetic.category.id ?? 0].owned ?? 0,
@@ -44,21 +50,21 @@
         "ownedCredits": typeStats[cosmetic.type.id].ownedCredits ?? 0,
         "totalCredits": typeStats[cosmetic.type.id].totalCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0)
         }) %}
-        {% set heroTypeStats = heroTypeStats|pushObj(cosmetic.hero.id ?? 0,
-        (heroTypeStats[cosmetic.hero.id ?? 0] ?? {})|pushObj(cosmetic.type.id, {
-        "owned": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].owned ?? 0,
-        "total": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].total ?? 0 + 1,
-        "ownedCredits": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].ownedCredits ?? 0,
-        "totalCredits": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].totalCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0)
+        {% set heroTypeStats = heroTypeStats|pushObj(heroId,
+        (heroTypeStats[heroId] ?? {})|pushObj(cosmetic.type.id, {
+        "owned": heroTypeStats[heroId][cosmetic.type.id].owned ?? 0,
+        "total": heroTypeStats[heroId][cosmetic.type.id].total ?? 0 + 1,
+        "ownedCredits": heroTypeStats[heroId][cosmetic.type.id].ownedCredits ?? 0,
+        "totalCredits": heroTypeStats[heroId][cosmetic.type.id].totalCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0)
         })
         ) %}
         {% if USER.hasCosmetic(cosmetic.id) %}
             {% set owned = owned + 1 %}
-            {% set heroStats = heroStats|pushObj(cosmetic.hero.id ?? 0, {
-            "owned": heroStats[cosmetic.hero.id ?? 0].owned ?? 0 + 1,
-            "total": heroStats[cosmetic.hero.id ?? 0].total ?? 0,
-            "ownedCredits": heroStats[cosmetic.hero.id ?? 0].ownedCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0),
-            "totalCredits": heroStats[cosmetic.hero.id ?? 0].totalCredits ?? 0
+            {% set heroStats = heroStats|pushObj(heroId, {
+            "owned": heroStats[heroId].owned ?? 0 + 1,
+            "total": heroStats[heroId].total ?? 0,
+            "ownedCredits": heroStats[heroId].ownedCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0),
+            "totalCredits": heroStats[heroId].totalCredits ?? 0
             }) %}
             {% set categoryStats = categoryStats|pushObj(cosmetic.category.id ?? 0, {
             "owned": categoryStats[cosmetic.category.id ?? 0].owned ?? 0 + 1,
@@ -72,12 +78,12 @@
             "ownedCredits": typeStats[cosmetic.type.id].ownedCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0),
             "totalCredits": typeStats[cosmetic.type.id].totalCredits ?? 0
             }) %}
-            {% set heroTypeStats = heroTypeStats|pushObj(cosmetic.hero.id ?? 0,
-            (heroTypeStats[cosmetic.hero.id ?? 0] ?? {})|pushObj(cosmetic.type.id, {
-            "owned": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].owned ?? 0 + 1,
-            "total": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].total ?? 0,
-            "ownedCredits": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].ownedCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0),
-            "totalCredits": heroTypeStats[cosmetic.hero.id ?? 0][cosmetic.type.id].totalCredits ?? 0
+            {% set heroTypeStats = heroTypeStats|pushObj(heroId,
+            (heroTypeStats[heroId] ?? {})|pushObj(cosmetic.type.id, {
+            "owned": heroTypeStats[heroId][cosmetic.type.id].owned ?? 0 + 1,
+            "total": heroTypeStats[heroId][cosmetic.type.id].total ?? 0,
+            "ownedCredits": heroTypeStats[heroId][cosmetic.type.id].ownedCredits ?? 0 + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0),
+            "totalCredits": heroTypeStats[heroId][cosmetic.type.id].totalCredits ?? 0
             })
             ) %}
         {% endif %}
@@ -343,7 +349,8 @@
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 {% for heroId, types in USER.sortCosmeticsByHeroesAndTypes(FILTEREDCOSMETICS) %}
                     {% if PAGES.start <= loop.index0 and loop.index0 < PAGES.end %}
-                        {% set ratio = STATS.heroes[heroId].owned / STATS.heroes[heroId].total %}
+                        {% set stat = STATS.heroes[heroId] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
+                        {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                         <tbody class="cosmetics-table--body">
                         <tr class="cosmetics-table--hero"
                                 {% if USERSETTINGS["collection-show-colors"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
@@ -354,13 +361,14 @@
                             </td>
                             <td colspan="{{ USERSETTINGS["collection-cosmetics-per-row"].value - 1 }}">
                                 {{ (ratio * 100)|round(2, "floor") }}%
-                                ({{ STATS.heroes[heroId].owned }} / {{ STATS.heroes[heroId].total }})
-                                ₡{{ STATS.heroes[heroId].totalCredits - STATS.heroes[heroId].ownedCredits }}
-                                (₡{{ STATS.heroes[heroId].ownedCredits }} / ₡{{ STATS.heroes[heroId].totalCredits }})
+                                ({{ stat.owned }} / {{ stat.total }})
+                                ₡{{ stat.totalCredits - stat.ownedCredits }}
+                                (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
                             </td>
                         </tr>
                         {% for typeId, cosmetics in types %}
-                            {% set ratio = STATS.heroesTypes[heroId][typeId].owned / STATS.heroesTypes[heroId][typeId].total %}
+                            {% set stat = STATS.heroesTypes[heroId][typeId] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
+                            {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                             <tr class="cosmetics-table--type"
                                     {% if USERSETTINGS["collection-show-colors"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                                 <td>
@@ -368,11 +376,11 @@
                                 </td>
                                 <td colspan="{{ USERSETTINGS["collection-cosmetics-per-row"].value - 1 }}">
                                     {{ (ratio * 100)|round(2, "floor") }}%
-                                    ({{ STATS.heroesTypes[heroId][typeId].owned }}
-                                    / {{ STATS.heroesTypes[heroId][typeId].total }})
-                                    ₡{{ STATS.heroesTypes[heroId][typeId].totalCredits ?? 0 - STATS.heroesTypes[heroId][typeId].ownedCredits ?? 0 }}
-                                    (₡{{ STATS.heroesTypes[heroId][typeId].ownedCredits ?? 0 }} /
-                                    ₡{{ STATS.heroesTypes[heroId][typeId].totalCredits ?? 0 }})
+                                    ({{ stat.owned }}
+                                    / {{ stat.total }})
+                                    ₡{{ stat.totalCredits ?? 0 - stat.ownedCredits ?? 0 }}
+                                    (₡{{ stat.ownedCredits ?? 0 }} /
+                                    ₡{{ stat.totalCredits ?? 0 }})
                                 </td>
                             </tr>
                             {% for row in cosmetics|batch(USERSETTINGS["collection-cosmetics-per-row"].value) %}

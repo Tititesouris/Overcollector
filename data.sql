@@ -80,6 +80,7 @@ VALUES
   (2, 'collection-show-colors', 'Show the completion progress with colors in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (3, 'collection-heroes-per-page', 'Number of heroes to display per page in the collection', 'INTEGER', '3', '1', '50'),
   (4, 'collection-cosmetics-per-row', 'Number of cosmetics to display per row in the collection', 'INTEGER', '3', '1', '10'),
+  (49, 'collection-show-all-playericons-in-allheroes', 'Show every Player Icon as belonging to All Heroes in the collection', 'BOOLEAN', 'false', NULL, NULL),
   (5, 'collection-show-owned-cosmetics', 'Show owned cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (6, 'collection-show-hero-allheroes', 'Show cosmetics for All Heroes in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (7, 'collection-show-hero-ana', 'Show cosmetics for Ana in the collection', 'BOOLEAN', 'true', NULL, NULL),

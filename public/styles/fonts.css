@@ -1,3 +1,18 @@
+/* Overwatch font */
+@font-face {
+    font-family: "Big Noodle Titling";
+    font-style: normal;
+    src: url("../fonts/big_noodle_titling.ttf");
+}
+
+@font-face {
+    font-family: "Big Noodle Titling";
+    font-style: italic;
+    src: url("../fonts/big_noodle_titling_oblique.ttf");
+}
+
+/* Roboto font */
+
 /* cyrillic-ext */
 @font-face {
     font-family: "Roboto";

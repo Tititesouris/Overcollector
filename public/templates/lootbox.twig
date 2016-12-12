@@ -17,8 +17,11 @@
         {% for i in 0..3 %}
             <div class="mdl-cell mdl-cell--3-col">
 
-                <label for="duplicate-{{ i }}">Duplicate</label>
-                <input id="duplicate-{{ i }}" type="checkbox" class="duplicate-checkbox" data-lootbox="{{ i }}"><br/>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="duplicate-{{ i }}">
+                    <input id="duplicate-{{ i }}" type="checkbox" class="mdl-checkbox__input duplicate-checkbox"
+                           data-lootbox="{{ i }}">
+                    <span class="mdl-checkbox__label">Duplicate</span>
+                </label>
 
                 <label for="hero-{{ i }}">Hero</label>
                 <select id="hero-{{ i }}" class="hero-select" data-lootbox="{{ i }}">
@@ -31,13 +34,16 @@
                 <label for="type-{{ i }}">Type</label>
                 <select id="type-{{ i }}" class="type-select" data-lootbox="{{ i }}">
                     {% for type in TYPES %}
-                        <option value="{{ type.id }}">{{ type.name }}</option>
+                        <option value="{{ type.id }}"
+                                {% if type.slug not in ["playericon", "spray"] %}
+                            class="not-for-allheroes" style="display: none;"
+                                {% endif %}>{{ type.name }}</option>
                     {% endfor %}
                 </select><br/>
 
                 <label for="cosmetic-{{ i }}">Cosmetic</label>
                 <select id="cosmetic-{{ i }}" class="cosmetic-select" data-lootbox="{{ i }}">
-                    <option value="-1" disabled style="display: none"></option>
+                    <option value="-1" disabled selected style="display: none"></option>
                     {% for cosmetic in COSMETICS %}
                         {% if not USER.hasCosmetic(cosmetic.id) and cosmetic.category is not null %}
                             <option value="{{ cosmetic.id }}" data-hero="{{ cosmetic.hero.id ?? 0 }}"

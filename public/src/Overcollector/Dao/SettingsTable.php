@@ -8,12 +8,12 @@ class SettingsTable extends Table
     private static $instance;
 
     private $fetchSettings = "
-SELECT id, name, description, \"default\", min, max
+SELECT id, name, description, type, \"default\", min, max
 FROM settings;
 ";
 
     private $fetchSettingById = "
-SELECT id, name, description, \"default\", min, max
+SELECT id, name, description, type, \"default\", min, max
 FROM settings
 WHERE id = $1;
 ";

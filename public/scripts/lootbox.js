@@ -7,10 +7,15 @@ $(function () {
 
     $("select.hero-select, select.type-select").change(function () {
         var lootbox = $(this).data("lootbox");
-        var heroId = $("select.hero-select[data-lootbox='" + lootbox + "']").find(":selected").val();
-        var typeId = $("select.type-select[data-lootbox='" + lootbox + "']").find(":selected").val();
-        var selected = false;
+        var typeSelect = $("select.type-select[data-lootbox='" + lootbox + "']");
         var cosmeticSelect = $("select.cosmetic-select[data-lootbox='" + lootbox + "']");
+        var heroId = $("select.hero-select[data-lootbox='" + lootbox + "']").find(":selected").val();
+        var typeId = typeSelect.find(":selected").val();
+        var selected = false;
+        // Hide irrelevant types for All Heroes
+        typeSelect.find("option.not-for-allheroes").each(function () {
+            heroId == 0 ? $(this).hide() : $(this).show();
+        });
         cosmeticSelect.prop("disabled", false);
         cosmeticSelect.find("option").each(function () {
             if ($(this).data("hero") == heroId && $(this).data("type") == typeId) {
