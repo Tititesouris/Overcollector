@@ -2,11 +2,7 @@ $(function () {
     "use strict";
 
     var cosmeticsMenu = $("#cosmetics-menu");
-
-    var importDialog = document.querySelector("#import-collection--dialog");
-    if (!importDialog.showModal) {
-        dialogPolyfill.registerDialog(importDialog);
-    }
+    var importSection = $("#import-collection--section");
 
     // Refresh button
     cosmeticsMenu.find("button.cosmetics-menu--refresh").click(function () {
@@ -15,27 +11,27 @@ $(function () {
 
     // Import button
     cosmeticsMenu.find("button.cosmetics-menu--import").click(function () {
-        importDialog.showModal();
+        importSection.show();
     });
 
-    $(importDialog).find("button.close").click(function () {
-        importDialog.close();
+    importSection.find("button.close").click(function () {
+        importSection.hide();
     });
 
-    $(importDialog).find("button.confirm").click(function () {
+    importSection.find("button.confirm").click(function () {
         importCollection($("#import-collection--textarea").val(), function (data) {
             console.log(data);
             if (data == "true") {
                 document.querySelector("#page-toast").MaterialSnackbar.showSnackbar({
                     message: "Collection imported!"
                 });
-                importDialog.close();
+                importSection.hide();
                 setTimeout(function () {
                     location.reload();
                 }, 500);
             }
             else {
-                $(importDialog).find(".mdl-textfield--floating-label").addClass("is-invalid");
+                importSection.find(".import-text").addClass("is-invalid");
             }
         });
     });

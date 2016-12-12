@@ -114,25 +114,6 @@
                             </button>
                             <label for="import-btn">Import</label>
                         </span>
-                        <dialog id="import-collection--dialog" class="mdl-dialog">
-                            <h4 class="mdl-dialog__title">Import</h4>
-                            <div class="mdl-dialog__content">
-                                <p>
-                                    Import your collection by pasting your collection data here. It will replace the current collection, <b>there is no way back</b>.<br/>
-                                    <b>We strongly suggest that you export the current collection before importing a new one.</b>
-                                </p>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <textarea id="import-collection--textarea" class="mdl-textfield__input" type="text"
-                                              rows="3" maxrows="3"></textarea>
-                                    <label class="mdl-textfield__label" for="import-collection--textarea">Collection data (JSON format)</label>
-                                    <span class="mdl-textfield__error">Data isn't formatted correctly</span>
-                                </div>
-                            </div>
-                            <div class="mdl-dialog__actions">
-                                <button type="button" class="mdl-button mdl-button--raised mdl-button--colored confirm">Import</button>
-                                <button type="button" class="mdl-button mdl-button--raised close">Cancel</button>
-                            </div>
-                        </dialog>
                         <span class="cosmetics-menu--btn">
                             <button id="export-btn"
                                     class="cosmetics-menu--export cosmetics-menu--btn mdl-button mdl-js-button mdl-button--icon mdl-color-text--green">
@@ -346,6 +327,26 @@
             </ul>
         </div>
         <div class="mdl-cell mdl-cell--9-col-desktop">
+            <div id="import-collection--section" style="display: none;">
+                <h4>Import</h4>
+                <div>
+                    <p>
+                        Import your collection by pasting your collection data here. It will replace the current
+                        collection, <b>there is no way back</b>.<br/>
+                        <b>We strongly suggest that you export the current collection as a back-up before importing a new one.</b>
+                    </p>
+                    <div class="import-text mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <textarea id="import-collection--textarea" class="mdl-textfield__input" type="text"
+                                  rows="3" maxrows="3"></textarea>
+                        <label class="mdl-textfield__label" for="import-collection--textarea">Collection data (JSON
+                            format)</label>
+                        <span class="mdl-textfield__error">Data isn't formatted correctly</span>
+                    </div>
+                </div>
+                <button type="button" class="mdl-button mdl-button--raised mdl-button--colored confirm">Import</button>
+                <button type="button" class="mdl-button mdl-button--raised close">Cancel</button>
+                <br/><br/>
+            </div>
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 {% for heroId, types in USER.sortCosmeticsByHeroesAndTypes(FILTEREDCOSMETICS) %}
                     {% if PAGES.start <= loop.index0 and loop.index0 < PAGES.end %}

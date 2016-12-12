@@ -7,8 +7,8 @@ a {
     text-decoration: none;
 }
 
-#import-collection--dialog {
-    width: 400px;
+#import-collection--section .import-text {
+    width: 100%;
 }
 
 #cosmetics-menu {
