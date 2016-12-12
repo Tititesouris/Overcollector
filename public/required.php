@@ -11,6 +11,7 @@ ini_set("display_startup_errors", $debug);
 if ($debug) {
     error_reporting(E_ALL);
 }
+ini_set("session.gc_maxlifetime", 75000);
 
 // Twig
 $loader = new Twig_Loader_Filesystem(__DIR__ . "/templates");
