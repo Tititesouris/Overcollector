@@ -51,6 +51,7 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 #### Configuring
 - Make a copy of `overcollector.example` and rename it `overcollector.ini`. Never share this file, it will contain all the sensitive information about the application
 - Edit `overcollector.ini`: Set the Battle.net callback uri to go to the login page
+- Make a copy of `maintenance.example` and rename it `maintenance.ini`. This file is only useful in a production environment.
 - Make sure you can work locally on https (ignore browser warning about self-signed certificate)
 
 #### Working

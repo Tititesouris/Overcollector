@@ -18,9 +18,12 @@ $twig = new Twig_Environment($loader, [
     "debug" => $debug,
     "strict_variables" => $debug
 ]);
+$twig->addExtension(new Twig_Extension_Debug());
+$twig->addExtension(new Twig_Extensions_Extension_Date());
 
 if ($maintenance) {
-    echo $twig->render("maintenance.twig");
+    $maintenanceConfig = parse_ini_file(__DIR__ . "/../maintenance.ini", true);
+    echo $twig->render("maintenance.twig", $maintenanceConfig);
     die();
 }
 
@@ -36,7 +39,6 @@ if (isUserLoggedIn()) {
     updateUserSession();
 }
 
-$twig->addExtension(new Twig_Extension_Debug());
 $twig->addFilter(new Twig_SimpleFilter("pushObj", function ($object, $key, $value) {
     $object[$key] = $value;
     return $object;
