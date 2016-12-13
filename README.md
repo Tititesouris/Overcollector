@@ -2,16 +2,18 @@
 Overcollector is a tool that allows you to track all of your Overwatch cosmetics collection.  
 
 #### Features
-- Track owned cosmetics
+- Track cosmetics
 - Filter by hero, category and type
 - Get statistics about completion
 - Get statistics about credits
+- Easily add new cosmetics with the Open a Lootbox page
+- Customize your collection with lots of settings
 
 #### Work In Progress
-- On prod server only, figure out how to keep sessions open longer
-- Adding images for Dia de los Muertos and menu icons and christmas update
+- Adding images for Dia de los Muertos and menu icons and Christmas update
 
 #### To Do
+- Go to the right page in the collection by clicking on hero
 - Replace credits symbol to make it more readable (maybe with an image?)
 - Only show items for current event on lootbox page
 - Improve Welcome page
