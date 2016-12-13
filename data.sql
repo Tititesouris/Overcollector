@@ -124,7 +124,8 @@ VALUES
   (44, 'collection-show-type-voiceline', 'Show Voice Line cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (45, 'collection-show-type-spray', 'Show Spray cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (46, 'collection-show-type-highlightintro', 'Show Highlight Intro cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
-  (47, 'collection-show-type-weapon', 'Show Weapon cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL);
+  (47, 'collection-show-type-weapon', 'Show Weapon cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (50, 'lootbox-default-duplicates-nb', 'Default number of duplicates in the Open a Lootbox section', 'INTEGER', '0', 0, 4);
 
 INSERT INTO cosmetics (id, category_id, type_id, rarity_id, hero_id, name, event_id)
 VALUES

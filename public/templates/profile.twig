@@ -6,7 +6,7 @@
         <h1 class="mdl-typography--title">Settings</h1>
         <ul id="profile-settings" class="mdl-list mdl-shadow--2dp">
             {% for setting in SESSION.settings %}
-                {% if setting.id in [1, 2, 3, 4, 49, 5] %}
+                {% if setting.id in [1, 2, 3, 4, 49, 5, 50] %}
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             {{ setting.description }}{{ setting.min != null ? " (" ~ setting.min ~ " - " ~ setting.max ~ ")" }}
