@@ -39,7 +39,12 @@ VALUES
   (9, 'Blizzard', 'Obtainable by playing other Blizzard games.', 0, 'blizzard'),
   (10, 'Winter Wonderland',
    'Obtainable by opening Winter Loot Boxes or by spending 3 times the normal amount of credits during the Winter Wonderland event.',
-   3, 'winterwonderland');
+   3, 'winterwonderland'),
+  (11, 'Summer Games Achievements', 'Obtainable by completing Summer Games achievements.', 0, 'summergames-achievements'),
+  (12, 'Halloween Terror Achievements', 'Obtainable by completing Halloween Terror achievements.', 0,
+   'halloweenterror-achievements'),
+  (13, 'Winter Wonderland Achievements', 'Obtainable by completing Winter Wonderland achievements.', 0,
+   'winterwonderland-achievements');
 
 INSERT INTO types (id, name, slug)
 VALUES
@@ -111,12 +116,15 @@ VALUES
   (32, 'collection-show-category-achievements', 'Show Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (33, 'collection-show-category-competitive', 'Show Competitive cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (34, 'collection-show-category-summergames', 'Show Summer Games cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (51, 'collection-show-category-summergames-achievements', 'Show Summer Games Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (35, 'collection-show-category-halloweenterror', 'Show Halloween Terror cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (52, 'collection-show-category-halloweenterror-achievements', 'Show Halloween Terror Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (36, 'collection-show-category-blizzard', 'Show Blizzard cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (37, 'collection-show-category-originsedition', 'Show Origins Edition cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (38, 'collection-show-category-preorder', 'Show Preorder cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (39, 'collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (48, 'collection-show-category-winterwonderland', 'Show Winter Wonderland cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (53, 'collection-show-category-winterwonderland-achievements', 'Show Winter Wonderland Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (40, 'collection-show-type-playericon', 'Show Player Icon cosmetics in the collection', 'BOOLEAN', 'true', NULL,
    NULL),
   (41, 'collection-show-type-skin', 'Show Skin cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
@@ -251,11 +259,9 @@ VALUES
   (1898, 10, 1, 2, NULL, 'Snowman', 11),
   (1899, 10, 1, 2, NULL, 'Hot Cocoa', 11),
   (1900, 10, 1, 2, NULL, 'Wreath', 11),
-  (1901, 10, 1, 2, NULL, 'Santaclad', 11),
   (1902, 10, 1, 2, NULL, 'Dreidel', 11),
   (1903, 10, 1, 2, NULL, 'Bells', 11),
   (1904, 10, 1, 2, NULL, 'Peppermint', 11),
-  (1905, 10, 1, 2, NULL, 'Yeti', 11),
   (1906, 10, 1, 2, NULL, 'Nutcracker', 11),
   (98, 1, 1, 2, 1, 'Ana', 3), -- Normal Ana Player Icons
   (99, 1, 1, 2, 1, 'Watcher', 3),
@@ -330,6 +336,7 @@ VALUES
   (168, 1, 1, 2, 17, 'Gears', 1),
   (169, 1, 1, 2, 17, 'Torbjörn', 1),
   (170, 6, 1, 2, 17, 'Water Polo', 4), -- Summer Games Torbjörn Player Icons
+  (1901, 10, 1, 2, 17, 'Santaclad', 11), -- Winter Wonderland Torbjörn Player Icons
   (171, 1, 1, 2, 18, 'Patch', 1), -- Normal Tracer Player Icons
   (172, 1, 1, 2, 18, 'Pulse Bomb', 1),
   (173, 1, 1, 2, 18, 'Tracer', 1),
@@ -342,6 +349,7 @@ VALUES
   (180, 1, 1, 2, 20, 'Peanut Butter', 1),
   (181, 1, 1, 2, 20, 'Winston', 1),
   (182, 6, 1, 2, 20, 'Volleyball', 4), -- Summer Games Winston Player Icons
+  (1905, 10, 1, 2, 20, 'Yeti', 11), -- Winter Wonderland Winston Player Icons
   (183, 1, 1, 2, 21, '512', 1), -- Normal Zarya Player Icons
   (184, 1, 1, 2, 21, 'Particle Barrier', 1),
   (185, 1, 1, 2, 21, 'Zarya', 1),
@@ -1030,7 +1038,7 @@ VALUES
   (837, 1, 5, 1, 8, 'Ain''t I Killed You Before', 1), -- Normal McCree Voice Lines
   (838, 1, 5, 1, 8, 'Happens to the Best of Us', 1),
   (839, 1, 5, 1, 8, 'I Tried Being Reasonable', 1),
-  (840, 1, 5, 1, 8, 'I''m in the Quick...', 1),
+  (840, 1, 5, 1, 8, 'I''m the Quick...', 1),
   (841, 1, 5, 1, 8, 'I''m Your Huckleberry', 1),
   (842, 1, 5, 1, 8, 'I''ve Got a Bullet...', 1),
   (843, 1, 5, 1, 8, 'Reach for the Sky', 1),
@@ -1283,9 +1291,7 @@ VALUES
   (1072, 2, 6, 1, NULL, 'Beyond the Moon', 1), -- Achievements All Heroes Sprays
   (1073, 2, 6, 1, NULL, 'Forge Onward', 1),
   (1074, 2, 6, 1, NULL, 'GL HF', 1),
-  (1075, 2, 6, 1, NULL, 'Halloween Special', 7),
   (1076, 2, 6, 1, NULL, 'Jail', 1),
-  (1077, 2, 6, 1, NULL, 'Junkenstein''s Revenge', 7),
   (1078, 2, 6, 1, NULL, 'Man and Omnic', 1),
   (1079, 2, 6, 1, NULL, 'Oops', 1),
   (1080, 2, 6, 1, NULL, 'Out of My Way', 1),
@@ -1294,11 +1300,9 @@ VALUES
   (1083, 2, 6, 1, NULL, 'Red X', 1),
   (1084, 2, 6, 1, NULL, 'Respect', 1),
   (1085, 2, 6, 1, NULL, 'Rise', 1),
-  (1086, 2, 6, 1, NULL, 'Rise of the Zomnics', 7),
   (1087, 2, 6, 1, NULL, 'Sorry', 1),
   (1088, 2, 6, 1, NULL, 'Tea Time', 1),
   (1089, 2, 6, 1, NULL, 'Thanks', 1),
-  (1090, 2, 6, 1, NULL, 'The Reapening', 7),
   (1091, 2, 6, 1, NULL, 'Victory', 1),
   (1092, 2, 6, 1, NULL, 'Well Played', 1),
   (1093, 5, 6, 1, NULL, 'Season 1 Competitor', 2), -- Competitive All Heroes Sprays
@@ -1314,18 +1318,18 @@ VALUES
   (1103, 7, 6, 1, NULL, 'Candyball', 7),
   (1104, 7, 6, 1, NULL, 'Fangs', 7),
   (1105, 7, 6, 1, NULL, 'Gummy Hog', 7),
-  (1106, 7, 6, 1, NULL, 'Halloween Special', 7),
   (1107, 7, 6, 1, NULL, 'Halloween Terror', 7),
-  (1108, 7, 6, 1, NULL, 'Junkenstein''s Revenge', 7),
   (1109, 7, 6, 1, NULL, 'Pumpkins', 7),
-  (1110, 7, 6, 1, NULL, 'Rise of the Zomnics', 7),
-  (1111, 7, 6, 1, NULL, 'The Reapening', 7),
   (1112, 7, 6, 1, NULL, 'Witch''s Brew', 7),
+  (1106, 12, 6, 1, NULL, 'Halloween Special', 7), -- Halloween Terror Achievements All Heroes Sprays
+  (1108, 12, 6, 1, NULL, 'Junkenstein''s Revenge', 7),
+  (1110, 12, 6, 1, NULL, 'Rise of the Zomnics', 7),
+  (1111, 12, 6, 1, NULL, 'The Reapening', 7),
   (1907, 10, 6, 1, NULL, 'Winter Wonderland', 11), -- Winter Wonderland All Heroes Sprays
-  (1908, 10, 6, 1, NULL, 'SnowCree', 11),
-  (1909, 10, 6, 1, NULL, 'SnowHog', 11),
-  (1910, 10, 6, 1, NULL, 'SnowMei', 11),
-  (1911, 10, 6, 1, NULL, 'SnowReaper', 11),
+  (1908, 13, 6, 1, NULL, 'SnowCree', 11), -- Winter Wonderland Achievements All Heroes Sprays
+  (1909, 13, 6, 1, NULL, 'SnowHog', 11),
+  (1910, 13, 6, 1, NULL, 'SnowMei', 11),
+  (1911, 13, 6, 1, NULL, 'SnowReaper', 11),
   (1113, 1, 6, 1, 1, 'Action', 3), -- Normal Ana Sprays
   (1114, 1, 6, 1, 1, 'Ana', 3),
   (1115, 1, 6, 1, 1, 'Bearer', 3),
