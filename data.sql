@@ -251,7 +251,6 @@ VALUES
   (1890, 10, 1, 2, NULL, 'Cheers!', 11),
   (1891, 10, 1, 2, NULL, 'Mochi', 11),
   (1892, 10, 1, 2, NULL, 'Snow Globe', 11),
-  (1893, 10, 1, 2, NULL, 'Jingle', 11),
   (1894, 10, 1, 2, NULL, 'Gingermari', 11),
   (1895, 10, 1, 2, NULL, 'Pachimerry', 11),
   (1896, 10, 1, 2, NULL, 'Present', 11),
@@ -262,7 +261,6 @@ VALUES
   (1902, 10, 1, 2, NULL, 'Dreidel', 11),
   (1903, 10, 1, 2, NULL, 'Bells', 11),
   (1904, 10, 1, 2, NULL, 'Peppermint', 11),
-  (1906, 10, 1, 2, NULL, 'Nutcracker', 11),
   (98, 1, 1, 2, 1, 'Ana', 3), -- Normal Ana Player Icons
   (99, 1, 1, 2, 1, 'Watcher', 3),
   (100, 1, 1, 2, 1, 'Wedjat', 3),
@@ -340,6 +338,7 @@ VALUES
   (171, 1, 1, 2, 18, 'Patch', 1), -- Normal Tracer Player Icons
   (172, 1, 1, 2, 18, 'Pulse Bomb', 1),
   (173, 1, 1, 2, 18, 'Tracer', 1),
+  (1893, 10, 1, 2, 18, 'Jingle', 11), -- Winter Wonderland Tracer Player Icons
   (174, 6, 1, 2, 18, 'Track', 4), -- Summer Games Tracer Player Icons
   (175, 1, 1, 2, 19, 'Baiser', 1), -- Normal Widowmaker Player Icons
   (176, 1, 1, 2, 19, 'Grappling Hook', 1),
@@ -358,6 +357,7 @@ VALUES
   (188, 1, 1, 2, 22, 'Meditation', 1),
   (189, 1, 1, 2, 22, 'Zenyatta', 1),
   (190, 6, 1, 2, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Player Icons
+  (1906, 10, 1, 2, 22, 'Nutcracker', 11), -- Winter Wonderland Zenyatta Player Icons
   (191, 1, 1, 2, 23, 'Hacker', 9), -- Normal Sombra Player Icons
   (192, 1, 1, 2, 23, 'Skull', 9),
   (193, 1, 1, 2, 23, 'Sombra', 9),

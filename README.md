@@ -10,7 +10,7 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Customize your collection with lots of settings
 
 #### Work In Progress
-- Adding images for Dia de los Muertos and menu icons and Christmas update
+- Adding images for menu icons
 
 #### To Do
 - Go to the right page in the collection by clicking on hero
