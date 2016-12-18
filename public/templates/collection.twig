@@ -168,7 +168,7 @@
                 <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
                         {% if USERSETTINGS["collection-show-colors"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content">
-                        <a href="#allheroes">
+                        <a href="./collection.php#allheroes">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/heroes/allheroes.png"/>
                             <span class="cosmetics-menu--item--text">All Heroes</span>
@@ -198,7 +198,7 @@
                     <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
                             {% if USERSETTINGS["collection-show-colors"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
-                            <a href="#{{ hero.slug }}">
+                            <a href="./collection.php?page={{ loop.index // USERSETTINGS["collection-heroes-per-page"].value }}#{{ hero.slug }}">
                                 <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                      src="img/collection/heroes/{{ hero.slug }}.png"/>
                                 <span class="cosmetics-menu--item--text">{{ hero.name }}</span>

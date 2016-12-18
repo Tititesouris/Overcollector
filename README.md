@@ -13,7 +13,6 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Adding images for menu icons
 
 #### To Do
-- Go to the right page in the collection by clicking on hero
 - Replace credits symbol to make it more readable (maybe with an image?)
 - Only show items for current event on lootbox page
 - Improve Welcome page
