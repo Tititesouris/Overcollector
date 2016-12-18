@@ -29,6 +29,7 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 - Achievements tracker
 - Recreate competitive gif sprays
 - Compare collections
+- Tracking over time
 
 
 ## How to contribute
