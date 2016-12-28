@@ -26,6 +26,7 @@
     {% set heroTypeStats = {} %}
     {% for id, cosmetic in USER.filterCosmeticsByUserSettings(COSMETICS, true) %}
         {% set total = total + 1 %}
+        {% set totalCredits = totalCredits + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0) %}
         {# Group player icons together if the setting is enabled #}
         {% if (cosmetic.type.id == 1 and USERSETTINGS["collection-show-all-playericons-in-allheroes"].value) %}
             {% set heroId = 0 %}
@@ -60,6 +61,7 @@
         ) %}
         {% if USER.hasCosmetic(cosmetic.id) %}
             {% set owned = owned + 1 %}
+            {% set ownedCredits = ownedCredits + (cosmetic.type.id != 1 ? (cosmetic.rarity.basePrice ?? 0 * cosmetic.category.priceMultiplier ?? 0) : 0) %}
             {% set heroStats = heroStats|pushObj(heroId, {
             "owned": heroStats[heroId].owned ?? 0 + 1,
             "total": heroStats[heroId].total ?? 0,
