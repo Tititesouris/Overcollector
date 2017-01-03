@@ -69,23 +69,25 @@
                 {% set stat = STATS.heroes[0] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
                 {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
-                        {% if USERSETTINGS["collection-show-colors"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                        {% if USERSETTINGS["collection-show-colors"].value and USERSETTINGS["collection-show-hero-allheroes"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content">
                         <a href="./collection.php#allheroes">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/heroes/allheroes.png"/>
                             <span class="cosmetics-menu--item--text">All Heroes</span>
                         </a>
-                        <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
-                            <span class="cosmetics-menu--item--STATS-completion">
-                                {{ (ratio * 100)|round(2, "floor") }}%
-                                ({{ stat.owned }} / {{ stat.total }})
-                            </span><br/>
-                            <span class="cosmetics-menu--item--STATS-credits">
-                                ₡{{ stat.totalCredits - stat.ownedCredits }}
-                                (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
+                        {% if USERSETTINGS["collection-show-hero-allheroes"].value %}
+                            <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                                <span class="cosmetics-menu--item--STATS-completion">
+                                    {{ (ratio * 100)|round(2, "floor") }}%
+                                    ({{ stat.owned }} / {{ stat.total }})
+                                </span><br/>
+                                <span class="cosmetics-menu--item--STATS-credits">
+                                    ₡{{ stat.totalCredits - stat.ownedCredits }}
+                                    (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
+                                </span>
                             </span>
-                        </span>
+                        {% endif %}
                     </span>
                     <span class="mdl-list__item-secondary-action">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hero-checkbox-allheroes">
@@ -99,23 +101,25 @@
                     {% set stat = STATS.heroes[hero.id] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
                     {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-hero mdl-list__item mdl-list__item--two-line"
-                            {% if USERSETTINGS["collection-show-colors"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            {% if USERSETTINGS["collection-show-colors"].value and USERSETTINGS["collection-show-hero-" ~ hero.slug].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <a href="./collection.php?page={{ loop.index // USERSETTINGS["collection-heroes-per-page"].value }}#{{ hero.slug }}">
                                 <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                      src="img/collection/heroes/{{ hero.slug }}.png"/>
                                 <span class="cosmetics-menu--item--text">{{ hero.name }}</span>
                             </a>
-                            <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
-                                <span class="cosmetics-menu--item--STATS-completion">
-                                    {{ (ratio * 100)|round(2, "floor") }}%
-                                    ({{ stat.owned }} / {{ stat.total }})
-                                </span><br/>
-                                <span class="cosmetics-menu--item--STATS-credits">
-                                    ₡{{ stat.totalCredits - stat.ownedCredits }}
-                                    (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
+                            {% if USERSETTINGS["collection-show-hero-" ~ hero.slug].value %}
+                                <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                                    <span class="cosmetics-menu--item--STATS-completion">
+                                        {{ (ratio * 100)|round(2, "floor") }}%
+                                        ({{ stat.owned }} / {{ stat.total }})
+                                    </span><br/>
+                                    <span class="cosmetics-menu--item--STATS-credits">
+                                        ₡{{ stat.totalCredits - stat.ownedCredits }}
+                                        (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
+                                    </span>
                                 </span>
-                            </span>
+                            {% endif %}
                         </span>
                         <span class="mdl-list__item-secondary-action">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
@@ -132,17 +136,11 @@
                 {% set stat = STATS.categories[0] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
                 {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                 <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
-                        {% if USERSETTINGS["collection-show-colors"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                        {% if USERSETTINGS["collection-show-colors"].value and USERSETTINGS["collection-show-category-default"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                     <span class="mdl-list__item-primary-content">
                         <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                              src="img/collection/categories/default.png"/>
                         <span class="cosmetics-menu--item--text">Default</span>
-                        <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
-                            <span class="cosmetics-menu--item--STATS-completion">
-                                {{ (ratio * 100)|round(2, "floor") }}%
-                                ({{ stat.owned }} /{{ stat.total }})
-                            </span>
-                        </span>
                     </span>
                     <span id="cosmetics-menu--category-default" class="mdl-list__item-secondary-action">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
@@ -160,21 +158,25 @@
                     {% set stat = STATS.categories[category.id] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
                     {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-category mdl-list__item mdl-list__item--two-line"
-                            {% if USERSETTINGS["collection-show-colors"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            {% if USERSETTINGS["collection-show-colors"].value and USERSETTINGS["collection-show-category-" ~ category.slug].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/categories/{{ category.slug }}.png"/>
                             <span class="cosmetics-menu--item--text">{{ category.name }}</span>
-                            <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
-                                <span class="cosmetics-menu--item--STATS-completion">
-                                    {{ (ratio * 100)|round(2, "floor") }}%
-                                    ({{ stat.owned }} / {{ stat.total }})
-                                </span><br/>
-                                <span class="cosmetics-menu--item--STATS-credits">
-                                    ₡{{ stat.totalCredits - stat.ownedCredits }}
-                                    (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
+                            {% if USERSETTINGS["collection-show-category-" ~ category.slug].value %}
+                                <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                                    <span class="cosmetics-menu--item--STATS-completion">
+                                        {{ (ratio * 100)|round(2, "floor") }}%
+                                        ({{ stat.owned }} / {{ stat.total }})
+                                    </span><br/>
+                                    {% if category.slug not in ["achievements", "competitive", "summergames-achievements", "halloweenterror-achievements", "winterwonderland-achievements", "blizzard", "originsedition", "preorder", "blizzcon"] %}
+                                        <span class="cosmetics-menu--item--STATS-credits">
+                                            ₡{{ stat.totalCredits - stat.ownedCredits }}
+                                            (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
+                                        </span>
+                                    {% endif %}
                                 </span>
-                            </span>
+                            {% endif %}
                         </span>
                         <span id="cosmetics-menu--category-{{ category.slug }}"
                               class="mdl-list__item-secondary-action">
@@ -197,23 +199,25 @@
                     {% set stat = STATS.types[type.id] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
                     {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
                     <li class="cosmetics-menu--item cosmetics-menu--item-type mdl-list__item mdl-list__item--two-line"
-                            {% if USERSETTINGS["collection-show-colors"].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
+                            {% if USERSETTINGS["collection-show-colors"].value and USERSETTINGS["collection-show-type-" ~ type.slug].value %} style="background-color: {{ ratio|colorgradient("rgba") }};"{% endif %}>
                         <span class="mdl-list__item-primary-content">
                             <img class="cosmetics-menu--item--image mdl-list__item-avatar"
                                  src="img/collection/types/{{ type.slug }}.png"/>
                             <span class="cosmetics-menu--item--text">{{ type.name }}</span>
-                            <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
-                                <span class="cosmetics-menu--item--STATS-completion">
-                                    {{ (ratio * 100)|round(2, "floor") }}%
-                                    ({{ stat.owned }} /{{ stat.total }})
-                                </span><br/>
-                                {% if type.slug not in ["playericon", "weapon"] %}
-                                    <span class="cosmetics-menu--item--STATS-credits">
-                                        ₡{{ stat.totalCredits - stat.ownedCredits }}
-                                        (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
-                                    </span>
-                                {% endif %}
-                            </span>
+                            {% if USERSETTINGS["collection-show-type-" ~ type.slug].value %}
+                                <span class="mdl-list__item-sub-title cosmetics-menu--item--STATS">
+                                    <span class="cosmetics-menu--item--STATS-completion">
+                                        {{ (ratio * 100)|round(2, "floor") }}%
+                                        ({{ stat.owned }} /{{ stat.total }})
+                                    </span><br/>
+                                    {% if type.slug not in ["playericon", "weapon"] %}
+                                        <span class="cosmetics-menu--item--STATS-credits">
+                                            ₡{{ stat.totalCredits - stat.ownedCredits }}
+                                            (₡{{ stat.ownedCredits }} / ₡{{ stat.totalCredits }})
+                                        </span>
+                                    {% endif %}
+                                </span>
+                            {% endif %}
                         </span>
                         <span id="cosmetics-menu--type-{{ type.slug }}"
                               class="mdl-list__item-secondary-action">
@@ -236,7 +240,8 @@
                     <p>
                         Import your collection by pasting your collection data here. It will replace the current
                         collection, <b>there is no way back</b>.<br/>
-                        <b>We strongly suggest that you export the current collection as a back-up before importing a new one.</b>
+                        <b>We strongly suggest that you export the current collection as a back-up before importing a
+                            new one.</b>
                     </p>
                     <div class="import-text mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <textarea id="import-collection--textarea" class="mdl-textfield__input" type="text"
