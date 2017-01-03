@@ -66,6 +66,10 @@ class Cosmetic implements JsonSerializable
         return $this->event;
     }
 
+    public function getPrice() {
+        return $this->rarity->getBasePrice() && $this->category->getPriceMultiplier();
+    }
+
     function jsonSerialize()
     {
         return [

@@ -107,7 +107,13 @@ class User implements JsonSerializable
         $filtered = [];
         foreach ($cosmetics as $cosmetic) {
             if ($ignoreShowOwned || $this->settings["collection-show-owned-cosmetics"]->getValue() || !$this->hasCosmetic($cosmetic->getId())) {
-                $heroSlug = $cosmetic->getHero() !== null ? $cosmetic->getHero()->getSlug() : "allheroes";
+
+                // Group all Player Icons together if the setting is enabled
+                if ($cosmetic->getType()->getId() === 1 && $this->settings["collection-show-all-playericons-in-allheroes"]->getValue()) {
+                    $heroSlug = "allheroes";
+                } else {
+                    $heroSlug = $cosmetic->getHero() !== null ? $cosmetic->getHero()->getSlug() : "allheroes";
+                }
                 if ($this->settings["collection-show-hero-" . $heroSlug]->getValue()) {
                     $categorySlug = $cosmetic->getCategory() !== null ? $cosmetic->getCategory()->getSlug() : "default";
                     if ($this->settings["collection-show-category-" . $categorySlug]->getValue()) {
