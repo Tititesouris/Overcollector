@@ -287,9 +287,11 @@
                                     {{ (ratio * 100)|round(2, "floor") }}%
                                     ({{ stat.owned }}
                                     / {{ stat.total }})
-                                    ₡{{ stat.totalCredits ?? 0 - stat.ownedCredits ?? 0 }}
-                                    (₡{{ stat.ownedCredits ?? 0 }} /
-                                    ₡{{ stat.totalCredits ?? 0 }})
+                                    {% if TYPES[typeId].slug not in ["playericon", "weapon"] %}
+                                        ₡{{ stat.totalCredits ?? 0 - stat.ownedCredits ?? 0 }}
+                                        (₡{{ stat.ownedCredits ?? 0 }} /
+                                        ₡{{ stat.totalCredits ?? 0 }})
+                                    {% endif %}
                                 </td>
                             </tr>
                             {% for row in cosmetics|batch(USERSETTINGS["collection-cosmetics-per-row"].value) %}
