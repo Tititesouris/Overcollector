@@ -1,12 +1,13 @@
 <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title"><img src="img/overcollector-logo.png" height=50" /></span>
+        <span class="mdl-layout-title"><img src="img/overcollector-logo.png" height=50"/></span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
             <a class="mdl-navigation__link" href="./">Home</a>
-            {% if SESSION.user is defined %}
+            {% if USERLOGGEDIN %}
                 <a class="mdl-navigation__link" href="./collection.php">Collection</a>
-                <a class="mdl-navigation__link" href="./lootbox.php"><img src="img/lootbox.png" width="30"/> Open a Lootbox</a>
+                <a class="mdl-navigation__link" href="./lootbox.php"><img src="img/lootbox.png" width="30"/> Open a
+                    Lootbox</a>
                 <a class="mdl-navigation__link" href="./profile.php">Profile</a>
             {% else %}
                 <a class="mdl-navigation__link" href="./login.php">Log In</a>

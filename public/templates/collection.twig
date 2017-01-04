@@ -256,7 +256,7 @@
                 <br/><br/>
             </div>
             <table id="cosmetics-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                {% for heroId, types in USER.sortCosmeticsByHeroesAndTypes(FILTEREDCOSMETICS) %}
+                {% for heroId, types in SORTEDFILTEREDCOSMETICS %}
                     {% if PAGES.start <= loop.index0 and loop.index0 < PAGES.end %}
                         {% set stat = STATS.heroes[heroId] ?? {"owned": 0, "total": 0, "ownedCredits": 0, "totalCredits": 0} %}
                         {% set ratio = stat.total > 0 ? (stat.owned / stat.total) : 1 %}
