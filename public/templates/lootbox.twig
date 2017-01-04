@@ -1,10 +1,5 @@
 {% extends "page.twig" %}
 {% block body %}
-    {% set HEROES = SESSION.heroes %}
-    {% set TYPES = SESSION.types %}
-    {% set COSMETICS = SESSION.cosmetics %}
-    {% set USER = SESSION.user %}
-    {% set USERSETTINGS = USER.settings %}
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col">
             <h1 class="mdl-typography--title">Open a Loot Box</h1>
@@ -25,7 +20,8 @@
                 </label>
 
                 <label for="hero-{{ i }}">Hero</label>
-                <select id="hero-{{ i }}" class="hero-select" data-lootbox="{{ i }}" {{ 4 - i <= USERSETTINGS["lootbox-default-duplicates-nb"].value ? "disabled" }}>
+                <select id="hero-{{ i }}" class="hero-select"
+                        data-lootbox="{{ i }}" {{ 4 - i <= USERSETTINGS["lootbox-default-duplicates-nb"].value ? "disabled" }}>
                     <option value="0">All Heroes</option>
                     {% for hero in HEROES %}
                         <option value="{{ hero.id }}">{{ hero.name }}</option>
@@ -33,7 +29,8 @@
                 </select><br/>
 
                 <label for="type-{{ i }}">Type</label>
-                <select id="type-{{ i }}" class="type-select" data-lootbox="{{ i }}" {{ 4 - i <= USERSETTINGS["lootbox-default-duplicates-nb"].value ? "disabled" }}>
+                <select id="type-{{ i }}" class="type-select"
+                        data-lootbox="{{ i }}" {{ 4 - i <= USERSETTINGS["lootbox-default-duplicates-nb"].value ? "disabled" }}>
                     {% for type in TYPES %}
                         <option value="{{ type.id }}"
                                 {% if type.slug not in ["playericon", "spray"] %}
@@ -43,7 +40,8 @@
                 </select><br/>
 
                 <label for="cosmetic-{{ i }}">Cosmetic</label>
-                <select id="cosmetic-{{ i }}" class="cosmetic-select" data-lootbox="{{ i }}" {{ 4 - i <= USERSETTINGS["lootbox-default-duplicates-nb"].value ? "disabled" }}>
+                <select id="cosmetic-{{ i }}" class="cosmetic-select"
+                        data-lootbox="{{ i }}" {{ 4 - i <= USERSETTINGS["lootbox-default-duplicates-nb"].value ? "disabled" }}>
                     <option value="-1" disabled selected style="display: none"></option>
                     {% for cosmetic in COSMETICS %}
                         {% if not USER.hasCosmetic(cosmetic.id) and cosmetic.category is not null %}

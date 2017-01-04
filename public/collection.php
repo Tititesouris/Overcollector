@@ -1,10 +1,13 @@
 <?php
 require_once("required.php");
 if (isUserLoggedIn()) {
+
+    $user = $_SESSION["user"];
+
     $pages = [
         "current" => isset($_GET["page"]) ? $_GET["page"] : 0,
-        "start" => (isset($_GET["page"]) ? $_GET["page"] : 0) * $_SESSION["user"]->getSettings()["collection-heroes-per-page"]->getValue(),
-        "end" => ((isset($_GET["page"]) ? $_GET["page"] : 0) + 1) * $_SESSION["user"]->getSettings()["collection-heroes-per-page"]->getValue()
+        "start" => (isset($_GET["page"]) ? $_GET["page"] : 0) * $user->getSettings()["collection-heroes-per-page"]->getValue(),
+        "end" => ((isset($_GET["page"]) ? $_GET["page"] : 0) + 1) * $user->getSettings()["collection-heroes-per-page"]->getValue()
     ];
 
     $stats = [
@@ -18,11 +21,11 @@ if (isUserLoggedIn()) {
         "heroesTypes" => []
     ];
 
-    foreach ($_SESSION["user"]->filterCosmeticsByUserSettings($_SESSION["cosmetics"], true) as $id => $cosmetic) {
+    foreach ($user->filterCosmeticsByUserSettings($_SESSION["cosmetics"], true) as $id => $cosmetic) {
         // Initialize
 
         // Group all Player Icons together if the setting is enabled
-        if ($cosmetic->getType()->getId() === 1 && $_SESSION["user"]->getSettings()["collection-show-all-playericons-in-allheroes"]->getValue()) {
+        if ($cosmetic->getType()->getId() === 1 && $user->getSettings()["collection-show-all-playericons-in-allheroes"]->getValue()) {
             $heroId = 0;
         } else {
             $heroId = $cosmetic->getHero() !== null ? $cosmetic->getHero()->getId() : 0;
@@ -79,7 +82,7 @@ if (isUserLoggedIn()) {
         }
 
         // Add to owned
-        if ($_SESSION["user"]->hasCosmetic($cosmetic->getId())) {
+        if ($user->hasCosmetic($cosmetic->getId())) {
             $stats["owned"]++;
             $stats["heroes"][$heroId]["owned"]++;
             $stats["categories"][$categoryId]["owned"]++;
@@ -97,16 +100,19 @@ if (isUserLoggedIn()) {
         }
     }
 
+    $filteredCosmetics = $user->filterCosmeticsByUserSettings($_SESSION["cosmetics"]);
+
     echo $twig->render("collection.twig", [
         "HEROES" => $_SESSION["heroes"],
         "CATEGORIES" => $_SESSION["categories"],
         "TYPES" => $_SESSION["types"],
         "COSMETICS" => $_SESSION["cosmetics"],
-        "USER" => $_SESSION["user"],
-        "USERCOSMETICS" => $_SESSION["user"]->getCosmetics(),
-        "USERSETTINGS" => $_SESSION["user"]->getSettings(),
-        "FILTEREDCOSMETICS" => $_SESSION["user"]->filterCosmeticsByUserSettings($_SESSION["cosmetics"]),
-        "FILTEREDUSERCOSMETICS" => $_SESSION["user"]->filterCosmeticsByUserSettings($_SESSION["user"]->getCosmetics()),
+        "USER" => $user,
+        "USERCOSMETICS" => $user->getCosmetics(),
+        "USERSETTINGS" => $user->getSettings(),
+        "FILTEREDCOSMETICS" => $filteredCosmetics,
+        "FILTEREDUSERCOSMETICS" => $user->filterCosmeticsByUserSettings($user->getCosmetics()),
+        "SORTEDFILTEREDCOSMETICS" => $user->sortCosmeticsByHeroesAndTypes($filteredCosmetics),
         "PAGES" => $pages,
         "STATS" => $stats
     ]);

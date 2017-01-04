@@ -72,5 +72,4 @@ $twig->addFilter(new Twig_SimpleFilter("colorgradient", function ($ratio, $forma
     return $gradient;
 }));
 
-$twig->addGlobal("SESSION", $_SESSION);
-$twig->addGlobal("GET", $_GET);
+$twig->addGlobal("USERLOGGEDIN", isUserLoggedIn());
