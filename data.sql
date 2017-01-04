@@ -77,7 +77,8 @@ VALUES
   (8, 'Día De Los Muertos 2016', '2016-11-01', NULL),
   (9, 'Sombra Patch', '2016-11-15', NULL),
   (10, 'Competitive Season 3', '2016-12-01', NULL), -- TODO end
-  (11, 'Winter Wonderland 2016', '2016-12-13', '2017-01-02');
+  (11, 'Winter Wonderland 2016', '2016-12-13', '2017-01-03'),
+  (12, 'Oasis Patch', '2017-01-03', NULL);
 
 INSERT INTO settings (id, name, description, type, "default", min, max)
 VALUES
@@ -145,6 +146,7 @@ VALUES
   (1, NULL, 1, NULL, NULL, 'Overwatch Dark', 1), -- Default All Heroes Player Icons
   (2, NULL, 1, NULL, NULL, 'Overwatch Light', 1),
   (3, NULL, 1, NULL, NULL, 'You Are Not Prepared', 3),
+  (1991, NULL, 1, NULL, NULL, 'Dark Wanderer', 12),
   (4, 1, 1, 2, NULL, '16-Bit Hero', 1), -- Normal All Heroes Player Icons
   (5, 1, 1, 2, NULL, 'Anubis', 1),
   (6, 1, 1, 2, NULL, 'Bao', 1),
@@ -1261,6 +1263,12 @@ VALUES
   (1042, NULL, 6, NULL, NULL, 'Logo', 1), -- Default All Heroes Sprays
   (1043, NULL, 6, NULL, NULL, 'You Are Not Prepared', 3),
   (1044, NULL, 6, NULL, NULL, 'Día De Los Muertos', 8),
+  (1075, NULL, 6, NULL, NULL, 'Barbarian', 12),
+  (1077, NULL, 6, NULL, NULL, 'Crusader', 12),
+  (1086, NULL, 6, NULL, NULL, 'Demon Hunter', 12),
+  (1090, NULL, 6, NULL, NULL, 'Monk', 12),
+  (2006, NULL, 6, NULL, NULL, 'Witch Doctor', 12),
+  (2007, NULL, 6, NULL, NULL, 'Wizard', 12),
   (1045, 1, 6, 1, NULL, '...Punch', 1), -- Normal All Heroes Sprays
   (1046, 1, 6, 1, NULL, 'Catcher', 1),
   (1047, 1, 6, 1, NULL, 'Caution', 1),
