@@ -1292,7 +1292,7 @@ VALUES
   (1065, 1, 6, 1, NULL, 'Scooter', 1),
   (1066, 1, 6, 1, NULL, 'Scroll', 1),
   (1067, 1, 6, 1, NULL, 'Siege Mode', 1),
-  (1068, 1, 6, 1, NULL, 'Six Gun Killer', 1),
+  (1068, 1, 6, 1, NULL, 'Six-Gun Killer', 1),
   (1069, 1, 6, 1, NULL, 'Sol', 1),
   (1070, 1, 6, 1, NULL, 'Soulstone', 1),
   (1071, 1, 6, 1, NULL, 'Vivi''s Adventure', 1),
