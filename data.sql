@@ -78,7 +78,8 @@ VALUES
   (9, 'Sombra Patch', '2016-11-15', NULL),
   (10, 'Competitive Season 3', '2016-12-01', NULL), -- TODO end
   (11, 'Winter Wonderland 2016', '2016-12-13', '2017-01-03'),
-  (12, 'Oasis Patch', '2017-01-03', NULL);
+  (12, 'Oasis Patch', '2017-01-03', NULL),
+  (13, 'Year of the Rooster', '2017-01-24', NULL);
 
 INSERT INTO settings (id, name, description, type, "default", min, max)
 VALUES
@@ -400,6 +401,7 @@ VALUES
   (228, 1, 2, 4, 3, 'Junebug', 1),
   (229, 1, 2, 4, 3, 'Junker', 1),
   (230, 1, 2, 4, 3, 'Scavenger', 1),
+  (2008, 1, 2, 4, 3, '??', 13), -- TODO
   (231, 6, 2, 3, 3, 'Taegeukgi', 4), -- Summer Games D.Va Skins
   (232, NULL, 2, NULL, 4, 'Classic', 1), -- Default Genji Skins
   (233, 1, 2, 2, 4, 'Azurite', 1), -- Normal Genji Skins
@@ -476,6 +478,7 @@ VALUES
   (302, 1, 2, 4, 9, 'Firefighter', 1),
   (303, 1, 2, 4, 9, 'Rescue Mei', 1),
   (304, 1, 2, 4, 9, 'Yeti Hunter', 1),
+  (2009, 1, 2, 4, 9, '??', 13), -- TODO
   (1960, 10, 2, 4, 9, 'Mei-rry', 11), -- Winter Wonderland Mei Skins
   (305, NULL, 2, NULL, 10, 'Classic', 1), -- Default Mercy Skins
   (306, 1, 2, 2, 10, 'Celestial', 1), -- Normal Mercy Skins
