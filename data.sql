@@ -27,7 +27,7 @@ VALUES
 INSERT INTO categories (id, name, description, price_multiplier, slug)
 VALUES
   (1, 'Normal', 'Obtainable by opening normal Loot Boxes or by spending the normal amount of credits.', 1, 'normal'),
-  (2, 'Achievements', 'Obtainable by completing achievements.', 0, 'achievements'),
+  (2, 'Achievements', 'Obtainable by completing non-seasonal achievements.', 0, 'achievements'),
   (3, 'Origins Edition', 'Obtainable by buying the Origins Edition of Overwatch.', 0, 'originsedition'),
   (4, 'Preorder', 'Obtainable by preodering Overwatch.', 0, 'preorder'),
   (5, 'Competitive', 'Obtainable by spending competitive points.', 0, 'competitive'),
@@ -44,7 +44,11 @@ VALUES
   (12, 'Halloween Terror Achievements', 'Obtainable by completing Halloween Terror achievements.', 0,
    'halloweenterror-achievements'),
   (13, 'Winter Wonderland Achievements', 'Obtainable by completing Winter Wonderland achievements.', 0,
-   'winterwonderland-achievements');
+   'winterwonderland-achievements'),
+  (14, 'Year of the Rooster', 'Obtainable by opening Year of the Rooster Loot Boxes or by spending 3 times the normal amount of credits during the Year of the Rooster event.', 3,
+   'yearoftherooster'),
+  (15, 'Year of the Rooster Achievements', 'Obtainable by completing Year of the Rooster achievements.', 0,
+   'yearoftherooster-achievements');
 
 INSERT INTO types (id, name, slug)
 VALUES
@@ -79,7 +83,7 @@ VALUES
   (10, 'Competitive Season 3', '2016-12-01', NULL), -- TODO end
   (11, 'Winter Wonderland 2016', '2016-12-13', '2017-01-03'),
   (12, 'Oasis Patch', '2017-01-03', NULL),
-  (13, 'Year of the Rooster', '2017-01-24', NULL);
+  (13, 'Year of the Rooster', '2017-01-24', '2017-02-14');
 
 INSERT INTO settings (id, name, description, type, "default", min, max)
 VALUES
@@ -127,6 +131,8 @@ VALUES
   (39, 'collection-show-category-blizzcon', 'Show BlizzCon cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (48, 'collection-show-category-winterwonderland', 'Show Winter Wonderland cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (53, 'collection-show-category-winterwonderland-achievements', 'Show Winter Wonderland Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (54, 'collection-show-category-yearoftherooster', 'Show Year of the Rooster cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (55, 'collection-show-category-yearoftherooster-achievements', 'Show Year of the Rooster Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (40, 'collection-show-type-playericon', 'Show Player Icon cosmetics in the collection', 'BOOLEAN', 'true', NULL,
    NULL),
   (41, 'collection-show-type-skin', 'Show Skin cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
@@ -264,6 +270,23 @@ VALUES
   (1902, 10, 1, 2, NULL, 'Dreidel', 11),
   (1903, 10, 1, 2, NULL, 'Bells', 11),
   (1904, 10, 1, 2, NULL, 'Peppermint', 11),
+  (2008, 14, 1, 2, NULL, 'Year of the Rooster 2017', 13), -- Year of the Rooster All Heroes Player Icons
+  (2009, 14, 1, 2, NULL, 'Fortune', 13),
+  (2010, 14, 1, 2, NULL, 'Lion Dance', 13),
+  (2011, 14, 1, 2, NULL, 'Seollal', 13),
+  (2012, 14, 1, 2, NULL, 'New Year Cake', 13),
+  (2013, 14, 1, 2, NULL, 'Lucky Pouch', 13),
+  (2014, 14, 1, 2, NULL, 'Red Envelope', 13),
+  (2015, 14, 1, 2, NULL, 'Have Fish', 13),
+  (2016, 14, 1, 2, NULL, 'Lantern', 13),
+  (2017, 14, 1, 2, NULL, 'Gold', 13),
+  (2018, 14, 1, 2, NULL, 'Tangerines', 13),
+  (2019, 14, 1, 2, NULL, 'Coin', 13),
+  (2020, 14, 1, 2, NULL, 'Lunamari', 13),
+  (2026, 14, 1, 2, NULL, 'Bokimari', 13),
+  (2028, 14, 1, 2, NULL, 'Fuchimari', 13),
+  (2029, 14, 1, 2, NULL, 'Dragon Dance', 13),
+  (2030, 14, 1, 2, NULL, 'Pachilantern', 13),
   (98, 1, 1, 2, 1, 'Ana', 3), -- Normal Ana Player Icons
   (99, 1, 1, 2, 1, 'Watcher', 3),
   (100, 1, 1, 2, 1, 'Wedjat', 3),
@@ -276,6 +299,7 @@ VALUES
   (107, 1, 1, 2, 3, 'Bunny', 1),
   (108, 1, 1, 2, 3, 'Charm', 1),
   (109, 6, 1, 2, 3, 'Cycling', 4), -- Summer Games D.Va Player Icons
+  (2025, 14, 1, 2, 3, 'Hanbok', 13), -- Year of the Rooster D.Va Player Icons
   (110, 1, 1, 2, 4, 'Genji', 1), -- Normal Genji Player Icons
   (111, 1, 1, 2, 4, 'God of War', 1),
   (112, 1, 1, 2, 4, 'Nin', 1),
@@ -302,6 +326,7 @@ VALUES
   (133, 1, 1, 2, 9, 'Mei', 1),
   (134, 1, 1, 2, 9, 'Snowball', 1),
   (135, 6, 1, 2, 9, 'Table Tennis', 4), -- Summer Games Mei Player Icons
+  (2027, 14, 1, 2, 9, 'Chang''e', 13), -- Year of the Rooster Mei Player Icons
   (136, 1, 1, 2, 10, 'Guardian Angel', 1), -- Normal Mercy Player Icons
   (137, 1, 1, 2, 10, 'Mercy', 1),
   (138, 1, 1, 2, 10, 'Valkyrie', 1),
@@ -320,11 +345,13 @@ VALUES
   (151, 1, 1, 2, 13, 'Reinhardt', 1),
   (152, 1, 1, 2, 13, 'Scar', 1),
   (153, 6, 1, 2, 13, 'Wrestling', 4), -- Summer Games Reinhardt Player Icons
+  (2021, 14, 1, 2, 13, 'Sandi', 13), -- Year of the Rooster Reinhardt Player Icons
   (154, 1, 1, 2, 14, 'Hook', 1), -- Normal Roadhog Player Icons
   (155, 1, 1, 2, 14, 'Piggy', 1),
   (156, 1, 1, 2, 14, 'Roadhog', 1),
   (157, 6, 1, 2, 14, 'Diving', 4), -- Summer Games Roadhog Player Icons
   (158, 7, 1, 2, 14, 'The Monster', 7), -- Halloween Terror Roadhog Player Icons
+  (2024, 14, 1, 2, 14, 'Piggy', 13), -- Year of the Rooster Roadhog Player Icons
   (159, 1, 1, 2, 15, '76', 1), -- Normal Soldier: 76 Player Icons
   (160, 1, 1, 2, 15, 'Soldier: 76', 1),
   (161, 1, 1, 2, 15, 'Strike-Commander', 1),
@@ -352,6 +379,7 @@ VALUES
   (181, 1, 1, 2, 20, 'Winston', 1),
   (182, 6, 1, 2, 20, 'Volleyball', 4), -- Summer Games Winston Player Icons
   (1905, 10, 1, 2, 20, 'Yeti', 11), -- Winter Wonderland Winston Player Icons
+  (2022, 14, 1, 2, 20, 'Monkey', 13), -- Year of the Rooster Winston Player Icons
   (183, 1, 1, 2, 21, '512', 1), -- Normal Zarya Player Icons
   (184, 1, 1, 2, 21, 'Particle Barrier', 1),
   (185, 1, 1, 2, 21, 'Zarya', 1),
@@ -361,6 +389,7 @@ VALUES
   (189, 1, 1, 2, 22, 'Zenyatta', 1),
   (190, 6, 1, 2, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Player Icons
   (1906, 10, 1, 2, 22, 'Nutcracker', 11), -- Winter Wonderland Zenyatta Player Icons
+  (2023, 14, 1, 2, 22, 'Sanzang', 13), -- Year of the Rooster Zenyatta Player Icons
   (191, 1, 1, 2, 23, 'Hacker', 9), -- Normal Sombra Player Icons
   (192, 1, 1, 2, 23, 'Skull', 9),
   (193, 1, 1, 2, 23, 'Sombra', 9),
@@ -376,6 +405,7 @@ VALUES
   (203, 1, 2, 4, 1, 'Captain Amari', 3),
   (204, 1, 2, 4, 1, 'Horus', 3),
   (205, 7, 2, 3, 1, 'Ghoul', 7), -- Halloween Terror Ana Skins
+  (2031, 14, 2, 3, 1, 'Tal', 13), -- Year of the Rooster Ana Skins
   (206, NULL, 2, NULL, 2, 'Classic', 1), -- Default Bastion Skins
   (207, 1, 2, 2, 2, 'Dawn', 1), -- Normal Bastion Skins
   (208, 1, 2, 2, 2, 'Meadow', 1),
@@ -390,6 +420,7 @@ VALUES
   (217, 3, 2, 4, 2, 'Overgrown', 1), -- Origins Edition Bastion Skins
   (218, 7, 2, 3, 2, 'Tombstone', 7), -- Halloween Terror Bastion Skins
   (219, 8, 2, 3, 2, 'BlizzCon 2016', 7), -- BlizzCon Bastion Skins
+  (2032, 14, 2, 3, 2, 'Rooster', 13), -- Year of the Rooster Bastion Skins
   (220, NULL, 2, NULL, 3, 'Classic', 1), -- Default D.Va Skins
   (221, 1, 2, 2, 3, 'Blueberry', 1), -- Normal D.Va Skins
   (222, 1, 2, 2, 3, 'Lemon-Lime', 1),
@@ -401,8 +432,8 @@ VALUES
   (228, 1, 2, 4, 3, 'Junebug', 1),
   (229, 1, 2, 4, 3, 'Junker', 1),
   (230, 1, 2, 4, 3, 'Scavenger', 1),
-  (2008, 1, 2, 4, 3, '??', 13), -- TODO
   (231, 6, 2, 3, 3, 'Taegeukgi', 4), -- Summer Games D.Va Skins
+  (2033, 14, 2, 4, 3, 'Palanquin', 13), -- Year of the Rooster D.Va Skins
   (232, NULL, 2, NULL, 4, 'Classic', 1), -- Default Genji Skins
   (233, 1, 2, 2, 4, 'Azurite', 1), -- Normal Genji Skins
   (234, 1, 2, 2, 4, 'Cinnabar', 1),
@@ -440,6 +471,7 @@ VALUES
   (266, 1, 2, 4, 6, 'Jester', 1),
   (267, 1, 2, 4, 6, 'Scarecrow', 1),
   (268, 7, 2, 4, 6, 'Dr. Junkenstein', 7), -- Halloween Terror Junkrat Skins
+  (2034, 14, 2, 3, 6, 'Firework', 13), -- Year of the Rooster Junkrat Skins
   (269, NULL, 2, NULL, 7, 'Classic', 1), -- Default Lúcio Skins
   (270, 1, 2, 2, 7, 'Azul', 1), -- Normal Lúcio Skins
   (271, 1, 2, 2, 7, 'Laranja', 1),
@@ -478,8 +510,9 @@ VALUES
   (302, 1, 2, 4, 9, 'Firefighter', 1),
   (303, 1, 2, 4, 9, 'Rescue Mei', 1),
   (304, 1, 2, 4, 9, 'Yeti Hunter', 1),
-  (2009, 1, 2, 4, 9, '??', 13), -- TODO
   (1960, 10, 2, 4, 9, 'Mei-rry', 11), -- Winter Wonderland Mei Skins
+  (2035, 14, 2, 4, 9, 'Chang''e', 13), -- Year of the Rooster Mei Skins
+  (2036, 14, 2, 4, 9, 'Luna', 13),
   (305, NULL, 2, NULL, 10, 'Classic', 1), -- Default Mercy Skins
   (306, 1, 2, 2, 10, 'Celestial', 1), -- Normal Mercy Skins
   (307, 1, 2, 2, 10, 'Mist', 1),
@@ -493,6 +526,7 @@ VALUES
   (315, 1, 2, 4, 10, 'Valkyrie', 1),
   (316, 6, 2, 3, 10, 'Eidgenossin', 4), -- Summer Games Mercy Skins
   (317, 7, 2, 4, 10, 'Witch', 7), -- Halloween Terror Mercy Skins
+  (2037, 14, 2, 3, 10, 'Golden', 13), -- Year of the Rooster Mercy Skins
   (318, NULL, 2, NULL, 11, 'Classic', 1), -- Default Pharah Skins
   (319, 1, 2, 2, 11, 'Amethyst', 1), -- Normal Pharah Skins
   (320, 1, 2, 2, 11, 'Copper', 1),
@@ -535,6 +569,7 @@ VALUES
   (355, 1, 2, 4, 13, 'Lionhardt', 1),
   (356, 1, 2, 4, 13, 'Stonehardt', 1),
   (357, 7, 2, 3, 13, 'Coldhardt', 7), -- Halloween Terror Reinhardt Skins
+  (2038, 14, 2, 4, 13, 'Wujing', 13), -- Year of the Rooster Reinhardt Skins
   (358, NULL, 2, NULL, 14, 'Classic', 1), -- Default Roadhog Skins
   (359, 1, 2, 2, 14, 'Kiwi', 1), -- Normal Roadhog Skins
   (360, 1, 2, 2, 14, 'Mud', 1),
@@ -548,6 +583,7 @@ VALUES
   (368, 1, 2, 4, 14, 'Toa', 1),
   (369, 7, 2, 4, 14, 'Junkenstein''s Monster', 7), -- Halloween Terror Roadhog Skins
   (1963, 10, 2, 3, 14, 'Rudolph', 11), -- Winter Wonderland Roadhog Skins
+  (2039, 14, 2, 4, 14, 'Bajie', 13), -- Year of the Rooster Roadhog Skins
   (370, NULL, 2, NULL, 15, 'Classic', 1), -- Default Soldier: 76 Skins
   (371, 1, 2, 2, 15, 'Jet', 1), -- Normal Soldier: 76 Skins
   (372, 1, 2, 2, 15, 'Olive', 1),
@@ -573,6 +609,7 @@ VALUES
   (392, 1, 2, 4, 16, 'Goddess', 1),
   (393, 1, 2, 4, 16, 'Vishkar', 1),
   (394, 7, 2, 3, 16, 'Vampire', 7), -- Halloween Terror Symmetra Skins
+  (2040, 14, 2, 3, 16, 'Qipao', 13), -- Year of the Rooster Symmetra Skins
   (395, NULL, 2, NULL, 17, 'Classic', 1), -- Default Torbjörn Skins
   (396, 1, 2, 2, 17, 'Blå', 1), -- Normal Torbjörn Skins
   (397, 1, 2, 2, 17, 'Citron', 1),
@@ -601,6 +638,7 @@ VALUES
   (419, 6, 2, 4, 18, 'Sprinter', 4), -- Summer Games Tracer Skins
   (420, 6, 2, 4, 18, 'Track and Field', 4),
   (1965, 10, 2, 4, 18, 'Jingle', 11), -- Winter Wonderland Tracer Skins
+  (2041, 14, 2, 3, 18, 'Rose', 13), -- Year of the Rooster Tracer Skins
   (421, NULL, 2, NULL, 19, 'Classic', 1), -- Default Widowmaker Skins
   (422, 1, 2, 2, 19, 'Ciel', 1), -- Normal Widowmaker Skins
   (423, 1, 2, 2, 19, 'Nuit', 1),
@@ -626,6 +664,7 @@ VALUES
   (443, 1, 2, 4, 20, 'Safari', 1),
   (444, 1, 2, 4, 20, 'Undersea', 1),
   (1966, 10, 2, 4, 20, 'Yeti', 11), -- Winter Wonderland Winston Skins
+  (2042, 14, 2, 4, 20, 'Wukong', 13), -- Year of the Rooster Winston Skins
   (445, NULL, 2, NULL, 21, 'Classic', 1), -- Default Zarya Skins
   (446, 1, 2, 2, 21, 'Brick', 1), -- Normal Zarya Skins
   (447, 1, 2, 2, 21, 'Goldenrod', 1),
@@ -653,6 +692,7 @@ VALUES
   (468, 1, 2, 4, 22, 'Sunyatta', 1),
   (469, 7, 2, 3, 22, 'Skullyatta', 7), -- Halloween Terror Zenyatta Skins
   (1968, 10, 2, 4, 22, 'Nutcracker', 11), -- Winter Wonderland Zenyatta Skins
+  (2043, 14, 2, 4, 22, 'Sanzang', 13), -- Year of the Rooster Zenyatta Skins
   (470, NULL, 2, NULL, 23, 'Classic', 9), -- Default Sombra Skins
   (471, 1, 2, 2, 23, 'Cidro', 9), -- Normal Sombra Skins
   (472, 1, 2, 2, 23, 'Incendio', 9),
