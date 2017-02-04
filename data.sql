@@ -347,7 +347,7 @@ VALUES
   (151, 1, 1, 2, 13, 'Reinhardt', 1),
   (152, 1, 1, 2, 13, 'Scar', 1),
   (153, 6, 1, 2, 13, 'Wrestling', 4), -- Summer Games Reinhardt Player Icons
-  (2021, 14, 1, 2, 13, 'Sandi', 13), -- Lunar New Year Reinhardt Player Icons
+  (2021, 14, 1, 2, 13, 'Sandy', 13), -- Lunar New Year Reinhardt Player Icons
   (154, 1, 1, 2, 14, 'Hook', 1), -- Normal Roadhog Player Icons
   (155, 1, 1, 2, 14, 'Piggy', 1),
   (156, 1, 1, 2, 14, 'Roadhog', 1),
