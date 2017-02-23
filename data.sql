@@ -45,7 +45,9 @@ VALUES
    'halloweenterror-achievements'),
   (13, 'Winter Wonderland Achievements', 'Obtainable by completing Winter Wonderland achievements.', 0,
    'winterwonderland-achievements'),
-  (14, 'Lunar New Year', 'Obtainable by opening Lunar New Year Loot Boxes or by spending 3 times the normal amount of credits during the Lunar New Year event.', 3,
+  (14, 'Lunar New Year',
+   'Obtainable by opening Lunar New Year Loot Boxes or by spending 3 times the normal amount of credits during the Lunar New Year event.',
+   3,
    'lunarnewyear'),
   (15, 'Lunar New Year Achievements', 'Obtainable by completing Lunar New Year achievements.', 0,
    'lunarnewyear-achievements');
@@ -80,10 +82,11 @@ VALUES
   (7, 'Halloween Terror 2016', '2016-10-11', '2016-11-01'),
   (8, 'Día De Los Muertos 2016', '2016-11-01', NULL),
   (9, 'Sombra Patch', '2016-11-15', NULL),
-  (10, 'Competitive Season 3', '2016-12-01', NULL), -- TODO end
+  (10, 'Competitive Season 3', '2016-12-01', '2017-02-21'),
   (11, 'Winter Wonderland 2016', '2016-12-13', '2017-01-03'),
   (12, 'Oasis Patch', '2017-01-03', NULL),
-  (13, 'Year of the Rooster', '2017-01-24', '2017-02-14');
+  (13, 'Year of the Rooster', '2017-01-24', '2017-02-14'),
+  (14, 'Competitive Season 4', '2017-02-28', NULL);
 
 INSERT INTO settings (id, name, description, type, "default", min, max)
 VALUES
