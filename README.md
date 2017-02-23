@@ -37,7 +37,7 @@ Overcollector is a tool that allows you to track all of your Overwatch cosmetics
 #### Prerequisites
 - [Composer](https://getcomposer.org/doc/00-intro.md)
 - [PostgreSQL 9.5 or higher](https://www.postgresql.org/download/)
-- PHP 5.6 or higher
+- PHP 5.6 or higher (with `php_pgsql` and `php_pdo_pgsql`)
 - [A Battle.net application](https://dev.battle.net/)
 - An HTTPS server (such as Apache or Nginx)
 
