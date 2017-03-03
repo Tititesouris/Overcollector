@@ -10,6 +10,7 @@ VALUES
   (8, 'McCree', 'mccree'),
   (9, 'Mei', 'mei'),
   (10, 'Mercy', 'mercy'),
+  (24, 'Orisa', 'orisa'),
   (11, 'Pharah', 'pharah'),
   (12, 'Reaper', 'reaper'),
   (13, 'Reinhardt', 'reinhardt'),
@@ -86,7 +87,8 @@ VALUES
   (11, 'Winter Wonderland 2016', '2016-12-13', '2017-01-03'),
   (12, 'Oasis Patch', '2017-01-03', NULL),
   (13, 'Year of the Rooster', '2017-01-24', '2017-02-14'),
-  (14, 'Competitive Season 4', '2017-02-28', NULL);
+  (14, 'Competitive Season 4', '2017-02-28', NULL),
+  (15, 'Orisa Patch', '2017-03-07', NULL);
 
 INSERT INTO settings (id, name, description, type, "default", min, max)
 VALUES
@@ -107,6 +109,7 @@ VALUES
   (14, 'collection-show-hero-mccree', 'Show cosmetics for McCree in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (15, 'collection-show-hero-mei', 'Show cosmetics for Mei in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (16, 'collection-show-hero-mercy', 'Show cosmetics for Mercy in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (56, 'collection-show-hero-orisa', 'Show cosmetics for Orisa in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (17, 'collection-show-hero-pharah', 'Show cosmetics for Pharah in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (18, 'collection-show-hero-reaper', 'Show cosmetics for Reaper in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (19, 'collection-show-hero-reinhardt', 'Show cosmetics for Reinhardt in the collection', 'BOOLEAN', 'true', NULL, NULL),
@@ -414,6 +417,7 @@ VALUES
   (204, 1, 2, 4, 1, 'Horus', 3),
   (205, 7, 2, 3, 1, 'Ghoul', 7), -- Halloween Terror Ana Skins
   (2031, 14, 2, 3, 1, 'Tal', 13), -- Lunar New Year Ana Skins
+
   (206, NULL, 2, NULL, 2, 'Classic', 1), -- Default Bastion Skins
   (207, 1, 2, 2, 2, 'Dawn', 1), -- Normal Bastion Skins
   (208, 1, 2, 2, 2, 'Meadow', 1),
@@ -429,6 +433,7 @@ VALUES
   (218, 7, 2, 3, 2, 'Tombstone', 7), -- Halloween Terror Bastion Skins
   (219, 8, 2, 3, 2, 'BlizzCon 2016', 7), -- BlizzCon Bastion Skins
   (2032, 14, 2, 3, 2, 'Rooster', 13), -- Lunar New Year Bastion Skins
+
   (220, NULL, 2, NULL, 3, 'Classic', 1), -- Default D.Va Skins
   (221, 1, 2, 2, 3, 'Blueberry', 1), -- Normal D.Va Skins
   (222, 1, 2, 2, 3, 'Lemon-Lime', 1),
@@ -442,6 +447,7 @@ VALUES
   (230, 1, 2, 4, 3, 'Scavenger', 1),
   (231, 6, 2, 3, 3, 'Taegeukgi', 4), -- Summer Games D.Va Skins
   (2033, 14, 2, 4, 3, 'Palanquin', 13), -- Lunar New Year D.Va Skins
+
   (232, NULL, 2, NULL, 4, 'Classic', 1), -- Default Genji Skins
   (233, 1, 2, 2, 4, 'Azurite', 1), -- Normal Genji Skins
   (234, 1, 2, 2, 4, 'Cinnabar', 1),
@@ -455,6 +461,7 @@ VALUES
   (242, 1, 2, 4, 4, 'Young Genji', 1),
   (243, 6, 2, 3, 4, 'Nihon', 4), -- Summer Games Genji Skins
   (244, 9, 2, 4, 4, 'Oni', 9), -- Blizzard Genji Skins
+
   (245, NULL, 2, NULL, 5, 'Classic', 1), -- Default Hanzo Skins
   (246, 1, 2, 2, 5, 'Azuki', 1), -- Normal Hanzo Skins
   (247, 1, 2, 2, 5, 'Kinoko', 1),
@@ -467,6 +474,7 @@ VALUES
   (254, 1, 2, 4, 5, 'Young Hanzo', 1),
   (255, 1, 2, 4, 5, 'Young Master', 1),
   (256, 7, 2, 3, 5, 'Demon', 7), -- Halloween Terror Hanzo Skins
+
   (257, NULL, 2, NULL, 6, 'Classic', 1), -- Default Junkrat Skins
   (258, 1, 2, 2, 6, 'Bleached', 1), -- Normal Junkrat Skins
   (259, 1, 2, 2, 6, 'Drowned', 1),
@@ -480,6 +488,7 @@ VALUES
   (267, 1, 2, 4, 6, 'Scarecrow', 1),
   (268, 7, 2, 4, 6, 'Dr. Junkenstein', 7), -- Halloween Terror Junkrat Skins
   (2034, 14, 2, 3, 6, 'Firework', 13), -- Lunar New Year Junkrat Skins
+
   (269, NULL, 2, NULL, 7, 'Classic', 1), -- Default Lúcio Skins
   (270, 1, 2, 2, 7, 'Azul', 1), -- Normal Lúcio Skins
   (271, 1, 2, 2, 7, 'Laranja', 1),
@@ -494,6 +503,7 @@ VALUES
   (280, 6, 2, 4, 7, 'Seleção', 4), -- Summer Games Lúcio Skins
   (281, 6, 2, 4, 7, 'Striker', 4),
   (1958, 10, 2, 3, 7, 'Andes', 11), -- Winter Wonderland Lúcio Skins
+
   (282, NULL, 2, NULL, 8, 'Classic', 1), -- Default McCree Skins
   (283, 1, 2, 2, 8, 'Ebony', 1), -- Normal McCree Skins
   (284, 1, 2, 2, 8, 'Lake', 1),
@@ -507,6 +517,7 @@ VALUES
   (292, 1, 2, 4, 8, 'Vigilante', 1),
   (293, 6, 2, 3, 8, 'American', 4), -- Summer Games McCree Skins
   (1959, 10, 2, 3, 8, 'Scrooge', 11), -- Winter Wonderland McCree Skins
+
   (294, NULL, 2, NULL, 9, 'Classic', 1), -- Default Mei Skins
   (295, 1, 2, 2, 9, 'Chrysanthemum', 1), -- Normal Mei Skins
   (296, 1, 2, 2, 9, 'Heliotrope', 1),
@@ -521,6 +532,7 @@ VALUES
   (1960, 10, 2, 4, 9, 'Mei-rry', 11), -- Winter Wonderland Mei Skins
   (2035, 14, 2, 4, 9, 'Chang''e', 13), -- Lunar New Year Mei Skins
   (2036, 14, 2, 4, 9, 'Luna', 13),
+
   (305, NULL, 2, NULL, 10, 'Classic', 1), -- Default Mercy Skins
   (306, 1, 2, 2, 10, 'Celestial', 1), -- Normal Mercy Skins
   (307, 1, 2, 2, 10, 'Mist', 1),
@@ -535,6 +547,18 @@ VALUES
   (316, 6, 2, 3, 10, 'Eidgenossin', 4), -- Summer Games Mercy Skins
   (317, 7, 2, 4, 10, 'Witch', 7), -- Halloween Terror Mercy Skins
   (2037, 14, 2, 3, 10, 'Golden', 13), -- Lunar New Year Mercy Skins
+
+  (2132, NULL, 2, NULL, 24, 'Classic', 1), -- Default Orisa Skins
+  (2133, 1, 2, 2, 24, 'Dawn', 15), -- Normal Orisa Skins
+  (2134, 1, 2, 2, 24, 'Plains', 15),
+  (2135, 1, 2, 2, 24, 'Sunrise', 15),
+  (2136, 1, 2, 2, 24, 'Twilight', 15),
+  (2137, 1, 2, 3, 24, 'Camouflage', 15),
+  (2138, 1, 2, 4, 24, 'Carbon Fiber', 15),
+  (2139, 1, 2, 4, 24, 'Dynastinae', 15),
+  (2140, 1, 2, 4, 24, 'Megasoma', 15),
+  (2141, 1, 2, 4, 24, 'Protector', 15),
+
   (318, NULL, 2, NULL, 11, 'Classic', 1), -- Default Pharah Skins
   (319, 1, 2, 2, 11, 'Amethyst', 1), -- Normal Pharah Skins
   (320, 1, 2, 2, 11, 'Copper', 1),
@@ -549,6 +573,7 @@ VALUES
   (329, 3, 2, 4, 11, 'Security Chief', 1), -- Origins Edition Pharah Skins
   (330, 7, 2, 3, 11, 'Possessed', 7), -- Halloween Terror Pharah Skins
   (1961, 10, 2, 3, 11, 'Frostbite', 11), -- Winter Wonderland Pharah Skins
+
   (331, NULL, 2, NULL, 12, 'Classic', 1), -- Default Reaper Skins
   (332, 1, 2, 2, 12, 'Blood', 1), -- Normal Reaper Skins
   (333, 1, 2, 2, 12, 'Midnight', 1),
@@ -563,6 +588,7 @@ VALUES
   (342, 3, 2, 4, 12, 'Blackwatch Reyes', 1), -- Origins Edition Reaper Skins
   (343, 7, 2, 4, 12, 'Pumpkin', 7), -- Halloween Terror Reaper Skins
   (1962, 10, 2, 3, 12, 'Shiver', 11), -- Winter Wonderland Reaper Skins
+
   (344, NULL, 2, NULL, 13, 'Classic', 1), -- Default Reinhardt Skins
   (345, 1, 2, 2, 13, 'Brass', 1), -- Normal Reinhardt Skins
   (346, 1, 2, 2, 13, 'Cobalt', 1),
@@ -578,6 +604,7 @@ VALUES
   (356, 1, 2, 4, 13, 'Stonehardt', 1),
   (357, 7, 2, 3, 13, 'Coldhardt', 7), -- Halloween Terror Reinhardt Skins
   (2038, 14, 2, 4, 13, 'Wujing', 13), -- Lunar New Year Reinhardt Skins
+
   (358, NULL, 2, NULL, 14, 'Classic', 1), -- Default Roadhog Skins
   (359, 1, 2, 2, 14, 'Kiwi', 1), -- Normal Roadhog Skins
   (360, 1, 2, 2, 14, 'Mud', 1),
@@ -592,6 +619,7 @@ VALUES
   (369, 7, 2, 4, 14, 'Junkenstein''s Monster', 7), -- Halloween Terror Roadhog Skins
   (1963, 10, 2, 3, 14, 'Rudolph', 11), -- Winter Wonderland Roadhog Skins
   (2039, 14, 2, 4, 14, 'Bajie', 13), -- Lunar New Year Roadhog Skins
+
   (370, NULL, 2, NULL, 15, 'Classic', 1), -- Default Soldier: 76 Skins
   (371, 1, 2, 2, 15, 'Jet', 1), -- Normal Soldier: 76 Skins
   (372, 1, 2, 2, 15, 'Olive', 1),
@@ -605,6 +633,7 @@ VALUES
   (380, 1, 2, 4, 15, 'Stunt Rider: 76', 1),
   (381, 3, 2, 4, 15, 'Strike-Commander Morrison', 1), -- Origins Edition Soldier: 76 Skins
   (382, 7, 2, 3, 15, 'Immortal', 7), -- Halloween Terror Soldier: 76 Skins
+
   (470, NULL, 2, NULL, 23, 'Classic', 9), -- Default Sombra Skins
   (471, 1, 2, 2, 23, 'Cidro', 9), -- Normal Sombra Skins
   (472, 1, 2, 2, 23, 'Incendio', 9),
@@ -617,6 +646,7 @@ VALUES
   (479, 1, 2, 4, 23, 'Cyberspace', 9),
   (480, 1, 2, 4, 23, 'Los Muertos', 9),
   (1969, 10, 2, 3, 23, 'Peppermint', 11), -- Winter Wonderland Sombra Skins
+
   (383, NULL, 2, NULL, 16, 'Classic', 1), -- Default Symmetra Skins
   (384, 1, 2, 2, 16, 'Cardamom', 1), -- Normal Symmetra Skins
   (385, 1, 2, 2, 16, 'Hyacinth', 1),
@@ -630,6 +660,7 @@ VALUES
   (393, 1, 2, 4, 16, 'Vishkar', 1),
   (394, 7, 2, 3, 16, 'Vampire', 7), -- Halloween Terror Symmetra Skins
   (2040, 14, 2, 3, 16, 'Qipao', 13), -- Lunar New Year Symmetra Skins
+
   (395, NULL, 2, NULL, 17, 'Classic', 1), -- Default Torbjörn Skins
   (396, 1, 2, 2, 17, 'Blå', 1), -- Normal Torbjörn Skins
   (397, 1, 2, 2, 17, 'Citron', 1),
@@ -643,6 +674,7 @@ VALUES
   (405, 1, 2, 4, 17, 'Deadlock', 1),
   (406, 6, 2, 3, 17, 'Tre Kronor', 4), -- Summer Games Torbjörn Skins
   (1964, 10, 2, 3, 17, 'Santaclad', 11), -- Winter Wonderland Torbjörn Skins
+
   (407, NULL, 2, NULL, 18, 'Classic', 1), -- Default Tracer Skins
   (408, 1, 2, 2, 18, 'Electric Purple', 1), -- Normal Tracer Skins
   (409, 1, 2, 2, 18, 'Hot Pink', 1),
@@ -659,6 +691,7 @@ VALUES
   (420, 6, 2, 4, 18, 'Track and Field', 4),
   (1965, 10, 2, 4, 18, 'Jingle', 11), -- Winter Wonderland Tracer Skins
   (2041, 14, 2, 3, 18, 'Rose', 13), -- Lunar New Year Tracer Skins
+
   (421, NULL, 2, NULL, 19, 'Classic', 1), -- Default Widowmaker Skins
   (422, 1, 2, 2, 19, 'Ciel', 1), -- Normal Widowmaker Skins
   (423, 1, 2, 2, 19, 'Nuit', 1),
@@ -672,6 +705,7 @@ VALUES
   (431, 1, 2, 4, 19, 'Odile', 1),
   (432, 4, 2, 4, 19, 'Noire', 1), -- Preorder Widowmaker Skins
   (433, 6, 2, 3, 19, 'Tricolore', 4), -- Summer Games Widowmaker Skins
+
   (434, NULL, 2, NULL, 20, 'Classic', 1), -- Default Winston Skins
   (435, 1, 2, 2, 20, 'atmosphere', 1), -- Normal Winston Skins
   (436, 1, 2, 2, 20, 'Banana', 1),
@@ -685,6 +719,7 @@ VALUES
   (444, 1, 2, 4, 20, 'Undersea', 1),
   (1966, 10, 2, 4, 20, 'Yeti', 11), -- Winter Wonderland Winston Skins
   (2042, 14, 2, 4, 20, 'Wukong', 13), -- Lunar New Year Winston Skins
+
   (445, NULL, 2, NULL, 21, 'Classic', 1), -- Default Zarya Skins
   (446, 1, 2, 2, 21, 'Brick', 1), -- Normal Zarya Skins
   (447, 1, 2, 2, 21, 'Goldenrod', 1),
@@ -699,6 +734,7 @@ VALUES
   (456, 6, 2, 4, 21, 'Champion', 4), -- Summer Games Zarya Skins
   (457, 6, 2, 4, 21, 'Weightlifter', 4),
   (1967, 10, 2, 3, 21, 'Frosted', 11), -- Winter Wonderland Zarya Skins
+
   (458, NULL, 2, NULL, 22, 'Classic', 1), -- Default Zenyatta Skins
   (459, 1, 2, 2, 22, 'Air', 1), -- Normal Zenyatta Skins
   (460, 1, 2, 2, 22, 'Earth', 1),
@@ -723,6 +759,7 @@ VALUES
   (485, 1, 3, 3, 1, 'Take a Knee', 5),
   (486, 1, 3, 3, 1, 'Tea Time', 3),
   (487, 7, 3, 3, 1, 'Candy', 7), -- Halloween Terror Ana Emotes
+
   (488, NULL, 3, NULL, 2, 'Heroic', 1), -- Default Bastion Emotes
   (489, 1, 3, 3, 2, 'Alert! Alert!', 1), -- Normal Bastion Emotes
   (490, 1, 3, 3, 2, 'Chortle', 5),
@@ -730,6 +767,7 @@ VALUES
   (492, 1, 3, 3, 2, 'Robot', 1),
   (493, 1, 3, 3, 2, 'Rest Mode', 5),
   (494, 6, 3, 3, 2, 'Boxing', 4), -- Summer Games Bastion Emotes
+
   (495, NULL, 3, NULL, 3, 'Heroic', 1), -- Default D.Va Emotes
   (496, 1, 3, 3, 3, '^O^', 5), -- Normal D.Va Emotes
   (497, 1, 3, 3, 3, 'Bunny Hop', 1),
@@ -737,6 +775,7 @@ VALUES
   (499, 1, 3, 3, 3, 'Party Time', 1),
   (500, 1, 3, 4, 3, 'Game On', 5),
   (2044, 14, 3, 3, 3, 'Bow', 13), -- Lunar New Year D.Va Emotes
+
   (501, NULL, 3, NULL, 4, 'Heroic', 1), -- Default Genji Emotes
   (502, 1, 3, 3, 4, 'Amusing', 5), -- Normal Genji Emotes
   (503, 1, 3, 3, 4, 'Challenge', 1),
@@ -744,18 +783,21 @@ VALUES
   (505, 1, 3, 3, 4, 'Meditate', 5),
   (506, 1, 3, 3, 4, 'Salute', 1),
   (507, NULL, 3, NULL, 5, 'Heroic', 1), -- Default Hanzo Emotes
+
   (508, 1, 3, 3, 5, 'Beckon', 1), -- Normal Hanzo Emotes
   (509, 1, 3, 3, 5, 'Brush Shoulder', 1),
   (510, 1, 3, 3, 5, 'Chuckle', 5),
   (511, 1, 3, 3, 5, 'Meditate', 5),
   (512, 1, 3, 3, 5, 'Victory', 1),
   (513, NULL, 3, NULL, 6, 'Heroic', 1), -- Default Junkrat Emotes
+
   (514, 1, 3, 3, 6, 'Can''t Deal', 5), -- Normal Junkrat Emotes
   (515, 1, 3, 3, 6, 'Juggling', 1),
   (516, 1, 3, 3, 6, 'Lounging', 5),
   (517, 1, 3, 3, 6, 'Puppet', 1),
   (518, 1, 3, 3, 6, 'Vaudeville', 1),
   (2045, 14, 3, 3, 6, 'Dud?', 13), -- Lunar New Year Junkrat Emotes
+
   (519, NULL, 3, NULL, 7, 'Heroic', 1), -- Default Lúcio Emotes
   (520, 1, 3, 3, 7, 'Capoeira', 1), -- Normal Lúcio Emotes
   (521, 1, 3, 3, 7, 'Chilling', 5),
@@ -763,6 +805,7 @@ VALUES
   (523, 1, 3, 3, 7, 'Knee Slapper', 5),
   (524, 1, 3, 3, 7, 'Nah!', 1),
   (525, 6, 3, 3, 7, 'Juggle', 4), -- Summer Games Lúcio Emotes
+
   (526, NULL, 3, NULL, 8, 'Heroic', 1), -- Default McCree Emotes
   (527, 1, 3, 3, 8, 'Gunspinning', 1), -- Normal McCree Emotes
   (528, 1, 3, 3, 8, 'Hat Tip', 1),
@@ -770,6 +813,7 @@ VALUES
   (530, 1, 3, 3, 8, 'Spit', 1),
   (531, 1, 3, 3, 8, 'Take a Load off', 5),
   (1970, 10, 3, 3, 8, 'Hat Trick', 11), -- Winter Wonderland McCree Emotes
+
   (532, NULL, 3, NULL, 9, 'Heroic', 1), -- Default Mei Emotes
   (533, 1, 3, 3, 9, 'Companion', 1), -- Normal Mei Emotes
   (534, 1, 3, 3, 9, 'Giggle', 5),
@@ -778,24 +822,32 @@ VALUES
   (537, 1, 3, 3, 9, 'Yaaaaaaaaay!', 1),
   (1971, 10, 3, 3, 9, 'Snowman', 11), -- Winter Wonderland Mei Emotes
   (2046, 14, 3, 3, 9, 'So Excited', 13), -- Lunar New Year Mei Emotes
+
   (538, NULL, 3, NULL, 10, 'Heroic', 1), -- Default Mercy Emotes
   (539, 1, 3, 3, 10, 'Applause', 1), -- Normal Mercy Emotes
   (540, 1, 3, 3, 10, 'Caduceus', 1),
   (541, 1, 3, 3, 10, 'No Pulse', 1),
   (542, 1, 3, 3, 10, 'Relax', 5),
   (543, 1, 3, 3, 10, 'The Best Medicine', 5),
+
+  (2142, NULL, 3, NULL, 24, 'Heroic', 15), -- Default Orisa Emotes
+  (2143, 1, 3, 3, 24, 'Halt!', 15), -- Normal Orisa Emotes
+  (2144, 1, 3, 3, 24, 'Kicking Dirt', 15),
+
   (544, NULL, 3, NULL, 11, 'Heroic', 1), -- Default Pharah Emotes
   (545, 1, 3, 3, 11, 'Cheer', 1), -- Normal Pharah Emotes
   (546, 1, 3, 3, 11, 'Chuckle', 5),
   (547, 1, 3, 3, 11, 'Flourish', 1),
   (548, 1, 3, 3, 11, 'Knuckles', 1),
   (549, 1, 3, 3, 11, 'Take a Knee', 5),
+
   (550, NULL, 3, NULL, 12, 'Heroic', 1), -- Default Reaper Emotes
   (551, 1, 3, 3, 12, 'Cackle', 5), -- Normal Reaper Emotes
   (552, 1, 3, 3, 12, 'Not Impressed', 1),
   (553, 1, 3, 3, 12, 'Slice', 1),
   (554, 1, 3, 3, 12, 'Slow Clap', 1),
   (555, 1, 3, 3, 12, 'Take a Knee', 5),
+
   (556, NULL, 3, NULL, 13, 'Heroic', 1), -- Default Reinhardt Emotes
   (557, 1, 3, 3, 13, 'Flex', 1), -- Normal Reinhardt Emotes
   (558, 1, 3, 3, 13, 'Kneel', 5),
@@ -803,22 +855,26 @@ VALUES
   (560, 1, 3, 3, 13, 'Uproarious', 5),
   (561, 1, 3, 3, 13, 'Warrior''s Salute', 1),
   (562, 7, 3, 3, 13, 'Pumpkin Smash', 7), -- Halloween Terror Reinhardt Emotes
+
   (563, NULL, 3, NULL, 14, 'Heroic', 1), -- Default Roadhog Emotes
   (564, 1, 3, 3, 14, 'Belly Laugh', 5), -- Normal Roadhog Emotes
   (565, 1, 3, 3, 14, 'Boo!', 1),
   (566, 1, 3, 3, 14, 'Can Crusher', 1),
   (567, 1, 3, 3, 14, 'Headbanging', 1),
   (568, 1, 3, 3, 14, 'Tuckered Out', 5),
+
   (569, NULL, 3, NULL, 15, 'Heroic', 1), -- Default Soldier: 76 Emotes
   (570, 1, 3, 3, 15, 'Amused', 5), -- Normal Soldier: 76 Emotes
   (571, 1, 3, 3, 15, 'Fist', 1),
   (572, 1, 3, 3, 15, 'I See You', 1),
   (573, 1, 3, 3, 15, 'Locked and Loaded', 1),
   (574, 1, 3, 3, 15, 'Take a Knee', 5),
+
   (618, NULL, 3, NULL, 23, 'Heroic', 9), -- Default Sombra Emotes
   (619, 1, 3, 3, 23, 'Amused', 9), -- Normal Sombra Emotes
   (620, 1, 3, 3, 23, 'Hold On', 9),
   (621, 1, 3, 3, 23, 'Masterpiece', 9),
+
   (575, NULL, 3, NULL, 16, 'Heroic', 1), -- Default Symmetra Emotes
   (576, 1, 3, 3, 16, 'Clap', 1), -- Normal Symmetra Emotes
   (577, 1, 3, 3, 16, 'Flow', 1),
@@ -826,23 +882,27 @@ VALUES
   (579, 1, 3, 3, 16, 'Insignificant', 1),
   (580, 1, 3, 3, 16, 'Snicker', 5),
   (581, 6, 3, 3, 16, 'Ribbon', 4), -- Summer Games Symmetra Emotes
+
   (582, NULL, 3, NULL, 17, 'Heroic', 1), -- Default Torbjörn Emotes
   (583, 1, 3, 3, 17, 'Clicking Heels', 1), -- Normal Torbjörn Emotes
   (584, 1, 3, 3, 17, 'Fisticuffs', 1),
   (585, 1, 3, 3, 17, 'Guffaw', 5),
   (586, 1, 3, 3, 17, 'Overload', 1),
   (587, 1, 3, 3, 17, 'Taking a Break', 5),
+
   (588, NULL, 3, NULL, 18, 'Heroic', 1), -- Default Tracer Emotes
   (589, 1, 3, 3, 18, 'Cheer', 1), -- Normal Tracer Emotes
   (590, 1, 3, 3, 18, 'Having a Laugh', 1),
   (591, 1, 3, 3, 18, 'Sitting Around...', 5),
   (592, 1, 3, 3, 18, 'Spin', 1),
+
   (593, NULL, 3, NULL, 19, 'Heroic', 1), -- Default Widowmaker Emotes
   (594, 1, 3, 3, 19, 'at Rest', 5), -- Normal Widowmaker Emotes
   (595, 1, 3, 3, 19, 'Curtain Call', 1),
   (596, 1, 3, 3, 19, 'Delighted', 5),
   (597, 1, 3, 3, 19, 'Shot Dead', 1),
   (598, 1, 3, 3, 19, 'Widow''s Kiss', 1),
+
   (599, NULL, 3, NULL, 20, 'Heroic', 1), -- Default Winston Emotes
   (600, 1, 3, 3, 20, 'Laughing Matter', 5), -- Normal Winston Emotes
   (601, 1, 3, 3, 20, 'Monkey Business', 1),
@@ -850,6 +910,7 @@ VALUES
   (603, 1, 3, 3, 20, 'Roar', 1),
   (604, 1, 3, 3, 20, 'Sitting Around', 5),
   (605, 7, 3, 3, 20, 'Shadow Puppets', 7), -- Halloween Terror Winston Emotes
+
   (606, NULL, 3, NULL, 21, 'Heroic', 1), -- Default Zarya Emotes
   (607, 1, 3, 3, 21, 'Bring It On', 1), -- Normal Zarya Emotes
   (608, 1, 3, 3, 21, 'Comedy Gold', 5),
@@ -857,6 +918,7 @@ VALUES
   (610, 1, 3, 3, 21, 'Pumping Iron', 1),
   (611, 1, 3, 3, 21, 'Take a Knee', 5),
   (1972, 10, 3, 4, 21, 'Mystery Gift', 11), -- Winter Wonderland Zarya Emotes
+
   (612, NULL, 3, NULL, 22, 'Heroic', 1), -- Default Zenyatta Emotes
   (613, 1, 3, 3, 22, 'Focusing', 1), -- Normal Zenyatta Emotes
   (614, 1, 3, 3, 22, 'Meditate', 1),
@@ -873,12 +935,14 @@ VALUES
   (626, 7, 4, 2, 1, 'R.I.P.', 7), -- Halloween Terror Ana Victory Poses
   (1973, 10, 4, 2, 1, 'Toast', 11), -- Winter Wonderland Ana Victory Poses
   (2047, 14, 4, 2, 1, 'Folded Hands', 13), -- Lunar New Year Ana Victory Poses
+
   (627, NULL, 4, NULL, 2, 'Heroic', 1), -- Default Bastion Victory Poses
   (628, 1, 4, 2, 2, 'Birdwatching', 1), -- Normal Bastion Victory Poses
   (629, 1, 4, 2, 2, 'Pop Up', 1),
   (630, 1, 4, 2, 2, 'Tank', 1),
   (631, 7, 4, 2, 2, 'R.I.P.', 7), -- Halloween Terror Bastion Victory Poses
   (2048, 14, 4, 2, 2, 'Firework', 13), -- Lunar New Year Bastion Victory Poses
+
   (632, NULL, 4, NULL, 3, 'Heroic', 1), -- Default D.Va Victory Poses
   (633, 1, 4, 2, 3, 'I Heart You', 1), -- Normal D.Va Victory Poses
   (634, 1, 4, 2, 3, 'Peace', 1),
@@ -886,32 +950,38 @@ VALUES
   (1974, 10, 4, 2, 3, 'Festive', 11), -- Winter Wonderland D.Va Victory Poses
   (636, 7, 4, 2, 3, 'R.I.P.', 7), -- Halloween Terror D.Va Victory Poses
   (2049, 14, 4, 2, 3, 'Lucky Pouch', 13), -- Lunar New Year D.Va Victory Poses
+
   (637, NULL, 4, NULL, 4, 'Heroic', 1), -- Default Genji Victory Poses
   (638, 1, 4, 2, 4, 'Kneeling', 1), -- Normal Genji Victory Poses
   (639, 1, 4, 2, 4, 'Shuriken', 1),
   (640, 1, 4, 2, 4, 'Sword Stance', 1),
   (641, 7, 4, 2, 4, 'R.I.P.', 7), -- Halloween Terror Genji Victory Poses
+
   (642, NULL, 4, NULL, 5, 'Heroic', 1), -- Default Hanzo Victory Poses
   (643, 1, 4, 2, 5, 'Confident', 1), -- Normal Hanzo Victory Poses
   (644, 1, 4, 2, 5, 'Kneeling', 1),
   (645, 1, 4, 2, 5, 'Over the Shoulder', 1),
   (646, 7, 4, 2, 5, 'R.I.P.', 7), -- Halloween Terror Hanzo Victory Poses
+
   (647, NULL, 4, NULL, 6, 'Heroic', 1), -- Default Junkrat Victory Poses
   (648, 1, 4, 2, 6, 'It''ll Freeze That Way', 1), -- Normal Junkrat Victory Poses
   (649, 1, 4, 2, 6, 'Kneeling', 1),
   (650, 1, 4, 2, 6, 'Nyah Nyah', 1),
   (651, 7, 4, 2, 6, 'R.I.P.', 7), -- Halloween Terror Junkrat Victory Poses
   (2050, 14, 4, 2, 6, 'Bad for Your Health', 13), -- Lunar New Year Junkrat Victory Poses
+
   (652, NULL, 4, NULL, 7, 'Heroic', 1), -- Default Lúcio Victory Poses
   (653, 1, 4, 2, 7, 'Confident', 1), -- Normal Lúcio Victory Poses
   (654, 1, 4, 2, 7, 'Grooving', 1),
   (655, 1, 4, 2, 7, 'Ready for Action', 1),
   (656, 7, 4, 2, 7, 'R.I.P.', 7), -- Halloween Terror Lúcio Victory Poses
+
   (657, NULL, 4, NULL, 8, 'Heroic', 1), -- Default McCree Victory Poses
   (658, 1, 4, 2, 8, 'Contemplative', 1), -- Normal McCree Victory Poses
   (659, 1, 4, 2, 8, 'Over the Shoulder', 1),
   (660, 1, 4, 2, 8, 'Take It Easy', 1),
   (661, 7, 4, 2, 8, 'R.I.P.', 7), -- Halloween Terror McCree Victory Poses
+
   (662, NULL, 4, NULL, 9, 'Heroic', 1), -- Default Mei Victory Poses
   (663, 1, 4, 2, 9, 'Casual', 1), -- Normal Mei Victory Poses
   (664, 1, 4, 2, 9, 'Hands On Hips', 1),
@@ -919,12 +989,19 @@ VALUES
   (666, 6, 4, 2, 9, 'Medal', 4), -- Summer Games Mei Victory Poses
   (667, 7, 4, 2, 9, 'R.I.P.', 7), -- Halloween Terror Mei Victory Poses
   (2051, 14, 4, 2, 9, 'Lucky!', 13), -- Lunar New Year Mei Victory Poses
+
   (668, NULL, 4, NULL, 10, 'Heroic', 1), -- Default Mercy Victory Poses
   (669, 1, 4, 2, 10, 'Angelic', 1), -- Normal Mercy Victory Poses
   (670, 1, 4, 2, 10, 'Carefree', 1),
   (671, 1, 4, 2, 10, 'Ready for Battle', 1),
   (672, 7, 4, 2, 10, 'R.I.P.', 7), -- Halloween Terror Mercy Victory Poses
   (1975, 10, 4, 2, 10, 'Mistletoe', 11), -- Winter Wonderland Mercy Victory Poses
+
+  (2145, NULL, 4, NULL, 24, 'Heroic', 15), -- Default Orisa Victory Poses
+  (2146, 1, 4, 2, 24, 'Confident', 15), -- Normal Orisa Victory
+  (2147, 1, 4, 2, 24, 'Flex', 15),
+  (2148, 1, 4, 2, 24, 'Halt!', 15),
+
   (673, NULL, 4, NULL, 11, 'Heroic', 1), -- Default Pharah Victory Poses
   (674, 1, 4, 2, 11, 'Guardian', 1), -- Normal Pharah Victory Poses
   (675, 1, 4, 2, 11, 'Jump Jet', 1),
@@ -932,18 +1009,21 @@ VALUES
   (677, 6, 4, 2, 11, 'Medal', 4), -- Summer Games Pharah Victory Poses
   (678, 7, 4, 2, 11, 'R.I.P.', 7), -- Halloween Terror Pharah Victory Poses
   (1976, 10, 4, 2, 11, 'Toast', 11), -- Winter Wonderland Pharah Victory Poses
+
   (679, NULL, 4, NULL, 12, 'Heroic', 1), -- Default Reaper Victory Poses
   (680, 1, 4, 2, 12, 'Casual', 1), -- Normal Reaper Victory Poses
   (681, 1, 4, 2, 12, 'Enigmatic', 1),
   (682, 1, 4, 2, 12, 'Menacing', 1),
   (683, 6, 4, 2, 12, 'Medal', 4), -- Summer Games Reaper Victory Poses
   (684, 7, 4, 2, 12, 'R.I.P.', 7), -- Halloween Terror Reaper Victory Poses
+
   (685, NULL, 4, NULL, 13, 'Heroic', 1), -- Default Reinhardt Victory Poses
   (686, 1, 4, 2, 13, 'Confident', 1), -- Normal Reinhardt Victory Poses
   (687, 1, 4, 2, 13, 'Flex', 1),
   (688, 1, 4, 2, 13, 'Legendary', 1),
   (689, 7, 4, 2, 13, 'R.I.P.', 7), -- Halloween Terror Reinhardt Victory Poses
   (1977, 10, 4, 2, 13, 'Toast', 11), -- Winter Wonderland Reinhardt Victory Poses
+
   (690, NULL, 4, NULL, 14, 'Heroic', 1), -- Default Roadhog Victory Poses
   (691, 1, 4, 2, 14, 'Pointing to the Sky', 1), -- Normal Roadhog Victory Poses
   (692, 1, 4, 2, 14, 'Thumbs Up', 1),
@@ -951,6 +1031,7 @@ VALUES
   (694, 6, 4, 2, 14, 'Medal', 4), -- Summer Games Roadhog Victory Poses
   (695, 7, 4, 2, 14, 'R.I.P.', 7), -- Halloween Terror Roadhog Victory Poses
   (2052, 14, 4, 2, 14, 'What''s Mine is Mine', 13), -- Lunar New Year Roadhog Victory Poses
+
   (696, NULL, 4, NULL, 15, 'Heroic', 1), -- Default Soldier: 76 Victory Poses
   (697, 1, 4, 2, 15, 'Fist Pump', 1), -- Normal Soldier: 76 Victory Poses
   (698, 1, 4, 2, 15, 'Locked and Loaded', 1),
@@ -958,16 +1039,19 @@ VALUES
   (700, 6, 4, 2, 15, 'Golf Swing', 4), -- Summer Games Soldier: 76 Victory Poses
   (701, 7, 4, 2, 15, 'R.I.P.', 7), -- Halloween Terror Soldier: 76 Victory Poses
   (1978, 10, 4, 2, 15, 'Toast', 11), -- Winter Wonderland Soldier: 76 Victory Poses
+
   (741, NULL, 4, NULL, 23, 'Heroic', 9), -- Default Sombra Victory Poses
   (742, 1, 4, 2, 23, 'Hacked', 9), -- Normal Sombra Victory Poses
   (743, 1, 4, 2, 23, 'Kneeling', 9),
   (744, 1, 4, 2, 23, 'Rising', 9),
   (2053, 14, 4, 2, 23, 'Sparklers', 13), -- Lunar New Year Sombra Victory Poses
+
   (702, NULL, 4, NULL, 16, 'Heroic', 1), -- Default Symmetra Victory Poses
   (703, 1, 4, 2, 16, 'Balance', 1), -- Normal Symmetra Victory Poses
   (704, 1, 4, 2, 16, 'Creation', 1),
   (705, 1, 4, 2, 16, 'Dance', 1),
   (706, 7, 4, 2, 16, 'R.I.P.', 7), -- Halloween Terror Symmetra Victory Poses
+
   (707, NULL, 4, NULL, 17, 'Heroic', 1), -- Default Torbjörn Victory Poses
   (708, 1, 4, 2, 17, 'Hammer', 1), -- Normal Torbjörn Victory Poses
   (709, 1, 4, 2, 17, 'Sitting Pretty', 1),
@@ -975,28 +1059,33 @@ VALUES
   (711, 6, 4, 2, 17, 'Medal', 4), -- Summer Games Torbjörn Victory Poses
   (712, 7, 4, 2, 17, 'R.I.P.', 7), -- Halloween Terror Torbjörn Victory Poses
   (1979, 10, 4, 2, 17, 'Toast', 11), -- Winter Wonderland Torbjörn Victory Poses
+
   (713, NULL, 4, NULL, 18, 'Heroic', 1), -- Default Tracer Victory Poses
   (714, 1, 4, 2, 18, 'Over the Shoulder', 1), -- Normal Tracer Victory Poses
   (715, 1, 4, 2, 18, 'Salute', 1),
   (716, 1, 4, 2, 18, 'Sitting', 1),
   (717, 7, 4, 2, 18, 'R.I.P.', 7), -- Halloween Terror Tracer Victory Poses
+
   (718, NULL, 4, NULL, 19, 'Heroic', 1), -- Default Widowmaker Victory Poses
   (719, 1, 4, 2, 19, 'Activating Visor', 1), -- Normal Widowmaker Victory Poses
   (720, 1, 4, 2, 19, 'Gaze', 1),
   (721, 1, 4, 2, 19, 'Over the Shoulder', 1),
   (722, 6, 4, 2, 19, 'Medal', 4), -- Summer Games Widowmaker Victory Poses
   (723, 7, 4, 2, 19, 'R.I.P.', 7), -- Halloween Terror Widowmaker Victory Poses
+
   (724, NULL, 4, NULL, 20, 'Heroic', 1), -- Default Winston Victory Poses
   (725, 1, 4, 2, 20, 'Beast', 1), -- Normal Winston Victory Poses
   (726, 1, 4, 2, 20, 'Glasses', 1),
   (727, 1, 4, 2, 20, 'The Thinker', 1),
   (728, 6, 4, 2, 20, 'Medal', 4), -- Summer Games Winston Victory Poses
   (729, 7, 4, 2, 20, 'R.I.P.', 7), -- Halloween Terror Winston Victory Poses
+
   (730, NULL, 4, NULL, 21, 'Heroic', 1), -- Default Zarya Victory Poses
   (731, 1, 4, 2, 21, 'Casual', 1), -- Normal Zarya Victory Poses
   (732, 1, 4, 2, 21, 'Check Out This Gun', 1),
   (733, 1, 4, 2, 21, 'Flexing', 1),
   (734, 7, 4, 2, 21, 'R.I.P.', 7), -- Halloween Terror Zarya Victory Poses
+
   (735, NULL, 4, NULL, 22, 'Heroic', 1), -- Default Zenyatta Victory Poses
   (736, 1, 4, 2, 22, 'Balance', 1), -- Normal Zenyatta Victory Poses
   (737, 1, 4, 2, 22, 'Harmony', 1),
@@ -1021,6 +1110,7 @@ VALUES
   (757, 7, 5, 1, 1, 'Are You Scared?', 7), -- Halloween Terror Ana Voice Lines
   (1980, 10, 5, 1, 1, 'I''m Watching out for You', 11), -- Winter Wonderland Ana Voice Lines
   (2054, 14, 5, 1, 1, 'The Moon in Winter', 13), -- Lunar New Year Ana Voice Lines
+
   (758, NULL, 5, NULL, 2, 'Doo-Woo', 1), -- Default Bastion Voice Lines
   (759, 1, 5, 1, 2, 'Beeple', 1), -- Normal Bastion Voice Lines
   (760, 1, 5, 1, 2, 'Boo Boo Doo De Doo', 1),
@@ -1036,6 +1126,7 @@ VALUES
   (770, 7, 5, 1, 2, 'W-w-wooooo...?', 7), -- Halloween Terror Bastion Voice Lines
   (1981, 10, 5, 1, 2, 'Dwee Doo Hoo', 11), -- Winter Wonderland Bastion Voice Lines
   (2055, 14, 5, 1, 2, 'Woop Doo Woo Dun Woop', 13), -- Lunar New Year Bastion Voice Lines
+
   (771, NULL, 5, NULL, 3, 'Love, D.Va', 1), -- Default D.Va Voice Lines
   (772, 1, 5, 1, 3, ';)', 1), -- Normal D.Va Voice Lines
   (773, 1, 5, 1, 3, 'A New Challenger!', 1),
@@ -1051,6 +1142,7 @@ VALUES
   (783, 7, 5, 1, 3, 'Happy Halloween', 7), -- Halloween Terror D.Va Voice Lines
   (1982, 10, 5, 1, 3, 'Aw, You Shouldn''t Have', 11), -- Winter Wonderland D.Va Voice Lines
   (2056, 14, 5, 1, 3, 'The Best Things in Life', 13), -- Lunar New Year D.Va Voice Lines
+
   (784, NULL, 5, NULL, 4, 'A Steady Blade', 1), -- Default Genji Voice Lines
   (785, 1, 5, 1, 4, 'Come on!', 1), -- Normal Genji Voice Lines
   (786, 1, 5, 1, 4, 'Damn!', 1),
@@ -1066,6 +1158,7 @@ VALUES
   (796, 7, 5, 1, 4, 'My Halloween Costume?', 7), -- Halloween Terror Genji Voice Lines
   (1983, 10, 5, 1, 4, 'Merry Christmas', 11), -- Winter Wonderland Genji Voice Lines
   (2057, 14, 5, 1, 4, 'To Know Yourself', 13), -- Lunar New Year Genji Voice Lines
+
   (797, NULL, 5, NULL, 5, 'Expect Nothing Less', 1), -- Default Hanzo Voice Lines
   (798, 1, 5, 1, 5, 'Flow Like Water', 1), -- Normal Hanzo Voice Lines
   (799, 1, 5, 1, 5, 'From One Thing...', 1),
@@ -1081,6 +1174,7 @@ VALUES
   (809, 7, 5, 1, 5, 'You Are Already Dead', 7), -- Halloween Terror Hanzo Voice Lines
   (1984, 10, 5, 1, 5, 'A Gift for You', 11), -- Winter Wonderland Hanzo Voice Lines
   (2058, 14, 5, 1, 5, 'When the Moon is Full', 13), -- Lunar New Year Hanzo Voice Lines
+
   (810, NULL, 5, NULL, 6, 'Tick-Tock-Tick-Tock', 1), -- Default Junkrat Voice Lines
   (811, 1, 5, 1, 6, '...Blow It Up Again', 1), -- Normal Junkrat Voice Lines
   (812, 1, 5, 1, 6, 'Anyone Want Some BBQ?', 1),
@@ -1096,6 +1190,7 @@ VALUES
   (822, 7, 5, 1, 6, 'Happy Halloween', 7), -- Halloween Terror Junkrat Voice Lines
   (1985, 10, 5, 1, 6, 'Merry Christmas', 11), -- Winter Wonderland Junkrat Voice Lines
   (2059, 14, 5, 1, 6, 'Gong Xi Fa Cai', 13), -- Lunar New Year Junkrat Voice Lines
+
   (823, NULL, 5, NULL, 7, 'To the Rhythm', 1), -- Default Lúcio Voice Lines
   (824, 1, 5, 1, 7, 'Can''t Stop, Won''t Stop', 1), -- Normal Lúcio Voice Lines
   (825, 1, 5, 1, 7, 'Hit Me!', 1),
@@ -1111,6 +1206,7 @@ VALUES
   (835, 7, 5, 1, 7, 'Killed It!', 7), -- Halloween Terror Lúcio Voice Lines
   (1986, 10, 5, 1, 7, 'Happy Holidays!', 11), -- Winter Wonderland Lúcio Voice Lines
   (2060, 14, 5, 1, 7, 'I Make This Look Good...', 13), -- Lunar New Year Lúcio Voice Lines
+
   (836, NULL, 5, NULL, 8, 'Watch and Learn', 1), -- Default McCree Voice Lines
   (837, 1, 5, 1, 8, 'Ain''t I Killed You Before', 1), -- Normal McCree Voice Lines
   (838, 1, 5, 1, 8, 'Happens to the Best of Us', 1),
@@ -1126,6 +1222,7 @@ VALUES
   (848, 7, 5, 1, 8, 'It''s Your Funeral', 7), -- Halloween Terror McCree Voice Lines
   (1987, 10, 5, 1, 8, 'Had to Break the Ice', 11), -- Winter Wonderland McCree Voice Lines
   (2061, 14, 5, 1, 8, 'Calls for a Celebration', 13), -- Lunar New Year McCree Voice Lines
+
   (849, NULL, 5, NULL, 9, 'Hang in there', 1), -- Default Mei Voice Lines
   (850, 1, 5, 1, 9, 'A-Mei-Zing!', 1), -- Normal Mei Voice Lines
   (851, 1, 5, 1, 9, 'Chill Out!', 1),
@@ -1141,6 +1238,7 @@ VALUES
   (861, 7, 5, 1, 9, 'Scary!', 7), -- Halloween Terror Mei Voice Lines
   (1988, 10, 5, 1, 9, 'I Got you Something!', 11), -- Winter Wonderland Mei Voice Lines
   (2062, 14, 5, 1, 9, 'Wishing You Prosperity', 13), -- Lunar New Year Mei Voice Lines
+
   (862, NULL, 5, NULL, 10, 'I Have My Eye On You', 1), -- Default Mercy Voice Lines
   (863, 1, 5, 1, 10, 'Consultation Fee', 1), -- Normal Mercy Voice Lines
   (864, 1, 5, 1, 10, 'Doctor''s Orders', 1),
@@ -1156,6 +1254,9 @@ VALUES
   (874, 7, 5, 1, 10, 'Superstition', 7), -- Halloween Terror Mercy Voice Lines
   (1989, 10, 5, 1, 10, 'Your Guardian Angel', 11), -- Winter Wonderland Mercy Voice Lines
   (2063, 14, 5, 1, 10, 'A Most Impressive Display', 13), -- Lunar New Year Mercy Voice Lines
+
+  (2149, NULL, 5, NULL, 24, 'Following My Programming', 15), -- Default Orisa Voice Lines
+
   (875, NULL, 5, NULL, 11, 'Security in My Hands', 1), -- Default Pharah Voice Lines
   (876, 1, 5, 1, 11, 'Aerial Superiority Achieved', 1), -- Normal Pharah Voice Lines
   (877, 1, 5, 1, 11, 'Fly Like An Egyptian', 1),
@@ -1171,6 +1272,7 @@ VALUES
   (887, 7, 5, 1, 11, 'Dead or Alive', 7), -- Halloween Terror Pharah Voice Lines
   (1990, 10, 5, 1, 11, 'The Forecast', 11), -- Winter Wonderland Pharah Voice Lines
   (2064, 14, 5, 1, 11, 'I Keep the Peace', 13), -- Lunar New Year Pharah Voice Lines
+
   (888, NULL, 5, NULL, 12, 'What Are You Looking at', 1), -- Default Reaper Voice Lines
   (889, 1, 5, 1, 12, 'Dead Man Walking', 1), -- Normal Reaper Voice Lines
   (890, 1, 5, 1, 12, 'Give Me a Break', 1),
@@ -1186,6 +1288,7 @@ VALUES
   (900, 7, 5, 1, 12, 'I Work the Graveyard Shift', 7), -- Halloween Terror Reaper Voice Lines
   (1992, 10, 5, 1, 12, 'Holiday Spirit', 11), -- Winter Wonderland Reaper Voice Lines
   (2065, 14, 5, 1, 12, 'Now Those Are Fireworks', 13), -- Lunar New Year Reaper Voice Lines
+
   (901, NULL, 5, NULL, 13, 'I Salute You', 1), -- Default Reinhardt Voice Lines
   (902, 1, 5, 1, 13, 'Are You Afraid?', 1), -- Normal Reinhardt Voice Lines
   (903, 1, 5, 1, 13, 'Bring Me Another', 1),
@@ -1201,6 +1304,7 @@ VALUES
   (913, 7, 5, 1, 13, 'Smashing', 7), -- Halloween Terror Reinhardt Voice Lines
   (1993, 10, 5, 1, 13, 'You''re on My Naughty List', 11), -- Winter Wonderland Reinhardt Voice Lines
   (2066, 14, 5, 1, 13, 'Are You Chicken?', 13), -- Lunar New Year Reinhardt Voice Lines
+
   (914, NULL, 5, NULL, 14, 'The Apocalypse', 1), -- Default Roadhog Voice Lines
   (915, 1, 5, 1, 14, 'Candy From a Baby', 1), -- Normal Roadhog Voice Lines
   (916, 1, 5, 1, 14, 'Got Something to Say?', 1),
@@ -1216,6 +1320,7 @@ VALUES
   (926, 7, 5, 1, 14, 'Want Some Candy?', 7), -- Halloween Terror Roadhog Voice Lines
   (1994, 10, 5, 1, 14, 'Ho Ho Ho', 11), -- Winter Wonderland Roadhog Voice Lines
   (2067, 14, 5, 1, 14, 'You Chicken?', 13), -- Lunar New Year Roadhog Voice Lines
+
   (927, NULL, 5, NULL, 15, 'I''ve Still Got It', 1), -- Default Soldier: 76 Voice Lines
   (928, 1, 5, 1, 15, 'Get off My Lawn', 1), -- Normal Soldier: 76 Voice Lines
   (929, 1, 5, 1, 15, 'I Didn''t Start This War...', 1),
@@ -1231,6 +1336,7 @@ VALUES
   (939, 7, 5, 1, 15, 'Knock Knock', 7), -- Halloween Terror Soldier: 76 Voice Lines
   (1995, 10, 5, 1, 15, 'Stay Frosty', 11), -- Winter Wonderland Soldier: 76 Voice Lines
   (2068, 14, 5, 1, 15, 'The Rooster Crows', 13), -- Lunar New Year Soldier: 76 Voice Lines
+
   (1031, NULL, 5, NULL, 23, 'Playing Fair', 9), -- Default Sombra Voice Lines
   (1880, 1, 5, 1, 23, 'Boop', 9), -- Normal Sombra Voice Lines
   (1032, 1, 5, 1, 23, 'Cool', 9),
@@ -1245,6 +1351,7 @@ VALUES
   (1041, 1, 5, 1, 23, 'Taking This Very Seriously', 9),
   (2003, 10, 5, 1, 23, 'I Know Who''s Been Naugthy', 11), -- Winter Wonderland Sombra Voice Lines
   (2069, 14, 5, 1, 23, 'You''re Easily Impressed', 13), -- Lunar New Year Sombra Voice Lines
+
   (940, NULL, 5, NULL, 16, 'Such a Lack of Imagination', 1), -- Default Symmetra Voice Lines
   (941, 1, 5, 1, 16, 'Everything By Design', 1), -- Normal Symmetra Voice Lines
   (942, 1, 5, 1, 16, 'Exquisite', 1),
@@ -1260,6 +1367,7 @@ VALUES
   (952, 7, 5, 1, 16, 'A Frightening Thought', 7), -- Halloween Terror Symmetra Voice Lines
   (1996, 10, 5, 1, 16, 'Made You Something', 11), -- Winter Wonderland Symmetra Voice Lines
   (2070, 14, 5, 1, 16, 'Good Fortune', 13), -- Lunar New Year Symmetra Voice Lines
+
   (953, NULL, 5, NULL, 17, 'Hard Work Pays off', 1), -- Default Torbjörn Voice Lines
   (954, 1, 5, 1, 17, 'A Chicken Out of a Feather', 1), -- Normal Torbjörn Voice Lines
   (955, 1, 5, 1, 17, 'Completion Date?', 1),
@@ -1275,6 +1383,7 @@ VALUES
   (965, 7, 5, 1, 17, 'If You Build It', 7), -- Halloween Terror Torbjörn Voice Lines
   (1997, 10, 5, 1, 17, 'Made to Order', 11), -- Winter Wonderland Torbjörn Voice Lines
   (2071, 14, 5, 1, 17, 'Too Hot for You?', 13), -- Lunar New Year Torbjörn Voice Lines
+
   (966, NULL, 5, NULL, 18, 'You Got It', 1), -- Default Tracer Voice Lines
   (967, 1, 5, 1, 18, 'Aw, Rubbish', 1), -- Normal Tracer Voice Lines
   (968, 1, 5, 1, 18, 'Be Right Back!', 1),
@@ -1290,6 +1399,7 @@ VALUES
   (978, 7, 5, 1, 18, 'Ooh, Scary!', 7), -- Halloween Terror Tracer Voice Lines
   (1998, 10, 5, 1, 18, 'It''s in the Bag', 11), -- Winter Wonderland Tracer Voice Lines
   (2072, 14, 5, 1, 18, 'Ready for Some Fireworks?', 13), -- Lunar New Year Tracer Voice Lines
+
   (979, NULL, 5, NULL, 19, 'A Single Death', 1), -- Default Widowmaker Voice Lines
   (980, 1, 5, 1, 19, 'Encore?', 1), -- Normal Widowmaker Voice Lines
   (981, 1, 5, 1, 19, 'Let Them Eat the Cake', 1),
@@ -1305,6 +1415,7 @@ VALUES
   (991, 7, 5, 1, 19, 'The Party Is Over', 7), -- Halloween Terror Widowmaker Voice Lines
   (1999, 10, 5, 1, 19, 'Exquisite', 11), -- Winter Wonderland Widowmaker Voice Lines
   (2073, 14, 5, 1, 19, 'You Have My Attention', 13), -- Lunar New Year Widowmaker Voice Lines
+
   (992, NULL, 5, NULL, 20, 'Curious', 1), -- Default Winston Voice Linest
   (993, 1, 5, 1, 20, '...Excuse Me', 1), -- Normal Winston Voice Lines
   (994, 1, 5, 1, 20, 'Don''t Get Me Angry', 1),
@@ -1320,6 +1431,7 @@ VALUES
   (1004, 7, 5, 1, 20, 'This Is Not a Costume', 7), -- Halloween Terror Winston Voice Lines
   (2000, 10, 5, 1, 20, 'I... Got You Something', 11), -- Winter Wonderland Winston Voice Lines
   (2074, 14, 5, 1, 20, 'That Was Awesome!', 13), -- Lunar New Year Winston Voice Lines
+
   (1005, NULL, 5, NULL, 21, 'Strong As the Mountain', 1), -- Default Zarya Voice Lines
   (1006, 1, 5, 1, 21, 'Get Down, Give Me 20', 1), -- Normal Zarya Voice Lines
   (1007, 1, 5, 1, 21, 'I Am Mother Russia', 1),
@@ -1335,6 +1447,7 @@ VALUES
   (1017, 7, 5, 1, 21, 'Never Forget the Fallen', 7), -- Halloween Terror Zarya Voice Lines
   (2001, 10, 5, 1, 21, 'For the Motherland', 11), -- Winter Wonderland Zarya Voice Lines
   (2075, 14, 5, 1, 21, 'Get Pumped', 13), -- Lunar New Year Zarya Voice Lines
+
   (1018, NULL, 5, NULL, 22, 'We Are in Harmony', 1), -- Default Zenyatta Voice Lines
   (1019, 1, 5, 1, 22, 'Death Is Whimsical Today', 1), -- Normal Zenyatta Voice Lines
   (1020, 1, 5, 1, 22, 'Do I Think?', 1),
@@ -1437,6 +1550,7 @@ VALUES
   (2080, 14, 6, 1, NULL, 'Year of the Rooster', 13),
   (2081, 15, 6, 1, NULL, 'Auspicious Lion', 13), -- Lunar New Year Achievements All Heroes Sprays
   (2082, 15, 6, 1, NULL, 'Awakened Lion', 13),
+
   (1113, 1, 6, 1, 1, 'Action', 3), -- Normal Ana Sprays
   (1114, 1, 6, 1, 1, 'Ana', 3),
   (1115, 1, 6, 1, 1, 'Bearer', 3),
@@ -1468,6 +1582,7 @@ VALUES
   (1913, 10, 6, 1, 1, 'Warm', 11),
   (2083, 14, 6, 1, 1, 'Dance', 13), -- Lunar New Year Ana Sprays
   (2084, 14, 6, 1, 1, 'Dragon Dance', 13),
+
   (1140, 1, 6, 1, 2, 'Action', 1), -- Normal Bastion Sprays
   (1141, 1, 6, 1, 2, 'Bird', 1),
   (1142, 1, 6, 1, 2, 'Birdwatchers', 1),
@@ -1499,6 +1614,7 @@ VALUES
   (1915, 10, 6, 1, 2, 'Festive', 11),
   (2085, 14, 6, 1, 2, 'Bast-Yum', 13), -- Lunar New Year Bastion Sprays
   (2086, 14, 6, 1, 2, 'Dragon Dance', 13),
+
   (1167, 1, 6, 1, 3, 'B.ny', 1), -- Normal D.Va Sprays
   (1168, 1, 6, 1, 3, 'Bang', 1),
   (1169, 1, 6, 1, 3, 'Bubble', 1),
@@ -1530,6 +1646,7 @@ VALUES
   (1917, 10, 6, 1, 3, 'Cookie', 11),
   (2087, 14, 6, 1, 3, 'Seesaw', 13), -- Lunar New Year D.Va Sprays
   (2088, 14, 6, 1, 3, 'Dragon Dance', 13),
+
   (1194, 1, 6, 1, 4, 'Assassin', 1), -- Normal Genji Sprays
   (1195, 1, 6, 1, 4, 'Dragon', 1),
   (1196, 1, 6, 1, 4, 'Dragonblade', 1),
@@ -1562,6 +1679,7 @@ VALUES
   (1919, 10, 6, 1, 4, 'Kadomatsu', 11),
   (2089, 14, 6, 1, 4, 'Green Dragon', 13), -- Lunar New Year Genji Sprays
   (2090, 14, 6, 1, 4, 'Dragon Dance', 13),
+
   (1222, 1, 6, 1, 5, 'Archer', 1), -- Normal Hanzo Sprays
   (1223, 1, 6, 1, 5, 'Challenge', 1),
   (1224, 1, 6, 1, 5, 'Cloud', 1),
@@ -1593,6 +1711,7 @@ VALUES
   (1921, 10, 6, 1, 5, 'Kadomatsu', 11),
   (2091, 14, 6, 1, 5, 'Blue Dragon', 13), -- Lunar New Year Hanzo Sprays
   (2092, 14, 6, 1, 5, 'Dragon Dance', 13),
+
   (1249, 1, 6, 1, 6, 'AHHHH!', 1), -- Normal Junkrat Sprays
   (1250, 1, 6, 1, 6, 'Bang Bang', 1),
   (1251, 1, 6, 1, 6, 'Crazy', 1),
@@ -1624,6 +1743,7 @@ VALUES
   (1923, 10, 6, 1, 6, '"Winter"', 11),
   (2093, 14, 6, 1, 6, 'I''m Flying!', 13), -- Lunar New Year Junkrat Sprays
   (2094, 14, 6, 1, 6, 'Dragon Dance', 13),
+
   (1276, 1, 6, 1, 7, 'Acelerar', 1), -- Normal Lúcio Sprays
   (1277, 1, 6, 1, 7, 'Baixo', 1),
   (1278, 1, 6, 1, 7, 'Bass', 1),
@@ -1655,6 +1775,7 @@ VALUES
   (1925, 10, 6, 1, 7, 'Hockey', 11),
   (2095, 14, 6, 1, 7, 'Keep Ups', 13), -- Lunar New Year Lúcio Sprays
   (2096, 14, 6, 1, 7, 'Dragon Dance', 13),
+
   (1303, 1, 6, 1, 8, 'Badge', 1), -- Normal McCree Sprays
   (1304, 1, 6, 1, 8, 'BAMF', 1),
   (1305, 1, 6, 1, 8, 'Bang!', 1),
@@ -1686,6 +1807,7 @@ VALUES
   (1927, 10, 6, 1, 8, 'Ugly Sweater', 11),
   (2097, 14, 6, 1, 8, 'Call It', 13), -- Lunar New Year McCree Sprays
   (2098, 14, 6, 1, 8, 'Dragon Dance', 13),
+
   (1330, 1, 6, 1, 9, '^_^', 1), -- Normal Mei Sprays
   (1331, 1, 6, 1, 9, '>_<', 1),
   (1332, 1, 6, 1, 9, 'Beat the Heat', 1),
@@ -1717,6 +1839,7 @@ VALUES
   (1929, 10, 6, 1, 9, 'Sculpting', 11),
   (2099, 14, 6, 1, 9, 'Fortune', 13), -- Lunar New Year Mei Sprays
   (2100, 14, 6, 1, 9, 'Dragon Dance', 13),
+
   (1357, 1, 6, 1, 10, 'Arrow', 1), -- Normal Mercy Sprays
   (1358, 1, 6, 1, 10, 'Bandage', 1),
   (1359, 1, 6, 1, 10, 'Battle Ready', 1),
@@ -1748,6 +1871,9 @@ VALUES
   (1931, 10, 6, 1, 10, 'Snow Angel', 11),
   (2101, 14, 6, 1, 10, 'Parasol', 13), -- Lunar New Year Mercy Sprays
   (2102, 14, 6, 1, 10, 'Dragon Dance', 13),
+
+  -- Normal Orisa Sprays
+
   (1384, 1, 6, 1, 11, 'Aerial Superiority', 1), -- Normal Pharah Sprays
   (1385, 1, 6, 1, 11, 'Amari', 1),
   (1386, 1, 6, 1, 11, 'Ana', 1),
@@ -1779,6 +1905,7 @@ VALUES
   (1933, 10, 6, 1, 11, 'Ice Fishing', 11),
   (2103, 14, 6, 1, 11, 'Happy New Year', 13), -- Lunar New Year Pharah Sprays
   (2104, 14, 6, 1, 11, 'Dragon Dance', 13),
+
   (1411, 1, 6, 1, 12, 'Blackwatch', 1), -- Normal Reaper Sprays
   (1412, 1, 6, 1, 12, 'Blossom', 1),
   (1413, 1, 6, 1, 12, 'Cloaked', 1),
@@ -1810,6 +1937,7 @@ VALUES
   (1935, 10, 6, 1, 12, 'Stocking', 11),
   (2105, 14, 6, 1, 12, 'Fire Blossom', 13), -- Lunar New Year Reaper Sprays
   (2106, 14, 6, 1, 12, 'Dragon Dance', 13),
+
   (1438, 1, 6, 1, 13, 'Barrier', 1), -- Normal Reinhardt Sprays
   (1439, 1, 6, 1, 13, 'Charge', 1),
   (1440, 1, 6, 1, 13, 'Cracks', 1),
@@ -1841,6 +1969,7 @@ VALUES
   (1937, 10, 6, 1, 13, 'Ice Fishing', 11),
   (2107, 14, 6, 1, 13, 'Lion Dance', 13), -- Lunar New Year Reinhardt Sprays
   (2108, 14, 6, 1, 13, 'Dragon Dance', 13),
+
   (1465, 1, 6, 1, 14, 'Breathin''', 1), -- Normal Roadhog Sprays
   (1466, 1, 6, 1, 14, 'Deep Thoughts', 1),
   (1467, 1, 6, 1, 14, 'Emblem', 1),
@@ -1872,6 +2001,7 @@ VALUES
   (1939, 10, 6, 1, 14, '"Winter"', 11),
   (2109, 14, 6, 1, 14, 'Steamed Buns', 13), -- Lunar New Year Roadhog Sprays
   (2110, 14, 6, 1, 14, 'Dragon Dance', 13),
+
   (1492, 1, 6, 1, 15, '76', 1), -- Normal Soldier: 76 Sprays
   (1493, 1, 6, 1, 15, 'All Soldiers', 1),
   (1494, 1, 6, 1, 15, 'American Hero', 1),
@@ -1903,6 +2033,7 @@ VALUES
   (1941, 10, 6, 1, 15, 'Army Man: 76', 11),
   (2111, 14, 6, 1, 15, 'Folded Hands', 13), -- Lunar New Year Soldier: 76 Sprays
   (2112, 14, 6, 1, 15, 'Dragon Dance', 13),
+
   (1708, 1, 6, 1, 23, '5kull', 9), -- Normal Sombra Sprays
   (1709, 1, 6, 1, 23, 'Agent', 9),
   (1710, 1, 6, 1, 23, 'Behind You', 9),
@@ -1935,6 +2066,7 @@ VALUES
   (1957, 10, 6, 1, 23, 'Puppet', 11),
   (2113, 14, 6, 1, 23, 'Fortunate', 13), -- Lunar New Year Sombra Sprays
   (2114, 14, 6, 1, 23, 'Dragon Dance', 13),
+
   (1519, 1, 6, 1, 16, 'Agent', 1), -- Normal Symmetra Sprays
   (1520, 1, 6, 1, 16, 'Architect', 1),
   (1521, 1, 6, 1, 16, 'Behold', 1),
@@ -1966,6 +2098,7 @@ VALUES
   (1943, 10, 6, 1, 16, 'Snowflake', 11),
   (2115, 14, 6, 1, 16, 'Lantern', 13), -- Lunar New Year Symmetra Sprays
   (2116, 14, 6, 1, 16, 'Dragon Dance', 13),
+
   (1546, 1, 6, 1, 17, 'Armor', 1), -- Normal Torbjörn Sprays
   (1547, 1, 6, 1, 17, 'Beard', 1),
   (1548, 1, 6, 1, 17, 'Catch a Ride', 1),
@@ -1997,6 +2130,7 @@ VALUES
   (1945, 10, 6, 1, 17, 'Workshop', 11),
   (2117, 14, 6, 1, 17, 'Gold', 13), -- Lunar New Year Torbjörn Sprays
   (2118, 14, 6, 1, 17, 'Dragon Dance', 13),
+
   (1573, 1, 6, 1, 18, 'Blink', 1), -- Normal Tracer Sprays
   (1574, 1, 6, 1, 18, 'Bomb''s Away!', 1),
   (1575, 1, 6, 1, 18, 'Cavalry''s Here', 1),
@@ -2028,6 +2162,7 @@ VALUES
   (1947, 10, 6, 1, 18, 'Snowboarding', 11),
   (2119, 14, 6, 1, 18, 'Fan Dance', 13), -- Lunar New Year Tracer Sprays
   (2120, 14, 6, 1, 18, 'Dragon Dance', 13),
+
   (1600, 1, 6, 1, 19, 'Baiser', 1), -- Normal Widowmaker Sprays
   (1601, 1, 6, 1, 19, 'Black Widow', 1),
   (1602, 1, 6, 1, 19, 'Blood', 1),
@@ -2059,6 +2194,7 @@ VALUES
   (1949, 10, 6, 1, 19, 'Skiing', 11),
   (2121, 14, 6, 1, 19, 'Hairpin', 13), -- Lunar New Year Widowmaker Sprays
   (2122, 14, 6, 1, 19, 'Dragon Dance', 13),
+
   (1627, 1, 6, 1, 20, 'Angry', 1), -- Normal Winston Sprays
   (1628, 1, 6, 1, 20, 'Ape Crossing', 1),
   (1629, 1, 6, 1, 20, 'Baby', 1),
@@ -2090,6 +2226,7 @@ VALUES
   (1951, 10, 6, 1, 20, 'Presents', 11),
   (2123, 14, 6, 1, 20, 'Kite', 13), -- Lunar New Year Winston Sprays
   (2124, 14, 6, 1, 20, 'Dragon Dance', 13),
+
   (1654, 1, 6, 1, 21, '512', 1), -- Normal Zarya Sprays
   (1655, 1, 6, 1, 21, 'Alexandra', 1),
   (1656, 1, 6, 1, 21, 'Avenger', 1),
@@ -2121,6 +2258,7 @@ VALUES
   (1953, 10, 6, 1, 21, 'Matryoshka', 11),
   (2125, 14, 6, 1, 21, 'Calories', 13), -- Lunar New Year Zarya Sprays
   (2126, 14, 6, 1, 21, 'Dragon Dance', 13),
+
   (1681, 1, 6, 1, 22, 'Adorable', 1), -- Normal Zenyatta Sprays
   (1682, 1, 6, 1, 22, 'Aura', 1),
   (1683, 1, 6, 1, 22, 'Balance', 1),
@@ -2159,101 +2297,128 @@ VALUES
   (1737, 1, 7, 3, 1, 'Guardian', 3), -- Normal Ana Highlight Intros
   (1738, 1, 7, 3, 1, 'Locked On', 3),
   (1739, 1, 7, 3, 1, 'Shh...', 3),
+
   (1740, NULL, 7, NULL, 2, 'Heroic', 1), -- Default Bastion Highlight Intros
   (1741, 1, 7, 3, 2, 'Bullet Rain', 1), -- Normal Bastion Highlight Intros
   (1742, 1, 7, 3, 2, 'Ganymede', 1),
   (1743, 1, 7, 3, 2, 'On Guard', 1),
+
   (1744, NULL, 7, NULL, 3, 'Heroic', 1), -- Default D.Va Highlight Intros
   (1745, 1, 7, 3, 3, 'Eject', 1), -- Normal D.Va Highlight Intros
   (1746, 1, 7, 3, 3, 'Lying Around', 1),
   (1747, 1, 7, 3, 3, 'Meka Activated', 1),
+
   (1748, NULL, 7, NULL, 4, 'Heroic', 1), -- Default Genji Highlight Intros
   (1749, 1, 7, 3, 4, 'Shuriken', 1), -- Normal Genji Highlight Intros
   (1750, 1, 7, 3, 4, 'Unsheathing the Sword', 1),
   (1751, 1, 7, 3, 4, 'Warrior''s Salute', 1),
   (1752, 7, 7, 3, 4, 'Pumpkin Carving', 7), -- Halloween Terror Genji Highlight Intros
+
   (1753, NULL, 7, NULL, 5, 'Heroic', 1), -- Default Hanzo Highlight Intros
   (1754, 1, 7, 3, 5, 'Backflip', 1), -- Normal Hanzo Highlight Intros
   (1755, 1, 7, 3, 5, 'My Aim Is True', 1),
   (1756, 1, 7, 3, 5, 'Superior', 1),
+
   (1757, NULL, 7, NULL, 6, 'Heroic', 1), -- Default Junkrat Highlight Intros
   (1758, 1, 7, 3, 6, 'I''m Flying', 1), -- Normal Junkrat Highlight Intros
   (1759, 1, 7, 3, 6, 'Rip-Tire', 1),
   (1760, 1, 7, 3, 6, 'Unfortunate', 1),
   (1761, 6, 7, 3, 6, 'Shotput', 4), -- Summer Games Junkrat Highlight Intros
+
   (1762, NULL, 7, NULL, 7, 'Heroic', 1), -- Default Lúcio Highlight Intros
   (1763, 1, 7, 3, 7, 'Drop the Beat', 1), -- Normal Lúcio Highlight Intros
   (1764, 1, 7, 3, 7, 'Freestyle', 1),
   (1765, 1, 7, 3, 7, 'In the Groove', 1),
   (1766, 1, 7, 3, 7, 'Bicycle Kick', 1), -- Summer Games Lúcio Highlight Intros
+
   (1767, NULL, 7, NULL, 8, 'Heroic', 1), -- Default McCree Highlight Intros
   (1768, 1, 7, 3, 8, 'Rolling Into Action', 1), -- Normal McCree Highlight Intros
   (1769, 1, 7, 3, 8, 'The Duel', 1),
   (1770, 1, 7, 3, 8, 'The Name''s McCree', 1),
+
   (1771, NULL, 7, NULL, 9, 'Heroic', 1), -- Default Mei Highlight Intros
   (1772, 1, 7, 3, 9, 'Frosty :)', 1), -- Normal Mei Highlight Intros
   (1773, 1, 7, 3, 9, 'Going Up!', 1),
   (1774, 1, 7, 3, 9, 'Skating Around', 1),
   (1775, 7, 7, 3, 9, 'Ice Scream', 7), -- Halloween Terror Mei Highlight Intros
+
   (1776, NULL, 7, NULL, 10, 'Heroic', 1), -- Default Mercy Highlight Intros
   (1777, 1, 7, 3, 10, 'Battle Angel', 1), -- Normal Mercy Highlight Intros
   (1778, 1, 7, 3, 10, 'Guardian Angel', 1),
   (1779, 1, 7, 3, 10, 'Heroes Never Die', 1),
   (2129, 14, 7, 3, 10, 'Fortune', 13), -- Lunar New Year Mercy Highlight Intros
+
+  (2150, NULL, 7, NULL, 24, 'Heroic', 15), -- Default Orisa Highlight Intros
+  (2151, 1, 7, 3, 24, 'Keeping You Safe', 15), -- Normal Orisa Highlight Intros
+  (2152, 1, 7, 3, 24, 'OHI', 15), -- TODO OH!
+  (2153, 1, 7, 3, 24, 'Supercharger', 15),
+
   (1780, NULL, 7, NULL, 11, 'Heroic', 1), -- Default Pharah Highlight Intros
   (1781, 1, 7, 3, 11, 'Barrage', 1), -- Normal Pharah Highlight Intros
   (1782, 1, 7, 3, 11, 'Mission Complete', 1),
   (1783, 1, 7, 3, 11, 'Touchdown', 1),
+
   (1784, NULL, 7, NULL, 12, 'Heroic', 1), -- Default Reaper Highlight Intros
   (1785, 1, 7, 3, 12, 'Death Blossom', 1), -- Normal Reaper Highlight Intros
   (1786, 1, 7, 3, 12, 'Executioner', 1),
   (1787, 1, 7, 3, 12, 'Shadow Step', 1),
   (1788, 7, 7, 3, 12, 'Eternal Rest', 7), -- Halloween Terror Reaper Highlight Intros
+
   (1789, NULL, 7, NULL, 13, 'Heroic', 1), -- Default Reinhardt Highlight Intros
   (1790, 1, 7, 3, 13, 'Charge', 1), -- Normal Reinhardt Highlight Intros
   (1791, 1, 7, 3, 13, 'Hammer Down', 1),
   (1792, 1, 7, 3, 13, 'More Stretching Required', 1),
+
   (1793, NULL, 7, NULL, 14, 'Heroic', 1), -- Default Roadhog Highlight Intros
   (1794, 1, 7, 3, 14, 'Little Piggy', 1), -- Normal Roadhog Highlight Intros
   (1795, 1, 7, 3, 14, 'Say "Cheese"', 1),
   (1796, 1, 7, 3, 14, 'Whole Hog', 1),
   (2130, 14, 7, 3, 14, 'Feast', 13), -- Lunar New Year Roadhog Highlight Intros
+
   (1797, NULL, 7, NULL, 15, 'Heroic', 1), -- Default Soldier: 76 Highlight Intros
   (1798, 1, 7, 3, 15, 'Helix', 1), -- Normal Soldier: 76 Highlight Intros
   (1799, 1, 7, 3, 15, 'Looking at You', 1),
   (1800, 1, 7, 3, 15, 'Target Rich Environment', 1),
+
   (1830, NULL, 7, NULL, 23, 'Heroic', 9), -- Default Sombra Highlight Intros
   (1831, 1, 7, 3, 23, 'Hacking', 9), -- Normal Sombra Highlight Intros
   (1832, 1, 7, 3, 23, 'Pulse', 9),
   (1833, 1, 7, 3, 23, 'Undetected', 9),
+
   (1801, NULL, 7, NULL, 16, 'Heroic', 1), -- Default Symmetra Highlight Intros
   (1802, 1, 7, 3, 16, 'Askew', 1), -- Normal Symmetra Highlight Intros
   (1803, 1, 7, 3, 16, 'Dance', 1),
   (1804, 1, 7, 3, 16, 'My Reality', 1),
   (2004, 10, 7, 3, 16, 'Snowflakes', 11), -- Winter Wonderland Symmetra Highlight Intros
+
   (1805, NULL, 7, NULL, 17, 'Heroic', 1), -- Default Torbjörn Highlight Intros
   (1806, 1, 7, 3, 17, 'In Your Face', 1), -- Normal Torbjörn Highlight Intros
   (1807, 1, 7, 3, 17, 'Refreshing', 1),
   (1808, 1, 7, 3, 17, 'Ride ''Em', 1),
+
   (1809, NULL, 7, NULL, 18, 'Heroic', 1), -- Default Tracer Highlight Intros
   (1810, 1, 7, 3, 18, 'Backflip', 1), -- Normal Tracer Highlight Intros
   (1811, 1, 7, 3, 18, 'Just in Time', 1),
   (1812, 1, 7, 3, 18, 'Serious Business', 1),
   (1813, 6, 7, 3, 18, 'Hurdle', 4), -- Summer Games Tracer Highlight Intros
   (2131, 14, 7, 3, 18, 'Lion Dance', 13), -- Lunar New Year Tracer Highlight Intros
+
   (1814, NULL, 7, NULL, 19, 'Heroic', 1), -- Default Widowmaker Highlight Intros
   (1815, 1, 7, 3, 19, 'Hanging Around', 1), -- Normal Widowmaker Highlight Intros
   (1816, 1, 7, 3, 19, 'I See You...', 1),
   (1817, 1, 7, 3, 19, 'Swinging Into Action', 1),
   (2005, 10, 7, 3, 19, 'Under the Mistletoe', 11), -- Winter Wonderland Widowmaker Highlight Intros
+
   (1818, NULL, 7, NULL, 20, 'Heroic', 1), -- Default Winston Highlight Intros
   (1819, 1, 7, 3, 20, 'Excuse Me', 1), -- Normal Winston Highlight Intros
   (1820, 1, 7, 3, 20, 'Glasses', 1),
   (1821, 1, 7, 3, 20, 'Primal Rage', 1),
+
   (1822, NULL, 7, NULL, 21, 'Heroic', 1), -- Default Zarya Highlight Intros
   (1823, 1, 7, 3, 21, 'Deadlift', 1), -- Normal Zarya Highlight Intros
   (1824, 1, 7, 3, 21, 'Maximum Charge', 1),
   (1825, 1, 7, 3, 21, 'This Is Strength', 1),
+
   (1826, NULL, 7, NULL, 22, 'Heroic', 1), -- Default Zenyatta Highlight Intros
   (1827, 1, 7, 3, 22, 'Focused', 1), -- Normal Zenyatta Highlight Intros
   (1828, 1, 7, 3, 22, 'Harmony and Discord', 1),
@@ -2263,47 +2428,72 @@ VALUES
 
   (1834, NULL, 8, NULL, 1, 'Classic', 3), -- Default Ana Weapons
   (1835, 5, 8, 5, 1, 'Golden', 3), -- Golden Ana Weapons
+
   (1836, NULL, 8, NULL, 2, 'Classic', 1), -- Default Bastion Weapons
   (1837, 5, 8, 5, 2, 'Golden', 2), -- Golden Bastion Weapons
+
   (1838, NULL, 8, NULL, 3, 'Classic', 1), -- Default D.Va Weapons
   (1839, 5, 8, 5, 3, 'Golden', 2), -- Golden D.Va Weapons
+
   (1840, NULL, 8, NULL, 4, 'Classic', 1), -- Default Genji Weapons
   (1841, 5, 8, 5, 4, 'Golden', 2), -- Golden Genji Weapons
+
   (1842, NULL, 8, NULL, 5, 'Classic', 1), -- Default Hanzo Weapons
   (1843, 5, 8, 5, 5, 'Golden', 2), -- Golden Hanzo Weapons
+
   (1844, NULL, 8, NULL, 6, 'Classic', 1), -- Default Junkrat Weapons
   (1845, 5, 8, 5, 6, 'Golden', 2), -- Golden Junkrat Weapons
+
   (1846, NULL, 8, NULL, 7, 'Classic', 1), -- Default Lúcio Weapons
   (1847, 5, 8, 5, 7, 'Golden', 2), -- Golden Lúcio Weapons
+
   (1848, NULL, 8, NULL, 8, 'Classic', 1), -- Default McCree Weapons
   (1849, 5, 8, 5, 8, 'Golden', 2), -- Golden McCree Weapons
+
   (1850, NULL, 8, NULL, 9, 'Classic', 1), -- Default Mei Weapons
   (1851, 5, 8, 5, 9, 'Golden', 2), -- Golden Mei Weapons
+
   (1852, NULL, 8, NULL, 10, 'Classic', 1), -- Default Mercy Weapons
   (1853, 5, 8, 5, 10, 'Golden', 2), -- Golden Mercy Weapons
+
+  (2154, NULL, 8, NULL, 24, 'Classic', 15), -- Default Orisa Weapons
+  (2155, 5, 8, 5, 24, 'Golden', 15), -- Golden Orisa Weapons
+
   (1854, NULL, 8, NULL, 11, 'Classic', 1), -- Default Pharah Weapons
   (1855, 5, 8, 5, 11, 'Golden', 2), -- Golden Pharah Weapons
+
   (1856, NULL, 8, NULL, 12, 'Classic', 1), -- Default Reaper Weapons
   (1857, 5, 8, 5, 12, 'Golden', 2), -- Golden Reaper Weapons
+
   (1858, NULL, 8, NULL, 13, 'Classic', 1), -- Default Reinhardt Weapons
   (1859, 5, 8, 5, 13, 'Golden', 2), -- Golden Reinhardt Weapons
+
   (1860, NULL, 8, NULL, 14, 'Classic', 1), -- Default Roadhog Weapons
   (1861, 5, 8, 5, 14, 'Golden', 2), -- Golden Roadhog Weapons
+
   (1862, NULL, 8, NULL, 15, 'Classic', 1), -- Default Soldier: 76 Weapons
   (1863, 5, 8, 5, 15, 'Golden', 2), -- Golden Soldier: 76 Weapons
+
   (1878, NULL, 8, NULL, 23, 'Classic', 9), -- Default Sombra Weapons
   (1879, 5, 8, 5, 23, 'Golden', 9), -- Golden Sombra Weapons
+
   (1864, NULL, 8, NULL, 16, 'Classic', 1), -- Default Symmetra Weapons
   (1865, 5, 8, 5, 16, 'Golden', 2), -- Golden Symmetra Weapons
+
   (1866, NULL, 8, NULL, 17, 'Classic', 1), -- Default Torbjörn Weapons
   (1867, 5, 8, 5, 17, 'Golden', 2), -- Golden Torbjörn Weapons
+
   (1868, NULL, 8, NULL, 18, 'Classic', 1), -- Default Tracer Weapons
   (1869, 5, 8, 5, 18, 'Golden', 2), -- Golden Tracer Weapons
+
   (1870, NULL, 8, NULL, 19, 'Classic', 1), -- Default Widowmaker Weapons
   (1871, 5, 8, 5, 19, 'Golden', 2), -- Golden Widowmaker Weapons
+
   (1872, NULL, 8, NULL, 20, 'Classic', 1), -- Default Winston Weapons
   (1873, 5, 8, 5, 20, 'Golden', 2), -- Golden Winston Weapons
+
   (1874, NULL, 8, NULL, 21, 'Classic', 1), -- Default Zarya Weapons
   (1875, 5, 8, 5, 21, 'Golden', 2), -- Golden Zarya Weapons
+
   (1876, NULL, 8, NULL, 22, 'Classic', 1), -- Default Zenyatta Weapons
   (1877, 5, 8, 5, 22, 'Golden', 2); -- Golden Zenyatta Weapons
