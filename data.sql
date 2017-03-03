@@ -1872,7 +1872,30 @@ VALUES
   (2101, 14, 6, 1, 10, 'Parasol', 13), -- Lunar New Year Mercy Sprays
   (2102, 14, 6, 1, 10, 'Dragon Dance', 13),
 
-  -- Normal Orisa Sprays
+  (2156, 1, 6, 1, 24, '^_^', 15), -- Normal Orisa Sprays
+  (2157, 1, 6, 1, 24, 'Amused', 15),
+  (2158, 1, 6, 1, 24, 'Carving', 15),
+  (2159, 1, 6, 1, 24, 'City of Harmony', 15),
+  (2160, 1, 6, 1, 24, 'Cleaning', 15),
+  (2161, 1, 6, 1, 24, 'Companions', 15),
+  (2162, 1, 6, 1, 24, 'Construction', 15),
+  (2163, 1, 6, 1, 24, 'Crossing Guard', 15),
+  (2164, 1, 6, 1, 24, 'Drumming', 15),
+  (2165, 1, 6, 1, 24, 'Guardian', 15),
+  (2166, 1, 6, 1, 24, 'Heroes', 15),
+  (2167, 1, 6, 1, 24, 'Icon', 15),
+  (2168, 1, 6, 1, 24, 'Just Dessert', 15),
+  (2169, 1, 6, 1, 24, 'Kick', 15),
+  (2170, 1, 6, 1, 24, 'Protector', 15),
+  (2171, 1, 6, 1, 24, 'Shield', 15),
+  (2172, 1, 6, 1, 24, 'Stop', 15),
+  (2173, 1, 6, 1, 24, 'Supercharged', 15),
+  (2174, 1, 6, 1, 24, 'Swing', 15),
+  (2175, 1, 6, 1, 24, 'Tracks', 15),
+  (2176, 1, 6, 1, 24, 'Unmoving', 15),
+  (2177, 1, 6, 1, 24, 'Xing', 15),
+  (2178, 2, 6, 1, 24, 'Pixel', 15), -- Achievements Orisa Sprays
+  (2179, 2, 6, 1, 24, 'Cute', 15),
 
   (1384, 1, 6, 1, 11, 'Aerial Superiority', 1), -- Normal Pharah Sprays
   (1385, 1, 6, 1, 11, 'Amari', 1),
@@ -2350,7 +2373,7 @@ VALUES
 
   (2150, NULL, 7, NULL, 24, 'Heroic', 15), -- Default Orisa Highlight Intros
   (2151, 1, 7, 3, 24, 'Keeping You Safe', 15), -- Normal Orisa Highlight Intros
-  (2152, 1, 7, 3, 24, 'OHI', 15), -- TODO OH!
+  (2152, 1, 7, 3, 24, 'Oh!', 15),
   (2153, 1, 7, 3, 24, 'Supercharger', 15),
 
   (1780, NULL, 7, NULL, 11, 'Heroic', 1), -- Default Pharah Highlight Intros
