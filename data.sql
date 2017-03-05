@@ -87,7 +87,7 @@ VALUES
   (11, 'Winter Wonderland 2016', '2016-12-13', '2017-01-03'),
   (12, 'Oasis Patch', '2017-01-03', NULL),
   (13, 'Year of the Rooster', '2017-01-24', '2017-02-14'),
-  (14, 'Competitive Season 4', '2017-02-28', NULL),
+  (14, 'Competitive Season 4', '2017-02-28', NULL), -- TODO end date
   (15, 'Orisa Patch', '2017-03-07', NULL);
 
 INSERT INTO settings (id, name, description, type, "default", min, max)
@@ -223,6 +223,8 @@ VALUES
   (62, 5, 1, 2, NULL, 'Season 2 Hero', 6),
   (63, 5, 1, 2, NULL, 'Season 3 Competitor', 10),
   (64, 5, 1, 2, NULL, 'Season 3 Hero', 10),
+  (2193, 5, 1, 2, NULL, 'Season 4 Competitor', 14),
+  (2194, 5, 1, 2, NULL, 'Season 4 Hero', 14),
   (65, 5, 1, 2, NULL, 'Top 500', 2),
   (66, 6, 1, 2, NULL, 'Australia', 4), -- Summer Games All Heroes Player Icons
   (67, 6, 1, 2, NULL, 'Brazil', 4),
@@ -295,106 +297,133 @@ VALUES
   (2028, 14, 1, 2, NULL, 'Fuchimari', 13),
   (2029, 14, 1, 2, NULL, 'Dragon Dance', 13),
   (2030, 14, 1, 2, NULL, 'Pachilantern', 13),
+
   (98, 1, 1, 2, 1, 'Ana', 3), -- Normal Ana Player Icons
   (99, 1, 1, 2, 1, 'Watcher', 3),
   (100, 1, 1, 2, 1, 'Wedjat', 3),
   (101, 6, 1, 2, 1, 'Shooting', 4), -- Summer Games Ana Player Icons
+
   (102, 1, 1, 2, 2, 'Bastion', 1), -- Normal Bastion Player Icons
   (103, 1, 1, 2, 2, 'Ganymede', 1),
   (104, 1, 1, 2, 2, 'Tank Crossing', 1),
   (105, 6, 1, 2, 2, 'Boxing', 4), -- Summer Games Bastion Player Icons
+
   (106, 1, 1, 2, 3, 'D.Va', 1), -- Normal D.Va Player Icons
   (107, 1, 1, 2, 3, 'Bunny', 1),
   (108, 1, 1, 2, 3, 'Charm', 1),
   (109, 6, 1, 2, 3, 'Cycling', 4), -- Summer Games D.Va Player Icons
   (2025, 14, 1, 2, 3, 'Hanbok', 13), -- Lunar New Year D.Va Player Icons
+
   (110, 1, 1, 2, 4, 'Genji', 1), -- Normal Genji Player Icons
   (111, 1, 1, 2, 4, 'God of War', 1),
   (112, 1, 1, 2, 4, 'Nin', 1),
   (113, 6, 1, 2, 4, 'Fencing', 4), -- Summer Games Genji Player Icons
   (114, 9, 1, 2, 4, 'Oni', 9), -- Blizzard Genji Player Icons
+
   (115, 1, 1, 2, 5, 'Hanzo', 1), -- Normal Hanzo Player Icons
   (116, 1, 1, 2, 5, 'Shimada', 1),
   (117, 1, 1, 2, 5, 'Storm', 1),
   (118, 6, 1, 2, 5, 'Archery', 4), -- Summer Games Hanzo Player Icons
+
   (119, 1, 1, 2, 6, 'Ahhhh!', 1), -- Normal Junkrat Player Icons
   (120, 1, 1, 2, 6, 'Have a Nice Day!', 1),
   (121, 1, 1, 2, 6, 'Junkrat', 1),
   (122, 6, 1, 2, 6, 'Tennis', 4), -- Summer Games Junkrat Player Icons
   (123, 7, 1, 2, 6, 'The Doctor', 7), -- Halloween Terror Junkrat Player Icons
+
   (124, 1, 1, 2, 7, 'Frog', 1), -- Normal Lúcio Player Icons
   (125, 1, 1, 2, 7, 'Kambô', 1),
   (126, 1, 1, 2, 7, 'Lúcio', 1),
   (127, 6, 1, 2, 7, 'Football', 4), -- Summer Games Lúcio Player Icons
+
   (128, 1, 1, 2, 8, 'Badge', 1), -- Normal McCree Player Icons
   (129, 1, 1, 2, 8, 'Deadeye', 1),
   (130, 1, 1, 2, 8, 'McCree', 1),
   (131, 6, 1, 2, 8, 'Equestrian', 4), -- Summer Games McCree Player Icons
+
   (132, 1, 1, 2, 9, 'Hairpin', 1), -- Normal Mei Player Icons
   (133, 1, 1, 2, 9, 'Mei', 1),
   (134, 1, 1, 2, 9, 'Snowball', 1),
   (135, 6, 1, 2, 9, 'Table Tennis', 4), -- Summer Games Mei Player Icons
   (2027, 14, 1, 2, 9, 'Chang''e', 13), -- Lunar New Year Mei Player Icons
+
   (136, 1, 1, 2, 10, 'Guardian Angel', 1), -- Normal Mercy Player Icons
   (137, 1, 1, 2, 10, 'Mercy', 1),
   (138, 1, 1, 2, 10, 'Valkyrie', 1),
   (139, 6, 1, 2, 10, 'Badminton', 4), -- Summer Games Mercy Player Icons
   (140, 7, 1, 2, 10, 'The Witch', 7), -- Halloween Terror Mercy Player Icons
+
+  (2190, 1, 1, 2, 24, 'Efi', 15), -- Normal Orisa Player Icons
+  (2191, 1, 1, 2, 24, 'Protector', 15),
+  (2192, 1, 1, 2, 24, 'Orisa', 15),
+
   (141, 1, 1, 2, 11, 'Pharah', 1), -- Normal Pharah Player Icons
   (142, 1, 1, 2, 11, 'Raptora', 1),
   (143, 1, 1, 2, 11, 'Wadjet', 1),
   (144, 6, 1, 2, 11, 'Basketball', 4), -- Summer Games Pharah Player Icons
+
   (145, 1, 1, 2, 12, 'Emblem', 1), -- Normal Reaper Player Icons
   (146, 1, 1, 2, 12, 'Reaper', 1),
   (147, 1, 1, 2, 12, 'Soul Globe', 1),
   (148, 6, 1, 2, 12, 'BMX', 4), -- Summer Games Reaper Player Icons
   (149, 7, 1, 2, 12, 'The Reaper', 7), -- Halloween Terror Reaper Player Icons
+
   (150, 1, 1, 2, 13, 'Lionhardt', 1), -- Normal Reinhardt Player Icons
   (151, 1, 1, 2, 13, 'Reinhardt', 1),
   (152, 1, 1, 2, 13, 'Scar', 1),
   (153, 6, 1, 2, 13, 'Wrestling', 4), -- Summer Games Reinhardt Player Icons
   (2021, 14, 1, 2, 13, 'Sandy', 13), -- Lunar New Year Reinhardt Player Icons
+
   (154, 1, 1, 2, 14, 'Hook', 1), -- Normal Roadhog Player Icons
   (155, 1, 1, 2, 14, 'Piggy', 1),
   (156, 1, 1, 2, 14, 'Roadhog', 1),
   (157, 6, 1, 2, 14, 'Diving', 4), -- Summer Games Roadhog Player Icons
   (158, 7, 1, 2, 14, 'The Monster', 7), -- Halloween Terror Roadhog Player Icons
   (2024, 14, 1, 2, 14, 'Piggy', 13), -- Lunar New Year Roadhog Player Icons
+
   (159, 1, 1, 2, 15, '76', 1), -- Normal Soldier: 76 Player Icons
   (160, 1, 1, 2, 15, 'Soldier: 76', 1),
   (161, 1, 1, 2, 15, 'Strike-Commander', 1),
   (162, 6, 1, 2, 15, 'Golf', 4), -- Summer Games Soldier: 76 Player Icons
+
   (191, 1, 1, 2, 23, 'Hacker', 9), -- Normal Sombra Player Icons
   (192, 1, 1, 2, 23, 'Skull', 9),
   (193, 1, 1, 2, 23, 'Sombra', 9),
+
   (163, 1, 1, 2, 16, 'Sentry', 1), -- Normal Symmetra Player Icons
   (164, 1, 1, 2, 16, 'Symmetra', 1),
   (165, 1, 1, 2, 16, 'Vishkar', 1),
   (166, 6, 1, 2, 16, 'Rythmic Gymnastics', 4), -- Summer Games Symmetra Player Icons
+
   (167, 1, 1, 2, 17, 'Forge', 1), -- Normal Torbjörn Player Icons
   (168, 1, 1, 2, 17, 'Gears', 1),
   (169, 1, 1, 2, 17, 'Torbjörn', 1),
   (170, 6, 1, 2, 17, 'Water Polo', 4), -- Summer Games Torbjörn Player Icons
   (1901, 10, 1, 2, 17, 'Santaclad', 11), -- Winter Wonderland Torbjörn Player Icons
+
   (171, 1, 1, 2, 18, 'Patch', 1), -- Normal Tracer Player Icons
   (172, 1, 1, 2, 18, 'Pulse Bomb', 1),
   (173, 1, 1, 2, 18, 'Tracer', 1),
   (1893, 10, 1, 2, 18, 'Jingle', 11), -- Winter Wonderland Tracer Player Icons
   (174, 6, 1, 2, 18, 'Track', 4), -- Summer Games Tracer Player Icons
+
   (175, 1, 1, 2, 19, 'Baiser', 1), -- Normal Widowmaker Player Icons
   (176, 1, 1, 2, 19, 'Grappling Hook', 1),
   (177, 1, 1, 2, 19, 'Widowmaker', 1),
   (178, 6, 1, 2, 19, 'Gymnastics', 4), -- Summer Games Widowmaker Player Icons
+
   (179, 1, 1, 2, 20, 'Lunar Ops', 1), -- Normal Winston Player Icons
   (180, 1, 1, 2, 20, 'Peanut Butter', 1),
   (181, 1, 1, 2, 20, 'Winston', 1),
   (182, 6, 1, 2, 20, 'Volleyball', 4), -- Summer Games Winston Player Icons
   (1905, 10, 1, 2, 20, 'Yeti', 11), -- Winter Wonderland Winston Player Icons
   (2022, 14, 1, 2, 20, 'Monkey', 13), -- Lunar New Year Winston Player Icons
+
   (183, 1, 1, 2, 21, '512', 1), -- Normal Zarya Player Icons
   (184, 1, 1, 2, 21, 'Particle Barrier', 1),
   (185, 1, 1, 2, 21, 'Zarya', 1),
   (186, 6, 1, 2, 21, 'Weightlifting', 4), -- Summer Games Zarya Player Icons
+
   (187, 1, 1, 2, 22, 'Harmony', 1), -- Normal Zenyatta Player Icons
   (188, 1, 1, 2, 22, 'Meditation', 1),
   (189, 1, 1, 2, 22, 'Zenyatta', 1),
@@ -1256,6 +1285,16 @@ VALUES
   (2063, 14, 5, 1, 10, 'A Most Impressive Display', 13), -- Lunar New Year Mercy Voice Lines
 
   (2149, NULL, 5, NULL, 24, 'Following My Programming', 15), -- Default Orisa Voice Lines
+  (2180, 1, 5, 1, 24, 'Current Outlook', 15), -- Normal Orisa Voice Lines
+  (2181, 1, 5, 1, 24, 'Do You Need a Hug?', 15),
+  (2182, 1, 5, 1, 24, 'Efi Will Not Be Happy', 15),
+  (2183, 1, 5, 1, 24, 'Error: Sarcasm Module', 15),
+  (2184, 1, 5, 1, 24, 'I can''t Do That', 15),
+  (2185, 1, 5, 1, 24, 'Medical Assistance', 15),
+  (2186, 1, 5, 1, 24, 'My Analysis', 15),
+  (2187, 1, 5, 1, 24, 'No Parking', 15),
+  (2188, 1, 5, 1, 24, 'Shine Your Eyes', 15),
+  (2189, 1, 5, 1, 24, 'That Does Not Compute', 15),
 
   (875, NULL, 5, NULL, 11, 'Security in My Hands', 1), -- Default Pharah Voice Lines
   (876, 1, 5, 1, 11, 'Aerial Superiority Achieved', 1), -- Normal Pharah Voice Lines
