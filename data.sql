@@ -48,14 +48,14 @@ VALUES
    'winterwonderland-achievements'),
   (14, 'Lunar New Year',
    'Obtainable by opening Lunar New Year Loot Boxes or by spending 3 times the normal amount of credits during the Lunar New Year event.',
-   3,
-   'lunarnewyear'),
+   3, 'lunarnewyear'),
   (15, 'Lunar New Year Achievements', 'Obtainable by completing Lunar New Year achievements.', 0,
    'lunarnewyear-achievements'),
-  (16, '<>', 'Obtainable by opening <> Loot Boxes or by spending 3 times the normal amount of credits during the Lunar New Year event.', 0,
-   '<>'),
-  (17, '<> Achievements', 'Obtainable by completing <> achievements.', 0,
-   '<>-achievements');
+  (16, 'Uprising',
+   'Obtainable by opening Uprising Loot Boxes or by spending 3 times the normal amount of credits during the Uprising event.',
+   0, 'uprising'),
+  (17, 'Uprising Achievements', 'Obtainable by completing Uprising achievements.', 0,
+   'uprising-achievements');
 
 INSERT INTO types (id, name, slug)
 VALUES
@@ -93,7 +93,7 @@ VALUES
   (13, 'Year of the Rooster', '2017-01-24', '2017-02-14'),
   (14, 'Competitive Season 4', '2017-02-28', NULL), -- TODO end date
   (15, 'Orisa Patch', '2017-03-07', NULL),
-  (16, '<> 2017', '2017-04-11', NULL);
+  (16, 'Uprising 2017', '2017-04-11', NULL);
 
 INSERT INTO settings (id, name, description, type, "default", min, max)
 VALUES
@@ -144,8 +144,8 @@ VALUES
   (53, 'collection-show-category-winterwonderland-achievements', 'Show Winter Wonderland Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (54, 'collection-show-category-lunarnewyear', 'Show Lunar New Year cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (55, 'collection-show-category-lunarnewyear-achievements', 'Show Lunar New Year Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
-  (56, 'collection-show-category-<>', 'Show <> cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
-  (57, 'collection-show-category-<>-achievements', 'Show <> Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (57, 'collection-show-category-uprising', 'Show Uprising cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (58, 'collection-show-category-uprising-achievements', 'Show Uprising Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (40, 'collection-show-type-playericon', 'Show Player Icon cosmetics in the collection', 'BOOLEAN', 'true', NULL,
    NULL),
   (41, 'collection-show-type-skin', 'Show Skin cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
@@ -304,6 +304,8 @@ VALUES
   (2028, 14, 1, 2, NULL, 'Fuchimari', 13),
   (2029, 14, 1, 2, NULL, 'Dragon Dance', 13),
   (2030, 14, 1, 2, NULL, 'Pachilantern', 13),
+  (2195, 16, 1, 2, NULL, '??', 16), -- Uprising All Heroes Player Icons
+  (2196, 16, 1, 2, NULL, '??', 16),
 
   (98, 1, 1, 2, 1, 'Ana', 3), -- Normal Ana Player Icons
   (99, 1, 1, 2, 1, 'Watcher', 3),
