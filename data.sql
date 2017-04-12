@@ -2456,6 +2456,7 @@ VALUES
   (1745, 1, 7, 3, 3, 'Eject', 1), -- Normal D.Va Highlight Intros
   (1746, 1, 7, 3, 3, 'Lying Around', 1),
   (1747, 1, 7, 3, 3, 'Meka Activated', 1),
+  (2275, 16, 7, 3, 3, 'Selfie', 16), -- Uprising D.Va Highlight Intros
 
   (1748, NULL, 7, NULL, 4, 'Heroic', 1), -- Default Genji Highlight Intros
   (1749, 1, 7, 3, 4, 'Shuriken', 1), -- Normal Genji Highlight Intros
@@ -2544,6 +2545,7 @@ VALUES
   (1806, 1, 7, 3, 17, 'In Your Face', 1), -- Normal Torbjörn Highlight Intros
   (1807, 1, 7, 3, 17, 'Refreshing', 1),
   (1808, 1, 7, 3, 17, 'Ride ''Em', 1),
+  (2276, 16, 7, 3, 17, 'My Baby', 16), -- Uprising Torbjörn Highlight Intros
 
   (1809, NULL, 7, NULL, 18, 'Heroic', 1), -- Default Tracer Highlight Intros
   (1810, 1, 7, 3, 18, 'Backflip', 1), -- Normal Tracer Highlight Intros
@@ -2572,6 +2574,7 @@ VALUES
   (1827, 1, 7, 3, 22, 'Focused', 1), -- Normal Zenyatta Highlight Intros
   (1828, 1, 7, 3, 22, 'Harmony and Discord', 1),
   (1829, 1, 7, 3, 22, 'Transcendence', 1),
+  (2277, 16, 7, 3, 22, 'Perspective', 16), -- Uprising Zenyatta Highlight Intros
 
   -- Weapons
 
