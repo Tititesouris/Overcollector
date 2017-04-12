@@ -1676,6 +1676,13 @@ VALUES
   (2080, 14, 6, 1, NULL, 'Year of the Rooster', 13),
   (2081, 15, 6, 1, NULL, 'Auspicious Lion', 13), -- Lunar New Year Achievements All Heroes Sprays
   (2082, 15, 6, 1, NULL, 'Awakened Lion', 13),
+  (2278, 16, 6, 1, NULL, 'Null Sector', 16), -- Uprising All Heroes Sprays
+  (2279, 17, 6, 1, NULL, 'B73-NS', 16), -- Uprising Achievements All Heroes Sprays
+  (2280, 17, 6, 1, NULL, 'Eradicator', 16),
+  (2281, 17, 6, 1, NULL, 'Nullmari', 16),
+  (2282, 17, 6, 1, NULL, 'Nulltrooper', 16),
+  (2283, 17, 6, 1, NULL, 'OR14-NS', 16),
+  (2284, 17, 6, 1, NULL, 'Slicer', 16),
 
   (1113, 1, 6, 1, 1, 'Action', 3), -- Normal Ana Sprays
   (1114, 1, 6, 1, 1, 'Ana', 3),
@@ -1708,6 +1715,7 @@ VALUES
   (1913, 10, 6, 1, 1, 'Warm', 11),
   (2083, 14, 6, 1, 1, 'Dance', 13), -- Lunar New Year Ana Sprays
   (2084, 14, 6, 1, 1, 'Dragon Dance', 13),
+  (2285, 16, 6, 1, 1, 'Newborn', 16), -- Uprising Ana Sprays
 
   (1140, 1, 6, 1, 2, 'Action', 1), -- Normal Bastion Sprays
   (1141, 1, 6, 1, 2, 'Bird', 1),
