@@ -1651,6 +1651,8 @@ VALUES
   (1096, 5, 6, 1, NULL, 'Season 2 Hero', 6),
   (1097, 5, 6, 1, NULL, 'Season 3 Competitor', 10),
   (1098, 5, 6, 1, NULL, 'Season 3 Hero', 10),
+  (2309, 5, 6, 1, NULL, 'Season 4 Competitor', 14),
+  (2310, 5, 6, 1, NULL, 'Season 4 Hero', 14),
   (1099, 7, 6, 1, NULL, '...Never Die', 7), -- Halloween Terror All Heroes Sprays
   (1100, 7, 6, 1, NULL, 'Bats', 7),
   (1101, 7, 6, 1, NULL, 'Boo!', 7),
@@ -1748,6 +1750,7 @@ VALUES
   (1915, 10, 6, 1, 2, 'Festive', 11),
   (2085, 14, 6, 1, 2, 'Bast-Yum', 13), -- Lunar New Year Bastion Sprays
   (2086, 14, 6, 1, 2, 'Dragon Dance', 13),
+  (2286, 16, 6, 1, 2, 'Sunken', 16), -- Uprising Bastion Sprays
 
   (1167, 1, 6, 1, 3, 'B.ny', 1), -- Normal D.Va Sprays
   (1168, 1, 6, 1, 3, 'Bang', 1),
@@ -1780,6 +1783,7 @@ VALUES
   (1917, 10, 6, 1, 3, 'Cookie', 11),
   (2087, 14, 6, 1, 3, 'Seesaw', 13), -- Lunar New Year D.Va Sprays
   (2088, 14, 6, 1, 3, 'Dragon Dance', 13),
+  (2287, 16, 6, 1, 3, 'Handheld', 16), -- Uprising D.Va Sprays
 
   (1194, 1, 6, 1, 4, 'Assassin', 1), -- Normal Genji Sprays
   (1195, 1, 6, 1, 4, 'Dragon', 1),
@@ -1813,6 +1817,7 @@ VALUES
   (1919, 10, 6, 1, 4, 'Kadomatsu', 11),
   (2089, 14, 6, 1, 4, 'Green Dragon', 13), -- Lunar New Year Genji Sprays
   (2090, 14, 6, 1, 4, 'Dragon Dance', 13),
+  (2288, 16, 6, 1, 4, 'Ramen', 16), -- Uprising Genji Sprays
 
   (1222, 1, 6, 1, 5, 'Archer', 1), -- Normal Hanzo Sprays
   (1223, 1, 6, 1, 5, 'Challenge', 1),
@@ -1845,6 +1850,7 @@ VALUES
   (1921, 10, 6, 1, 5, 'Kadomatsu', 11),
   (2091, 14, 6, 1, 5, 'Blue Dragon', 13), -- Lunar New Year Hanzo Sprays
   (2092, 14, 6, 1, 5, 'Dragon Dance', 13),
+  (2289, 16, 6, 1, 5, 'Ramen', 16), -- Uprising Genji Sprays
 
   (1249, 1, 6, 1, 6, 'AHHHH!', 1), -- Normal Junkrat Sprays
   (1250, 1, 6, 1, 6, 'Bang Bang', 1),
@@ -1877,6 +1883,7 @@ VALUES
   (1923, 10, 6, 1, 6, '"Winter"', 11),
   (2093, 14, 6, 1, 6, 'I''m Flying!', 13), -- Lunar New Year Junkrat Sprays
   (2094, 14, 6, 1, 6, 'Dragon Dance', 13),
+  (2290, 16, 6, 1, 6, 'Sidecar', 16), -- Uprising Junkrat Sprays
 
   (1276, 1, 6, 1, 7, 'Acelerar', 1), -- Normal Lúcio Sprays
   (1277, 1, 6, 1, 7, 'Baixo', 1),
@@ -1909,6 +1916,7 @@ VALUES
   (1925, 10, 6, 1, 7, 'Hockey', 11),
   (2095, 14, 6, 1, 7, 'Keep Ups', 13), -- Lunar New Year Lúcio Sprays
   (2096, 14, 6, 1, 7, 'Dragon Dance', 13),
+  (2291, 16, 6, 1, 7, 'Skates', 16), -- Uprising Lúcio Sprays
 
   (1303, 1, 6, 1, 8, 'Badge', 1), -- Normal McCree Sprays
   (1304, 1, 6, 1, 8, 'BAMF', 1),
@@ -1941,6 +1949,7 @@ VALUES
   (1927, 10, 6, 1, 8, 'Ugly Sweater', 11),
   (2097, 14, 6, 1, 8, 'Call It', 13), -- Lunar New Year McCree Sprays
   (2098, 14, 6, 1, 8, 'Dragon Dance', 13),
+  (2292, 16, 6, 1, 8, 'Target Practice', 16), -- Uprising McCree Sprays
 
   (1330, 1, 6, 1, 9, '^_^', 1), -- Normal Mei Sprays
   (1331, 1, 6, 1, 9, '>_<', 1),
@@ -1973,6 +1982,7 @@ VALUES
   (1929, 10, 6, 1, 9, 'Sculpting', 11),
   (2099, 14, 6, 1, 9, 'Fortune', 13), -- Lunar New Year Mei Sprays
   (2100, 14, 6, 1, 9, 'Dragon Dance', 13),
+  (2293, 16, 6, 1, 9, 'Pajamas', 16), -- Uprising Mei Sprays
 
   (1357, 1, 6, 1, 10, 'Arrow', 1), -- Normal Mercy Sprays
   (1358, 1, 6, 1, 10, 'Bandage', 1),
@@ -2005,6 +2015,7 @@ VALUES
   (1931, 10, 6, 1, 10, 'Snow Angel', 11),
   (2101, 14, 6, 1, 10, 'Parasol', 13), -- Lunar New Year Mercy Sprays
   (2102, 14, 6, 1, 10, 'Dragon Dance', 13),
+  (2294, 16, 6, 1, 10, 'Combat Medic', 16), -- Uprising Mercy Sprays
 
   (2156, 1, 6, 1, 24, '^_^', 15), -- Normal Orisa Sprays
   (2157, 1, 6, 1, 24, 'Amused', 15),
@@ -2030,6 +2041,7 @@ VALUES
   (2177, 1, 6, 1, 24, 'Xing', 15),
   (2178, 2, 6, 1, 24, 'Pixel', 15), -- Achievements Orisa Sprays
   (2179, 2, 6, 1, 24, 'Cute', 15),
+  (2295, 16, 6, 1, 24, 'Flower', 16), -- Uprising Orisa Sprays
 
   (1384, 1, 6, 1, 11, 'Aerial Superiority', 1), -- Normal Pharah Sprays
   (1385, 1, 6, 1, 11, 'Amari', 1),
@@ -2062,6 +2074,7 @@ VALUES
   (1933, 10, 6, 1, 11, 'Ice Fishing', 11),
   (2103, 14, 6, 1, 11, 'Happy New Year', 13), -- Lunar New Year Pharah Sprays
   (2104, 14, 6, 1, 11, 'Dragon Dance', 13),
+  (2296, 16, 6, 1, 11, 'Target Practice', 16), -- Uprising Pharah Sprays
 
   (1411, 1, 6, 1, 12, 'Blackwatch', 1), -- Normal Reaper Sprays
   (1412, 1, 6, 1, 12, 'Blossom', 1),
@@ -2094,6 +2107,7 @@ VALUES
   (1935, 10, 6, 1, 12, 'Stocking', 11),
   (2105, 14, 6, 1, 12, 'Fire Blossom', 13), -- Lunar New Year Reaper Sprays
   (2106, 14, 6, 1, 12, 'Dragon Dance', 13),
+  (2297, 16, 6, 1, 12, 'Commando', 16), -- Uprising Reaper Sprays
 
   (1438, 1, 6, 1, 13, 'Barrier', 1), -- Normal Reinhardt Sprays
   (1439, 1, 6, 1, 13, 'Charge', 1),
@@ -2126,6 +2140,7 @@ VALUES
   (1937, 10, 6, 1, 13, 'Ice Fishing', 11),
   (2107, 14, 6, 1, 13, 'Lion Dance', 13), -- Lunar New Year Reinhardt Sprays
   (2108, 14, 6, 1, 13, 'Dragon Dance', 13),
+  (2298, 16, 6, 1, 13, 'Poster', 16), -- Uprising Reinhardt Sprays
 
   (1465, 1, 6, 1, 14, 'Breathin''', 1), -- Normal Roadhog Sprays
   (1466, 1, 6, 1, 14, 'Deep Thoughts', 1),
@@ -2158,6 +2173,7 @@ VALUES
   (1939, 10, 6, 1, 14, '"Winter"', 11),
   (2109, 14, 6, 1, 14, 'Steamed Buns', 13), -- Lunar New Year Roadhog Sprays
   (2110, 14, 6, 1, 14, 'Dragon Dance', 13),
+  (2299, 16, 6, 1, 14, 'Chopper', 16), -- Uprising Roadhog Sprays
 
   (1492, 1, 6, 1, 15, '76', 1), -- Normal Soldier: 76 Sprays
   (1493, 1, 6, 1, 15, 'All Soldiers', 1),
@@ -2190,6 +2206,7 @@ VALUES
   (1941, 10, 6, 1, 15, 'Army Man: 76', 11),
   (2111, 14, 6, 1, 15, 'Folded Hands', 13), -- Lunar New Year Soldier: 76 Sprays
   (2112, 14, 6, 1, 15, 'Dragon Dance', 13),
+  (2300, 16, 6, 1, 15, 'Commando', 16), -- Uprising Soldier: 76 Sprays
 
   (1708, 1, 6, 1, 23, '5kull', 9), -- Normal Sombra Sprays
   (1709, 1, 6, 1, 23, 'Agent', 9),
@@ -2223,6 +2240,7 @@ VALUES
   (1957, 10, 6, 1, 23, 'Puppet', 11),
   (2113, 14, 6, 1, 23, 'Fortunate', 13), -- Lunar New Year Sombra Sprays
   (2114, 14, 6, 1, 23, 'Dragon Dance', 13),
+  (2301, 16, 6, 1, 23, 'Espresso', 16), -- Uprising Sombra Sprays
 
   (1519, 1, 6, 1, 16, 'Agent', 1), -- Normal Symmetra Sprays
   (1520, 1, 6, 1, 16, 'Architect', 1),
@@ -2255,6 +2273,7 @@ VALUES
   (1943, 10, 6, 1, 16, 'Snowflake', 11),
   (2115, 14, 6, 1, 16, 'Lantern', 13), -- Lunar New Year Symmetra Sprays
   (2116, 14, 6, 1, 16, 'Dragon Dance', 13),
+  (2302, 16, 6, 1, 16, 'Student', 16), -- Uprising Symmetra Sprays
 
   (1546, 1, 6, 1, 17, 'Armor', 1), -- Normal Torbjörn Sprays
   (1547, 1, 6, 1, 17, 'Beard', 1),
@@ -2287,6 +2306,7 @@ VALUES
   (1945, 10, 6, 1, 17, 'Workshop', 11),
   (2117, 14, 6, 1, 17, 'Gold', 13), -- Lunar New Year Torbjörn Sprays
   (2118, 14, 6, 1, 17, 'Dragon Dance', 13),
+  (2303, 16, 6, 1, 17, 'Brigitte', 16), -- Uprising Torbjörn Sprays
 
   (1573, 1, 6, 1, 18, 'Blink', 1), -- Normal Tracer Sprays
   (1574, 1, 6, 1, 18, 'Bomb''s Away!', 1),
@@ -2319,6 +2339,7 @@ VALUES
   (1947, 10, 6, 1, 18, 'Snowboarding', 11),
   (2119, 14, 6, 1, 18, 'Fan Dance', 13), -- Lunar New Year Tracer Sprays
   (2120, 14, 6, 1, 18, 'Dragon Dance', 13),
+  (2304, 16, 6, 1, 18, 'Slipstream', 16), -- Uprising Tracer Sprays
 
   (1600, 1, 6, 1, 19, 'Baiser', 1), -- Normal Widowmaker Sprays
   (1601, 1, 6, 1, 19, 'Black Widow', 1),
@@ -2351,6 +2372,7 @@ VALUES
   (1949, 10, 6, 1, 19, 'Skiing', 11),
   (2121, 14, 6, 1, 19, 'Hairpin', 13), -- Lunar New Year Widowmaker Sprays
   (2122, 14, 6, 1, 19, 'Dragon Dance', 13),
+  (2305, 16, 6, 1, 19, 'Wedding', 16), -- Uprising Widowmaker Sprays
 
   (1627, 1, 6, 1, 20, 'Angry', 1), -- Normal Winston Sprays
   (1628, 1, 6, 1, 20, 'Ape Crossing', 1),
@@ -2383,6 +2405,7 @@ VALUES
   (1951, 10, 6, 1, 20, 'Presents', 11),
   (2123, 14, 6, 1, 20, 'Kite', 13), -- Lunar New Year Winston Sprays
   (2124, 14, 6, 1, 20, 'Dragon Dance', 13),
+  (2306, 16, 6, 1, 20, 'Building', 16), -- Uprising Winston Sprays
 
   (1654, 1, 6, 1, 21, '512', 1), -- Normal Zarya Sprays
   (1655, 1, 6, 1, 21, 'Alexandra', 1),
@@ -2415,6 +2438,7 @@ VALUES
   (1953, 10, 6, 1, 21, 'Matryoshka', 11),
   (2125, 14, 6, 1, 21, 'Calories', 13), -- Lunar New Year Zarya Sprays
   (2126, 14, 6, 1, 21, 'Dragon Dance', 13),
+  (2307, 16, 6, 1, 21, 'We Can!', 16), -- Uprising Zarya Sprays
 
   (1681, 1, 6, 1, 22, 'Adorable', 1), -- Normal Zenyatta Sprays
   (1682, 1, 6, 1, 22, 'Aura', 1),
@@ -2447,6 +2471,7 @@ VALUES
   (1955, 10, 6, 1, 22, 'Snowball Fight', 11),
   (2127, 14, 6, 1, 22, 'Yut Nori', 13), -- Lunar New Year Zenyatta Sprays
   (2128, 14, 6, 1, 22, 'Dragon Dance', 13),
+  (2308, 16, 6, 1, 22, 'Shell', 16), -- Uprising Zenyatta Sprays
 
   -- Highlight Intros
 
