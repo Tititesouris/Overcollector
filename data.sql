@@ -2487,7 +2487,7 @@ VALUES
   (1763, 1, 7, 3, 7, 'Drop the Beat', 1), -- Normal Lúcio Highlight Intros
   (1764, 1, 7, 3, 7, 'Freestyle', 1),
   (1765, 1, 7, 3, 7, 'In the Groove', 1),
-  (1766, 1, 7, 3, 7, 'Bicycle Kick', 1), -- Summer Games Lúcio Highlight Intros
+  (1766, 6, 7, 3, 7, 'Bicycle Kick', 4), -- Summer Games Lúcio Highlight Intros
 
   (1767, NULL, 7, NULL, 8, 'Heroic', 1), -- Default McCree Highlight Intros
   (1768, 1, 7, 3, 8, 'Rolling Into Action', 1), -- Normal McCree Highlight Intros
