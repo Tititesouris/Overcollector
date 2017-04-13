@@ -13,7 +13,7 @@ FROM cosmetics
 LEFT JOIN heroes
   ON cosmetics.hero_id = heroes.id
 LEFT JOIN
-  (VALUES (1, 1), (2, 2), (6, 3), (11, 4), (7, 5), (12, 6), (10, 7), (13, 8), (14, 9), (15, 10), (5, 11), (9, 12), (8, 13), (3, 14), (4, 15)) AS orders(category_id, ordering)
+  (VALUES (1, 1), (2, 2), (6, 3), (11, 4), (7, 5), (12, 6), (10, 7), (13, 8), (14, 9), (15, 10), (16, 11), (17, 12), (5, 13), (9, 14), (8, 15), (3, 16), (4, 17)) AS orders(category_id, ordering)
     ON cosmetics.category_id = orders.category_id
 ORDER BY heroes.name IS NULL DESC, heroes.name ASC, type_id, rarity_id, ordering, cosmetics.name, event_id;
 ";
