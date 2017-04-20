@@ -310,7 +310,6 @@ VALUES
   (2198, 16, 1, 2, NULL, 'B73-NS', 16),
   (2199, 16, 1, 2, NULL, 'Drop Pod', 16),
   (2200, 16, 1, 2, NULL, 'Blackwatch', 16),
-  (2201, 16, 1, 2, NULL, 'OR14-NS', 16),
 
   (98, 1, 1, 2, 1, 'Ana', 3), -- Normal Ana Player Icons
   (99, 1, 1, 2, 1, 'Watcher', 3),
@@ -372,6 +371,7 @@ VALUES
   (2190, 1, 1, 2, 24, 'Efi', 15), -- Normal Orisa Player Icons
   (2191, 1, 1, 2, 24, 'Protector', 15),
   (2192, 1, 1, 2, 24, 'Orisa', 15),
+  (2201, 16, 1, 2, 24, 'OR14-NS', 16), -- Uprising Orisa Player Icons
 
   (141, 1, 1, 2, 11, 'Pharah', 1), -- Normal Pharah Player Icons
   (142, 1, 1, 2, 11, 'Raptora', 1),
@@ -389,7 +389,7 @@ VALUES
   (152, 1, 1, 2, 13, 'Scar', 1),
   (153, 6, 1, 2, 13, 'Wrestling', 4), -- Summer Games Reinhardt Player Icons
   (2021, 14, 1, 2, 13, 'Sandy', 13), -- Lunar New Year Reinhardt Player Icons
-  (2204, 16, 1, 2, 13, 'Lieutenant', 16), -- Uprising Reinhardt PLayer Icons
+  (2204, 16, 1, 2, 13, 'Lieutenant', 16), -- Uprising Reinhardt Player Icons
 
   (154, 1, 1, 2, 14, 'Hook', 1), -- Normal Roadhog Player Icons
   (155, 1, 1, 2, 14, 'Piggy', 1),
