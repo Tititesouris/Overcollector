@@ -93,7 +93,8 @@ VALUES
   (13, 'Year of the Rooster', '2017-01-24', '2017-02-14'),
   (14, 'Competitive Season 4', '2017-02-28', NULL), -- TODO end date
   (15, 'Orisa Patch', '2017-03-07', NULL),
-  (16, 'Uprising 2017', '2017-04-11', NULL);
+  (16, 'Uprising 2017', '2017-04-11', '2017-05-02'),
+  (17, 'Overwatch Anniversary', '2017-05-13', NULL);
 
 INSERT INTO settings (id, name, description, type, "default", min, max)
 VALUES
@@ -324,6 +325,7 @@ VALUES
   (106, 1, 1, 2, 3, 'D.Va', 1), -- Normal D.Va Player Icons
   (107, 1, 1, 2, 3, 'Bunny', 1),
   (108, 1, 1, 2, 3, 'Charm', 1),
+  (2311, 9, 1, 2, 3, 'Officer', 17), -- Blizzard D.Va Player Icons
   (109, 6, 1, 2, 3, 'Cycling', 4), -- Summer Games D.Va Player Icons
   (2025, 14, 1, 2, 3, 'Hanbok', 13), -- Lunar New Year D.Va Player Icons
 
@@ -495,6 +497,7 @@ VALUES
   (228, 1, 2, 4, 3, 'Junebug', 1),
   (229, 1, 2, 4, 3, 'Junker', 1),
   (230, 1, 2, 4, 3, 'Scavenger', 1),
+  (2312, 9, 2, 4, 3, 'Officer', 17), -- Blizzard D.Va Skins
   (231, 6, 2, 3, 3, 'Taegeukgi', 4), -- Summer Games D.Va Skins
   (2033, 14, 2, 4, 3, 'Palanquin', 13), -- Lunar New Year D.Va Skins
 
@@ -1775,6 +1778,7 @@ VALUES
   (1187, 1, 6, 1, 3, 'Unload', 1),
   (1188, 1, 6, 1, 3, 'Walk of Fame', 1),
   (1189, 1, 6, 1, 3, 'Watching', 1),
+  (2313, 9, 6, 1, 3, 'Officer', 17), -- Blizzard D.Va Sprays
   (1190, 2, 6, 1, 3, 'Cute', 1), -- Achievements D.Va Sprays
   (1191, 2, 6, 1, 3, 'Pixel', 1),
   (1192, 6, 6, 1, 3, 'Cycling', 4), -- Summer Games D.Va Sprays
