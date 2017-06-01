@@ -53,9 +53,12 @@ VALUES
    'lunarnewyear-achievements'),
   (16, 'Uprising',
    'Obtainable by opening Uprising Loot Boxes or by spending 3 times the normal amount of credits during the Uprising event.',
-   0, 'uprising'),
+   3, 'uprising'),
   (17, 'Uprising Achievements', 'Obtainable by completing Uprising achievements.', 0,
-   'uprising-achievements');
+   'uprising-achievements'),
+  (18, 'Anniversary',
+   'Obtainable by opening Anniversary Loot Boxes or by spending 3 times the normal amount of credits during the Anniversary event.',
+   3, 'anniversary');
 
 INSERT INTO types (id, name, slug)
 VALUES
@@ -91,10 +94,11 @@ VALUES
   (11, 'Winter Wonderland 2016', '2016-12-13', '2017-01-03'),
   (12, 'Oasis Patch', '2017-01-03', NULL),
   (13, 'Year of the Rooster', '2017-01-24', '2017-02-14'),
-  (14, 'Competitive Season 4', '2017-02-28', NULL), -- TODO end date
+  (14, 'Competitive Season 4', '2017-02-28', '2017-05-28'),
   (15, 'Orisa Patch', '2017-03-07', NULL),
   (16, 'Uprising 2017', '2017-04-11', '2017-05-02'),
-  (17, 'Overwatch Anniversary', '2017-05-13', NULL);
+  (17, 'Anniversary 2017', '2017-05-25', '2017-06-13'),
+  (18, 'Competitive Season 5', '2017-05-31', NULL); --TODO end date
 
 INSERT INTO settings (id, name, description, type, "default", min, max)
 VALUES
@@ -147,6 +151,7 @@ VALUES
   (55, 'collection-show-category-lunarnewyear-achievements', 'Show Lunar New Year Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (57, 'collection-show-category-uprising', 'Show Uprising cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (58, 'collection-show-category-uprising-achievements', 'Show Uprising Achievements cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
+  (59, 'collection-show-category-anniversary', 'Show Anniversary cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
   (40, 'collection-show-type-playericon', 'Show Player Icon cosmetics in the collection', 'BOOLEAN', 'true', NULL,
    NULL),
   (41, 'collection-show-type-skin', 'Show Skin cosmetics in the collection', 'BOOLEAN', 'true', NULL, NULL),
@@ -233,6 +238,8 @@ VALUES
   (64, 5, 1, 2, NULL, 'Season 3 Hero', 10),
   (2193, 5, 1, 2, NULL, 'Season 4 Competitor', 14),
   (2194, 5, 1, 2, NULL, 'Season 4 Hero', 14),
+  (2314, 5, 1, 2, NULL, 'Season 5 Competitor', 18),
+  (2315, 5, 1, 2, NULL, 'Season 5 Hero', 18),
   (65, 5, 1, 2, NULL, 'Top 500', 2),
   (66, 6, 1, 2, NULL, 'Australia', 4), -- Summer Games All Heroes Player Icons
   (67, 6, 1, 2, NULL, 'Brazil', 4),
@@ -311,16 +318,20 @@ VALUES
   (2198, 16, 1, 2, NULL, 'B73-NS', 16),
   (2199, 16, 1, 2, NULL, 'Drop Pod', 16),
   (2200, 16, 1, 2, NULL, 'Blackwatch', 16),
+  (2316, 18, 1, 2, NULL, 'Anniversary', 17), -- Anniversary All Heroes Player Icons
+  (2317, 18, 1, 2, NULL, 'Pachiversary', 17),
 
   (98, 1, 1, 2, 1, 'Ana', 3), -- Normal Ana Player Icons
   (99, 1, 1, 2, 1, 'Watcher', 3),
   (100, 1, 1, 2, 1, 'Wedjat', 3),
   (101, 6, 1, 2, 1, 'Shooting', 4), -- Summer Games Ana Player Icons
+  (2318, 18, 1, 2, 1, 'Anaversary', 17), -- Anniversary Ana Player Icons
 
   (102, 1, 1, 2, 2, 'Bastion', 1), -- Normal Bastion Player Icons
   (103, 1, 1, 2, 2, 'Ganymede', 1),
   (104, 1, 1, 2, 2, 'Tank Crossing', 1),
   (105, 6, 1, 2, 2, 'Boxing', 4), -- Summer Games Bastion Player Icons
+  (2319, 18, 1, 2, 2, 'Goldbot', 17), -- Anniversary Bastion Player Icons
 
   (106, 1, 1, 2, 3, 'D.Va', 1), -- Normal D.Va Player Icons
   (107, 1, 1, 2, 3, 'Bunny', 1),
@@ -328,40 +339,47 @@ VALUES
   (2311, 9, 1, 2, 3, 'Officer', 17), -- Blizzard D.Va Player Icons
   (109, 6, 1, 2, 3, 'Cycling', 4), -- Summer Games D.Va Player Icons
   (2025, 14, 1, 2, 3, 'Hanbok', 13), -- Lunar New Year D.Va Player Icons
+  (2320, 18, 1, 2, 3, 'Hanaversary', 17), -- Anniversary D.Va Player Icons
 
   (110, 1, 1, 2, 4, 'Genji', 1), -- Normal Genji Player Icons
   (111, 1, 1, 2, 4, 'God of War', 1),
   (112, 1, 1, 2, 4, 'Nin', 1),
   (114, 9, 1, 2, 4, 'Oni', 9), -- Blizzard Genji Player Icons
   (113, 6, 1, 2, 4, 'Fencing', 4), -- Summer Games Genji Player Icons
-  (2202, 16, 1, 2, 4, 'Cyborg', 16), -- Uprising Genji PLayer Icons
+  (2202, 16, 1, 2, 4, 'Cyborg', 16), -- Uprising Genji Player Icons
+  (2321, 18, 1, 2, 4, 'Goldborg', 17), -- Anniversary Genji Player Icons
 
   (115, 1, 1, 2, 5, 'Hanzo', 1), -- Normal Hanzo Player Icons
   (116, 1, 1, 2, 5, 'Shimada', 1),
   (117, 1, 1, 2, 5, 'Storm', 1),
   (118, 6, 1, 2, 5, 'Archery', 4), -- Summer Games Hanzo Player Icons
+  (2322, 18, 1, 2, 5, 'Kinenbi', 17), -- Anniversary Hanzo Player Icons
 
   (119, 1, 1, 2, 6, 'Ahhhh!', 1), -- Normal Junkrat Player Icons
   (120, 1, 1, 2, 6, 'Have a Nice Day!', 1),
   (121, 1, 1, 2, 6, 'Junkrat', 1),
   (122, 6, 1, 2, 6, 'Tennis', 4), -- Summer Games Junkrat Player Icons
   (123, 7, 1, 2, 6, 'The Doctor', 7), -- Halloween Terror Junkrat Player Icons
+  (2323, 18, 1, 2, 6, 'Goldrat', 17), -- Anniversary Junkrat Player Icons
 
   (124, 1, 1, 2, 7, 'Frog', 1), -- Normal Lúcio Player Icons
   (125, 1, 1, 2, 7, 'Kambô', 1),
   (126, 1, 1, 2, 7, 'Lúcio', 1),
   (127, 6, 1, 2, 7, 'Football', 4), -- Summer Games Lúcio Player Icons
+  (2324, 18, 1, 2, 7, 'Lúciouro', 17), -- Anniversary Lúcio Player Icons
 
   (128, 1, 1, 2, 8, 'Badge', 1), -- Normal McCree Player Icons
   (129, 1, 1, 2, 8, 'Deadeye', 1),
   (130, 1, 1, 2, 8, 'McCree', 1),
   (131, 6, 1, 2, 8, 'Equestrian', 4), -- Summer Games McCree Player Icons
+  (2325, 18, 1, 2, 8, 'GAMF', 17), -- Anniversary McCree Player Icons
 
   (132, 1, 1, 2, 9, 'Hairpin', 1), -- Normal Mei Player Icons
   (133, 1, 1, 2, 9, 'Mei', 1),
   (134, 1, 1, 2, 9, 'Snowball', 1),
   (135, 6, 1, 2, 9, 'Table Tennis', 4), -- Summer Games Mei Player Icons
   (2027, 14, 1, 2, 9, 'Chang''e', 13), -- Lunar New Year Mei Player Icons
+  (2326, 18, 1, 2, 9, 'May', 17), -- Anniversary Mei Player Icons
 
   (136, 1, 1, 2, 10, 'Guardian Angel', 1), -- Normal Mercy Player Icons
   (137, 1, 1, 2, 10, 'Mercy', 1),
@@ -369,22 +387,26 @@ VALUES
   (139, 6, 1, 2, 10, 'Badminton', 4), -- Summer Games Mercy Player Icons
   (140, 7, 1, 2, 10, 'The Witch', 7), -- Halloween Terror Mercy Player Icons
   (2203, 16, 1, 2, 10, 'Combat Medic', 16), -- Uprising Mercy Player Icons
+  (2327, 18, 1, 2, 10, 'Jahrestag', 17), -- Anniversary Mercy Player Icons
 
   (2190, 1, 1, 2, 24, 'Efi', 15), -- Normal Orisa Player Icons
   (2191, 1, 1, 2, 24, 'Protector', 15),
   (2192, 1, 1, 2, 24, 'Orisa', 15),
   (2201, 16, 1, 2, 24, 'OR14-NS', 16), -- Uprising Orisa Player Icons
+  (2328, 18, 1, 2, 24, 'Aurisa', 17), -- Anniversary Orisa Player Icons
 
   (141, 1, 1, 2, 11, 'Pharah', 1), -- Normal Pharah Player Icons
   (142, 1, 1, 2, 11, 'Raptora', 1),
   (143, 1, 1, 2, 11, 'Wadjet', 1),
   (144, 6, 1, 2, 11, 'Basketball', 4), -- Summer Games Pharah Player Icons
+  (2329, 18, 1, 2, 11, 'Anniversareeha', 17), -- Anniversary Pharah Player Icons
 
   (145, 1, 1, 2, 12, 'Emblem', 1), -- Normal Reaper Player Icons
   (146, 1, 1, 2, 12, 'Reaper', 1),
   (147, 1, 1, 2, 12, 'Soul Globe', 1),
   (148, 6, 1, 2, 12, 'BMX', 4), -- Summer Games Reaper Player Icons
   (149, 7, 1, 2, 12, 'The Reaper', 7), -- Halloween Terror Reaper Player Icons
+  (2330, 18, 1, 2, 12, 'Reapiversary', 17), -- Anniversary Reaper Player Icons
 
   (150, 1, 1, 2, 13, 'Lionhardt', 1), -- Normal Reinhardt Player Icons
   (151, 1, 1, 2, 13, 'Reinhardt', 1),
@@ -392,6 +414,7 @@ VALUES
   (153, 6, 1, 2, 13, 'Wrestling', 4), -- Summer Games Reinhardt Player Icons
   (2021, 14, 1, 2, 13, 'Sandy', 13), -- Lunar New Year Reinhardt Player Icons
   (2204, 16, 1, 2, 13, 'Lieutenant', 16), -- Uprising Reinhardt Player Icons
+  (2331, 18, 1, 2, 13, 'Goldhardt', 17), -- Anniversary Reinhardt Player Icons
 
   (154, 1, 1, 2, 14, 'Hook', 1), -- Normal Roadhog Player Icons
   (155, 1, 1, 2, 14, 'Piggy', 1),
@@ -399,20 +422,24 @@ VALUES
   (157, 6, 1, 2, 14, 'Diving', 4), -- Summer Games Roadhog Player Icons
   (158, 7, 1, 2, 14, 'The Monster', 7), -- Halloween Terror Roadhog Player Icons
   (2024, 14, 1, 2, 14, 'Piggy', 13), -- Lunar New Year Roadhog Player Icons
+  (2332, 18, 1, 2, 14, 'Goldhog', 17), -- Anniversary Roadhog Player Icons
 
   (159, 1, 1, 2, 15, '76', 1), -- Normal Soldier: 76 Player Icons
   (160, 1, 1, 2, 15, 'Soldier: 76', 1),
   (161, 1, 1, 2, 15, 'Strike-Commander', 1),
   (162, 6, 1, 2, 15, 'Golf', 4), -- Summer Games Soldier: 76 Player Icons
+  (2333, 18, 1, 2, 15, 'Gold Soldier', 17), -- Anniversary Soldier: 76 Player Icons
 
   (191, 1, 1, 2, 23, 'Hacker', 9), -- Normal Sombra Player Icons
   (192, 1, 1, 2, 23, 'Skull', 9),
   (193, 1, 1, 2, 23, 'Sombra', 9),
+  (2334, 18, 1, 2, 1, 'Aniversario', 17), -- Anniversary Sombra Player Icons
 
   (163, 1, 1, 2, 16, 'Sentry', 1), -- Normal Symmetra Player Icons
   (164, 1, 1, 2, 16, 'Symmetra', 1),
   (165, 1, 1, 2, 16, 'Vishkar', 1),
   (166, 6, 1, 2, 16, 'Rythmic Gymnastics', 4), -- Summer Games Symmetra Player Icons
+  (2335, 18, 1, 2, 16, 'Vaswanniversary', 17), -- Anniversary Symmetra Player Icons
 
   (167, 1, 1, 2, 17, 'Forge', 1), -- Normal Torbjörn Player Icons
   (168, 1, 1, 2, 17, 'Gears', 1),
@@ -420,6 +447,7 @@ VALUES
   (170, 6, 1, 2, 17, 'Water Polo', 4), -- Summer Games Torbjörn Player Icons
   (1901, 10, 1, 2, 17, 'Santaclad', 11), -- Winter Wonderland Torbjörn Player Icons
   (2205, 16, 1, 2, 17, 'Chief Engineer', 16), -- Uprising Torbjörn Player Icons
+  (2336, 18, 1, 2, 17, 'Goldclad', 17), -- Anniversary Torbjörn Player Icons
 
   (171, 1, 1, 2, 18, 'Patch', 1), -- Normal Tracer Player Icons
   (172, 1, 1, 2, 18, 'Pulse Bomb', 1),
@@ -427,12 +455,14 @@ VALUES
   (1893, 10, 1, 2, 18, 'Jingle', 11), -- Winter Wonderland Tracer Player Icons
   (174, 6, 1, 2, 18, 'Track', 4), -- Summer Games Tracer Player Icons
   (2206, 16, 1, 2, 18, 'Cadet', 16), -- Uprising Tracer Player Icons
+  (2337, 18, 1, 2, 18, 'Auxton', 17), -- Anniversary Tracer Player Icons
 
   (175, 1, 1, 2, 19, 'Baiser', 1), -- Normal Widowmaker Player Icons
   (176, 1, 1, 2, 19, 'Grappling Hook', 1),
   (177, 1, 1, 2, 19, 'Widowmaker', 1),
   (178, 6, 1, 2, 19, 'Gymnastics', 4), -- Summer Games Widowmaker Player Icons
   (2207, 16, 1, 2, 19, 'Lacroix', 16), -- Uprising Widowmaker Player Icons
+  (2338, 18, 1, 2, 19, 'D''Or', 17), -- Anniversary Widowmaker Player Icons
 
   (179, 1, 1, 2, 20, 'Lunar Ops', 1), -- Normal Winston Player Icons
   (180, 1, 1, 2, 20, 'Peanut Butter', 1),
@@ -440,11 +470,13 @@ VALUES
   (182, 6, 1, 2, 20, 'Volleyball', 4), -- Summer Games Winston Player Icons
   (1905, 10, 1, 2, 20, 'Yeti', 11), -- Winter Wonderland Winston Player Icons
   (2022, 14, 1, 2, 20, 'Monkey', 13), -- Lunar New Year Winston Player Icons
+  (2339, 18, 1, 2, 20, 'Goldrilla', 17), -- Anniversary Winston Player Icons
 
   (183, 1, 1, 2, 21, '512', 1), -- Normal Zarya Player Icons
   (184, 1, 1, 2, 21, 'Particle Barrier', 1),
   (185, 1, 1, 2, 21, 'Zarya', 1),
   (186, 6, 1, 2, 21, 'Weightlifting', 4), -- Summer Games Zarya Player Icons
+  (2340, 18, 1, 2, 21, 'Zaryanoversary', 17), -- Anniversary Zarya Player Icons
 
   (187, 1, 1, 2, 22, 'Harmony', 1), -- Normal Zenyatta Player Icons
   (188, 1, 1, 2, 22, 'Meditation', 1),
@@ -452,6 +484,7 @@ VALUES
   (190, 6, 1, 2, 22, 'Taekwondo', 4), -- Summer Games Zenyatta Player Icons
   (1906, 10, 1, 2, 22, 'Nutcracker', 11), -- Winter Wonderland Zenyatta Player Icons
   (2023, 14, 1, 2, 22, 'Sanzang', 13), -- Lunar New Year Zenyatta Player Icons
+  (2341, 18, 1, 2, 22, 'Zeniversary', 17), -- Anniversary Zenyatta Player Icons
 
   -- Skins
 
@@ -485,6 +518,7 @@ VALUES
   (218, 7, 2, 3, 2, 'Tombstone', 7), -- Halloween Terror Bastion Skins
   (2032, 14, 2, 3, 2, 'Rooster', 13), -- Lunar New Year Bastion Skins
   (2208, 16, 2, 3, 2, 'Null Sector', 16), -- Uprising Bastion Skins
+  (2342, 18, 2, 4, 2, 'Dune Buggy', 17), -- Anniversary Bastion Skins
 
   (220, NULL, 2, NULL, 3, 'Classic', 1), -- Default D.Va Skins
   (221, 1, 2, 2, 3, 'Blueberry', 1), -- Normal D.Va Skins
@@ -500,6 +534,7 @@ VALUES
   (2312, 9, 2, 4, 3, 'Officer', 17), -- Blizzard D.Va Skins
   (231, 6, 2, 3, 3, 'Taegeukgi', 4), -- Summer Games D.Va Skins
   (2033, 14, 2, 4, 3, 'Palanquin', 13), -- Lunar New Year D.Va Skins
+  (2343, 18, 2, 4, 3, 'Cruiser', 17), -- Anniversary D.Va Skins
 
   (232, NULL, 2, NULL, 4, 'Classic', 1), -- Default Genji Skins
   (233, 1, 2, 2, 4, 'Azurite', 1), -- Normal Genji Skins
@@ -515,6 +550,7 @@ VALUES
   (244, 9, 2, 4, 4, 'Oni', 9), -- Blizzard Genji Skins
   (243, 6, 2, 3, 4, 'Nihon', 4), -- Summer Games Genji Skins
   (2209, 16, 2, 4, 4, 'Blackwatch', 16), -- Uprising Genji Skins
+  (2344, 18, 2, 4, 4, 'Sentai', 17), -- Anniversary Genji Skins
 
   (245, NULL, 2, NULL, 5, 'Classic', 1), -- Default Hanzo Skins
   (246, 1, 2, 2, 5, 'Azuki', 1), -- Normal Hanzo Skins
@@ -528,6 +564,7 @@ VALUES
   (254, 1, 2, 4, 5, 'Young Hanzo', 1),
   (255, 1, 2, 4, 5, 'Young Master', 1),
   (256, 7, 2, 3, 5, 'Demon', 7), -- Halloween Terror Hanzo Skins
+  (2345, 18, 2, 4, 5, 'Cyberninja', 17), -- Anniversary Hanzo Skins
 
   (257, NULL, 2, NULL, 6, 'Classic', 1), -- Default Junkrat Skins
   (258, 1, 2, 2, 6, 'Bleached', 1), -- Normal Junkrat Skins
@@ -557,6 +594,7 @@ VALUES
   (280, 6, 2, 4, 7, 'Seleção', 4), -- Summer Games Lúcio Skins
   (281, 6, 2, 4, 7, 'Striker', 4),
   (1958, 10, 2, 3, 7, 'Andes', 11), -- Winter Wonderland Lúcio Skins
+  (2346, 18, 2, 4, 7, 'Jazzy', 17), -- Anniversary Lúcio Skins
 
   (282, NULL, 2, NULL, 8, 'Classic', 1), -- Default McCree Skins
   (283, 1, 2, 2, 8, 'Ebony', 1), -- Normal McCree Skins
@@ -587,6 +625,7 @@ VALUES
   (1960, 10, 2, 4, 9, 'Mei-rry', 11), -- Winter Wonderland Mei Skins
   (2035, 14, 2, 4, 9, 'Chang''e', 13), -- Lunar New Year Mei Skins
   (2036, 14, 2, 4, 9, 'Luna', 13),
+  (2347, 18, 2, 4, 9, 'Beekeeper', 17), -- Anniversary Mei Skins
 
   (305, NULL, 2, NULL, 10, 'Classic', 1), -- Default Mercy Skins
   (306, 1, 2, 2, 10, 'Celestial', 1), -- Normal Mercy Skins
@@ -630,6 +669,7 @@ VALUES
   (329, 3, 2, 4, 11, 'Security Chief', 1), -- Origins Edition Pharah Skins
   (330, 7, 2, 3, 11, 'Possessed', 7), -- Halloween Terror Pharah Skins
   (1961, 10, 2, 3, 11, 'Frostbite', 11), -- Winter Wonderland Pharah Skins
+  (2348, 18, 2, 4, 11, 'Bedouin', 17), -- Anniversary Pharah Skins
 
   (331, NULL, 2, NULL, 12, 'Classic', 1), -- Default Reaper Skins
   (332, 1, 2, 2, 12, 'Blood', 1), -- Normal Reaper Skins
@@ -691,6 +731,7 @@ VALUES
   (380, 1, 2, 4, 15, 'Stunt Rider: 76', 1),
   (381, 3, 2, 4, 15, 'Strike-Commander Morrison', 1), -- Origins Edition Soldier: 76 Skins
   (382, 7, 2, 3, 15, 'Immortal', 7), -- Halloween Terror Soldier: 76 Skins
+  (2349, 18, 2, 4, 15, 'Cyborg: 76', 17), -- Anniversary Soldier: 76 Skins
 
   (470, NULL, 2, NULL, 23, 'Classic', 9), -- Default Sombra Skins
   (471, 1, 2, 2, 23, 'Cidro', 9), -- Normal Sombra Skins
@@ -718,6 +759,7 @@ VALUES
   (393, 1, 2, 4, 16, 'Vishkar', 1),
   (394, 7, 2, 3, 16, 'Vampire', 7), -- Halloween Terror Symmetra Skins
   (2040, 14, 2, 3, 16, 'Qipao', 13), -- Lunar New Year Symmetra Skins
+  (2350, 18, 2, 4, 16, 'Oasis', 17), -- Anniversary Symmetra Skins
 
   (395, NULL, 2, NULL, 17, 'Classic', 1), -- Default Torbjörn Skins
   (396, 1, 2, 2, 17, 'Blå', 1), -- Normal Torbjörn Skins
@@ -752,6 +794,7 @@ VALUES
   (1965, 10, 2, 4, 18, 'Jingle', 11), -- Winter Wonderland Tracer Skins
   (2041, 14, 2, 3, 18, 'Rose', 13), -- Lunar New Year Tracer Skins
   (2216, 16, 2, 4, 18, 'Cadet Oxton', 16), -- Uprising Tracer Skins
+  (2351, 18, 2, 4, 18, 'Graffiti', 17), -- Anniversary Tracer Skins
 
   (421, NULL, 2, NULL, 19, 'Classic', 1), -- Default Widowmaker Skins
   (422, 1, 2, 2, 19, 'Ciel', 1), -- Normal Widowmaker Skins
@@ -796,6 +839,7 @@ VALUES
   (456, 6, 2, 4, 21, 'Champion', 4), -- Summer Games Zarya Skins
   (457, 6, 2, 4, 21, 'Weightlifter', 4),
   (1967, 10, 2, 3, 21, 'Frosted', 11), -- Winter Wonderland Zarya Skins
+  (2352, 18, 2, 4, 21, 'Cyberian', 17), -- Anniversary Zarya Skins
 
   (458, NULL, 2, NULL, 22, 'Classic', 1), -- Default Zenyatta Skins
   (459, 1, 2, 2, 22, 'Air', 1), -- Normal Zenyatta Skins
@@ -821,6 +865,7 @@ VALUES
   (485, 1, 3, 3, 1, 'Take a Knee', 5),
   (486, 1, 3, 3, 1, 'Tea Time', 3),
   (487, 7, 3, 3, 1, 'Candy', 7), -- Halloween Terror Ana Emotes
+  (2353, 18, 3, 3, 1, 'Dance', 17), -- Anniversary Ana Emotes
 
   (488, NULL, 3, NULL, 2, 'Heroic', 1), -- Default Bastion Emotes
   (489, 1, 3, 3, 2, 'Alert! Alert!', 1), -- Normal Bastion Emotes
@@ -829,6 +874,7 @@ VALUES
   (492, 1, 3, 3, 2, 'Robot', 1),
   (493, 1, 3, 3, 2, 'Rest Mode', 5),
   (494, 6, 3, 3, 2, 'Boxing', 4), -- Summer Games Bastion Emotes
+  (2354, 18, 3, 3, 2, 'Robo Boogie', 17), -- Anniversary Bastion Emotes
 
   (495, NULL, 3, NULL, 3, 'Heroic', 1), -- Default D.Va Emotes
   (496, 1, 3, 3, 3, '^O^', 5), -- Normal D.Va Emotes
@@ -837,6 +883,7 @@ VALUES
   (499, 1, 3, 3, 3, 'Party Time', 1),
   (500, 1, 3, 4, 3, 'Game On', 5),
   (2044, 14, 3, 3, 3, 'Bow', 13), -- Lunar New Year D.Va Emotes
+  (2355, 18, 3, 3, 3, 'Dance', 17), -- Anniversary D.Va Emotes
 
   (501, NULL, 3, NULL, 4, 'Heroic', 1), -- Default Genji Emotes
   (502, 1, 3, 3, 4, 'Amusing', 5), -- Normal Genji Emotes
@@ -844,6 +891,7 @@ VALUES
   (504, 1, 3, 3, 4, 'Cutting Edge', 1),
   (505, 1, 3, 3, 4, 'Meditate', 5),
   (506, 1, 3, 3, 4, 'Salute', 1),
+  (2356, 18, 3, 3, 4, 'Dance', 17), -- Anniversary Genji Emotes
 
   (507, NULL, 3, NULL, 5, 'Heroic', 1), -- Default Hanzo Emotes
   (508, 1, 3, 3, 5, 'Beckon', 1), -- Normal Hanzo Emotes
@@ -852,6 +900,7 @@ VALUES
   (511, 1, 3, 3, 5, 'Meditate', 5),
   (512, 1, 3, 3, 5, 'Victory', 1),
   (2218, 16, 3, 3, 5, 'Training', 16), -- Uprising Hanzo Emotes
+  (2357, 18, 3, 3, 5, 'Fisherman Dance', 17), -- Anniversary Hanzo Emotes
 
   (513, NULL, 3, NULL, 6, 'Heroic', 1), -- Default Junkrat Emotes
   (514, 1, 3, 3, 6, 'Can''t Deal', 5), -- Normal Junkrat Emotes
@@ -860,6 +909,7 @@ VALUES
   (517, 1, 3, 3, 6, 'Puppet', 1),
   (518, 1, 3, 3, 6, 'Vaudeville', 1),
   (2045, 14, 3, 3, 6, 'Dud?', 13), -- Lunar New Year Junkrat Emotes
+  (2358, 18, 3, 3, 6, 'Running Rat', 17), -- Anniversary Junkrat Emotes
 
   (519, NULL, 3, NULL, 7, 'Heroic', 1), -- Default Lúcio Emotes
   (520, 1, 3, 3, 7, 'Capoeira', 1), -- Normal Lúcio Emotes
@@ -868,6 +918,7 @@ VALUES
   (523, 1, 3, 3, 7, 'Knee Slapper', 5),
   (524, 1, 3, 3, 7, 'Nah!', 1),
   (525, 6, 3, 3, 7, 'Juggle', 4), -- Summer Games Lúcio Emotes
+  (2359, 18, 3, 3, 7, 'Smooth', 17), -- Anniversary Lúcio Emotes
 
   (526, NULL, 3, NULL, 8, 'Heroic', 1), -- Default McCree Emotes
   (527, 1, 3, 3, 8, 'Gunspinning', 1), -- Normal McCree Emotes
@@ -876,6 +927,7 @@ VALUES
   (530, 1, 3, 3, 8, 'Spit', 1),
   (531, 1, 3, 3, 8, 'Take a Load off', 5),
   (1970, 10, 3, 3, 8, 'Hat Trick', 11), -- Winter Wonderland McCree Emotes
+  (2360, 18, 3, 3, 8, 'Line Dance', 17), -- Anniversary McCree Emotes
 
   (532, NULL, 3, NULL, 9, 'Heroic', 1), -- Default Mei Emotes
   (533, 1, 3, 3, 9, 'Companion', 1), -- Normal Mei Emotes
@@ -885,6 +937,7 @@ VALUES
   (537, 1, 3, 3, 9, 'Yaaaaaaaaay!', 1),
   (1971, 10, 3, 3, 9, 'Snowman', 11), -- Winter Wonderland Mei Emotes
   (2046, 14, 3, 3, 9, 'So Excited', 13), -- Lunar New Year Mei Emotes
+  (2361, 18, 3, 3, 9, 'Sunny Dance', 17), -- Anniversary Mei Emotes
 
   (538, NULL, 3, NULL, 10, 'Heroic', 1), -- Default Mercy Emotes
   (539, 1, 3, 3, 10, 'Applause', 1), -- Normal Mercy Emotes
@@ -892,10 +945,12 @@ VALUES
   (541, 1, 3, 3, 10, 'No Pulse', 1),
   (542, 1, 3, 3, 10, 'Relax', 5),
   (543, 1, 3, 3, 10, 'The Best Medicine', 5),
+  (2362, 18, 3, 3, 10, 'Hustle', 17), -- Anniversary Mercy Emotes
 
   (2142, NULL, 3, NULL, 24, 'Heroic', 15), -- Default Orisa Emotes
   (2143, 1, 3, 3, 24, 'Halt!', 15), -- Normal Orisa Emotes
   (2144, 1, 3, 3, 24, 'Kicking Dirt', 15),
+  (2363, 18, 3, 3, 24, 'Dance', 17), -- Anniversary Orisa Emotes
 
   (544, NULL, 3, NULL, 11, 'Heroic', 1), -- Default Pharah Emotes
   (545, 1, 3, 3, 11, 'Cheer', 1), -- Normal Pharah Emotes
@@ -904,6 +959,7 @@ VALUES
   (548, 1, 3, 3, 11, 'Knuckles', 1),
   (549, 1, 3, 3, 11, 'Take a Knee', 5),
   (2219, 16, 3, 3, 11, 'Flair', 16), -- Uprising Pharah Emotes
+  (2364, 18, 3, 3, 11, 'Rocket Guitar', 17), -- Anniversary Pharah Emotes
 
   (550, NULL, 3, NULL, 12, 'Heroic', 1), -- Default Reaper Emotes
   (551, 1, 3, 3, 12, 'Cackle', 5), -- Normal Reaper Emotes
@@ -911,6 +967,7 @@ VALUES
   (553, 1, 3, 3, 12, 'Slice', 1),
   (554, 1, 3, 3, 12, 'Slow Clap', 1),
   (555, 1, 3, 3, 12, 'Take a Knee', 5),
+  (2365, 18, 3, 3, 12, 'Dance', 17), -- Anniversary Reaper Emotes
 
   (556, NULL, 3, NULL, 13, 'Heroic', 1), -- Default Reinhardt Emotes
   (557, 1, 3, 3, 13, 'Flex', 1), -- Normal Reinhardt Emotes
@@ -919,6 +976,7 @@ VALUES
   (560, 1, 3, 3, 13, 'Uproarious', 5),
   (561, 1, 3, 3, 13, 'Warrior''s Salute', 1),
   (562, 7, 3, 3, 13, 'Pumpkin Smash', 7), -- Halloween Terror Reinhardt Emotes
+  (2366, 18, 3, 3, 13, 'Sweethardt', 17), -- Anniversary Reinhardt Emotes
 
   (563, NULL, 3, NULL, 14, 'Heroic', 1), -- Default Roadhog Emotes
   (564, 1, 3, 3, 14, 'Belly Laugh', 5), -- Normal Roadhog Emotes
@@ -926,6 +984,7 @@ VALUES
   (566, 1, 3, 3, 14, 'Can Crusher', 1),
   (567, 1, 3, 3, 14, 'Headbanging', 1),
   (568, 1, 3, 3, 14, 'Tuckered Out', 5),
+  (2367, 18, 3, 3, 14, 'Dance', 17), -- Anniversary Roadhog Emotes
 
   (569, NULL, 3, NULL, 15, 'Heroic', 1), -- Default Soldier: 76 Emotes
   (570, 1, 3, 3, 15, 'Amused', 5), -- Normal Soldier: 76 Emotes
@@ -934,11 +993,13 @@ VALUES
   (573, 1, 3, 3, 15, 'Locked and Loaded', 1),
   (574, 1, 3, 3, 15, 'Take a Knee', 5),
   (2220, 16, 3, 3, 15, 'Push-ups', 16), -- Uprising Soldier: 76 Emotes
+  (2368, 18, 3, 3, 15, 'Dance', 17), -- Anniversary Soldier: 76 Emotes
 
   (618, NULL, 3, NULL, 23, 'Heroic', 9), -- Default Sombra Emotes
   (619, 1, 3, 3, 23, 'Amused', 9), -- Normal Sombra Emotes
   (620, 1, 3, 3, 23, 'Hold On', 9),
   (621, 1, 3, 3, 23, 'Masterpiece', 9),
+  (2369, 18, 3, 3, 23, 'Dance', 17), -- Anniversary Sombra Emotes
 
   (575, NULL, 3, NULL, 16, 'Heroic', 1), -- Default Symmetra Emotes
   (576, 1, 3, 3, 16, 'Clap', 1), -- Normal Symmetra Emotes
@@ -947,6 +1008,7 @@ VALUES
   (579, 1, 3, 3, 16, 'Insignificant', 1),
   (580, 1, 3, 3, 16, 'Snicker', 5),
   (581, 6, 3, 3, 16, 'Ribbon', 4), -- Summer Games Symmetra Emotes
+  (2370, 18, 3, 3, 16, 'Dance', 17), -- Anniversary Symmetra Emotes
 
   (582, NULL, 3, NULL, 17, 'Heroic', 1), -- Default Torbjörn Emotes
   (583, 1, 3, 3, 17, 'Clicking Heels', 1), -- Normal Torbjörn Emotes
@@ -954,12 +1016,14 @@ VALUES
   (585, 1, 3, 3, 17, 'Guffaw', 5),
   (586, 1, 3, 3, 17, 'Overload', 1),
   (587, 1, 3, 3, 17, 'Taking a Break', 5),
+  (2371, 18, 3, 3, 17, 'Dance', 17), -- Anniversary Torbjörn Emotes
 
   (588, NULL, 3, NULL, 18, 'Heroic', 1), -- Default Tracer Emotes
   (589, 1, 3, 3, 18, 'Cheer', 1), -- Normal Tracer Emotes
   (590, 1, 3, 3, 18, 'Having a Laugh', 1),
   (591, 1, 3, 3, 18, 'Sitting Around...', 5),
   (592, 1, 3, 3, 18, 'Spin', 1),
+  (2372, 18, 3, 3, 18, 'Charleston', 17), -- Anniversary Tracer Emotes
 
   (593, NULL, 3, NULL, 19, 'Heroic', 1), -- Default Widowmaker Emotes
   (594, 1, 3, 3, 19, 'at Rest', 5), -- Normal Widowmaker Emotes
@@ -967,6 +1031,7 @@ VALUES
   (596, 1, 3, 3, 19, 'Delighted', 5),
   (597, 1, 3, 3, 19, 'Shot Dead', 1),
   (598, 1, 3, 3, 19, 'Widow''s Kiss', 1),
+  (2373, 18, 3, 3, 19, 'Ballet', 17), -- Anniversary Widowmaker Emotes
 
   (599, NULL, 3, NULL, 20, 'Heroic', 1), -- Default Winston Emotes
   (600, 1, 3, 3, 20, 'Laughing Matter', 5), -- Normal Winston Emotes
@@ -975,6 +1040,7 @@ VALUES
   (603, 1, 3, 3, 20, 'Roar', 1),
   (604, 1, 3, 3, 20, 'Sitting Around', 5),
   (605, 7, 3, 3, 20, 'Shadow Puppets', 7), -- Halloween Terror Winston Emotes
+  (2374, 18, 3, 3, 20, 'Dance', 17), -- Anniversary Winston Emotes
 
   (606, NULL, 3, NULL, 21, 'Heroic', 1), -- Default Zarya Emotes
   (607, 1, 3, 3, 21, 'Bring It On', 1), -- Normal Zarya Emotes
@@ -983,6 +1049,7 @@ VALUES
   (610, 1, 3, 3, 21, 'Pumping Iron', 1),
   (611, 1, 3, 3, 21, 'Take a Knee', 5),
   (1972, 10, 3, 4, 21, 'Mystery Gift', 11), -- Winter Wonderland Zarya Emotes
+  (2375, 18, 3, 3, 21, 'Dance', 17), -- Anniversary Zarya Emotes
 
   (612, NULL, 3, NULL, 22, 'Heroic', 1), -- Default Zenyatta Emotes
   (613, 1, 3, 3, 22, 'Focusing', 1), -- Normal Zenyatta Emotes
@@ -990,6 +1057,7 @@ VALUES
   (615, 1, 3, 3, 22, 'Round of Applause', 1),
   (616, 1, 3, 3, 22, 'Taunt', 5),
   (617, 1, 3, 3, 22, 'Tickled', 5),
+  (2376, 18, 3, 3, 22, 'Dance', 17), -- Anniversary Zenyatta Emotes
 
   -- Victory Poses
 
@@ -1183,6 +1251,8 @@ VALUES
   (2054, 14, 5, 1, 1, 'The Moon in Winter', 13), -- Lunar New Year Ana Voice Lines
   (2227, 16, 5, 1, 1, 'Damn', 16), -- Uprising Ana Voice Lines
   (2228, 16, 5, 1, 1, 'The Ghost Watches', 16),
+  (2377, 18, 5, 1, 1, 'Follow Me', 17), -- Anniversary Ana Voice Lines
+  (2378, 18, 5, 1, 1, 'The Adults Are Talking', 17),
 
   (758, NULL, 5, NULL, 2, 'Doo-Woo', 1), -- Default Bastion Voice Lines
   (759, 1, 5, 1, 2, 'Beeple', 1), -- Normal Bastion Voice Lines
@@ -1201,6 +1271,8 @@ VALUES
   (2055, 14, 5, 1, 2, 'Woop Doo Woo Dun Woop', 13), -- Lunar New Year Bastion Voice Lines
   (2229, 16, 5, 1, 2, 'Dwee Wee Woh', 16), -- Uprising Bastion Voice Lines
   (2230, 16, 5, 1, 2, 'Zwee-Ah Wheee Doo Woo', 16),
+  (2379, 18, 5, 1, 2, 'Bew-Woo Bew-Woo', 17), -- Anniversary Bastion Voice Lines
+  (2380, 18, 5, 1, 2, 'Doo Dun Dun Woo', 17),
 
   (771, NULL, 5, NULL, 3, 'Love, D.Va', 1), -- Default D.Va Voice Lines
   (772, 1, 5, 1, 3, ';)', 1), -- Normal D.Va Voice Lines
@@ -1219,6 +1291,8 @@ VALUES
   (2056, 14, 5, 1, 3, 'The Best Things in Life', 13), -- Lunar New Year D.Va Voice Lines
   (2231, 16, 5, 1, 3, 'Not Taking Me Seriously', 16), -- Uprising D.Va Voice Lines
   (2232, 16, 5, 1, 3, 'Try and Keep Up', 16),
+  (2381, 18, 5, 1, 3, 'Level Up!', 17), -- Anniversary D.Va Voice Lines
+  (2382, 18, 5, 1, 3, 'No Way', 17),
 
   (784, NULL, 5, NULL, 4, 'A Steady Blade', 1), -- Default Genji Voice Lines
   (785, 1, 5, 1, 4, 'Come on!', 1), -- Normal Genji Voice Lines
@@ -1237,6 +1311,8 @@ VALUES
   (2057, 14, 5, 1, 4, 'To Know Yourself', 13), -- Lunar New Year Genji Voice Lines
   (2233, 16, 5, 1, 4, 'Another!', 16), -- Uprising Genji Voice Lines
   (2234, 16, 5, 1, 4, 'Life and Death Balance', 16),
+  (2383, 18, 5, 1, 4, 'I''m Not Impressed', 17), -- Anniversary Genji Voice Lines
+  (2384, 18, 5, 1, 4, 'You Seem Nice', 17),
 
   (797, NULL, 5, NULL, 5, 'Expect Nothing Less', 1), -- Default Hanzo Voice Lines
   (798, 1, 5, 1, 5, 'Flow Like Water', 1), -- Normal Hanzo Voice Lines
@@ -1255,6 +1331,8 @@ VALUES
   (2058, 14, 5, 1, 5, 'When the Moon is Full', 13), -- Lunar New Year Hanzo Voice Lines
   (2235, 16, 5, 1, 5, 'Beauty in Simplicity', 16), -- Uprising Hanzo Voice Lines
   (2236, 16, 5, 1, 5, 'Unacceptable', 16),
+  (2385, 18, 5, 1, 5, 'An Error in Judgment', 17), -- Anniversary Hanzo Voice Lines
+  (2386, 18, 5, 1, 5, 'Just So', 17),
 
   (810, NULL, 5, NULL, 6, 'Tick-Tock-Tick-Tock', 1), -- Default Junkrat Voice Lines
   (811, 1, 5, 1, 6, '...Blow It Up Again', 1), -- Normal Junkrat Voice Lines
@@ -1273,6 +1351,8 @@ VALUES
   (2059, 14, 5, 1, 6, 'Gong Xi Fa Cai', 13), -- Lunar New Year Junkrat Voice Lines
   (2237, 16, 5, 1, 6, 'Come the Raw Prawn', 16), -- Uprising Junkrat Voice Lines
   (2238, 16, 5, 1, 6, 'Too Right', 16),
+  (2387, 18, 5, 1, 6, 'Dipstick', 17), -- Anniversary Junkrat Voice Lines
+  (2388, 18, 5, 1, 6, 'Oops... Dropped Something', 17),
 
   (823, NULL, 5, NULL, 7, 'To the Rhythm', 1), -- Default Lúcio Voice Lines
   (824, 1, 5, 1, 7, 'Can''t Stop, Won''t Stop', 1), -- Normal Lúcio Voice Lines
@@ -1291,6 +1371,8 @@ VALUES
   (2060, 14, 5, 1, 7, 'I Make This Look Good...', 13), -- Lunar New Year Lúcio Voice Lines
   (2239, 16, 5, 1, 7, 'Boop', 16), -- Uprising Lúcio Voice Lines
   (2240, 16, 5, 1, 7, 'Learn to Take It Easy', 16),
+  (2389, 18, 5, 1, 7, 'Everyone Gets Their +1', 17), -- Anniversary Lúcio Voice Lines
+  (2390, 18, 5, 1, 7, 'Have Some Lúcio-Oh''s!', 17),
 
   (836, NULL, 5, NULL, 8, 'Watch and Learn', 1), -- Default McCree Voice Lines
   (837, 1, 5, 1, 8, 'Ain''t I Killed You Before', 1), -- Normal McCree Voice Lines
@@ -1309,6 +1391,8 @@ VALUES
   (2061, 14, 5, 1, 8, 'Calls for a Celebration', 13), -- Lunar New Year McCree Voice Lines
   (2241, 16, 5, 1, 8, 'A Man''s Gotta Have Rules', 16), -- Uprising McCree Voice Lines
   (2242, 16, 5, 1, 8, 'The Old Fashioned Way', 16),
+  (2391, 18, 5, 1, 8, 'Buckle Up', 17), -- Anniversary McCree Voice Lines
+  (2392, 18, 5, 1, 8, 'Next Round''s on Me', 17),
 
   (849, NULL, 5, NULL, 9, 'Hang in there', 1), -- Default Mei Voice Lines
   (850, 1, 5, 1, 9, 'A-Mei-Zing!', 1), -- Normal Mei Voice Lines
@@ -1327,6 +1411,8 @@ VALUES
   (2062, 14, 5, 1, 9, 'Wishing You Prosperity', 13), -- Lunar New Year Mei Voice Lines
   (2243, 16, 5, 1, 9, 'Science This', 16), -- Uprising Mei Voice Lines
   (2244, 16, 5, 1, 9, 'Scientific Explanation', 16),
+  (2393, 18, 5, 1, 9, 'I Was Only Trying to Help', 17), -- Anniversary Mei Voice Lines
+  (2394, 18, 5, 1, 9, 'So Mean! Honestly...', 17),
 
   (862, NULL, 5, NULL, 10, 'I Have My Eye On You', 1), -- Default Mercy Voice Lines
   (863, 1, 5, 1, 10, 'Consultation Fee', 1), -- Normal Mercy Voice Lines
@@ -1345,6 +1431,8 @@ VALUES
   (2063, 14, 5, 1, 10, 'A Most Impressive Display', 13), -- Lunar New Year Mercy Voice Lines
   (2245, 16, 5, 1, 10, 'Not Sure Why I Bother', 16), -- Uprising Mercy Voice Lines
   (2246, 16, 5, 1, 10, 'Take Care of Yourself', 16),
+  (2395, 18, 5, 1, 10, 'Questionable Judgment', 17), -- Anniversary Mercy Voice Lines
+  (2396, 18, 5, 1, 10, 'You''re Welcome', 17),
 
   (2149, NULL, 5, NULL, 24, 'Following My Programming', 15), -- Default Orisa Voice Lines
   (2180, 1, 5, 1, 24, 'Current Outlook', 15), -- Normal Orisa Voice Lines
@@ -1359,6 +1447,8 @@ VALUES
   (2189, 1, 5, 1, 24, 'That Does Not Compute', 15),
   (2247, 16, 5, 1, 24, 'Error: Division by 0', 16), -- Uprising Orisa Voice Lines
   (2248, 16, 5, 1, 24, 'Functionality Still in Beta', 16),
+  (2397, 18, 5, 1, 24, 'Satisfied With Protection', 17), -- Anniversary Orisa Voice Lines
+  (2398, 18, 5, 1, 24, 'Your Compliance', 17),
 
   (875, NULL, 5, NULL, 11, 'Security in My Hands', 1), -- Default Pharah Voice Lines
   (876, 1, 5, 1, 11, 'Aerial Superiority Achieved', 1), -- Normal Pharah Voice Lines
@@ -1377,6 +1467,8 @@ VALUES
   (2064, 14, 5, 1, 11, 'I Keep the Peace', 13), -- Lunar New Year Pharah Voice Lines
   (2249, 16, 5, 1, 11, 'Don''t Take It Personally', 16), -- Uprising Pharah Voice Lines
   (2250, 16, 5, 1, 11, 'I Am the Rocket Queen', 16),
+  (2399, 18, 5, 1, 11, 'Fly Casual', 17), -- Anniversary Pharah Voice Lines
+  (2400, 18, 5, 1, 11, 'Try Me', 17),
 
   (888, NULL, 5, NULL, 12, 'What Are You Looking at', 1), -- Default Reaper Voice Lines
   (889, 1, 5, 1, 12, 'Dead Man Walking', 1), -- Normal Reaper Voice Lines
@@ -1395,6 +1487,8 @@ VALUES
   (2065, 14, 5, 1, 12, 'Now Those Are Fireworks', 13), -- Lunar New Year Reaper Voice Lines
   (2251, 16, 5, 1, 12, 'Amateur Hour', 16), -- Uprising Reaper Voice Lines
   (2252, 16, 5, 1, 12, 'Moving On', 16),
+  (2401, 18, 5, 1, 12, 'I''ll See You in Hell', 17), -- Anniversary Reaper Voice Lines
+  (2402, 18, 5, 1, 12, 'No One Left Behind', 17),
 
   (901, NULL, 5, NULL, 13, 'I Salute You', 1), -- Default Reinhardt Voice Lines
   (902, 1, 5, 1, 13, 'Are You Afraid?', 1), -- Normal Reinhardt Voice Lines
@@ -1413,6 +1507,8 @@ VALUES
   (2066, 14, 5, 1, 13, 'Are You Chicken?', 13), -- Lunar New Year Reinhardt Voice Lines
   (2253, 16, 5, 1, 13, 'Easy Does It', 16), -- Uprising Reinhardt Voice Lines
   (2254, 16, 5, 1, 13, 'Unstoppable', 16),
+  (2403, 18, 5, 1, 13, 'Beer!', 17), -- Anniversary Reinhardt Voice Lines
+  (2404, 18, 5, 1, 13, 'Honor! Justice! Reinhardt!', 17),
 
   (914, NULL, 5, NULL, 14, 'The Apocalypse', 1), -- Default Roadhog Voice Lines
   (915, 1, 5, 1, 14, 'Candy From a Baby', 1), -- Normal Roadhog Voice Lines
@@ -1431,6 +1527,8 @@ VALUES
   (2067, 14, 5, 1, 14, 'You Chicken?', 13), -- Lunar New Year Roadhog Voice Lines
   (2255, 16, 5, 1, 14, 'Killed for Less Than That', 16), -- Uprising Roadhog Voice Lines
   (2256, 16, 5, 1, 14, 'She''ll Be Right', 16),
+  (2405, 18, 5, 1, 14, 'I don''t Like Talkers', 17), -- Anniversary Roadhog Voice Lines
+  (2406, 18, 5, 1, 14, 'I''m Going Hog Wild!', 17),
 
   (927, NULL, 5, NULL, 15, 'I''ve Still Got It', 1), -- Default Soldier: 76 Voice Lines
   (928, 1, 5, 1, 15, 'Get off My Lawn', 1), -- Normal Soldier: 76 Voice Lines
@@ -1449,6 +1547,8 @@ VALUES
   (2068, 14, 5, 1, 15, 'The Rooster Crows', 13), -- Lunar New Year Soldier: 76 Voice Lines
   (2257, 16, 5, 1, 15, 'Not Getting Any Younger', 16), -- Uprising Soldier: 76 Voice Lines
   (2258, 16, 5, 1, 15, 'Whatever You Say', 16),
+  (2407, 18, 5, 1, 15, 'I''m Not Your Father', 17), -- Anniversary Soldier: 76 Voice Lines
+  (2408, 18, 5, 1, 15, 'You''re the Boss', 17),
 
   (1031, NULL, 5, NULL, 23, 'Playing Fair', 9), -- Default Sombra Voice Lines
   (1880, 1, 5, 1, 23, 'Boop', 9), -- Normal Sombra Voice Lines
@@ -1466,6 +1566,8 @@ VALUES
   (2069, 14, 5, 1, 23, 'You''re Easily Impressed', 13), -- Lunar New Year Sombra Voice Lines
   (2259, 16, 5, 1, 23, 'Don''t Be a Coward', 16), -- Uprising Sombra Voice Lines
   (2260, 16, 5, 1, 23, 'I''d Love to Stay and Chat', 16),
+  (2409, 18, 5, 1, 23, 'I Need a Drink', 17), -- Anniversary Sombra Voice Lines
+  (2410, 18, 5, 1, 23, 'Were You Done Talking?', 17),
 
   (940, NULL, 5, NULL, 16, 'Such a Lack of Imagination', 1), -- Default Symmetra Voice Lines
   (941, 1, 5, 1, 16, 'Everything By Design', 1), -- Normal Symmetra Voice Lines
@@ -1484,6 +1586,8 @@ VALUES
   (2070, 14, 5, 1, 16, 'Good Fortune', 13), -- Lunar New Year Symmetra Voice Lines
   (2261, 16, 5, 1, 16, 'Kindly Adjust', 16), -- Uprising Symmetra Voice Lines
   (2262, 16, 5, 1, 16, 'Taken Under Advisement', 16),
+  (2411, 18, 5, 1, 16, 'Setting Up The Car Wash', 17), -- Anniversary Symmetra Voice Lines
+  (2412, 18, 5, 1, 16, 'Your Mind Works', 17),
 
   (953, NULL, 5, NULL, 17, 'Hard Work Pays off', 1), -- Default Torbjörn Voice Lines
   (954, 1, 5, 1, 17, 'A Chicken Out of a Feather', 1), -- Normal Torbjörn Voice Lines
@@ -1502,6 +1606,8 @@ VALUES
   (2071, 14, 5, 1, 17, 'Too Hot for You?', 13), -- Lunar New Year Torbjörn Voice Lines
   (2263, 16, 5, 1, 17, 'Just Start Hammering', 16), -- Uprising Torbjörn Voice Lines
   (2264, 16, 5, 1, 17, 'Poor Craftsman', 16),
+  (2413, 18, 5, 1, 17, 'Hear Me, Baby?', 17), -- Anniversary Torbjörn Voice Lines
+  (2414, 18, 5, 1, 17, 'Trust Me', 17),
 
   (966, NULL, 5, NULL, 18, 'You Got It', 1), -- Default Tracer Voice Lines
   (967, 1, 5, 1, 18, 'Aw, Rubbish', 1), -- Normal Tracer Voice Lines
@@ -1520,6 +1626,8 @@ VALUES
   (2072, 14, 5, 1, 18, 'Ready for Some Fireworks?', 13), -- Lunar New Year Tracer Voice Lines
   (2265, 16, 5, 1, 18, 'Don''t Be Daft', 16), -- Uprising Tracer Voice Lines
   (2266, 16, 5, 1, 18, 'Sorry I''m Late', 16),
+  (2415, 18, 5, 1, 18, 'Did I Miss Something?', 17), -- Anniversary Tracer Voice Lines
+  (2416, 18, 5, 1, 18, 'Too Slow!', 17),
 
   (979, NULL, 5, NULL, 19, 'A Single Death', 1), -- Default Widowmaker Voice Lines
   (980, 1, 5, 1, 19, 'Encore?', 1), -- Normal Widowmaker Voice Lines
@@ -1538,6 +1646,8 @@ VALUES
   (2073, 14, 5, 1, 19, 'You Have My Attention', 13), -- Lunar New Year Widowmaker Voice Lines
   (2267, 16, 5, 1, 19, 'The Performance Begins', 16), -- Uprising Widowmaker Voice Lines
   (2268, 16, 5, 1, 19, 'Your Emotions', 16),
+  (2417, 18, 5, 1, 19, 'Sorry', 17), -- Anniversary Widowmaker Voice Lines
+  (2418, 18, 5, 1, 19, 'What a Bore', 17),
 
   (992, NULL, 5, NULL, 20, 'Curious', 1), -- Default Winston Voice Linest
   (993, 1, 5, 1, 20, '...Excuse Me', 1), -- Normal Winston Voice Lines
@@ -1556,6 +1666,8 @@ VALUES
   (2074, 14, 5, 1, 20, 'That Was Awesome!', 13), -- Lunar New Year Winston Voice Lines
   (2269, 16, 5, 1, 20, 'Have You Seen My Glasses?', 16), -- Uprising Winston Voice Lines
   (2270, 16, 5, 1, 20, 'I Have The Right Stuff', 16),
+  (2419, 18, 5, 1, 20, 'It''s My Time To Shine!', 17), -- Anniversary Winston Voice Lines
+  (2420, 18, 5, 1, 20, 'Oh Yeah!', 17),
 
   (1005, NULL, 5, NULL, 21, 'Strong As the Mountain', 1), -- Default Zarya Voice Lines
   (1006, 1, 5, 1, 21, 'Get Down, Give Me 20', 1), -- Normal Zarya Voice Lines
@@ -1574,6 +1686,8 @@ VALUES
   (2075, 14, 5, 1, 21, 'Get Pumped', 13), -- Lunar New Year Zarya Voice Lines
   (2271, 16, 5, 1, 21, 'I Was Born in Battle', 16), -- Uprising Zarya Voice Lines
   (2272, 16, 5, 1, 21, 'Ready to Give Up?', 16),
+  (2421, 18, 5, 1, 21, 'Is That All?', 17), -- Anniversary Zarya Voice Lines
+  (2422, 18, 5, 1, 21, 'Peace Through Firepower', 17),
 
   (1018, NULL, 5, NULL, 22, 'We Are in Harmony', 1), -- Default Zenyatta Voice Lines
   (1019, 1, 5, 1, 22, 'Death Is Whimsical Today', 1), -- Normal Zenyatta Voice Lines
@@ -1592,6 +1706,8 @@ VALUES
   (2076, 14, 5, 1, 22, 'Every Rooster Crows', 13), -- Lunar New Year Zenyatta Voice Lines
   (2273, 16, 5, 1, 22, 'Path to Enlightenment', 16), -- Uprising Zenyatta Voice Lines
   (2274, 16, 5, 1, 22, 'Where You''re Headed', 16),
+  (2423, 18, 5, 1, 22, 'Existence is Mysterious', 17), -- Anniversary Zenyatta Voice Lines
+  (2424, 18, 5, 1, 22, 'How Disappointing', 17),
 
   -- Sprays
 
@@ -1688,6 +1804,7 @@ VALUES
   (2282, 17, 6, 1, NULL, 'Nulltrooper', 16),
   (2283, 17, 6, 1, NULL, 'OR14-NS', 16),
   (2284, 17, 6, 1, NULL, 'Slicer', 16),
+  (2425, 18, 6, 1, NULL, 'Anniversary', 17), -- Anniversary All Heroes Sprays
 
   (1113, 1, 6, 1, 1, 'Action', 3), -- Normal Ana Sprays
   (1114, 1, 6, 1, 1, 'Ana', 3),
@@ -1721,6 +1838,7 @@ VALUES
   (2083, 14, 6, 1, 1, 'Dance', 13), -- Lunar New Year Ana Sprays
   (2084, 14, 6, 1, 1, 'Dragon Dance', 13),
   (2285, 16, 6, 1, 1, 'Newborn', 16), -- Uprising Ana Sprays
+  (2426, 18, 6, 1, 1, 'Ace of Hearts', 17), -- Anniversary Ana Sprays
 
   (1140, 1, 6, 1, 2, 'Action', 1), -- Normal Bastion Sprays
   (1141, 1, 6, 1, 2, 'Bird', 1),
@@ -1754,6 +1872,7 @@ VALUES
   (2085, 14, 6, 1, 2, 'Bast-Yum', 13), -- Lunar New Year Bastion Sprays
   (2086, 14, 6, 1, 2, 'Dragon Dance', 13),
   (2286, 16, 6, 1, 2, 'Sunken', 16), -- Uprising Bastion Sprays
+  (2427, 18, 6, 1, 2, 'Ten of Clubs', 17), -- Anniversary Bastion Sprays
 
   (1167, 1, 6, 1, 3, 'B.ny', 1), -- Normal D.Va Sprays
   (1168, 1, 6, 1, 3, 'Bang', 1),
@@ -1788,6 +1907,7 @@ VALUES
   (2087, 14, 6, 1, 3, 'Seesaw', 13), -- Lunar New Year D.Va Sprays
   (2088, 14, 6, 1, 3, 'Dragon Dance', 13),
   (2287, 16, 6, 1, 3, 'Handheld', 16), -- Uprising D.Va Sprays
+  (2428, 18, 6, 1, 3, 'Ten of Hearts', 17), -- Anniversary D.Va Sprays
 
   (1194, 1, 6, 1, 4, 'Assassin', 1), -- Normal Genji Sprays
   (1195, 1, 6, 1, 4, 'Dragon', 1),
@@ -1822,6 +1942,7 @@ VALUES
   (2089, 14, 6, 1, 4, 'Green Dragon', 13), -- Lunar New Year Genji Sprays
   (2090, 14, 6, 1, 4, 'Dragon Dance', 13),
   (2288, 16, 6, 1, 4, 'Ramen', 16), -- Uprising Genji Sprays
+  (2429, 18, 6, 1, 4, 'Jack of Clubs', 17), -- Anniversary Genji Sprays
 
   (1222, 1, 6, 1, 5, 'Archer', 1), -- Normal Hanzo Sprays
   (1223, 1, 6, 1, 5, 'Challenge', 1),
@@ -1854,7 +1975,8 @@ VALUES
   (1921, 10, 6, 1, 5, 'Kadomatsu', 11),
   (2091, 14, 6, 1, 5, 'Blue Dragon', 13), -- Lunar New Year Hanzo Sprays
   (2092, 14, 6, 1, 5, 'Dragon Dance', 13),
-  (2289, 16, 6, 1, 5, 'Ramen', 16), -- Uprising Genji Sprays
+  (2289, 16, 6, 1, 5, 'Ramen', 16), -- Uprising Hanzo Sprays
+  (2430, 18, 6, 1, 5, 'King of Diamonds', 17), -- Anniversary Hanzo Sprays
 
   (1249, 1, 6, 1, 6, 'AHHHH!', 1), -- Normal Junkrat Sprays
   (1250, 1, 6, 1, 6, 'Bang Bang', 1),
@@ -1888,6 +2010,7 @@ VALUES
   (2093, 14, 6, 1, 6, 'I''m Flying!', 13), -- Lunar New Year Junkrat Sprays
   (2094, 14, 6, 1, 6, 'Dragon Dance', 13),
   (2290, 16, 6, 1, 6, 'Sidecar', 16), -- Uprising Junkrat Sprays
+  (2431, 18, 6, 1, 6, 'Joker', 17), -- Anniversary Junkrat Sprays
 
   (1276, 1, 6, 1, 7, 'Acelerar', 1), -- Normal Lúcio Sprays
   (1277, 1, 6, 1, 7, 'Baixo', 1),
@@ -1921,6 +2044,7 @@ VALUES
   (2095, 14, 6, 1, 7, 'Keep Ups', 13), -- Lunar New Year Lúcio Sprays
   (2096, 14, 6, 1, 7, 'Dragon Dance', 13),
   (2291, 16, 6, 1, 7, 'Skates', 16), -- Uprising Lúcio Sprays
+  (2432, 18, 6, 1, 7, 'Jack of Diamonds', 17), -- Anniversary Lúcio Sprays
 
   (1303, 1, 6, 1, 8, 'Badge', 1), -- Normal McCree Sprays
   (1304, 1, 6, 1, 8, 'BAMF', 1),
@@ -1954,6 +2078,7 @@ VALUES
   (2097, 14, 6, 1, 8, 'Call It', 13), -- Lunar New Year McCree Sprays
   (2098, 14, 6, 1, 8, 'Dragon Dance', 13),
   (2292, 16, 6, 1, 8, 'Target Practice', 16), -- Uprising McCree Sprays
+  (2433, 18, 6, 1, 8, 'Jack of Spades', 17), -- Anniversary McCree Sprays
 
   (1330, 1, 6, 1, 9, '^_^', 1), -- Normal Mei Sprays
   (1331, 1, 6, 1, 9, '>_<', 1),
@@ -1987,6 +2112,7 @@ VALUES
   (2099, 14, 6, 1, 9, 'Fortune', 13), -- Lunar New Year Mei Sprays
   (2100, 14, 6, 1, 9, 'Dragon Dance', 13),
   (2293, 16, 6, 1, 9, 'Pajamas', 16), -- Uprising Mei Sprays
+  (2434, 18, 6, 1, 9, 'Ten of Diamonds', 17), -- Anniversary Mei Sprays
 
   (1357, 1, 6, 1, 10, 'Arrow', 1), -- Normal Mercy Sprays
   (1358, 1, 6, 1, 10, 'Bandage', 1),
@@ -2020,6 +2146,7 @@ VALUES
   (2101, 14, 6, 1, 10, 'Parasol', 13), -- Lunar New Year Mercy Sprays
   (2102, 14, 6, 1, 10, 'Dragon Dance', 13),
   (2294, 16, 6, 1, 10, 'Combat Medic', 16), -- Uprising Mercy Sprays
+  (2435, 18, 6, 1, 10, 'Queen of Clubs', 17), -- Anniversary Mercy Sprays
 
   (2156, 1, 6, 1, 24, '^_^', 15), -- Normal Orisa Sprays
   (2157, 1, 6, 1, 24, 'Amused', 15),
@@ -2046,6 +2173,7 @@ VALUES
   (2178, 2, 6, 1, 24, 'Pixel', 15), -- Achievements Orisa Sprays
   (2179, 2, 6, 1, 24, 'Cute', 15),
   (2295, 16, 6, 1, 24, 'Flower', 16), -- Uprising Orisa Sprays
+  (2436, 18, 6, 1, 24, 'Nine of Spades', 17), -- Anniversary Orisa Sprays
 
   (1384, 1, 6, 1, 11, 'Aerial Superiority', 1), -- Normal Pharah Sprays
   (1385, 1, 6, 1, 11, 'Amari', 1),
@@ -2079,6 +2207,7 @@ VALUES
   (2103, 14, 6, 1, 11, 'Happy New Year', 13), -- Lunar New Year Pharah Sprays
   (2104, 14, 6, 1, 11, 'Dragon Dance', 13),
   (2296, 16, 6, 1, 11, 'Target Practice', 16), -- Uprising Pharah Sprays
+  (2437, 18, 6, 1, 11, 'Queen of Diamonds', 17), -- Anniversary Pharah Sprays
 
   (1411, 1, 6, 1, 12, 'Blackwatch', 1), -- Normal Reaper Sprays
   (1412, 1, 6, 1, 12, 'Blossom', 1),
@@ -2112,6 +2241,7 @@ VALUES
   (2105, 14, 6, 1, 12, 'Fire Blossom', 13), -- Lunar New Year Reaper Sprays
   (2106, 14, 6, 1, 12, 'Dragon Dance', 13),
   (2297, 16, 6, 1, 12, 'Commando', 16), -- Uprising Reaper Sprays
+  (2438, 18, 6, 1, 12, 'Ace of Clubs', 17), -- Anniversary Reaper Sprays
 
   (1438, 1, 6, 1, 13, 'Barrier', 1), -- Normal Reinhardt Sprays
   (1439, 1, 6, 1, 13, 'Charge', 1),
@@ -2145,6 +2275,7 @@ VALUES
   (2107, 14, 6, 1, 13, 'Lion Dance', 13), -- Lunar New Year Reinhardt Sprays
   (2108, 14, 6, 1, 13, 'Dragon Dance', 13),
   (2298, 16, 6, 1, 13, 'Poster', 16), -- Uprising Reinhardt Sprays
+  (2439, 18, 6, 1, 13, 'King of Hearts', 17), -- Anniversary Reinhardt Sprays
 
   (1465, 1, 6, 1, 14, 'Breathin''', 1), -- Normal Roadhog Sprays
   (1466, 1, 6, 1, 14, 'Deep Thoughts', 1),
@@ -2178,6 +2309,7 @@ VALUES
   (2109, 14, 6, 1, 14, 'Steamed Buns', 13), -- Lunar New Year Roadhog Sprays
   (2110, 14, 6, 1, 14, 'Dragon Dance', 13),
   (2299, 16, 6, 1, 14, 'Chopper', 16), -- Uprising Roadhog Sprays
+  (2440, 18, 6, 1, 14, 'Joker', 17), -- Anniversary Roadhog Sprays
 
   (1492, 1, 6, 1, 15, '76', 1), -- Normal Soldier: 76 Sprays
   (1493, 1, 6, 1, 15, 'All Soldiers', 1),
@@ -2211,6 +2343,7 @@ VALUES
   (2111, 14, 6, 1, 15, 'Folded Hands', 13), -- Lunar New Year Soldier: 76 Sprays
   (2112, 14, 6, 1, 15, 'Dragon Dance', 13),
   (2300, 16, 6, 1, 15, 'Commando', 16), -- Uprising Soldier: 76 Sprays
+  (2441, 18, 6, 1, 15, 'Ace of Spades', 17), -- Anniversary Soldier: 76 Sprays
 
   (1708, 1, 6, 1, 23, '5kull', 9), -- Normal Sombra Sprays
   (1709, 1, 6, 1, 23, 'Agent', 9),
@@ -2245,6 +2378,7 @@ VALUES
   (2113, 14, 6, 1, 23, 'Fortunate', 13), -- Lunar New Year Sombra Sprays
   (2114, 14, 6, 1, 23, 'Dragon Dance', 13),
   (2301, 16, 6, 1, 23, 'Espresso', 16), -- Uprising Sombra Sprays
+  (2442, 18, 6, 1, 23, 'Queen of Spades', 17), -- Anniversary Sombra Sprays
 
   (1519, 1, 6, 1, 16, 'Agent', 1), -- Normal Symmetra Sprays
   (1520, 1, 6, 1, 16, 'Architect', 1),
@@ -2344,6 +2478,7 @@ VALUES
   (2119, 14, 6, 1, 18, 'Fan Dance', 13), -- Lunar New Year Tracer Sprays
   (2120, 14, 6, 1, 18, 'Dragon Dance', 13),
   (2304, 16, 6, 1, 18, 'Slipstream', 16), -- Uprising Tracer Sprays
+  (2443, 18, 6, 1, 18, 'Ace of Diamonds', 17), -- Anniversary Tracer Sprays
 
   (1600, 1, 6, 1, 19, 'Baiser', 1), -- Normal Widowmaker Sprays
   (1601, 1, 6, 1, 19, 'Black Widow', 1),
@@ -2377,6 +2512,7 @@ VALUES
   (2121, 14, 6, 1, 19, 'Hairpin', 13), -- Lunar New Year Widowmaker Sprays
   (2122, 14, 6, 1, 19, 'Dragon Dance', 13),
   (2305, 16, 6, 1, 19, 'Wedding', 16), -- Uprising Widowmaker Sprays
+  (2444, 18, 6, 1, 19, 'Queen of Hearts', 17), -- Anniversary Widowmaker Sprays
 
   (1627, 1, 6, 1, 20, 'Angry', 1), -- Normal Winston Sprays
   (1628, 1, 6, 1, 20, 'Ape Crossing', 1),
@@ -2410,6 +2546,7 @@ VALUES
   (2123, 14, 6, 1, 20, 'Kite', 13), -- Lunar New Year Winston Sprays
   (2124, 14, 6, 1, 20, 'Dragon Dance', 13),
   (2306, 16, 6, 1, 20, 'Building', 16), -- Uprising Winston Sprays
+  (2445, 18, 6, 1, 20, 'Jack of Hearts', 17), -- Anniversary Winston Sprays
 
   (1654, 1, 6, 1, 21, '512', 1), -- Normal Zarya Sprays
   (1655, 1, 6, 1, 21, 'Alexandra', 1),
@@ -2443,6 +2580,7 @@ VALUES
   (2125, 14, 6, 1, 21, 'Calories', 13), -- Lunar New Year Zarya Sprays
   (2126, 14, 6, 1, 21, 'Dragon Dance', 13),
   (2307, 16, 6, 1, 21, 'We Can!', 16), -- Uprising Zarya Sprays
+  (2446, 18, 6, 1, 21, 'Ten of Spades', 17), -- Anniversary Zarya Sprays
 
   (1681, 1, 6, 1, 22, 'Adorable', 1), -- Normal Zenyatta Sprays
   (1682, 1, 6, 1, 22, 'Aura', 1),
@@ -2476,6 +2614,7 @@ VALUES
   (2127, 14, 6, 1, 22, 'Yut Nori', 13), -- Lunar New Year Zenyatta Sprays
   (2128, 14, 6, 1, 22, 'Dragon Dance', 13),
   (2308, 16, 6, 1, 22, 'Shell', 16), -- Uprising Zenyatta Sprays
+  (2447, 18, 6, 1, 22, 'King of Spades', 17), -- Anniversary Zenyatta Sprays
 
   -- Highlight Intros
 
