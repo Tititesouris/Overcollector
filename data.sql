@@ -433,7 +433,7 @@ VALUES
   (191, 1, 1, 2, 23, 'Hacker', 9), -- Normal Sombra Player Icons
   (192, 1, 1, 2, 23, 'Skull', 9),
   (193, 1, 1, 2, 23, 'Sombra', 9),
-  (2334, 18, 1, 2, 1, 'Aniversario', 17), -- Anniversary Sombra Player Icons
+  (2334, 18, 1, 2, 23, 'Aniversario', 17), -- Anniversary Sombra Player Icons
 
   (163, 1, 1, 2, 16, 'Sentry', 1), -- Normal Symmetra Player Icons
   (164, 1, 1, 2, 16, 'Symmetra', 1),
