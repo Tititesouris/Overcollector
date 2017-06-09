@@ -2412,6 +2412,7 @@ VALUES
   (2115, 14, 6, 1, 16, 'Lantern', 13), -- Lunar New Year Symmetra Sprays
   (2116, 14, 6, 1, 16, 'Dragon Dance', 13),
   (2302, 16, 6, 1, 16, 'Student', 16), -- Uprising Symmetra Sprays
+  (2448, 18, 6, 1, 16, 'Nine of Diamonds', 17), -- Anniversary Symmetra Sprays
 
   (1546, 1, 6, 1, 17, 'Armor', 1), -- Normal Torbjörn Sprays
   (1547, 1, 6, 1, 17, 'Beard', 1),
