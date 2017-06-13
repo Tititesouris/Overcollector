@@ -318,7 +318,7 @@ VALUES
   (2198, 16, 1, 2, NULL, 'B73-NS', 16),
   (2199, 16, 1, 2, NULL, 'Drop Pod', 16),
   (2200, 16, 1, 2, NULL, 'Blackwatch', 16),
-  (2316, 18, 1, 2, NULL, 'Anniversary', 17), -- Anniversary All Heroes Player Icons
+  (2316, 18, 1, 2, NULL, 'Anniversary 2017', 17), -- Anniversary All Heroes Player Icons
   (2317, 18, 1, 2, NULL, 'Pachiversary', 17),
 
   (98, 1, 1, 2, 1, 'Ana', 3), -- Normal Ana Player Icons
@@ -1023,6 +1023,7 @@ VALUES
   (590, 1, 3, 3, 18, 'Having a Laugh', 1),
   (591, 1, 3, 3, 18, 'Sitting Around...', 5),
   (592, 1, 3, 3, 18, 'Spin', 1),
+  (2449, 1, 3, 3, 18, 'Finger Guns', 17),
   (2372, 18, 3, 3, 18, 'Charleston', 17), -- Anniversary Tracer Emotes
 
   (593, NULL, 3, NULL, 19, 'Heroic', 1), -- Default Widowmaker Emotes
@@ -1804,7 +1805,7 @@ VALUES
   (2282, 17, 6, 1, NULL, 'Nulltrooper', 16),
   (2283, 17, 6, 1, NULL, 'OR14-NS', 16),
   (2284, 17, 6, 1, NULL, 'Slicer', 16),
-  (2425, 18, 6, 1, NULL, 'Anniversary', 17), -- Anniversary All Heroes Sprays
+  (2425, 18, 6, 1, NULL, 'Anniversary 2017', 17), -- Anniversary All Heroes Sprays
 
   (1113, 1, 6, 1, 1, 'Action', 3), -- Normal Ana Sprays
   (1114, 1, 6, 1, 1, 'Ana', 3),
