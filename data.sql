@@ -2150,6 +2150,7 @@ VALUES
   (2435, 18, 6, 1, 10, 'Queen of Clubs', 17), -- Anniversary Mercy Sprays
 
   (2156, 1, 6, 1, 24, '^_^', 15), -- Normal Orisa Sprays
+  (2450, 1, 6, 1, 24, '>_<', 15),
   (2157, 1, 6, 1, 24, 'Amused', 15),
   (2158, 1, 6, 1, 24, 'Carving', 15),
   (2159, 1, 6, 1, 24, 'City of Harmony', 15),
